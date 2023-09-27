@@ -1,0 +1,12 @@
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\bin\Debug\net6.0\MyMoviesTvShowList.Extensions.deps.json
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\bin\Debug\net6.0\MyMoviesTvShowList.Extensions.dll
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\bin\Debug\net6.0\MyMoviesTvShowList.Extensions.pdb
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\MyMoviesTvShowList.Extensions.csproj.AssemblyReference.cache
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\MyMoviesTvShowList.Extensions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\MyMoviesTvShowList.Extensions.AssemblyInfoInputs.cache
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\MyMoviesTvShowList.Extensions.AssemblyInfo.cs
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\MyMoviesTvShowList.Extensions.csproj.CoreCompileInputs.cache
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\MyMoviesTvShowList.Extensions.dll
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\refint\MyMoviesTvShowList.Extensions.dll
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\MyMoviesTvShowList.Extensions.pdb
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\MyMoviesTvShowList.Extensions\obj\Debug\net6.0\ref\MyMoviesTvShowList.Extensions.dll

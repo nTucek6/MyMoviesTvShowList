@@ -1,0 +1,5 @@
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\Services.MoviesAdmin\obj\Debug\net6.0\Services.MoviesAdmin.csproj.AssemblyReference.cache
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\Services.MoviesAdmin\obj\Debug\net6.0\Services.MoviesAdmin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\Services.MoviesAdmin\obj\Debug\net6.0\Services.MoviesAdmin.AssemblyInfoInputs.cache
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\Services.MoviesAdmin\obj\Debug\net6.0\Services.MoviesAdmin.AssemblyInfo.cs
+C:\Users\Nikola\source\repos\MyMoviesTvShowList\Services.MoviesAdmin\obj\Debug\net6.0\Services.MoviesAdmin.csproj.CoreCompileInputs.cache
