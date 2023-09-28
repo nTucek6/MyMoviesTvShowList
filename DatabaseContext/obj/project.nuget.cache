@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XXEgfb1HZMlS9vyqcaR2l59ZttMB2csMaKRfFFhfyZ2YzrZjQ80qzaX1ycFBpDvDT8Kg6TduNrvYNhv6XGVSHg==",
+  "dgSpecHash": "AM45qsmVbJAUMWn7xQcqVloo3pReTQSd+peGp3+mdoQZWDH329hRR8O9Wq/4YsYCM/wu78JI7bmSePp4RcSlBg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
+  "projectFilePath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nikola\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",

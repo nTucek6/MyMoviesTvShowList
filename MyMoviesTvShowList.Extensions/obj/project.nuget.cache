@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QhaC+azSnoBzokB6CpPBch9vO5oE89UJtg0SMZ/Xk2F81MNkV3jDJ9xRNRSV3T5r3k3uGK6F7Pm3xinrlN8Rog==",
+  "dgSpecHash": "6Cp8bbcLGWgMaFZ5AfuiMaWQABbKFwG7IW+KBw+IOs5wmCZNVY2sZ+R+7DV5cOPMITBbMXjG7UWQLXE2qwvhSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj",
+  "projectFilePath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",

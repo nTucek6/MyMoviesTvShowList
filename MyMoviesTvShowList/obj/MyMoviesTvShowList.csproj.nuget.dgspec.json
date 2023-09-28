@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj": {}
+    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
+    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
         "projectName": "DatabaseContext",
-        "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
+        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
-                "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Entites\\Entites.csproj"
+              "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj"
               }
             }
           }
@@ -79,18 +79,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
+    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Entites\\Entites.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj",
         "projectName": "Entites",
-        "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Entites\\Entites.csproj",
+        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Entites\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -140,18 +140,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj": {
+    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
         "projectName": "MyMoviesTvShowList.Configuration",
-        "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
+        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -195,18 +195,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj": {
+    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj",
         "projectName": "MyMoviesTvShowList.Extensions",
-        "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj",
+        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -260,18 +260,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj": {
+    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj",
         "projectName": "MyMoviesTvShowList",
-        "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj",
+        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -282,27 +282,26 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
-                "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj"
+              "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj"
               },
-              "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj": {
-                "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj"
+              "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj"
               },
-              "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj": {
-                "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj"
+              "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj"
               },
-              "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj": {
-                "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj"
+              "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj"
               },
-              "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
-                "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj"
+              "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj"
               }
             }
           }
@@ -365,18 +364,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj": {
+    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj",
         "projectName": "Services.Frontpage",
-        "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj",
+        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.Frontpage\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -420,18 +419,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
+    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj",
         "projectName": "Services.MoviesAdmin",
-        "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj",
+        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\Services.MoviesAdmin\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -448,8 +447,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
-                "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj"
+              "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj"
               }
             }
           }
@@ -479,7 +478,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

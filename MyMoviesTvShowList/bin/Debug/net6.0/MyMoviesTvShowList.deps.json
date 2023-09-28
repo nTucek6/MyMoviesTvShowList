@@ -17,6 +17,7 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
           "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.1.0",
           "Services.Frontpage": "1.0.0",
+          "Services.MoviesAdmin": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -1066,6 +1067,14 @@
         "runtime": {
           "Services.Frontpage.dll": {}
         }
+      },
+      "Services.MoviesAdmin/1.0.0": {
+        "dependencies": {
+          "DatabaseContext": "1.0.0"
+        },
+        "runtime": {
+          "Services.MoviesAdmin.dll": {}
+        }
       }
     }
   },
@@ -1845,6 +1854,11 @@
       "sha512": ""
     },
     "Services.Frontpage/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services.MoviesAdmin/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -10,3 +10,15 @@ C:\Users\Nikola\source\repos\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites
 C:\Users\Nikola\source\repos\MyMoviesTvShowList\Entites\obj\Debug\net6.0\refint\Entites.dll
 C:\Users\Nikola\source\repos\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.pdb
 C:\Users\Nikola\source\repos\MyMoviesTvShowList\Entites\obj\Debug\net6.0\ref\Entites.dll
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\bin\Debug\net6.0\Entites.deps.json
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\bin\Debug\net6.0\Entites.dll
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\bin\Debug\net6.0\Entites.pdb
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.csproj.AssemblyReference.cache
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.AssemblyInfoInputs.cache
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.AssemblyInfo.cs
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.csproj.CoreCompileInputs.cache
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.dll
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\refint\Entites.dll
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.pdb
+C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\ref\Entites.dll

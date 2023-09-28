@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
+      "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
       "projectName": "MyMoviesTvShowList.Configuration",
-      "projectPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
+      "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
       "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nikola\\source\\repos\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\obj\\",
+      "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
