@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T0PpSrmRYGCX3sLFiVEQqNsPZXodoixTzkt0GTf6ffVhwUXJXPxvKXiULZqLytAZZoSq9nhtShj3yBb3rfpe4Q==",
+  "dgSpecHash": "Q0eC9RMDF6CA60wRhzkQRYqoetDqnchYnipXFI9GlpGGBkHTo0GsMn2tYoR9VxN42iwtH/YpCBAV4upnrn/ubw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj",
+  "projectFilePath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\MyMoviesTvShowList.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nikola\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

@@ -761,11 +761,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj",
+      "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj",
       "projectName": "Services.MoviesAdmin",
-      "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj",
+      "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj",
       "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\obj\\",
+      "outputPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -782,8 +782,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
-              "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj"
+            "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
+              "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj"
             }
           }
         }

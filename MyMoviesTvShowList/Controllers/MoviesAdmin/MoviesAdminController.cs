@@ -21,5 +21,12 @@ namespace MyMoviesTvShowList.Controllers.MoviesAdmin
             return Ok();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetApiRequest()
+        {
+            return Ok("It works yay!");
+        }
+
+
     }
 }

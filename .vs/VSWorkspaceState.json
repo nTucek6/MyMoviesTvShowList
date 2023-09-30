@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MyMoviesTvShowList",
+    "\\MyMoviesTvShowList\\Controllers",
+    "\\MyMoviesTvShowList\\Controllers\\MoviesAdmin"
   ],
-  "SelectedNode": "\\MyMoviesTvShowList.sln",
+  "SelectedNode": "\\MyMoviesTvShowList\\Controllers\\MoviesAdmin\\MoviesAdminController.cs",
   "PreviewInSolutionExplorer": false
 }

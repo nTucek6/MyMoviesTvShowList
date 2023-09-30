@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {}
+    "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
+    "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj",
         "projectName": "Entites",
-        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj",
+        "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",

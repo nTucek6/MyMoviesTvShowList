@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj": {}
+    "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj": {
+    "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
+        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
         "projectName": "MyMoviesTvShowList.Configuration",
-        "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
+        "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\MyMoviesTvShowList.Configuration.csproj",
         "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\obj\\",
+        "outputPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Configuration\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",

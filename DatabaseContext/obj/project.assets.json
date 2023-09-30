@@ -1101,11 +1101,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
+      "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
       "projectName": "DatabaseContext",
-      "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
+      "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj",
       "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\obj\\",
+      "outputPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1122,8 +1122,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
-              "projectPath": "C:\\Users\\Nikola\\Source\\Repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj"
+            "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
+              "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj"
             }
           }
         }
