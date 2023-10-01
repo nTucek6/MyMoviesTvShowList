@@ -11,6 +11,7 @@ const message = computed(() => {
 onMounted(() => {
   data.fetchMessage();
 });
+
 </script>
 
 <template>

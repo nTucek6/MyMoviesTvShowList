@@ -38,17 +38,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Services", "3. Services"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Presentation", "5. Presentation", "{D3BB2293-63F0-4ACD-B7A6-54A641DE4554}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entites", "Entites\Entites.csproj", "{672BBA2F-1667-4A1E-A6AB-C66BC70B10E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entites", "Entites\Entites.csproj", "{672BBA2F-1667-4A1E-A6AB-C66BC70B10E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseContext", "DatabaseContext\DatabaseContext.csproj", "{741EAA1F-E431-4A3D-8C53-3CA386D69586}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseContext", "DatabaseContext\DatabaseContext.csproj", "{741EAA1F-E431-4A3D-8C53-3CA386D69586}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMoviesTvShowList.Configuration", "MyMoviesTvShowList.Configuration\MyMoviesTvShowList.Configuration.csproj", "{48543A60-096F-4B41-959B-990933B1A30F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMoviesTvShowList.Configuration", "MyMoviesTvShowList.Configuration\MyMoviesTvShowList.Configuration.csproj", "{48543A60-096F-4B41-959B-990933B1A30F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Frontpage", "Services.Frontpage\Services.Frontpage.csproj", "{BC1D5501-20C8-468F-949F-46F28C65E9AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Frontpage", "Services.Frontpage\Services.Frontpage.csproj", "{BC1D5501-20C8-468F-949F-46F28C65E9AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMoviesTvShowList.Extensions", "MyMoviesTvShowList.Extensions\MyMoviesTvShowList.Extensions.csproj", "{09CB6AEB-E2C7-42C0-AC65-0991F35EA43D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMoviesTvShowList.Extensions", "MyMoviesTvShowList.Extensions\MyMoviesTvShowList.Extensions.csproj", "{09CB6AEB-E2C7-42C0-AC65-0991F35EA43D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.MoviesAdmin", "Services.MoviesAdmin\Services.MoviesAdmin.csproj", "{2A28076C-4F2B-4D65-B946-79228393B50E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.MoviesAdmin", "Services.MoviesAdmin\Services.MoviesAdmin.csproj", "{2A28076C-4F2B-4D65-B946-79228393B50E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Authentication", "Services.Authentication\Services.Authentication.csproj", "{40BC3639-F255-4C3C-A225-DA17C4B01472}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,6 +90,10 @@ Global
 		{2A28076C-4F2B-4D65-B946-79228393B50E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A28076C-4F2B-4D65-B946-79228393B50E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A28076C-4F2B-4D65-B946-79228393B50E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40BC3639-F255-4C3C-A225-DA17C4B01472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BC3639-F255-4C3C-A225-DA17C4B01472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BC3639-F255-4C3C-A225-DA17C4B01472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BC3639-F255-4C3C-A225-DA17C4B01472}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +107,7 @@ Global
 		{BC1D5501-20C8-468F-949F-46F28C65E9AC} = {F48099E2-EB20-4310-8482-0AF2F3D82280}
 		{09CB6AEB-E2C7-42C0-AC65-0991F35EA43D} = {9AFFC946-5DCD-49DB-A070-3AFD3901A5E5}
 		{2A28076C-4F2B-4D65-B946-79228393B50E} = {F48099E2-EB20-4310-8482-0AF2F3D82280}
+		{40BC3639-F255-4C3C-A225-DA17C4B01472} = {F48099E2-EB20-4310-8482-0AF2F3D82280}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B9A8A18-7EB7-4CE0-A7B4-C44DC3B4A63E}

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DatabaseContext.Migrations
 {
     [DbContext(typeof(MyMoviesTvShowListContext))]
-    [Migration("20230927173358_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231001092430_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,18 +27,20 @@ namespace DatabaseContext.Migrations
 
             modelBuilder.Entity("Entites.MoviesCrewEntity", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CharacterName")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("MovieId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("MovieId")
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("PersonId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("PersonId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("PersonnelType")
                         .HasColumnType("integer");
@@ -50,9 +52,11 @@ namespace DatabaseContext.Migrations
 
             modelBuilder.Entity("Entites.MoviesEntity", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateTimeAdded")
                         .HasColumnType("timestamp with time zone");
@@ -89,9 +93,11 @@ namespace DatabaseContext.Migrations
 
             modelBuilder.Entity("Entites.UsersEntity", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()

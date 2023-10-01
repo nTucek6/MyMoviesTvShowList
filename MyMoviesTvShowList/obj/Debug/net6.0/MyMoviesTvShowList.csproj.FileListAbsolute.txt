@@ -132,3 +132,10 @@ C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\obj\D
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\obj\Debug\net6.0\MyMoviesTvShowList.pdb
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\obj\Debug\net6.0\MyMoviesTvShowList.genruntimeconfig.cache
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\obj\Debug\net6.0\ref\MyMoviesTvShowList.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.Authentication.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.Authentication.pdb

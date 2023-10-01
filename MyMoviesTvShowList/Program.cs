@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MyMoviesTvShowList.Configuration;
 using MyMoviesTvShowList.Extensions;
 using MyMoviesTvShowList.Services;
+using Services.Authentication;
 using Services.Frontpage;
 using Services.MoviesAdmin;
 
@@ -33,6 +34,7 @@ builder.Services.AddTransient<Middleware>();
 
 
 //Services -------------------------------------------------------------------------
+builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 builder.Services.AddTransient<IFrontpageService, FrontpageService>();
 builder.Services.AddTransient<IMoviesAdminService, MoviesAdminService>();
 

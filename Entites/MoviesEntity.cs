@@ -1,8 +1,11 @@
-﻿namespace Entites
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entites
 {
     public class MoviesEntity
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string MovieName { get; set; }
         public string Synopsis { get; set; }
         public string Genres { get; set; }

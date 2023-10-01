@@ -25,6 +25,7 @@
     <ProjectReference Include="..\DatabaseContext\DatabaseContext.csproj" />
     <ProjectReference Include="..\MyMoviesTvShowList.Configuration\MyMoviesTvShowList.Configuration.csproj" />
     <ProjectReference Include="..\MyMoviesTvShowList.Extensions\MyMoviesTvShowList.Extensions.csproj" />
+    <ProjectReference Include="..\Services.Authentication\Services.Authentication.csproj" />
     <ProjectReference Include="..\Services.Frontpage\Services.Frontpage.csproj" />
     <ProjectReference Include="..\Services.MoviesAdmin\Services.MoviesAdmin.csproj" />
   </ItemGroup>

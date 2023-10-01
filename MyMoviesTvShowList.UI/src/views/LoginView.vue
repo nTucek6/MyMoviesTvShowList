@@ -19,7 +19,7 @@ const signInButtonPressed = async () =>
     <hr class="mt-5 mb-5" />
  <form @submit.prevent="signInButtonPressed">
   <div class="form-group  mb-3">
-   <input type="text" v-model="Email" class="w-50" id="email" placeholder="Email" />
+   <input type="email" v-model="Email" class="w-50" id="email" placeholder="Email" />
   </div>
   <div class="form-group mb-3">
    <input type="password" v-model="Password" class="w-50" id="password" placeholder="Password" />
@@ -36,7 +36,6 @@ const signInButtonPressed = async () =>
 </template>
 
 <style scoped>
-
 main
 {
     border: 1px black solid;
@@ -47,14 +46,11 @@ main
     margin-right: 25%;
     box-shadow: 5px 5px 5px 5px grey;
 }
-
 .forgotPassword
 {
     text-decoration: none;
     color: black;
 }
-
-
 button
 {
     background-color: rgb(0, 84, 209);
@@ -64,11 +60,9 @@ button
     padding-bottom: 10px;
     display: inline-block;  
 }
-
 input
 {
     text-align: center;
 }
-
 
 </style>

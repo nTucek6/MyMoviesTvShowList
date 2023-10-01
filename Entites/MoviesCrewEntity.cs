@@ -1,14 +1,16 @@
 ﻿using Entites.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entites
 {
     public class MoviesCrewEntity
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
-        public Guid MovieId { get; set; }
+        public int MovieId { get; set; }
 
-        public Guid PersonId { get; set; }
+        public int PersonId { get; set; }
 
         public CrewEnum PersonnelType { get; set; }
 
