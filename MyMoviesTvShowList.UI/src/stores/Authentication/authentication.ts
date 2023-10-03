@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia'
 import axios from "axios"
 import { ref } from 'vue'
+import router from '@/router'
+import  useJwt  from 'jwt-decode'
 
-export const Authentication = defineStore('Authentication', () => {
+export const useAuthentication = defineStore('Authentication', () => {
 
-  const token = ref("")
+  const userLogIn = ref(false);
 
   async function Register(Email:string,Username:string ,Password:string) {
     try {
@@ -18,8 +20,9 @@ export const Authentication = defineStore('Authentication', () => {
             }
           })
           .then((response)=>{
-            //console.log(response.data)
-            token.value = response.data;
+            localStorage.setItem("token",response.data);
+            CheckUserLogin();
+            router.push('/');
           })
         
       }
@@ -39,8 +42,9 @@ export const Authentication = defineStore('Authentication', () => {
             }
           })
           .then((response)=>{
-            console.log(response.data)
-            token.value = response.data;
+            localStorage.setItem("token",response.data);
+            CheckUserLogin();
+            router.replace('/');
           })
         
       }
@@ -50,5 +54,43 @@ export const Authentication = defineStore('Authentication', () => {
     }
   }
 
-  return { token,Register,Login }
+  function LogOut()
+  {
+    localStorage.removeItem("token");
+    CheckUserLogin();
+  }
+
+
+  function CheckUserLogin()
+  {
+    const token = localStorage.getItem("token");
+    //console.log(token);
+    if(token != null)
+    {
+      userLogIn.value = true;
+    }
+    else
+    {
+      userLogIn.value = false;
+    }
+   // console.log(userLogIn.value);
+  }
+
+  function IsAdmin()
+  {
+      const token = localStorage.getItem("token");
+      if(token != null)
+      {
+        const role:{Role:string} = useJwt(token)
+        if(role.Role == "Admin")
+        {
+         return true
+        }
+      }
+      return false;
+  }
+
+
+
+  return { userLogIn,Register,Login,CheckUserLogin,LogOut,IsAdmin }
 })

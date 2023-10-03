@@ -12,7 +12,6 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 
-
 axios.defaults.baseURL = "https://localhost:7227/api/"
 
 app.mount('#app')

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref,computed} from 'vue'
-import { Authentication } from '@/stores/Authentication/authentication';
+import { useAuthentication } from '@/stores/Authentication/authentication';
 
 const Email = ref("")
 const Username = ref("")
@@ -9,20 +9,13 @@ const PasswordConfirm = ref("")
 
 const signInButtonPressed = async () =>
 {
-  const methods = Authentication()
-  await methods.Register(Email.value,Username.value,Password.value)
-  const token = computed(() => {
-  return methods.token;
-});
- //console.log(token.value);
- localStorage.setItem("token",token.value)
+  await useAuthentication().Register(Email.value,Username.value,Password.value)
 }
 
 
 </script>
 
 <template>
-  {{ }}
 <main>
  <h1>Register</h1>
     <hr class="mt-5 mb-5" />

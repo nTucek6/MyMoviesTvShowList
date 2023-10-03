@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import {ref} from 'vue'
+import { useAuthentication } from '@/stores/Authentication/authentication';
 
-const Email = ref(null)
-const Password = ref(null)
+const Email = ref("")
+const Password = ref("")
 
 const signInButtonPressed = async () =>
 {
-  console.log(Email.value);
+  await useAuthentication().Login(Email.value,Password.value)
 }
-
 
 
 </script>
@@ -29,13 +29,15 @@ const signInButtonPressed = async () =>
     <RouterLink class="forgotPassword"  to=""><small>Forgot password?</small></RouterLink>
   </div>
  
-  
-  <button type="submit" class="btn w-25">Login</button>
+  <button type="submit" class="btn w-25">Submit</button>
+
 </form>
 </main>
 </template>
 
 <style scoped>
+
+
 main
 {
     border: 1px black solid;

@@ -1,5 +1,11 @@
 /* @import './base.css'; */
 
+html
+{
+  font-style: italic;
+}
+
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -51,6 +57,7 @@
 .btn-red
 {
   background-color: red;
+  color: whitesmoke;
 }
 
 

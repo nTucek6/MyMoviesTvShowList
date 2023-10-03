@@ -19,7 +19,7 @@
     display: block;
     width: 100%;
     height: 50px;
-    background-color: rgba(46, 46, 46, 0.747);
+    background-color: rgb(0,184,255);
     position: absolute;
     bottom: 0;
     left:0;
