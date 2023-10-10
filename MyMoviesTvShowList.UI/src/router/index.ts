@@ -7,6 +7,10 @@ import RegisterView from '@/views/1.public/RegisterView.vue'
 import MovieSearchView from '@/views/1.public/MovieSearchView.vue'
 import TopMoviesView from '@/views/1.public/TopMoviesView.vue'
 import ProfileView from '@/views/1.public/ProfileView.vue'
+import AddEditMovieView from '@/views/3.admin/AddEditMovieView.vue'
+import CrewsAdminView from '@/views/3.admin/CrewsAdminView.vue'
+import AddEditCrewView from '@/views/3.admin/AddEditCrewView.vue'
+
 import { useAuthentication } from '@/stores/Authentication/authentication'
 
 const router = createRouter({
@@ -25,6 +29,54 @@ const router = createRouter({
       beforeEnter: (to, from, next) => {
         const isAdmin = computed(() => useAuthentication().IsAdmin());
         console.log(isAdmin.value);
+        if (!isAdmin.value) {
+          next('/');
+        }
+        else
+        {
+          next()
+        } 
+      },
+    },
+    {
+      path:'/addeditmovie',
+      name:'Add & Edit movie',
+      component: AddEditMovieView,
+      beforeEnter: (to, from, next) => {
+        const isAdmin = computed(() => useAuthentication().IsAdmin());
+        //console.log(isAdmin.value);
+        if (!isAdmin.value) {
+          next('/');
+        }
+        else
+        {
+          next()
+        } 
+      },
+    },
+    {
+      path:'/viewcrew',
+      name:'View Crew',
+      component: CrewsAdminView,
+      beforeEnter: (to, from, next) => {
+        const isAdmin = computed(() => useAuthentication().IsAdmin());
+        //console.log(isAdmin.value);
+        if (!isAdmin.value) {
+          next('/');
+        }
+        else
+        {
+          next()
+        } 
+      },
+    },
+    {
+      path:'/addeditperson',
+      name:'Add & Edit person',
+      component: AddEditCrewView,
+      props:true,
+      beforeEnter: (to, from, next) => {
+        const isAdmin = computed(() => useAuthentication().IsAdmin());
         if (!isAdmin.value) {
           next('/');
         }

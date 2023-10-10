@@ -17,6 +17,7 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
           "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.1.0",
           "Services.Authentication": "1.0.0",
+          "Services.CrewsAdmin": "1.0.0",
           "Services.Frontpage": "1.0.0",
           "Services.MoviesAdmin": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
@@ -1127,6 +1128,16 @@
           "Services.Authentication.dll": {}
         }
       },
+      "Services.CrewsAdmin/1.0.0": {
+        "dependencies": {
+          "DatabaseContext": "1.0.0",
+          "Entites": "1.0.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0"
+        },
+        "runtime": {
+          "Services.CrewsAdmin.dll": {}
+        }
+      },
       "Services.Frontpage/1.0.0": {
         "runtime": {
           "Services.Frontpage.dll": {}
@@ -1134,7 +1145,8 @@
       },
       "Services.MoviesAdmin/1.0.0": {
         "dependencies": {
-          "DatabaseContext": "1.0.0"
+          "DatabaseContext": "1.0.0",
+          "MyMoviesTvShowList.Extensions": "1.0.0"
         },
         "runtime": {
           "Services.MoviesAdmin.dll": {}
@@ -1953,6 +1965,11 @@
       "sha512": ""
     },
     "Services.Authentication/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services.CrewsAdmin/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -64,7 +64,6 @@ export const useAuthentication = defineStore('Authentication', () => {
   function CheckUserLogin()
   {
     const token = localStorage.getItem("token");
-    //console.log(token);
     if(token != null)
     {
       userLogIn.value = true;
@@ -73,7 +72,6 @@ export const useAuthentication = defineStore('Authentication', () => {
     {
       userLogIn.value = false;
     }
-   // console.log(userLogIn.value);
   }
 
   function IsAdmin()

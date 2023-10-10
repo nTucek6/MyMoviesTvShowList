@@ -22,11 +22,20 @@ namespace MyMoviesTvShowList.Controllers.MoviesAdmin
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetApiRequest()
+        public async Task<IActionResult> GetGenres()
         {
-            return Ok("It works yay!");
+            var genres = await moviesAdminService.GetGenres();
+
+            return Ok(genres);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetCrewSelectSearch(string Search)
+        {
+            var crew = await moviesAdminService.GetCrewSelectSearch(Search);
+
+            return Ok(crew);
+        }
 
     }
 }

@@ -3,7 +3,6 @@ import MoviesSlider from '@/components/Frontpage/MoviesSlider.vue';
 import {ref, onMounted, computed } from 'vue'
 import { RouterLink  } from 'vue-router'
 
-
 </script>
 
 <template>

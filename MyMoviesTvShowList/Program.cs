@@ -4,6 +4,7 @@ using MyMoviesTvShowList.Configuration;
 using MyMoviesTvShowList.Extensions;
 using MyMoviesTvShowList.Services;
 using Services.Authentication;
+using Services.CrewsAdmin;
 using Services.Frontpage;
 using Services.MoviesAdmin;
 
@@ -15,6 +16,8 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
            .AllowAnyMethod()
            .AllowAnyHeader();
 }));
+
+//builder.WebHost.UseUrls("https://26.52.32.10:7169");
 
 // Add services to the container.
 
@@ -37,6 +40,7 @@ builder.Services.AddTransient<Middleware>();
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 builder.Services.AddTransient<IFrontpageService, FrontpageService>();
 builder.Services.AddTransient<IMoviesAdminService, MoviesAdminService>();
+builder.Services.AddTransient<ICrewsAdminService, CrewsAdminService>();
 
 
 

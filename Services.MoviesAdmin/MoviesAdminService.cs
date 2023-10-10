@@ -1,6 +1,7 @@
 ﻿using DatabaseContext;
+using Entities.Enum;
 using Microsoft.EntityFrameworkCore;
-
+using MyMoviesTvShowList.Extensions;
 
 namespace Services.MoviesAdmin
 {
@@ -11,6 +12,13 @@ namespace Services.MoviesAdmin
         public MoviesAdminService(MyMoviesTvShowListContext database)
         {
             this.database = database;
+        }
+
+        public async Task<List<GenresSelectDTO>> GetGenres()
+        {
+            var genres = Enum.GetValues(typeof(GenresEnum)).Cast<GenresEnum>().ToList().Select(x => new GenresSelectDTO { value = x, label = x.GetDescription() }).OrderBy(o => o.label).ToList();
+
+            return genres;
         }
 
         public async Task UpdateMoviesScore()
@@ -58,5 +66,21 @@ namespace Services.MoviesAdmin
             //await database.SaveChangesAsync();
 
         }
+
+        public async Task<List<CrewsSelectDTO>> GetCrewSelectSearch(string search)
+        {
+            var people = await database.People
+            .Where(q => q.FirstName.Contains(search) || q.LastName.Contains(search))
+            .Select(s =>
+            new CrewsSelectDTO
+            {
+                value = s.Id,
+                label = s.FirstName + " " + s.LastName
+            }).ToListAsync();
+
+            return people;
+        }
+
+
     }
 }

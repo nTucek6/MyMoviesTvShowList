@@ -8,7 +8,7 @@ import Footer from './navigation/Footer.vue';
  <main class="container">
   <Navigation />
   <RouterView />
-  <Footer />
+ 
  </main>
 
 </template>

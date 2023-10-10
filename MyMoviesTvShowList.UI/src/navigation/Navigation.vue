@@ -1,8 +1,21 @@
 <script setup lang="ts">
 import {ref, computed, onMounted,watch} from 'vue'
 import { RouterLink,useRoute  } from 'vue-router'
-import { useAuthentication } from '@/stores/Authentication/authentication';
+import { useAuthentication } from '@/stores/Authentication/authentication'
 import  useJwt  from 'jwt-decode'
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUser,faSignOut,faList,faFilm,faVideo,faTv } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faUser,faSignOut,faList,faFilm,faVideo,faTv)
+
+class UserClass
+{
+    Id = 0;
+    Username = '';
+    Email = '';
+    Role = '';
+}
 
 const authentication = useAuthentication();
 
@@ -29,7 +42,8 @@ const CheckUserLogIn = () =>{
     const token = localStorage.getItem('token');
     if(token != null)
      {
-      const user:{Id:number,Username:string,Email:string,Role:string} = useJwt(token);
+      //const user:{Id:number,Username:string,Email:string,Role:string} = useJwt(token);
+      const user : UserClass = useJwt(token);
       Username.value = user.Username;
       UserRole.value = user.Role;
      }
@@ -63,10 +77,10 @@ watch(route, () => {
           <div class="dropdown" v-if="userLogIn && UserRole == 'Admin'">
           <span class="">Admin</span>
           <div class="dropdown-content">
-            <RouterLink to="/moviesadmin" class="btn dropdown-item">Movies</RouterLink>
-            <RouterLink to="/" class="btn dropdown-item">Film & Show crew</RouterLink>
-            <RouterLink to="/" class="btn" dropdown-item>Tv Shows</RouterLink>
-            <RouterLink to="/" class="btn dropdown-item">Users</RouterLink>
+            <RouterLink to="/moviesadmin" class="btn dropdown-item"><font-awesome-icon :icon="['fas', 'film']" /> Movies</RouterLink>
+            <RouterLink to="/" class="btn" dropdown-item><font-awesome-icon :icon="['fas', 'tv']" /> Tv Shows</RouterLink>
+            <RouterLink to="/viewcrew" class="btn dropdown-item"><font-awesome-icon :icon="['fas', 'video']" /> Film & Show crew</RouterLink>
+            <RouterLink to="/" class="btn dropdown-item"><font-awesome-icon icon="fa-solid fa-user" class="icon"/> Users</RouterLink>
           </div>
           </div> 
 
@@ -74,9 +88,9 @@ watch(route, () => {
           <div class="dropdown" v-if="userLogIn">
           <span class="">{{ Username }}</span>
           <div class="dropdown-content">
-          <RouterLink :to="`/profile/${Username}`" class="btn dropdown-item">Profile</RouterLink>
-          <RouterLink to="/topmovies" class="btn dropdown-item">My List</RouterLink>
-          <RouterLink to="/" class="btn btn-red dropdown-item" @click="authentication.LogOut()">Log Out</RouterLink>
+          <RouterLink :to="`/profile/${Username}`" class="btn dropdown-item"><font-awesome-icon icon="fa-solid fa-user" class="icon"/> Profile</RouterLink>
+          <RouterLink to="/topmovies" class="btn dropdown-item"><font-awesome-icon :icon="['fas', 'list']" /> My List</RouterLink>
+          <RouterLink to="/" class="btn btn-red dropdown-item" @click="authentication.LogOut()"><font-awesome-icon :icon="['fas', 'sign-out']" class="icon" /> Log Out</RouterLink>
         </div>
         </div>
 

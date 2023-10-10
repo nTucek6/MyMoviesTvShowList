@@ -12,6 +12,7 @@ namespace DatabaseContext
         public DbSet<MoviesEntity> Movies { get; set; }
         public DbSet<UsersEntity> Users { get; set; }
         public DbSet<MoviesCrewEntity> MoviesCrew { get; set; }
+        public DbSet<PeopleEntity> People { get; set; }
 
     }
 }

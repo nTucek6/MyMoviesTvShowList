@@ -2007,6 +2007,21 @@
           "bin/placeholder/Services.Authentication.dll": {}
         }
       },
+      "Services.CrewsAdmin/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DatabaseContext": "1.0.0",
+          "Entites": "1.0.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.CrewsAdmin.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.CrewsAdmin.dll": {}
+        }
+      },
       "Services.Frontpage/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2021,7 +2036,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "DatabaseContext": "1.0.0"
+          "DatabaseContext": "1.0.0",
+          "MyMoviesTvShowList.Extensions": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Services.MoviesAdmin.dll": {}
@@ -6474,6 +6490,11 @@
       "path": "../Services.Authentication/Services.Authentication.csproj",
       "msbuildProject": "../Services.Authentication/Services.Authentication.csproj"
     },
+    "Services.CrewsAdmin/1.0.0": {
+      "type": "project",
+      "path": "../Services.CrewsAdmin/Services.CrewsAdmin.csproj",
+      "msbuildProject": "../Services.CrewsAdmin/Services.CrewsAdmin.csproj"
+    },
     "Services.Frontpage/1.0.0": {
       "type": "project",
       "path": "../Services.Frontpage/Services.Frontpage.csproj",
@@ -6496,6 +6517,7 @@
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.11",
       "Npgsql.EntityFrameworkCore.PostgreSQL.Design >= 1.1.0",
       "Services.Authentication >= 1.0.0",
+      "Services.CrewsAdmin >= 1.0.0",
       "Services.Frontpage >= 1.0.0",
       "Services.MoviesAdmin >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
@@ -6539,6 +6561,9 @@
             },
             "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.Authentication\\Services.Authentication.csproj": {
               "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.Authentication\\Services.Authentication.csproj"
+            },
+            "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.CrewsAdmin\\Services.CrewsAdmin.csproj": {
+              "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.CrewsAdmin\\Services.CrewsAdmin.csproj"
             },
             "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj": {
               "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj"
