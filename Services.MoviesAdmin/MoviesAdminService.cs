@@ -1,7 +1,12 @@
 ﻿using DatabaseContext;
+using Entites;
+using Entites.Enum;
 using Entities.Enum;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using MyMoviesTvShowList.Extensions;
+using System.Linq.Expressions;
+using System.Text.Json;
 
 namespace Services.MoviesAdmin
 {
@@ -80,6 +85,258 @@ namespace Services.MoviesAdmin
 
             return people;
         }
+
+        public async Task<List<MoviesDTO>> GetMovies(int PostPerPage, int Page, string? Search)
+        {
+            Expression<Func<MoviesEntity, bool>> predicate = x => true;
+
+            if (!String.IsNullOrEmpty(Search))
+            {
+                predicate = x => x.MovieName.Contains(Search);
+            }
+
+            var data = await database.Movies
+                    .Where(predicate)
+                    .OrderBy(m => m.MovieName)
+                    .Skip((Page - 1) * PostPerPage)
+                    .Take(PostPerPage).ToListAsync();
+
+            List<MoviesDTO> movies = new List<MoviesDTO>();
+
+            foreach (var movie in data)
+            {
+                var act = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.PersonnelType == CrewEnum.Actor).ToListAsync();
+
+                var dir = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.PersonnelType == CrewEnum.Director).ToListAsync();
+
+                var wri = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.PersonnelType == CrewEnum.Screenwriter).ToListAsync();
+
+                List<string> g = movie.Genres.Split(",").ToList();
+
+                List<ActorDTO> actors = new List<ActorDTO>();
+
+                List<PeopleEntity> director = new List<PeopleEntity>();
+
+                List<PeopleEntity> writers = new List<PeopleEntity>();
+
+                List<GenresSelectDTO> genres = new List<GenresSelectDTO>();
+
+                foreach (var a in act)
+                {
+                    var q = await database.People.Where(p => p.Id == a.PersonId)
+                   .Select(s => new ActorDTO
+                   {
+                       Id = s.Id,
+                       FirstName = s.FirstName,
+                       LastName = s.LastName,
+                       CharacterName = a.CharacterName,
+                       PersonImageData = s.PersonImageData
+
+                   })
+                   .FirstOrDefaultAsync();
+                    actors.Add(q);
+                }
+
+                foreach (var d in dir)
+                {
+                    var q = await database.People.Where(p => p.Id == d.PersonId).FirstOrDefaultAsync();
+                    director.Add(q);
+                }
+
+                foreach (var w in wri)
+                {
+                    var q = await database.People.Where(p => p.Id == w.PersonId).FirstOrDefaultAsync();
+                    writers.Add(q);
+                }
+
+                foreach (string d in g)
+                {
+                    genres.Add(new GenresSelectDTO
+                    {
+                        value = (GenresEnum)(Convert.ToInt32(d)),
+                        label = ((GenresEnum)(Convert.ToInt32(d))).GetDescription()
+
+                    });
+                }
+
+                movies.Add(new MoviesDTO
+                {
+                    Id = movie.Id,
+                    MovieName = movie.MovieName,
+                    Actors = actors,
+                    Writers = writers,
+                    Director = director,
+                    ReleaseDate = movie.ReleaseDate,
+                    Duration = movie.Duration,
+                    MovieImageData = movie.MovieImageData,
+                    Synopsis = movie.Synopsis,
+                    Genres = genres
+                });
+            }
+            return movies;
+        }
+
+
+        public async Task SaveMovie(SaveMovieDTO movie)
+        {
+            if (movie.Id > 0)
+            {
+                var movieDb = await database.Movies.Where(w => w.Id == movie.Id).FirstOrDefaultAsync();
+
+                string genres = null;
+
+                var genresList = movie.Genres.Split(",").ToList();
+
+                int i = 1;
+                foreach (var g in genresList)
+                {
+                    if (i == genresList.Count)
+                    {
+                        genres += g;
+
+                    }
+                    else
+                    {
+                        genres += g + ",";
+                    }
+                    i++;
+                }
+
+                movieDb.MovieName = movie.MovieName.Trim();
+                movieDb.Synopsis = movie.Synopsis;
+                movieDb.Genres = genres;
+                movieDb.Duration = movie.Duration;
+                movieDb.ReleaseDate = movie.ReleaseDate.ToUniversalTime();
+
+                if (movie.MovieImageData != null)
+                {
+                    movieDb.MovieImageData = ImageToByte(movie.MovieImageData);
+                }
+
+                await database.SaveChangesAsync();
+
+                await database.MoviesCrew.Where(c => c.MovieId == movie.Id).ExecuteDeleteAsync();
+              
+                foreach (var a in JsonSerializer.Deserialize<List<ActorSelectDTO>>(movie.Actors))
+                {
+                    await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                    {
+                        MovieId = movie.Id,
+                        PersonId = Convert.ToInt32(a.value),
+                        CharacterName = a.CharacterName,
+                        PersonnelType = Entites.Enum.CrewEnum.Actor
+                    });
+                }
+
+                foreach (var a in movie.Director.Split(',').Reverse().ToList<string>())
+                {
+                    await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                    {
+                        MovieId = movie.Id,
+                        PersonId = Convert.ToInt32(a),
+                        PersonnelType = Entites.Enum.CrewEnum.Director
+                    });
+                }
+
+                foreach (var a in movie.Writers.Split(',').Reverse().ToList<string>())
+                {
+                    await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                    {
+                        MovieId = movie.Id,
+                        PersonId = Convert.ToInt32(a),
+                        PersonnelType = Entites.Enum.CrewEnum.Screenwriter
+                    });
+                }
+
+                await database.SaveChangesAsync();
+
+            }
+            else
+            {
+                byte[] s = ImageToByte(movie.MovieImageData);
+
+                string genres = null;
+
+                var genresList = movie.Genres.Split(",").ToList();
+
+                int i = 1;
+                foreach (var g in genresList)
+                {
+                    if (i == genresList.Count())
+                    {
+                        genres += g;
+                    }
+                    else
+                    {
+                        genres += g + ",";
+
+                    }
+                    i++;
+                }
+
+                await database.Movies.AddAsync(new MoviesEntity
+                {
+                    MovieName = movie.MovieName.Trim(),
+                    Synopsis = movie.Synopsis,
+                    Genres = genres,
+                    Duration = movie.Duration,
+                    ReleaseDate = movie.ReleaseDate.ToUniversalTime(),
+                    MovieImageData = s,
+                    DateTimeAdded = DateTime.Now.ToUniversalTime()
+                });
+
+                await database.SaveChangesAsync();
+
+                var m = await database.Movies.Where(w => w.MovieName == movie.MovieName).Select(s => s.Id).FirstOrDefaultAsync();
+
+                foreach (var a in JsonSerializer.Deserialize<List<ActorSelectDTO>>(movie.Actors))
+                {
+                    await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                    {
+                        MovieId = m,
+                        PersonId = Convert.ToInt32(a.value),
+                        CharacterName = a.CharacterName,
+                        PersonnelType = Entites.Enum.CrewEnum.Actor
+                    });
+                }
+
+
+                foreach (var a in movie.Director.Split(",").ToList())
+                {
+                    await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                    {
+                        MovieId = m,
+                        PersonId = Convert.ToInt32(a),
+                        PersonnelType = Entites.Enum.CrewEnum.Director
+                    });
+                }
+
+                foreach (var a in movie.Writers.Split(",").ToList())
+                {
+                    await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                    {
+                        MovieId = m,
+                        PersonId = Convert.ToInt32(a),
+                        PersonnelType = Entites.Enum.CrewEnum.Screenwriter
+                    });
+                }
+                await database.SaveChangesAsync();
+            }
+        }
+
+
+        private byte[] ImageToByte(IFormFile image)
+        {
+            byte[] s = null;
+            using (var ms = new MemoryStream())
+            {
+                image.CopyTo(ms);
+                s = ms.ToArray();
+
+            }
+            return s;
+        }
+
 
 
     }

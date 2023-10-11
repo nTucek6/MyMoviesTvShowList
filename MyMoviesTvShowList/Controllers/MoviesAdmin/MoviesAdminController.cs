@@ -37,5 +37,20 @@ namespace MyMoviesTvShowList.Controllers.MoviesAdmin
             return Ok(crew);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SaveMovie([FromForm] SaveMovieDTO movie)
+        {
+            await moviesAdminService.SaveMovie(movie);
+            return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMovies(int PostPerPage, int Page, string? Search)
+        {
+            var movies = await moviesAdminService.GetMovies(PostPerPage, Page, Search);
+
+            return Ok(movies);
+        }
+
     }
 }

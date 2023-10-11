@@ -7,6 +7,7 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
 
   const Genres = ref();
   const MovieCrew = ref()
+  const MovieData = ref()
 
   const EditMovie = ref()
 
@@ -58,8 +59,54 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
         }
     }
 
+    async function GetMovies(PostPerPage:number,Page:number,Search:string) {
+      try {
+        await axios({
+          method: 'get',
+          url: 'MoviesAdmin/GetMovies',
+          params:
+          {
+            PostPerPage:PostPerPage,
+            Page:Page,
+            Search:Search
+          }
+          
+        })
+        .then((response)=>{
+          
+          MovieData.value = response.data
+        }) 
+          
+        }
+        catch (error) {
+          //alert(error)
+          console.log(error)
+      }
+    }
+
+
+    async function SaveMovie(Movie:Object) {
+      try {
+        await axios({
+          method: 'post',
+          url: 'MoviesAdmin/SaveMovie',
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          data: Movie
+        })
+        .then((response)=>{
+          console.log(response.data)
+        }) 
+        }
+        catch (error) {
+          //alert(error)
+          console.log(error)
+      }
+    }
 
 
 
-    return { GetGenres, GetCrew, Genres, MovieCrew,EditMovie,setEditMovie, setMovieCrew }
+
+    return { GetGenres, GetCrew, Genres, MovieCrew,EditMovie,setEditMovie, setMovieCrew,SaveMovie,GetMovies,MovieData }
  })

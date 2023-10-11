@@ -47,6 +47,16 @@ if(d.value != undefined)
 }
 })
 
+const ClearFormData = () =>{
+      Id.value = 0
+      Name.value = null
+      Surname.value = null
+      BirthDate.value = null
+      BirthPlace.value = null
+      Image.value = null
+      ImagePreview.value = null
+}
+
 const addPersonFormSubmit = async () =>
 {
      const Person = new FormData();
@@ -57,7 +67,9 @@ const addPersonFormSubmit = async () =>
           Person.append("BirthPlace", BirthPlace.value);
           Person.append("PersonImage", Image.value);
 
-          api.SavePerson(Person);
+          api.SavePerson(Person).then(()=>{
+            ClearFormData()
+          });
 }
 </script>
 
