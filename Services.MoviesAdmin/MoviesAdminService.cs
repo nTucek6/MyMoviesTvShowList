@@ -136,19 +136,16 @@ namespace Services.MoviesAdmin
                    .FirstOrDefaultAsync();
                     actors.Add(q);
                 }
-
                 foreach (var d in dir)
                 {
                     var q = await database.People.Where(p => p.Id == d.PersonId).FirstOrDefaultAsync();
                     director.Add(q);
                 }
-
                 foreach (var w in wri)
                 {
                     var q = await database.People.Where(p => p.Id == w.PersonId).FirstOrDefaultAsync();
                     writers.Add(q);
                 }
-
                 foreach (string d in g)
                 {
                     genres.Add(new GenresSelectDTO
@@ -158,7 +155,6 @@ namespace Services.MoviesAdmin
 
                     });
                 }
-
                 movies.Add(new MoviesDTO
                 {
                     Id = movie.Id,
@@ -175,32 +171,13 @@ namespace Services.MoviesAdmin
             }
             return movies;
         }
-
-
         public async Task SaveMovie(SaveMovieDTO movie)
         {
             if (movie.Id > 0)
             {
                 var movieDb = await database.Movies.Where(w => w.Id == movie.Id).FirstOrDefaultAsync();
 
-                string genres = null;
-
-                var genresList = movie.Genres.Split(",").ToList();
-
-                int i = 1;
-                foreach (var g in genresList)
-                {
-                    if (i == genresList.Count)
-                    {
-                        genres += g;
-
-                    }
-                    else
-                    {
-                        genres += g + ",";
-                    }
-                    i++;
-                }
+                var genres = FormatGenres(movie.Genres);
 
                 movieDb.MovieName = movie.MovieName.Trim();
                 movieDb.Synopsis = movie.Synopsis;
@@ -224,7 +201,7 @@ namespace Services.MoviesAdmin
                         MovieId = movie.Id,
                         PersonId = Convert.ToInt32(a.value),
                         CharacterName = a.CharacterName,
-                        PersonnelType = Entites.Enum.CrewEnum.Actor
+                        PersonnelType = CrewEnum.Actor
                     });
                 }
 
@@ -255,24 +232,7 @@ namespace Services.MoviesAdmin
             {
                 byte[] s = ImageToByte(movie.MovieImageData);
 
-                string genres = null;
-
-                var genresList = movie.Genres.Split(",").ToList();
-
-                int i = 1;
-                foreach (var g in genresList)
-                {
-                    if (i == genresList.Count())
-                    {
-                        genres += g;
-                    }
-                    else
-                    {
-                        genres += g + ",";
-
-                    }
-                    i++;
-                }
+                var genres = FormatGenres(movie.Genres);
 
                 await database.Movies.AddAsync(new MoviesEntity
                 {
@@ -296,7 +256,7 @@ namespace Services.MoviesAdmin
                         MovieId = m,
                         PersonId = Convert.ToInt32(a.value),
                         CharacterName = a.CharacterName,
-                        PersonnelType = Entites.Enum.CrewEnum.Actor
+                        PersonnelType = CrewEnum.Actor
                     });
                 }
 
@@ -307,7 +267,7 @@ namespace Services.MoviesAdmin
                     {
                         MovieId = m,
                         PersonId = Convert.ToInt32(a),
-                        PersonnelType = Entites.Enum.CrewEnum.Director
+                        PersonnelType = CrewEnum.Director
                     });
                 }
 
@@ -317,7 +277,7 @@ namespace Services.MoviesAdmin
                     {
                         MovieId = m,
                         PersonId = Convert.ToInt32(a),
-                        PersonnelType = Entites.Enum.CrewEnum.Screenwriter
+                        PersonnelType = CrewEnum.Screenwriter
                     });
                 }
                 await database.SaveChangesAsync();
@@ -335,6 +295,29 @@ namespace Services.MoviesAdmin
 
             }
             return s;
+        }
+
+        private string FormatGenres(string data)
+        {
+            string genres = null;
+
+            var genresList = data.Split(",").ToList();
+
+            int i = 1;
+            foreach (var g in genresList)
+            {
+                if (i == genresList.Count)
+                {
+                    genres += g;
+
+                }
+                else
+                {
+                    genres += g + ",";
+                }
+                i++;
+            }
+            return genres;
         }
 
 

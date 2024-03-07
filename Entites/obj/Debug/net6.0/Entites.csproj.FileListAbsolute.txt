@@ -22,3 +22,4 @@ C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\refint\Entites.dll
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.pdb
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\ref\Entites.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Entites\obj\Debug\net6.0\Entites.sourcelink.json

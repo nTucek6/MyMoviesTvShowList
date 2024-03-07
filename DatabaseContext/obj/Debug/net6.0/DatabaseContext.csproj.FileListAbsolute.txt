@@ -32,3 +32,4 @@ C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\DatabaseContext\obj\Debu
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\DatabaseContext\obj\Debug\net6.0\DatabaseContext.pdb
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\DatabaseContext\obj\Debug\net6.0\DatabaseContext.genruntimeconfig.cache
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\DatabaseContext\obj\Debug\net6.0\ref\DatabaseContext.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\DatabaseContext\obj\Debug\net6.0\DatabaseContext.sourcelink.json

@@ -17,3 +17,4 @@ C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Authentication\
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Authentication\obj\Debug\net6.0\refint\Services.Authentication.dll
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Authentication\obj\Debug\net6.0\Services.Authentication.pdb
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Authentication\obj\Debug\net6.0\ref\Services.Authentication.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Authentication\obj\Debug\net6.0\Services.Authentication.sourcelink.json

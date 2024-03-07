@@ -21,3 +21,4 @@ C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\D
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\refint\Services.Frontpage.dll
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\Services.Frontpage.pdb
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\ref\Services.Frontpage.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\Services.Frontpage.sourcelink.json

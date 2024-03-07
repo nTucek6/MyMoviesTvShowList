@@ -22,3 +22,4 @@ C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.MoviesAdmin\obj
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.MoviesAdmin\obj\Debug\net6.0\ref\Services.MoviesAdmin.dll
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.MoviesAdmin\bin\Debug\net6.0\MyMoviesTvShowList.Extensions.dll
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.MoviesAdmin\bin\Debug\net6.0\MyMoviesTvShowList.Extensions.pdb
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.MoviesAdmin\obj\Debug\net6.0\Services.MoviesAdmin.sourcelink.json
