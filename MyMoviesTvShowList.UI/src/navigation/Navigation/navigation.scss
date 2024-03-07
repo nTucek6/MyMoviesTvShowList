@@ -4,11 +4,11 @@ $app_name_color: rgb(255, 255, 255);
 
 $app_background_color: #121212;
 
-$app_text_color:#fff;
+$app_text_color: #fff;
 
-$login_btn_color: #fff;
+$login_btn_color: #ffbf00;
 
-$signup_btn_color: #fff;
+$signup_btn_color: #000080;
 
 header {
   display: block;
@@ -74,30 +74,41 @@ a {
   color: $signup_btn_color;
 }
 
-.site-pages{
-  background-color: $theme_color;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
 #computer-view ul {
   list-style: none;
   display: flex;
 }
 
-#computer-view ul > li {
+#login-nav ul > li {
   padding: 5px;
   margin-right: 5px;
 }
 
-#computer-view ul > li:last-child {
+#login-nav ul > li:last-child {
   margin-right: 0;
 }
 
-#computer-view ul > li:hover {
-  transform: scale(1.1);
-  transition: 0.3s;
+#site-pages {
+  background-color: $theme_color;
+  height: 34px;
+  text-align: center;
+}
+
+#site-pages ul {
+  height: 100%;
+}
+
+#site-pages ul > li {
+  padding: 10px 5px 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#site-pages ul > li:hover {
+  //transform: scale(1.1);
+  //transition: 0.3s;
   cursor: pointer;
+  background-color: darkgrey;
 }
 
 // -------------------------------------------------------------------------
@@ -141,7 +152,7 @@ a {
 .mobile-menu li {
   margin: 5px 0 0;
   width: 100%;
-  color:$app_text_color;
+  color: $app_text_color;
   padding: 10px;
   background-color: grey;
 }
@@ -178,20 +189,20 @@ a {
   align-items: center;
 }
 
-#dropdown-user span{
-  margin-right:4px;
+#dropdown-user span {
+  margin-right: 4px;
 }
 
-#dropdown-user{
+#dropdown-user {
   display: flex;
   align-items: center;
 }
 
-#dropdown-user #f-icon{
+#dropdown-user #f-icon {
   margin-right: 5px;
 }
 
-#dropdown-user img{
+#dropdown-user img {
   height: 30px;
   width: 30px;
   object-fit: contain;
@@ -221,7 +232,7 @@ a {
   z-index: 1;
 }
 
-.dropdown-profile-open .dropdown-content{
+.dropdown-profile-open .dropdown-content {
   display: block;
 }
 /*

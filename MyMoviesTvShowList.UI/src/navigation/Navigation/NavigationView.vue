@@ -5,8 +5,7 @@ import { useAuthentication } from '@/stores/Authentication/authentication'
 import useJwt from 'jwt-decode'
 import type { UserDTO } from '@/app/shared/models/user.model'
 
-import ProfileImage from '../../assets/images/profileImg.webp';
-
+import ProfileImage from '../../assets/images/profileImg.webp'
 
 const authentication = useAuthentication()
 
@@ -22,7 +21,7 @@ const page = ref()
 const isPhone = ref(false)
 
 const showMobileMenu = ref(false)
-const showProfileMenu = ref(false);
+const showProfileMenu = ref(false)
 
 onMounted(() => {
   isPhone.value = window.innerWidth <= 768
@@ -45,7 +44,14 @@ const CheckUserLogIn = () => {
   }
 }
 
+const ToggleMobileMenu = () => {
+  showMobileMenu.value = !showMobileMenu.value
+}
+
 watch(route, () => {
+  if (showMobileMenu.value) {
+    ToggleMobileMenu()
+  }
   if (route.path == '/profile/' + route.params.username) {
     page.value = route.params.username + "'s profile"
   } else {
@@ -65,20 +71,24 @@ watch(route, () => {
             />tchBuddy</RouterLink
           >
         </div>
-        <nav>
+        <nav id="login-nav">
           <ul v-if="!userLogIn">
             <li id="login"><RouterLink to="/login">Login</RouterLink></li>
             <li id="signup"><RouterLink to="">Signup</RouterLink></li>
           </ul>
 
-          <div class="dropdown" v-if="userLogIn" :class="{'dropdown-profile-open': showProfileMenu}">
-            <div id="dropdown-user" @click="showProfileMenu = !showProfileMenu"> 
+          <div
+            class="dropdown"
+            v-if="userLogIn"
+            :class="{ 'dropdown-profile-open': showProfileMenu }"
+          >
+            <div id="dropdown-user" @click="showProfileMenu = !showProfileMenu">
               <span>{{ Username }} </span>
               <font-awesome-icon id="f-icon" icon="caret-down" />
-              <img :src="ProfileImage"  />
+              <img :src="ProfileImage" />
             </div>
-           
-            <div class="dropdown-content" >
+
+            <div class="dropdown-content">
               <RouterLink :to="`/profile/${Username}`" class="btn dropdown-item"
                 ><font-awesome-icon icon="fa-solid fa-user" class="icon" />Profile</RouterLink
               >
@@ -92,7 +102,7 @@ watch(route, () => {
           </div>
         </nav>
       </div>
-      <nav class="site-pages">
+      <nav id="site-pages">
         <ul>
           <li>Movies</li>
           <li>Community</li>
@@ -101,7 +111,7 @@ watch(route, () => {
     </div>
 
     <div id="mobile-view" :class="{ open: showMobileMenu }">
-      <div id="app-icon" @click="showMobileMenu = !showMobileMenu">
+      <div id="app-icon" @click="ToggleMobileMenu()">
         <font-awesome-icon icon="bars" />
       </div>
 
