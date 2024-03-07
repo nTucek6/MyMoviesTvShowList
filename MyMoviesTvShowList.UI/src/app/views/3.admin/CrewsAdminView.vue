@@ -46,7 +46,7 @@ const EditPerson = (data: any) => {
                <td>{{ p.lastName }}</td>
                <td>{{ globalhelper.formatDate(new Date(p.birthDate)) }}</td>
                <td>{{ p.birthPlace }}</td>
-               <td><button class="btn" @click="() => { EditPerson(p) }">Edit</button></td>
+               <td><span style="cursor: pointer;" @click="() => { EditPerson(p) }"><font-awesome-icon :icon="['fas', 'edit']" /></span></td>
 
             </tr>
 

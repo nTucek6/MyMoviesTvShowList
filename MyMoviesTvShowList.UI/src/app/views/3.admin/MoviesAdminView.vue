@@ -29,7 +29,7 @@ const EditMovie = (data: any) => {
       <RouterLink to="/addeditmovie" class="btn">Add movie</RouterLink>
       <hr />
 
-      <table class="table">
+      <table class="table table-striped">
          <thead>
             <tr>
                <th>Movie title</th>
@@ -54,7 +54,7 @@ const EditMovie = (data: any) => {
                         v-if="index !== m.director.length - 1">, </span> </span></td>
                <td><span v-for="(d, index)  in m.writers">{{ d.firstName }} {{ d.lastName }}<span
                         v-if="index !== m.writers.length - 1">, </span> </span></td>
-               <td><button @click="() => { EditMovie(m) }">Edit</button></td>
+               <td><span style="cursor: pointer;" @click="() => { EditMovie(m) }"><font-awesome-icon :icon="['fas', 'edit']" /></span></td>
             </tr>
 
 

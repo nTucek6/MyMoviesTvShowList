@@ -9,7 +9,6 @@ import axios from 'axios'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-
 const app = createApp(App)
 
 app.use(createPinia())
