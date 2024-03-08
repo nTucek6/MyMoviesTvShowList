@@ -2,47 +2,33 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useAuthentication } from '@/stores/Authentication/authentication'
-import useJwt from 'jwt-decode'
-import type { UserDTO } from '@/app/shared/models/user.model'
 
 import ProfileImage from '../../assets/images/profileImg.webp'
 
 const authentication = useAuthentication()
 
 authentication.CheckUserLogin()
-const Username = ref('')
-const UserRole = ref('')
 
-const userLogIn = computed(() => authentication.userLogIn)
+const userLogIn = computed(() => authentication.userLogIn);
+const UserData =  computed(() => authentication.UserData);
 
 const route = useRoute()
 const page = ref()
 
-const isPhone = ref(false)
+//const isPhone = ref(false)
 
 const showMobileMenu = ref(false)
 const showProfileMenu = ref(false)
 
 onMounted(() => {
-  isPhone.value = window.innerWidth <= 768
-  console.log(isPhone.value)
-  CheckUserLogIn()
+
 })
 
 watch(userLogIn, () => {
-  CheckUserLogIn()
+  //CheckUserLogIn();
+  console.log(userLogIn.value);
 })
 
-const CheckUserLogIn = () => {
-  if (userLogIn.value) {
-    const token = localStorage.getItem('token')
-    if (token != null) {
-      const user: UserDTO = useJwt(token)
-      Username.value = user.Username
-      UserRole.value = user.Role
-    }
-  }
-}
 
 const ToggleMobileMenu = () => {
   showMobileMenu.value = !showMobileMenu.value
@@ -83,13 +69,13 @@ watch(route, () => {
             :class="{ 'dropdown-profile-open': showProfileMenu }"
           >
             <div id="dropdown-user" @click="showProfileMenu = !showProfileMenu">
-              <span>{{ Username }} </span>
+              <span>{{ UserData?.Username }} </span>
               <font-awesome-icon id="f-icon" icon="caret-down" />
               <img :src="ProfileImage" />
             </div>
 
             <div class="dropdown-content">
-              <RouterLink :to="`/profile/${Username}`" class="btn dropdown-item"
+              <RouterLink :to="`/profile/${UserData?.Username}`" class="btn dropdown-item"
                 ><font-awesome-icon icon="fa-solid fa-user" class="icon" />Profile</RouterLink
               >
               <RouterLink to="/topmovies" class="btn dropdown-item"
@@ -108,6 +94,9 @@ watch(route, () => {
           <li>Community</li>
         </ul>
       </nav>
+      <div class="page-name">
+        <h4>{{ page }}</h4>
+      </div>
     </div>
 
     <div id="mobile-view" :class="{ open: showMobileMenu }">
@@ -196,4 +185,4 @@ watch(route, () => {
 
 <style scoped>
 @import url('./navigation.scss');
-</style>
+</style>@/app/shared/models/user-login.model

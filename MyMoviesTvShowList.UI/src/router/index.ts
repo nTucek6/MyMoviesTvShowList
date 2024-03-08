@@ -2,14 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import {computed} from 'vue'
 import FrontpageView from '@/app/views/1.public/Frontpage/FrontpageView.vue'
 import MoviesAdminView from '@/app/views/3.admin/MoviesAdminView.vue'
-import LoginView from '@/app/views/1.public/Login/LoginView.vue'
-import RegisterView from '@/app/views/1.public/Register/RegisterView.vue'
 import MovieSearchView from '@/app/views/1.public/MovieSearch/MovieSearchView.vue'
 import TopMoviesView from '@/app/views/1.public/TopMovies/TopMoviesView.vue'
-import ProfileView from '@/app/views/2.user/Profile/ProfileView.vue'
 import AddEditMovieView from '@/app/views/3.admin/AddEditMovieView.vue'
 import CrewsAdminView from '@/app/views/3.admin/CrewsAdminView.vue'
 import AddEditCrewView from '@/app/views/3.admin/AddEditCrewView.vue'
+
+// lazy-loaded
+const LoginView = () => import('@/app/views/1.public/Login/LoginView.vue')
+const RegisterView = () => import('@/app/views/1.public/Register/RegisterView.vue')
+const ProfileView = () => import('@/app/views/2.user/Profile/ProfileView.vue')
 
 import { useAuthentication } from '@/stores/Authentication/authentication'
 

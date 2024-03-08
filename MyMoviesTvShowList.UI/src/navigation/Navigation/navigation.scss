@@ -6,9 +6,9 @@ $app_background_color: #121212;
 
 $app_text_color: #fff;
 
-$login_btn_color: #ffbf00;
+$login_btn_color: lightblue;
 
-$signup_btn_color: #000080;
+$signup_btn_color: #fff;
 
 header {
   display: block;
@@ -74,6 +74,10 @@ a {
   color: $signup_btn_color;
 }
 
+#computer-view{
+  margin-bottom:10px
+}
+
 #computer-view ul {
   list-style: none;
   display: flex;
@@ -100,15 +104,16 @@ a {
 
 #site-pages ul > li {
   padding: 10px 5px 0;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
+  color: $app_text_color;
 }
 
 #site-pages ul > li:hover {
   //transform: scale(1.1);
   //transition: 0.3s;
   cursor: pointer;
-  background-color: darkgrey;
+  background-color: rgb(2, 35, 56);
 }
 
 // -------------------------------------------------------------------------
@@ -157,11 +162,13 @@ a {
   background-color: grey;
 }
 
+/*
 #login-mobile {
 }
 
 #signup-mobile {
 }
+*/
 
 @media screen and (max-width: 768px) {
   header {
@@ -241,11 +248,12 @@ a {
 }
 */
 .page-name {
-  border: 1px solid black;
+  border-bottom: 2px solid grey;
   border-top: 0px;
 }
 
 .page-name > h4 {
   margin: 0;
   padding: 5px;
+  color: $app_text_color;
 }

@@ -30,7 +30,11 @@ library.add(
   faShapes,
   faCaretDown,
   faAngleRight
-)
+);
+
+
+
+
 </script>
 
 <template>
