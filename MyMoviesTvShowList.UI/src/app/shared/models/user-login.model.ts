@@ -1,6 +1,9 @@
-export interface UserLoginDTO {
-  id: number
-  Username: string
+export class UserLoginDTO {
   Email: string
-  Role: string
+  Password: string
+
+  constructor() {
+    this.Email = ''
+    this.Password = ''
+  }
 }

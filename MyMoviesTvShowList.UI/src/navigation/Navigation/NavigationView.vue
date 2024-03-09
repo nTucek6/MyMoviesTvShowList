@@ -12,13 +12,12 @@ authentication.CheckUserLogin()
 const userLogIn = computed(() => authentication.userLogIn);
 const UserData =  computed(() => authentication.UserData);
 
-const route = useRoute()
-const page = ref()
+const route = useRoute();
+const page = ref();
 
-//const isPhone = ref(false)
 
-const showMobileMenu = ref(false)
-const showProfileMenu = ref(false)
+const showMobileMenu = ref(false);
+const showProfileMenu = ref(false);
 
 onMounted(() => {
 
@@ -43,7 +42,8 @@ watch(route, () => {
   } else {
     page.value = route.name
   }
-})
+});
+
 </script>
 
 <template>
@@ -60,7 +60,7 @@ watch(route, () => {
         <nav id="login-nav">
           <ul v-if="!userLogIn">
             <li id="login"><RouterLink to="/login">Login</RouterLink></li>
-            <li id="signup"><RouterLink to="">Signup</RouterLink></li>
+            <li id="signup"><RouterLink to="/register">Signup</RouterLink></li>
           </ul>
 
           <div

@@ -1,19 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import {computed} from 'vue'
+import { computed } from 'vue'
 import FrontpageView from '@/app/views/1.public/Frontpage/FrontpageView.vue'
-import MoviesAdminView from '@/app/views/3.admin/MoviesAdminView.vue'
-import MovieSearchView from '@/app/views/1.public/MovieSearch/MovieSearchView.vue'
-import TopMoviesView from '@/app/views/1.public/TopMovies/TopMoviesView.vue'
-import AddEditMovieView from '@/app/views/3.admin/AddEditMovieView.vue'
-import CrewsAdminView from '@/app/views/3.admin/CrewsAdminView.vue'
-import AddEditCrewView from '@/app/views/3.admin/AddEditCrewView.vue'
+import { useAuthentication } from '@/stores/Authentication/authentication'
 
 // lazy-loaded
 const LoginView = () => import('@/app/views/1.public/Login/LoginView.vue')
 const RegisterView = () => import('@/app/views/1.public/Register/RegisterView.vue')
 const ProfileView = () => import('@/app/views/2.user/Profile/ProfileView.vue')
-
-import { useAuthentication } from '@/stores/Authentication/authentication'
+const MoviesAdminView = () => import('@/app/views/3.admin/MoviesAdminView.vue')
+const AddEditMovieView = () => import('@/app/views/3.admin/AddEditMovieView.vue')
+const CrewsAdminView = () => import('@/app/views/3.admin/AddEditMovieView.vue')
+const AddEditCrewView = () => import('@/app/views/3.admin/AddEditCrewView.vue')
+const MovieSearchView = () => import('@/app/views/1.public/MovieSearch/MovieSearchView.vue')
+const TopMoviesView = () => import('@/app/views/1.public/TopMovies/TopMoviesView.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,117 +24,105 @@ const router = createRouter({
       component: FrontpageView
     },
     {
-      path:'/moviesadmin',
-      name:'Movies Admin',
+      path: '/moviesadmin',
+      name: 'Movies Admin',
       component: MoviesAdminView,
       beforeEnter: (to, from, next) => {
-        const isAdmin = computed(() => useAuthentication().IsAdmin());
-        console.log(isAdmin.value);
+        const isAdmin = computed(() => useAuthentication().IsAdmin())
+        console.log(isAdmin.value)
         if (!isAdmin.value) {
-          next('/');
-        }
-        else
-        {
+          next('/')
+        } else {
           next()
-        } 
-      },
+        }
+      }
     },
     {
-      path:'/addeditmovie',
-      name:'Add & Edit movie',
+      path: '/addeditmovie',
+      name: 'Add & Edit movie',
       component: AddEditMovieView,
       beforeEnter: (to, from, next) => {
-        const isAdmin = computed(() => useAuthentication().IsAdmin());
+        const isAdmin = computed(() => useAuthentication().IsAdmin())
         //console.log(isAdmin.value);
         if (!isAdmin.value) {
-          next('/');
-        }
-        else
-        {
+          next('/')
+        } else {
           next()
-        } 
-      },
+        }
+      }
     },
     {
-      path:'/viewcrew',
-      name:'View Crew',
+      path: '/viewcrew',
+      name: 'View Crew',
       component: CrewsAdminView,
       beforeEnter: (to, from, next) => {
-        const isAdmin = computed(() => useAuthentication().IsAdmin());
+        const isAdmin = computed(() => useAuthentication().IsAdmin())
         //console.log(isAdmin.value);
         if (!isAdmin.value) {
-          next('/');
-        }
-        else
-        {
+          next('/')
+        } else {
           next()
-        } 
-      },
+        }
+      }
     },
     {
-      path:'/addeditperson',
-      name:'Add & Edit person',
+      path: '/addeditperson',
+      name: 'Add & Edit person',
       component: AddEditCrewView,
-      props:true,
+      props: true,
       beforeEnter: (to, from, next) => {
-        const isAdmin = computed(() => useAuthentication().IsAdmin());
+        const isAdmin = computed(() => useAuthentication().IsAdmin())
         if (!isAdmin.value) {
-          next('/');
-        }
-        else
-        {
+          next('/')
+        } else {
           next()
-        } 
-      },
+        }
+      }
     },
     {
-      path:'/login',
-      name:"Login",
+      path: '/login',
+      name: 'Login',
       component: LoginView,
       beforeEnter: (to, from, next) => {
-        const isAuthenticated = computed(() => useAuthentication().userLogIn);
+        const isAuthenticated = computed(() => useAuthentication().userLogIn)
         if (isAuthenticated.value) {
-          next('/');
-        }
-        else
-        {
+          next('/')
+        } else {
           next()
-        } 
-      },
+        }
+      }
     },
     {
-      path:'/register',
-      name:"Register",
+      path: '/register',
+      name: 'Register',
       component: RegisterView,
       beforeEnter: (to, from, next) => {
-        const isAuthenticated = computed(() => useAuthentication().userLogIn);
-        console.log(isAuthenticated.value);
+        const isAuthenticated = computed(() => useAuthentication().userLogIn)
+        console.log(isAuthenticated.value)
         if (isAuthenticated.value) {
-          next('/');
-        }
-        else
-        {
+          next('/')
+        } else {
           next()
-        } 
-      },
+        }
+      }
     },
     {
-      path:'/moviessearch',
-      name:"Movies Search",
+      path: '/moviessearch',
+      name: 'Movies Search',
       component: MovieSearchView
     },
     {
-      path:'/topmovies',
-      name:"Top Movies",
+      path: '/topmovies',
+      name: 'Top Movies',
       component: TopMoviesView
     },
     {
-      path:'/profile/:username',
-      name:"Profile",
+      path: '/profile/:username',
+      name: 'Profile',
       component: ProfileView
-    },
+    }
   ]
-});
+})
 
 /*
 
@@ -162,7 +149,7 @@ router.beforeEach((to, from, next) => {
 
 export default router
 
-   /* {
+/* {
       path: '/about',
       name: 'about',
       // route level code-splitting

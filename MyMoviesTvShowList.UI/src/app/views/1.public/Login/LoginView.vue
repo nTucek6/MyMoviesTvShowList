@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useAuthentication } from '@/stores/Authentication/authentication'
+import { UserLoginDTO } from '@/app/shared/models/user-login.model';
 
-const Email = ref('')
-const Password = ref('')
+const User = ref<UserLoginDTO>(new UserLoginDTO)
 
 const signInButtonPressed = async () => {
-  await useAuthentication().Login(Email.value, Password.value)
+  await useAuthentication().Login(User.value)
 }
 </script>
 
@@ -18,12 +18,12 @@ const signInButtonPressed = async () => {
 
     <form @submit.prevent="signInButtonPressed">
       <div class="form-group mb-3">
-        <input type="email" v-model="Email" class="w-50" id="email" placeholder="Email" />
+        <input type="email" v-model="User.Email" class="w-50" id="email" placeholder="Email" />
       </div>
       <div class="form-group mb-3">
         <input
           type="password"
-          v-model="Password"
+          v-model="User.Password"
           class="w-50"
           id="password"
           placeholder="Password"

@@ -3,22 +3,24 @@ import axios from 'axios'
 import { ref } from 'vue'
 import router from '@/router'
 import useJwt from 'jwt-decode'
+import { UserDTO } from '@/app/shared/models/user.model'
+import { UserRegisterDTO } from '@/app/shared/models/user-register.model'
 import type { UserLoginDTO } from '@/app/shared/models/user-login.model'
 
 export const useAuthentication = defineStore('Authentication', () => {
   const userLogIn = ref(false)
 
-  const UserData = ref<UserLoginDTO>()
+  const UserData = ref<UserDTO>(new UserDTO())
 
-  async function Register(Email: string, Username: string, Password: string) {
+  async function Register(User:UserRegisterDTO) {
     try {
       await axios({
         method: 'post',
         url: 'Authentication/Register',
         data: {
-          Email: Email,
-          Username: Username,
-          Password: Password
+          Email: User.Email,
+          Username: User.Username,
+          Password: User.Password
         }
       }).then((response) => {
         localStorage.setItem('token', response.data)
@@ -30,15 +32,20 @@ export const useAuthentication = defineStore('Authentication', () => {
       console.log(error)
     }
   }
-  async function Login(Email: string, Password: string) {
+  async function Login(User:UserLoginDTO) {
+
+    console.log(User);
+
     try {
       await axios({
         method: 'post',
         url: 'Authentication/Login',
-        data: {
-          Email: Email,
-          Password: Password
-        }
+        data: User
+        /*
+        {
+          Email: user.Email,
+          Password: user.Password
+        }*/
       }).then((response) => {
         localStorage.setItem('token', response.data)
         CheckUserLogin()
@@ -63,7 +70,6 @@ export const useAuthentication = defineStore('Authentication', () => {
       GetUserData()
     } else {
       userLogIn.value = false
-      UserData.value = undefined
     }
   }
 
@@ -74,7 +80,7 @@ export const useAuthentication = defineStore('Authentication', () => {
   function GetUserData() {
     const token = localStorage.getItem('token')
     if (token != null) {
-      const user: UserLoginDTO = useJwt(token)
+      const user: UserDTO = useJwt(token)
       UserData.value = user
     }
   }
