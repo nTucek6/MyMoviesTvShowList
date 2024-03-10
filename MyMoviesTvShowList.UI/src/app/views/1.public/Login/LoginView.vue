@@ -53,5 +53,5 @@ watch(errorData, () => {
 </template>
 
 <style scoped>
-@import url('./login.scss');
+@import url('./LoginView.scss');
 </style>

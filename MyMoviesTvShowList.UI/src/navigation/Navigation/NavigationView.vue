@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useAuthentication } from '@/stores/Authentication/authentication'
-import type { DropdownMenu } from '@/app/shared/models/dropdown-menu'
+import { dropdownMenu } from './menu-items'
 
 import ProfileImage from '../../assets/images/profileImg.webp'
 
@@ -18,26 +18,6 @@ const page = ref()
 
 const showMobileMenu = ref(false)
 const showProfileMenu = ref(false)
-
-const dropdownMenu: DropdownMenu[] = [
-  {
-    name: 'Movies',
-    children: [
-      {
-        name: 'Movies Search',
-        route: '/moviessearch'
-      },
-      {
-        name: 'Top Movies',
-        route: 'topmovies'
-      }
-    ]
-  },
-  {
-    name: 'Communitiy',
-    children: []
-  }
-]
 
 onMounted(() => {})
 
@@ -86,7 +66,7 @@ watch(route, () => {
             v-if="userLogIn"
             :class="{ 'dropdown-profile-open': showProfileMenu }"
           >
-            <div id="dropdown-user" @click="showProfileMenu = !showProfileMenu">
+            <div class="dropdown-user" @click="showProfileMenu = !showProfileMenu">
               <span>{{ UserData?.Username }} </span>
               <font-awesome-icon id="f-icon" icon="caret-down" />
               <img :src="ProfileImage" />
@@ -132,17 +112,38 @@ watch(route, () => {
         <font-awesome-icon icon="bars" />
       </div>
 
-      <ul class="mobile-menu">
-        <li>Movies <font-awesome-icon icon="angle-right" /></li>
-        <li>Community <font-awesome-icon icon="angle-right" /></li>
-        <li id="login-mobile"><RouterLink to="/login">Login</RouterLink></li>
-        <li id="signup-mobile"><RouterLink to="">Signup</RouterLink></li>
-      </ul>
+      <div id="mobile-menu">
+        <ul v-if="!userLogIn">
+          <li id="login-mobile">
+            <font-awesome-icon icon="right-to-bracket" /><RouterLink to="/login">Login</RouterLink>
+          </li>
+          <li id="signup-mobile">
+            <font-awesome-icon icon="user-plus" /><RouterLink to="">Signup</RouterLink>
+          </li>
+        </ul>
+        <ul v-if="userLogIn">
+          <li class="dropdown-user">
+            <img :src="ProfileImage" />
+            <span>{{ UserData?.Username }} </span>
+          </li>
+        </ul>
+
+        <ul id="mobile-site-pages">
+          <li>Movies <font-awesome-icon icon="angle-right" /></li>
+          <li>Community <font-awesome-icon icon="angle-right" /></li>
+
+          <li v-if="userLogIn">
+            <RouterLink to="/" class="" @click="authentication.LogOut()"
+              ><font-awesome-icon icon="sign-out" />Log Out</RouterLink
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </header>
   <div id="mobile-page-name">
-        <h3>{{ page }}</h3>
-      </div>
+    <h3>{{ page }}</h3>
+  </div>
 
   <!-- <header id="header" >
       <div id="top-navigation">
@@ -215,6 +216,6 @@ watch(route, () => {
 </template>
 
 <style scoped>
-@import url('./navigation.scss');
+@import url('./NavigationView.scss');
 </style>
 @/app/shared/models/user-login.model

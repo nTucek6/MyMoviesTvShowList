@@ -15,7 +15,9 @@ import {
   faBars,
   faShapes,
   faCaretDown,
-  faAngleRight
+  faAngleRight,
+  faRightToBracket,
+  faUserPlus
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -29,7 +31,9 @@ library.add(
   faBars,
   faShapes,
   faCaretDown,
-  faAngleRight
+  faAngleRight,
+  faRightToBracket,
+  faUserPlus
 );
 
 
