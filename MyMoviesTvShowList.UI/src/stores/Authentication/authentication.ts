@@ -6,55 +6,45 @@ import useJwt from 'jwt-decode'
 import { UserDTO } from '@/app/shared/models/user.model'
 import { UserRegisterDTO } from '@/app/shared/models/user-register.model'
 import type { UserLoginDTO } from '@/app/shared/models/user-login.model'
+import { ErrorResponse } from '@/app/shared/models/error_response.model'
 
 export const useAuthentication = defineStore('Authentication', () => {
   const userLogIn = ref(false)
 
   const UserData = ref<UserDTO>(new UserDTO())
 
-  async function Register(User:UserRegisterDTO) {
+  const errorData = ref<ErrorResponse>(new ErrorResponse())
+
+  async function Register(User: UserRegisterDTO) {
     try {
       await axios({
         method: 'post',
         url: 'Authentication/Register',
-        data: {
-          Email: User.Email,
-          Username: User.Username,
-          Password: User.Password
-        }
+        data: User
       }).then((response) => {
         localStorage.setItem('token', response.data)
         CheckUserLogin()
         router.push('/')
       })
-    } catch (error) {
-      //alert(error)
+    } catch (error: any) {
+      errorData.value = error.response.data
       console.log(error)
     }
   }
-  async function Login(User:UserLoginDTO) {
-
-    console.log(User);
-
+  async function Login(User: UserLoginDTO) {
     try {
       await axios({
         method: 'post',
         url: 'Authentication/Login',
         data: User
-        /*
-        {
-          Email: user.Email,
-          Password: user.Password
-        }*/
       }).then((response) => {
         localStorage.setItem('token', response.data)
         CheckUserLogin()
         GetUserData()
         router.replace('/')
       })
-    } catch (error) {
-      //alert(error)
-      console.log(error)
+    } catch (error: any) {
+      errorData.value = error.response.data
     }
   }
 
@@ -85,5 +75,5 @@ export const useAuthentication = defineStore('Authentication', () => {
     }
   }
 
-  return { userLogIn, Register, Login, CheckUserLogin, LogOut, IsAdmin, UserData }
+  return { userLogIn, Register, Login, CheckUserLogin, LogOut, IsAdmin, UserData, errorData }
 })

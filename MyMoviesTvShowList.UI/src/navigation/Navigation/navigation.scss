@@ -74,8 +74,8 @@ a {
   color: $signup_btn_color;
 }
 
-#computer-view{
-  margin-bottom:10px
+#computer-view {
+  margin-bottom: 10px;
 }
 
 #computer-view ul {
@@ -162,6 +162,17 @@ a {
   background-color: grey;
 }
 
+#mobile-page-name
+{
+  display: none;
+  border-bottom: 2px solid grey;
+  text-align: center;
+}
+
+#mobile-page-name > h3{
+  padding: 5px;
+}
+
 /*
 #login-mobile {
 }
@@ -176,12 +187,20 @@ a {
     justify-content: space-between;
     background-color: $theme_color;
   }
-
-  header nav {
+  
+ /* header nav {
+    display: none;
+  }
+  */
+  #login-nav, #site-pages, .page-name{
     display: none;
   }
 
   #mobile-view {
+    display: flex;
+  }
+
+  #mobile-page-name{
     display: block;
   }
 }
@@ -242,11 +261,11 @@ a {
 .dropdown-profile-open .dropdown-content {
   display: block;
 }
-/*
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
-*/
+
 .page-name {
   border-bottom: 2px solid grey;
   border-top: 0px;

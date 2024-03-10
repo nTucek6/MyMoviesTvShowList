@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useAuthentication } from '@/stores/Authentication/authentication'
+import type { DropdownMenu } from '@/app/shared/models/dropdown-menu'
 
 import ProfileImage from '../../assets/images/profileImg.webp'
 
@@ -9,25 +10,43 @@ const authentication = useAuthentication()
 
 authentication.CheckUserLogin()
 
-const userLogIn = computed(() => authentication.userLogIn);
-const UserData =  computed(() => authentication.UserData);
+const userLogIn = computed(() => authentication.userLogIn)
+const UserData = computed(() => authentication.UserData)
 
-const route = useRoute();
-const page = ref();
+const route = useRoute()
+const page = ref()
 
+const showMobileMenu = ref(false)
+const showProfileMenu = ref(false)
 
-const showMobileMenu = ref(false);
-const showProfileMenu = ref(false);
+const dropdownMenu: DropdownMenu[] = [
+  {
+    name: 'Movies',
+    children: [
+      {
+        name: 'Movies Search',
+        route: '/moviessearch'
+      },
+      {
+        name: 'Top Movies',
+        route: 'topmovies'
+      }
+    ]
+  },
+  {
+    name: 'Communitiy',
+    children: []
+  }
+]
 
-onMounted(() => {
+onMounted(() => {})
 
-})
-
+/*
 watch(userLogIn, () => {
   //CheckUserLogIn();
-  console.log(userLogIn.value);
+  console.log(userLogIn.value)
 })
-
+*/
 
 const ToggleMobileMenu = () => {
   showMobileMenu.value = !showMobileMenu.value
@@ -42,8 +61,7 @@ watch(route, () => {
   } else {
     page.value = route.name
   }
-});
-
+})
 </script>
 
 <template>
@@ -90,8 +108,18 @@ watch(route, () => {
       </div>
       <nav id="site-pages">
         <ul>
-          <li>Movies</li>
-          <li>Community</li>
+          <li class="dropdown dropdown-hover" v-for="menu in dropdownMenu" :key="menu.name">
+            <span class="dropdown-link">{{ menu.name }}</span>
+            <div class="dropdown-content" v-if="menu.children.length > 0">
+              <RouterLink
+                v-for="submenu in menu.children"
+                :key="submenu.name"
+                :to="submenu.route"
+                class="btn"
+                >{{ submenu.name }}</RouterLink
+              >
+            </div>
+          </li>
         </ul>
       </nav>
       <div class="page-name">
@@ -112,6 +140,9 @@ watch(route, () => {
       </ul>
     </div>
   </header>
+  <div id="mobile-page-name">
+        <h3>{{ page }}</h3>
+      </div>
 
   <!-- <header id="header" >
       <div id="top-navigation">
@@ -185,4 +216,5 @@ watch(route, () => {
 
 <style scoped>
 @import url('./navigation.scss');
-</style>@/app/shared/models/user-login.model
+</style>
+@/app/shared/models/user-login.model

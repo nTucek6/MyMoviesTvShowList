@@ -1,13 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useAuthentication } from '@/stores/Authentication/authentication'
-import { UserLoginDTO } from '@/app/shared/models/user-login.model';
+import { UserLoginDTO } from '@/app/shared/models/user-login.model'
+import ErrorComponent from '@/app/shared/components/ErrorComponent.vue'
 
-const User = ref<UserLoginDTO>(new UserLoginDTO)
+const auth = useAuthentication()
+
+const User = ref<UserLoginDTO>(new UserLoginDTO())
+
+const errorData = computed(() => auth.errorData)
+
+const hasError = ref<boolean>(false)
 
 const signInButtonPressed = async () => {
-  await useAuthentication().Login(User.value)
+  await auth.Login(User.value)
 }
+
+watch(errorData, () => {
+  hasError.value = errorData.value.StatusCode > 0
+})
 </script>
 
 <template>
@@ -15,6 +26,8 @@ const signInButtonPressed = async () => {
     <div id="title">
       <h1>Login</h1>
     </div>
+
+    <ErrorComponent v-if="hasError" :message="errorData.Message" />
 
     <form @submit.prevent="signInButtonPressed">
       <div class="form-group mb-3">
