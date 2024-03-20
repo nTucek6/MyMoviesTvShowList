@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { ref, watch, onBeforeMount, computed, onMounted } from 'vue'
+import { ref, watch, onBeforeMount, computed } from 'vue'
 import { useMoviesAdminApi } from '@/stores/MoviesAdmin/moviesadmin'
 import Multiselect from '@vueform/multiselect'
 import { useGlobalHelper } from '@/stores/globalhelper'
+import { SaveMovieDTO } from '@/app/shared/models/save-movie.model'
 
 const MoviesAdminApi = useMoviesAdminApi();
 const globalhelper = useGlobalHelper()
 
-const Id = ref(0)
-const Title = ref()
-const Duration = ref(0)
-const Synopsis = ref()
-const ReleaseDate = ref()
+
+const Movie = ref<SaveMovieDTO>(new SaveMovieDTO());
+
 const Genres = ref()
 const Directors = ref()
 const Screenwriter = ref()
 const Actors = ref()
-const Image = ref()
+
+
 const ImagePreview = ref()
 
 const GenresDefault = ref()
@@ -32,33 +32,23 @@ onBeforeMount(async () => {
 
   const d = computed(() => MoviesAdminApi.EditMovie);
   if (d.value != undefined) {
-    Id.value = d.value.id
-    Title.value = d.value.movieName
-    Duration.value = d.value.duration
-    Synopsis.value = d.value.synopsis
-    //Genres.value = d.value.genres.map((item: any) => item.value);
+    Movie.value.Id = d.value.id
+    Movie.value.MovieName = d.value.movieName
+    Movie.value.Duration = d.value.duration
+    Movie.value.Synopsis = d.value.synopsis
     d.value.genres.map((item: any) => GenresDefault.value.select(item.value));
-    //Directors.value = d.value.director.map((item: any) => { return { value: item.id, label: item.firstName + " " + item.lastName } })
     d.value.director.map((item: any) => DirectorDefault.value.select({ value: item.id, label: item.firstName + " " + item.lastName }))
-    //Screenwriter.value = d.value.writers.map((item: any) => { return { value: item.id, label: item.firstName + " " + item.lastName } })
     d.value.writers.map((item: any) => ScreenwriterDefault.value.select({ value: item.id, label: item.firstName + " " + item.lastName }))
-    //Actors.value = d.value.actors.map((item: any) => { return { value: item.id, label: item.firstName + " " + item.lastName, CharacterName: item.characterName } })
     d.value.actors.map((item: any) => ActorsDefault.value.select({ value: item.id, label: item.firstName + " " + item.lastName, CharacterName: item.characterName }))
 
     ImagePreview.value = "data:image/png;base64," + d.value.movieImageData
 
     const date = globalhelper.formatInputDate(new Date(d.value.releaseDate))
-    ReleaseDate.value = date
+    Movie.value.ReleaseDate = date
 
     MoviesAdminApi.setEditMovie(undefined)
   }
 });
-
-
-watch(Genres, () => {
-  console.log(Genres.value);
-});
-
 
 const SearchCrew = async (search: any) => {
   if (search != null) {
@@ -66,7 +56,7 @@ const SearchCrew = async (search: any) => {
 
     const data = computed(() => MoviesAdminApi.MovieCrew);
 
-    if (data != undefined) {
+    if (data.value != undefined) {
       //MoviesAdminApi.setMovieCrew(undefined)
       return data.value.map((item: any) => {
         return { value: item.value, label: item.label }
@@ -77,46 +67,37 @@ const SearchCrew = async (search: any) => {
 }
 
 const handleImageChange = (event: any) => {
-  Image.value = event.target.files[0];
+  Movie.value.MovieImageData = event.target.files[0];
 
-  if (Image.value && Image.value.type.startsWith('image/')) {
+  if ( Movie.value.MovieImageData &&  Movie.value.MovieImageData.type.startsWith('image/')) {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       ImagePreview.value = e.target.result;
     };
-    reader.readAsDataURL(Image.value);
+    reader.readAsDataURL(Movie.value.MovieImageData);
   }
 }
 
 const ClearFormData = () => {
-  Id.value = 0
-  Title.value = null
-  Duration.value = 0
-  Synopsis.value = null
-  Genres.value = null
-  ReleaseDate.value = null
-  Directors.value = null
-  Screenwriter.value = null
-  Actors.value = null
-  Image.value = null
+  Movie.value = new SaveMovieDTO()
   ImagePreview.value = null
 }
 
 
 const addMovieFormSubmit = async () => {
-  const Movie = new FormData();
-  Movie.append("Id", Id.value.toString());
-  Movie.append("MovieName", Title.value);
-  Movie.append("Duration", Duration.value.toString());
-  Movie.append("Synopsis", Synopsis.value);
-  Movie.append("Genres", Genres.value.map((x: any) => x))
-  Movie.append("ReleaseDate", ReleaseDate.value);
-  Movie.append("Director", Directors.value.map((x: any) => x));
-  Movie.append("Writers", Screenwriter.value.map((x: any) => x));
-  Movie.append("Actors", JSON.stringify(Actors.value));
-  Movie.append("MovieImageData", Image.value);
+  const m = new FormData();
+  m.append("Id", Movie.value.Id.toString());
+  m.append("MovieName", Movie.value.MovieName);
+  m.append("Duration", Movie.value.Duration.toString());
+  m.append("Synopsis", Movie.value.Synopsis);
+  m.append("Genres", Genres.value.map((x: any) => x))
+  m.append("ReleaseDate", Movie.value.ReleaseDate);
+  m.append("Director", Directors.value.map((x: any) => x));
+  m.append("Writers", Screenwriter.value.map((x: any) => x));
+  m.append("Actors", JSON.stringify(Actors.value));
+  m.append("MovieImageData", Movie.value.MovieImageData);
 
-  MoviesAdminApi.SaveMovie(Movie).then(() => {
+  MoviesAdminApi.SaveMovie(m).then(() => {
     ClearFormData()
   });
 }
@@ -131,16 +112,16 @@ const addMovieFormSubmit = async () => {
 
     <form @submit.prevent="addMovieFormSubmit" class="text-center">
       <div class="form-group mb-3">
-        <input type="text" v-model="Title" class="w-50" id="title" placeholder="Movie title" />
+        <input type="text" v-model="Movie.MovieName" class="w-50" id="title" placeholder="Movie title" />
       </div>
       <div class="form-group mb-3">
-        <input type="text" v-model="Duration" class="w-50" id="title" placeholder="Duration" />
+        <input type="text" v-model="Movie.Duration" class="w-50" id="title" placeholder="Duration" />
       </div>
       <div class="form-group mb-3">
-        <textarea type="text" v-model="Synopsis" class="w-50" id="title" placeholder="Synopsis"></textarea>
+        <textarea type="text" v-model="Movie.Synopsis" class="w-50" id="title" placeholder="Synopsis"></textarea>
       </div>
       <div class="form-group mb-3">
-        <input type="date" v-model="ReleaseDate" class="w-50" id="title" placeholder="Release date" />
+        <input type="date" v-model="Movie.ReleaseDate" class="w-50" id="title" placeholder="Release date" />
       </div>
       <div class="form-group mb-3 ">
         <Multiselect placeholder="Select genres..." v-model="Genres" :options="GetGenres" mode="tags"
@@ -170,8 +151,8 @@ const addMovieFormSubmit = async () => {
           }" />
       </div>
       <div class="form-group mb-3">
-        <div v-for="a in Actors">
-          <label>{{ a.label }} </label>
+        <div v-for="a in Actors" :key="a.value">
+          <label>{{ a }} </label>
           <input type="text" class="w-50 ml-2" placeholder="Character name..." v-model="a.CharacterName" required />
         </div>
 

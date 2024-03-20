@@ -6,7 +6,7 @@ namespace MyMoviesTvShowList.Controllers.Frontpage
     [ApiController]
     public class FrontpageController : Controller
     {
-       
+
 
 
     }

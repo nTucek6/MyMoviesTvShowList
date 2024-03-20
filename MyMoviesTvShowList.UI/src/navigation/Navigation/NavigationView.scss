@@ -226,12 +226,19 @@ a {
 
 }
 
+.dropdown-profile {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: $app_name_color;
+  margin-left:10px
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
   cursor: pointer;
-  padding-top: 12px;
-  padding-bottom: 12px;
+
   color: $app_name_color;
   align-items: center;
 }

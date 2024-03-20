@@ -107,3 +107,14 @@ const addPersonFormSubmit = async () =>
 
  </div>
 </template>
+
+<style scoped>
+*{
+   color: white;
+}
+
+input{
+  color:black;
+}
+
+</style>

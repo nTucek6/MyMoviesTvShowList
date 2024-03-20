@@ -1,6 +1,7 @@
 ﻿using DatabaseContext;
 using Entites;
 using Entites.Enum;
+using Entites.Movie;
 using Entities.Enum;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -105,11 +106,11 @@ namespace Services.MoviesAdmin
 
             foreach (var movie in data)
             {
-                var act = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.PersonnelType == CrewEnum.Actor).ToListAsync();
+                var act = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.Role == MovieRoleEnum.Actor).ToListAsync();
 
-                var dir = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.PersonnelType == CrewEnum.Director).ToListAsync();
+                var dir = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.Role == MovieRoleEnum.Director).ToListAsync();
 
-                var wri = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.PersonnelType == CrewEnum.Screenwriter).ToListAsync();
+                var wri = await database.MoviesCrew.Where(a => a.MovieId == movie.Id && a.Role == MovieRoleEnum.Screenwriter).ToListAsync();
 
                 List<string> g = movie.Genres.Split(",").ToList();
 
@@ -129,7 +130,7 @@ namespace Services.MoviesAdmin
                        Id = s.Id,
                        FirstName = s.FirstName,
                        LastName = s.LastName,
-                       CharacterName = a.CharacterName,
+                       //CharacterName = a.CharacterName,
                        PersonImageData = s.PersonImageData
 
                    })
@@ -200,8 +201,8 @@ namespace Services.MoviesAdmin
                     {
                         MovieId = movie.Id,
                         PersonId = Convert.ToInt32(a.value),
-                        CharacterName = a.CharacterName,
-                        PersonnelType = CrewEnum.Actor
+                        // CharacterName = a.CharacterName,
+                        Role = MovieRoleEnum.Actor
                     });
                 }
 
@@ -211,7 +212,7 @@ namespace Services.MoviesAdmin
                     {
                         MovieId = movie.Id,
                         PersonId = Convert.ToInt32(a),
-                        PersonnelType = Entites.Enum.CrewEnum.Director
+                        Role = MovieRoleEnum.Director
                     });
                 }
 
@@ -221,7 +222,7 @@ namespace Services.MoviesAdmin
                     {
                         MovieId = movie.Id,
                         PersonId = Convert.ToInt32(a),
-                        PersonnelType = Entites.Enum.CrewEnum.Screenwriter
+                        Role = MovieRoleEnum.Screenwriter
                     });
                 }
 
@@ -255,8 +256,8 @@ namespace Services.MoviesAdmin
                     {
                         MovieId = m,
                         PersonId = Convert.ToInt32(a.value),
-                        CharacterName = a.CharacterName,
-                        PersonnelType = CrewEnum.Actor
+                        // CharacterName = a.CharacterName,
+                        Role = MovieRoleEnum.Actor
                     });
                 }
 
@@ -267,7 +268,7 @@ namespace Services.MoviesAdmin
                     {
                         MovieId = m,
                         PersonId = Convert.ToInt32(a),
-                        PersonnelType = CrewEnum.Director
+                        Role = MovieRoleEnum.Director
                     });
                 }
 
@@ -277,7 +278,7 @@ namespace Services.MoviesAdmin
                     {
                         MovieId = m,
                         PersonId = Convert.ToInt32(a),
-                        PersonnelType = CrewEnum.Screenwriter
+                        Role = MovieRoleEnum.Screenwriter
                     });
                 }
                 await database.SaveChangesAsync();

@@ -9,7 +9,7 @@ const RegisterView = () => import('@/app/views/1.public/Register/RegisterView.vu
 const ProfileView = () => import('@/app/views/2.user/Profile/ProfileView.vue')
 const MoviesAdminView = () => import('@/app/views/3.admin/MoviesAdminView.vue')
 const AddEditMovieView = () => import('@/app/views/3.admin/AddEditMovieView.vue')
-const CrewsAdminView = () => import('@/app/views/3.admin/AddEditMovieView.vue')
+const CrewsAdminView = () => import('@/app/views/3.admin/CrewsAdminView.vue')
 const AddEditCrewView = () => import('@/app/views/3.admin/AddEditCrewView.vue')
 const MovieSearchView = () => import('@/app/views/1.public/MovieSearch/MovieSearchView.vue')
 const TopMoviesView = () => import('@/app/views/1.public/TopMovies/TopMoviesView.vue')

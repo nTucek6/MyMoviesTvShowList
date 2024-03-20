@@ -61,13 +61,31 @@ watch(route, () => {
             <li id="signup"><RouterLink to="/register">Signup</RouterLink></li>
           </ul>
 
+          <div class="dropdown" v-if="userLogIn && UserData.Role == 'Admin'">
+            <span class="">Admin</span>
+            <div class="dropdown-content">
+              <RouterLink to="/moviesadmin" class="btn dropdown-item"
+                ><font-awesome-icon :icon="['fas', 'film']" /> Movies
+              </RouterLink>
+              <RouterLink to="/" class="btn" dropdown-item
+                ><font-awesome-icon :icon="['fas', 'tv']" /> Tv Shows</RouterLink
+              >
+              <RouterLink to="/viewcrew" class="btn dropdown-item"
+                ><font-awesome-icon :icon="['fas', 'video']" /> Film & Show crew</RouterLink
+              >
+              <RouterLink to="/" class="btn dropdown-item"
+                ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Users
+              </RouterLink>
+            </div>
+          </div>
+
           <div
-            class="dropdown"
+            class="dropdown-profile"
             v-if="userLogIn"
             :class="{ 'dropdown-profile-open': showProfileMenu }"
           >
             <div class="dropdown-user" @click="showProfileMenu = !showProfileMenu">
-              <span>{{ UserData?.Username }} </span>
+              <span>{{ UserData.Username }} </span>
               <font-awesome-icon id="f-icon" icon="caret-down" />
               <img :src="ProfileImage" />
             </div>

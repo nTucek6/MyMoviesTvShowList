@@ -1,13 +1,15 @@
 import { defineStore } from 'pinia'
 import axios from "axios"
 import { ref } from 'vue'
+//import type { SaveMovieDTO } from '@/app/shared/models/save-movie.model';
+import { MoviesDTO } from '@/app/shared/models/movies.model';
 
 export const useMoviesAdminApi = defineStore('moviesadmin', () => {
 
 
   const Genres = ref();
   const MovieCrew = ref()
-  const MovieData = ref()
+  const MovieData = ref<MoviesDTO[]>([])
 
   const EditMovie = ref()
 

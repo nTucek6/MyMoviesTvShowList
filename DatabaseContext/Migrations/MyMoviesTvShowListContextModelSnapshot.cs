@@ -22,7 +22,7 @@ namespace DatabaseContext.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Entites.MoviesCrewEntity", b =>
+            modelBuilder.Entity("Entites.Movie.MoviesCharactersEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,8 +30,32 @@ namespace DatabaseContext.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CharacterName")
+                    b.Property<int>("ActorId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MoviesCharacters");
+                });
+
+            modelBuilder.Entity("Entites.Movie.MoviesCrewEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("MovieId")
                         .HasColumnType("integer");
@@ -39,7 +63,7 @@ namespace DatabaseContext.Migrations
                     b.Property<int>("PersonId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("PersonnelType")
+                    b.Property<int>("Role")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -47,7 +71,7 @@ namespace DatabaseContext.Migrations
                     b.ToTable("MoviesCrew");
                 });
 
-            modelBuilder.Entity("Entites.MoviesEntity", b =>
+            modelBuilder.Entity("Entites.Movie.MoviesEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -118,6 +142,92 @@ namespace DatabaseContext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("People");
+                });
+
+            modelBuilder.Entity("Entites.Show.TvShowCharactersEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ActorId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("TvShowId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TvShowCharacters");
+                });
+
+            modelBuilder.Entity("Entites.Show.TvShowCrewEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TvShowId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TvShowCrew");
+                });
+
+            modelBuilder.Entity("Entites.Show.TvShowEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Genres")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal?>("Rating")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("TotalEpisode")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TotalSeason")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TvShow");
                 });
 
             modelBuilder.Entity("Entites.UsersEntity", b =>

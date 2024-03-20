@@ -64,6 +64,9 @@ export const useAuthentication = defineStore('Authentication', () => {
   }
 
   function IsAdmin() {
+    if (UserData.value.Role == 'Admin') {
+      return true
+    }
     return false
   }
 
