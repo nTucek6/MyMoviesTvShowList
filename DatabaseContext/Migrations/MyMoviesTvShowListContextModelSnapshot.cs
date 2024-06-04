@@ -230,6 +230,28 @@ namespace DatabaseContext.Migrations
                     b.ToTable("TvShow");
                 });
 
+            modelBuilder.Entity("Entites.Show.TvShowSeasonsEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Episodes")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Season")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TvShowId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TvShowSeasons");
+                });
+
             modelBuilder.Entity("Entites.UsersEntity", b =>
                 {
                     b.Property<int>("Id")

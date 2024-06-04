@@ -2045,6 +2045,19 @@
         "runtime": {
           "bin/placeholder/Services.MoviesAdmin.dll": {}
         }
+      },
+      "Services.TVShowsAdmin/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.TVShowsAdmin.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.TVShowsAdmin.dll": {}
+        }
       }
     }
   },
@@ -6504,6 +6517,11 @@
       "type": "project",
       "path": "../Services.MoviesAdmin/Services.MoviesAdmin.csproj",
       "msbuildProject": "../Services.MoviesAdmin/Services.MoviesAdmin.csproj"
+    },
+    "Services.TVShowsAdmin/1.0.0": {
+      "type": "project",
+      "path": "../Services.TVShowsAdmin/Services.TVShowsAdmin.csproj",
+      "msbuildProject": "../Services.TVShowsAdmin/Services.TVShowsAdmin.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6520,6 +6538,7 @@
       "Services.CrewsAdmin >= 1.0.0",
       "Services.Frontpage >= 1.0.0",
       "Services.MoviesAdmin >= 1.0.0",
+      "Services.TVShowsAdmin >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -6570,6 +6589,9 @@
             },
             "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
               "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj"
+            },
+            "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.TVShowsAdmin\\Services.TVShowsAdmin.csproj": {
+              "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.TVShowsAdmin\\Services.TVShowsAdmin.csproj"
             }
           }
         }

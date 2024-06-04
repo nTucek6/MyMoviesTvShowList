@@ -7,6 +7,7 @@ using Services.Authentication;
 using Services.CrewsAdmin;
 using Services.Frontpage;
 using Services.MoviesAdmin;
+using Services.TVShowsAdmin;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,7 +42,7 @@ builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 builder.Services.AddTransient<IFrontpageService, FrontpageService>();
 builder.Services.AddTransient<IMoviesAdminService, MoviesAdminService>();
 builder.Services.AddTransient<ICrewsAdminService, CrewsAdminService>();
-
+builder.Services.AddTransient<ITVShowsAdminService, TVShowsAdminService>();
 
 
 
@@ -49,9 +50,6 @@ builder.Services.AddTransient<ICrewsAdminService, CrewsAdminService>();
 builder.Services.AddHostedService<CalculateScoreTimer>();
 
 // ---------------------------------------------------------------------------------
-
-
-
 
 
 var app = builder.Build();

@@ -20,6 +20,7 @@ namespace DatabaseContext
         public DbSet<TvShowEntity> TvShow { get; set; }
         public DbSet<TvShowCrewEntity> TvShowCrew { get; set; }
         public DbSet<TvShowCharactersEntity> TvShowCharacters { get; set;}
+        public DbSet<TvShowSeasonsEntity> TvShowSeasons { get; set; }
 
 
     }

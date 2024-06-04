@@ -20,6 +20,7 @@
           "Services.CrewsAdmin": "1.0.0",
           "Services.Frontpage": "1.0.0",
           "Services.MoviesAdmin": "1.0.0",
+          "Services.TVShowsAdmin": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -1151,6 +1152,11 @@
         "runtime": {
           "Services.MoviesAdmin.dll": {}
         }
+      },
+      "Services.TVShowsAdmin/1.0.0": {
+        "runtime": {
+          "Services.TVShowsAdmin.dll": {}
+        }
       }
     }
   },
@@ -1980,6 +1986,11 @@
       "sha512": ""
     },
     "Services.MoviesAdmin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services.TVShowsAdmin/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -142,3 +142,5 @@ C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\D
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.CrewsAdmin.dll
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.CrewsAdmin.pdb
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\obj\Debug\net6.0\MyMoviesTvShowList.sourcelink.json
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.TVShowsAdmin.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.TVShowsAdmin.pdb

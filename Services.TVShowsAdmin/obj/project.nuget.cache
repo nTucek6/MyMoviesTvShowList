@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "zfxZQjOBo45EWkAZA4/7N5EMPyW/g7Ax75VhuN9lA0FPfZ/ZRrgYWbL98IcQU9f5MS0YmAZDm2s6PA8g1sY3Cg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.TVShowsAdmin\\Services.TVShowsAdmin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\Nikola\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\Nikola\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}
