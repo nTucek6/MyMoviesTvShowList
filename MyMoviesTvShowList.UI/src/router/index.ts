@@ -1,18 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { computed } from 'vue'
-import FrontpageView from '@/app/views/1.public/Frontpage/FrontpageView.vue'
-import { useAuthentication } from '@/stores/Authentication/authentication'
-
-// lazy-loaded
-const LoginView = () => import('@/app/views/1.public/Login/LoginView.vue')
-const RegisterView = () => import('@/app/views/1.public/Register/RegisterView.vue')
-const ProfileView = () => import('@/app/views/2.user/Profile/ProfileView.vue')
-const MoviesAdminView = () => import('@/app/views/3.admin/MoviesAdminView.vue')
-const AddEditMovieView = () => import('@/app/views/3.admin/AddEditMovieView.vue')
-const CrewsAdminView = () => import('@/app/views/3.admin/CrewsAdminView.vue')
-const AddEditCrewView = () => import('@/app/views/3.admin/AddEditCrewView.vue')
-const MovieSearchView = () => import('@/app/views/1.public/MovieSearch/MovieSearchView.vue')
-const TopMoviesView = () => import('@/app/views/1.public/TopMovies/TopMoviesView.vue')
+import FrontpageView from '@/app/views/1.public/FrontpageView.vue'
+import { useAuthentication } from '@/stores/authentication'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,9 +13,36 @@ const router = createRouter({
       component: FrontpageView
     },
     {
+      path: '/login',
+      name: 'Login',
+      component: () => import('@/app/views/1.public/LoginView.vue'),
+      beforeEnter: (to, from, next) => {
+        const isAuthenticated = computed(() => useAuthentication().userLogIn)
+        if (isAuthenticated.value) {
+          next('/')
+        } else {
+          next()
+        }
+      }
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: () => import('@/app/views/1.public/RegisterView.vue'),
+      beforeEnter: (to, from, next) => {
+        const isAuthenticated = computed(() => useAuthentication().userLogIn)
+        console.log(isAuthenticated.value)
+        if (isAuthenticated.value) {
+          next('/')
+        } else {
+          next()
+        }
+      }
+    },
+    {
       path: '/moviesadmin',
       name: 'Movies Admin',
-      component: MoviesAdminView,
+      component: () => import('@/app/views/3.admin/movies/MoviesAdminView.vue'),
       beforeEnter: (to, from, next) => {
         const isAdmin = computed(() => useAuthentication().IsAdmin())
         console.log(isAdmin.value)
@@ -40,7 +56,7 @@ const router = createRouter({
     {
       path: '/addeditmovie',
       name: 'Add & Edit movie',
-      component: AddEditMovieView,
+      component: () => import('@/app/views/3.admin/movies/AddEditMovieView.vue'),
       beforeEnter: (to, from, next) => {
         const isAdmin = computed(() => useAuthentication().IsAdmin())
         //console.log(isAdmin.value);
@@ -54,10 +70,9 @@ const router = createRouter({
     {
       path: '/viewcrew',
       name: 'View Crew',
-      component: CrewsAdminView,
+      component: () => import('@/app/views/3.admin/crew/CrewsAdminView.vue'),
       beforeEnter: (to, from, next) => {
         const isAdmin = computed(() => useAuthentication().IsAdmin())
-        //console.log(isAdmin.value);
         if (!isAdmin.value) {
           next('/')
         } else {
@@ -68,7 +83,7 @@ const router = createRouter({
     {
       path: '/addeditperson',
       name: 'Add & Edit person',
-      component: AddEditCrewView,
+      component: () => import('@/app/views/3.admin/crew/AddEditCrewView.vue'),
       props: true,
       beforeEnter: (to, from, next) => {
         const isAdmin = computed(() => useAuthentication().IsAdmin())
@@ -80,12 +95,13 @@ const router = createRouter({
       }
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: LoginView,
+      path: '/tvshowadmin',
+      name: 'TvShow Admin',
+      component: () => import('@/app/views/3.admin/tvshow/TvShowAdminView.vue'),
+      props: true,
       beforeEnter: (to, from, next) => {
-        const isAuthenticated = computed(() => useAuthentication().userLogIn)
-        if (isAuthenticated.value) {
+        const isAdmin = computed(() => useAuthentication().IsAdmin())
+        if (!isAdmin.value) {
           next('/')
         } else {
           next()
@@ -93,33 +109,34 @@ const router = createRouter({
       }
     },
     {
-      path: '/register',
-      name: 'Register',
-      component: RegisterView,
+      path: '/addedittvshow',
+      name: 'Add & Edit TvShow',
+      component: () => import('@/app/views/3.admin/tvshow/AddEditTvShowView.vue'),
+      props: true,
       beforeEnter: (to, from, next) => {
-        const isAuthenticated = computed(() => useAuthentication().userLogIn)
-        console.log(isAuthenticated.value)
-        if (isAuthenticated.value) {
+        const isAdmin = computed(() => useAuthentication().IsAdmin())
+        if (!isAdmin.value) {
           next('/')
         } else {
           next()
         }
       }
     },
+
     {
       path: '/moviessearch',
       name: 'Movies Search',
-      component: MovieSearchView
+      component: () => import('@/app/views/1.public/MovieSearchView.vue')
     },
     {
       path: '/topmovies',
       name: 'Top Movies',
-      component: TopMoviesView
+      component: () => import('@/app/views/1.public/TopMoviesView.vue')
     },
     {
       path: '/profile/:username',
       name: 'Profile',
-      component: ProfileView
+      component: () => import('@/app/views/2.user/ProfileView.vue')
     }
   ]
 })

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Services.MoviesAdmin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bc4be968534cf3f75f415f222937233171836ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09faa7900717a515716cc263cce89f1e3b81b5f9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Services.MoviesAdmin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Services.MoviesAdmin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,6 +14,4 @@ export class PersonDTO{
         this.BirthPlace = '';
         this.PersonImageData = ''
     }
-
-
 }

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import Navigation from './navigation/Navigation/NavigationView.vue'
-//import Footer from './navigation/FooterView.vue';
+import HeaderView from './app/shared/components/header/HeaderView.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {
@@ -34,17 +33,12 @@ library.add(
   faAngleRight,
   faRightToBracket,
   faUserPlus
-);
-
-
-
-
+)
 </script>
 
 <template>
   <main class="container">
-    <Navigation />
+    <HeaderView />
     <RouterView />
   </main>
 </template>
-<!--./navigation/NavigationView.vue./navigation/Navigation/NavigationView.vue-->
