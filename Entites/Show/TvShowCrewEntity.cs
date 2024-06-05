@@ -9,6 +9,6 @@ namespace Entites.Show
         public int Id { get; set; }
         public int TvShowId { get; set; }
         public int PersonId { get; set; }
-        public MovieRoleEnum Role { get; set; }
+        public CrewRoleEnum Role { get; set; }
     }
 }

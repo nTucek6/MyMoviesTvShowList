@@ -14,15 +14,17 @@ const MoviesAdminApi = useMoviesAdminApi()
 const TVShow = ref<SaveTVShowDTO>(new SaveTVShowDTO())
 
 const Genres = ref()
-const Directors = ref()
-const Screenwriter = ref()
+//const Directors = ref()
+//const Screenwriter = ref()
+const Creators = ref()
 const Actors = ref()
 
 const ImagePreview = ref()
 
 const GenresDefault = ref()
-const DirectorDefault = ref()
-const ScreenwriterDefault = ref()
+//const DirectorDefault = ref()
+//const ScreenwriterDefault = ref()
+const CreatorsDefault = ref()
 const ActorsDefault = ref()
 
 const GetGenres = computed(() => MoviesAdminApi.Genres)
@@ -66,24 +68,25 @@ const ClearFormData = () => {
 const addTVShowFormSubmit = async () => {
   const t = new FormData()
   t.append('Id', TVShow.value.Id.toString())
-  t.append('MovieName', TVShow.value.Title)
+  t.append('Title', TVShow.value.Title)
 
   t.append('Description', TVShow.value.Description)
   t.append(
     'Genres',
     Genres.value.map((x: any) => x)
   )
-  t.append('ReleaseDate', TVShow.value.ReleaseDate)
+  t.append('Runtime', TVShow.value.Runtime)
+  //t.append('Director',Directors.value.map((x: any) => x))
+  //t.append('Writers',Screenwriter.value.map((x: any) => x))
   t.append(
-    'Director',
-    Directors.value.map((x: any) => x)
+    'Creators',
+    Creators.value.map((x: any) => x)
   )
-  t.append(
-    'Writers',
-    Screenwriter.value.map((x: any) => x)
-  )
+
   t.append('Actors', JSON.stringify(Actors.value))
-  t.append('MovieImageData', TVShow.value.TVShowImageData)
+  t.append('TVShowImageData', TVShow.value.TVShowImageData)
+  t.append('TotalSeason', TVShow.value.TotalSeason.toString())
+  t.append('TotalEpisode', TVShow.value.TotalEpisode.toString())
 
   TvShowAdminApi.SaveTVShow(t).then(() => {
     ClearFormData()
@@ -136,6 +139,10 @@ const addTVShowFormSubmit = async () => {
     </div>
 
     <div class="form-group mb-3">
+      <input type="text" v-model="TVShow.Runtime" class="w-50" id="runtime" placeholder="Runtime" />
+    </div>
+
+    <div class="form-group mb-3">
       <Multiselect
         placeholder="Select genres..."
         v-model="Genres"
@@ -151,36 +158,16 @@ const addTVShowFormSubmit = async () => {
 
     <div class="form-group mb-3">
       <Multiselect
-        v-model="Directors"
-        mode="tags"
-        placeholder="Search director..."
-        :close-on-select="false"
-        :filter-results="false"
-        :min-chars="1"
-        :resolve-on-load="false"
-        :delay="1000"
-        :searchable="true"
-        ref="DirectorDefault"
-        :options="
-          async function (query: any, select$: any) {
-            return await SearchCrew(query) // check JS block in JSFiddle for implementation
-          }
-        "
-      />
-    </div>
-
-    <div class="form-group mb-3">
-      <Multiselect
-        placeholder="Select screenwriter..."
-        v-model="Screenwriter"
+        placeholder="Select creators..."
+        v-model="Creators"
         mode="tags"
         :close-on-select="false"
         :filter-results="false"
         :min-chars="1"
         :resolve-on-load="false"
-        :delay="1000"
+        :delay="500"
         :searchable="true"
-        ref="ScreenwriterDefault"
+        ref="CreatorsDefault"
         :options="
           async function (query: any, select$: any) {
             return await SearchCrew(query) // check JS block in JSFiddle for implementation
@@ -198,7 +185,7 @@ const addTVShowFormSubmit = async () => {
         :filter-results="false"
         :min-chars="1"
         :resolve-on-load="false"
-        :delay="1000"
+        :delay="500"
         :searchable="true"
         :object="true"
         ref="ActorsDefault"
@@ -212,14 +199,22 @@ const addTVShowFormSubmit = async () => {
 
     <div class="form-group mb-3">
       <div v-for="a in Actors" :key="a.value">
-        <label>{{ a }} </label>
-        <input
-          type="text"
-          class="w-50 ml-2"
-          placeholder="Character name..."
-          v-model="a.CharacterName"
-          required
-        />
+        <label>{{ a.label }} </label>
+        <div>
+          <input
+            type="text"
+            class="w-50 ml-2"
+            placeholder="Character name..."
+            v-model="a.CharacterName"
+            required
+          />
+          <textarea
+            class="w-50 ml-2 mt-2"
+            placeholder="Description..."
+            v-model="a.Description"
+            required
+          ></textarea>
+        </div>
       </div>
     </div>
 
@@ -244,6 +239,7 @@ const addTVShowFormSubmit = async () => {
 <style scoped>
 form {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 </style>
 

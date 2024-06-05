@@ -212,8 +212,13 @@ namespace DatabaseContext.Migrations
                     b.Property<decimal?>("Rating")
                         .HasColumnType("numeric");
 
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("Runtime")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<byte[]>("TVShowImageData")
+                        .IsRequired()
+                        .HasColumnType("bytea");
 
                     b.Property<string>("Title")
                         .IsRequired()

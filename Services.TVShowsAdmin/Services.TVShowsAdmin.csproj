@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseContext\DatabaseContext.csproj" />
+    <ProjectReference Include="..\MyMoviesTvShowList.Extensions\MyMoviesTvShowList.Extensions.csproj" />
+    <ProjectReference Include="..\Services.MoviesAdmin\Services.MoviesAdmin.csproj" />
+  </ItemGroup>
+
 </Project>

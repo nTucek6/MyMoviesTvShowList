@@ -4,11 +4,12 @@ export class SaveTVShowDTO {
   Description: string
   Genres: string
 
-  Director: string
-  Writers: string
+  //Director: string
+  //Writers: string
+  Creators:string
   Actors: string
 
-  ReleaseDate: string
+  Runtime: string
   TVShowImageData: Blob
   TotalSeason: number
   TotalEpisode: number
@@ -18,10 +19,11 @@ export class SaveTVShowDTO {
     this.Title = ''
     this.Description = ''
     this.Genres = ''
-    this.Director = ''
-    this.Writers = ''
+    //this.Director = ''
+    //this.Writers = ''
+    this.Creators = ''
     this.Actors = ''
-    this.ReleaseDate = ''
+    this.Runtime = ''
     this.TVShowImageData = new Blob([])
     this.TotalSeason = 0
     this.TotalEpisode = 0

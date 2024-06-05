@@ -2050,7 +2050,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Features": "2.2.0"
+          "DatabaseContext": "1.0.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "MyMoviesTvShowList.Extensions": "1.0.0",
+          "Services.MoviesAdmin": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Services.TVShowsAdmin.dll": {}

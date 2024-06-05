@@ -12,7 +12,7 @@ namespace Entites.Movie
 
         public int PersonId { get; set; }
 
-        public MovieRoleEnum Role { get; set; }
+        public CrewRoleEnum Role { get; set; }
 
     }
 }

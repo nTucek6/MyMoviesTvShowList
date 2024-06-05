@@ -8,10 +8,11 @@ namespace Entites.Show
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public string Runtime { get; set; }
         public string Genres { get; set; }
         public decimal? Rating { get; set; }
         public int TotalSeason {  get; set; }
-        public int TotalEpisode { get; set; }
+        public int TotalEpisode { get; set;}
+        public byte[] TVShowImageData { get; set; }
     }
 }

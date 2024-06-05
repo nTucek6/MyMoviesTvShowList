@@ -16,6 +16,7 @@ export const API_URLS_ADMIN = {
   GETPEOPLECOUNT : `${API_BASE_URL}CrewsAdmin/GetPeopleCount`,
   SAVEPERSON : `${API_BASE_URL}CrewsAdmin/SavePerson`,
 
-  SAVETVSHOW : `${API_BASE_URL}TVShowsAdmin/SaveTVShow`
+  SAVETVSHOW : `${API_BASE_URL}TVShowsAdmin/SaveTVShow`,
+  GETTVSHOW : `${API_BASE_URL}TVShowsAdmin/GetTVShow`
 
 }

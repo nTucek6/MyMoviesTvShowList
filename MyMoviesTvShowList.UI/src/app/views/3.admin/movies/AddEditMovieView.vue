@@ -240,7 +240,7 @@ const addMovieFormSubmit = async () => {
       </div>
       <div class="form-group mb-3">
         <div v-for="a in Actors" :key="a.value">
-          <label>{{ a }} </label>
+          <label>{{ a.label }} </label>
           <input
             type="text"
             class="w-50 ml-2"
@@ -248,6 +248,12 @@ const addMovieFormSubmit = async () => {
             v-model="a.CharacterName"
             required
           />
+          <textarea
+            class="w-50 ml-2 mt-2"
+            placeholder="Description..."
+            v-model="a.Description"
+            required
+          ></textarea>
         </div>
       </div>
 

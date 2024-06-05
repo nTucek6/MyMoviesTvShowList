@@ -110,7 +110,7 @@ const router = createRouter({
     },
     {
       path: '/addedittvshow',
-      name: 'Add & Edit TvShow',
+      name: 'Add & Edit TVShow',
       component: () => import('@/app/views/3.admin/tvshow/AddEditTvShowView.vue'),
       props: true,
       beforeEnter: (to, from, next) => {

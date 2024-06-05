@@ -1154,6 +1154,12 @@
         }
       },
       "Services.TVShowsAdmin/1.0.0": {
+        "dependencies": {
+          "DatabaseContext": "1.0.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "MyMoviesTvShowList.Extensions": "1.0.0",
+          "Services.MoviesAdmin": "1.0.0"
+        },
         "runtime": {
           "Services.TVShowsAdmin.dll": {}
         }

@@ -2,8 +2,12 @@ import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { API_URLS_ADMIN } from '@/config'
+import { TVShowDTO } from '@/app/shared/models/tvshow.mode'
 
 export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
+
+  const TVShowData = ref<TVShowDTO[]>([])
+
   async function SaveTVShow(TvShow: Object) {
     try {
       await axios({
@@ -21,5 +25,29 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
     }
   }
 
-  return { SaveTVShow }
+  async function GetTVShow(PostPerPage:number,Page:number,Search:string) {
+    try {
+      await axios({
+        method: 'get',
+        url: API_URLS_ADMIN.GETTVSHOW,
+        params:
+        {
+          PostPerPage:PostPerPage,
+          Page:Page,
+          Search:Search
+        }
+        
+      })
+      .then((response)=>{
+        TVShowData.value = response.data
+        console.log(TVShowData.value)
+      }) 
+      }
+      catch (error) {
+        console.log(error)
+    }
+  }
+
+
+  return { SaveTVShow, GetTVShow, TVShowData }
 })

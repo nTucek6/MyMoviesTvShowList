@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Services.TVShowsAdmin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+379ea6ceb0cecb5cc22cc8658a2ec6f33084552c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Services.TVShowsAdmin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Services.TVShowsAdmin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

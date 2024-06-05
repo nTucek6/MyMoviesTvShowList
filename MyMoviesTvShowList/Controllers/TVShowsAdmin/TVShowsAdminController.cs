@@ -20,6 +20,13 @@ namespace MyMoviesTvShowList.Controllers.TVShowsAdmin
             return Ok();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetTVShow(int PostPerPage, int Page, string? Search)
+        {
+            var tvShow = await tVShowsAdminService.GetTVShows(PostPerPage, Page, Search);
+            return Ok(tvShow);
+        }
+
 
 
     }
