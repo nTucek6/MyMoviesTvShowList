@@ -8,6 +8,13 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
 
   const TVShowData = ref<TVShowDTO[]>([])
 
+  const EditTVShow = ref()
+
+  function setEditTVShow(data:any)
+  {
+    EditTVShow.value = data
+  }
+
   async function SaveTVShow(TvShow: Object) {
     try {
       await axios({
@@ -40,7 +47,6 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
       })
       .then((response)=>{
         TVShowData.value = response.data
-        console.log(TVShowData.value)
       }) 
       }
       catch (error) {
@@ -49,5 +55,5 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
   }
 
 
-  return { SaveTVShow, GetTVShow, TVShowData }
+  return { SaveTVShow, GetTVShow, TVShowData, EditTVShow ,setEditTVShow }
 })

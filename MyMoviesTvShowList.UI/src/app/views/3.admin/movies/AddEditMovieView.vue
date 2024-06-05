@@ -5,12 +5,10 @@ import Multiselect from '@vueform/multiselect'
 import { useGlobalHelper } from '@/stores/globalhelper'
 import { SaveMovieDTO } from '@/app/shared/models/save-movie.model'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
-import {moviesParams} from '@/app/views/3.admin/movies/moviesparams'
+import { moviesParams } from '@/app/views/3.admin/movies/moviesparams'
 
 const MoviesAdminApi = useMoviesAdminApi()
 const globalhelper = useGlobalHelper()
-
-
 
 const Movie = ref<SaveMovieDTO>(new SaveMovieDTO())
 
@@ -32,32 +30,34 @@ onBeforeMount(async () => {
   await MoviesAdminApi.GetGenres()
 
   const d = computed(() => MoviesAdminApi.EditMovie)
+
   if (d.value != undefined) {
-    Movie.value.Id = d.value.id
-    Movie.value.MovieName = d.value.movieName
-    Movie.value.Duration = d.value.duration
-    Movie.value.Synopsis = d.value.synopsis
-    d.value.genres.map((item: any) => GenresDefault.value.select(item.value))
-    d.value.director.map((item: any) =>
-      DirectorDefault.value.select({ value: item.id, label: item.firstName + ' ' + item.lastName })
+    Movie.value.Id = d.value.Id
+    Movie.value.MovieName = d.value.MovieName
+    Movie.value.Duration = d.value.Duration
+    Movie.value.Synopsis = d.value.Synopsis
+    d.value.Genres.map((item: any) => GenresDefault.value.select(item.value))
+    d.value.Director.map((item: any) =>
+      DirectorDefault.value.select({ value: item.Id, label: item.FirstName + ' ' + item.LastName })
     )
-    d.value.writers.map((item: any) =>
+    d.value.Writers.map((item: any) =>
       ScreenwriterDefault.value.select({
-        value: item.id,
-        label: item.firstName + ' ' + item.lastName
+        value: item.Id,
+        label: item.FirstName + ' ' + item.LastName
       })
     )
-    d.value.actors.map((item: any) =>
+    d.value.Actors.map((item: any) =>
       ActorsDefault.value.select({
-        value: item.id,
-        label: item.firstName + ' ' + item.lastName,
-        CharacterName: item.characterName
+        value: item.Id,
+        label: item.FirstName + ' ' + item.LastName,
+        CharacterName: item.CharacterName,
+        Description: item.CharacterDescription
       })
     )
 
-    ImagePreview.value = 'data:image/png;base64,' + d.value.movieImageData
+    ImagePreview.value = 'data:image/png;base64,' + d.value.MovieImageData
 
-    const date = globalhelper.formatInputDate(new Date(d.value.releaseDate))
+    const date = globalhelper.formatInputDate(new Date(d.value.ReleaseDate))
     Movie.value.ReleaseDate = date
 
     MoviesAdminApi.setEditMovie(undefined)
@@ -271,9 +271,15 @@ const addMovieFormSubmit = async () => {
         <img v-if="ImagePreview" :src="ImagePreview" alt="Image Preview" />
       </div>
 
-      <button type="submit" class="btn w-25">Add movie</button>
+      <button type="submit" class="btn w-25">Save movie</button>
     </form>
   </div>
 </template>
+
+<style scoped>
+form {
+  margin: 30px 0;
+}
+</style>
 
 <style src="@vueform/multiselect/themes/default.css"></style>

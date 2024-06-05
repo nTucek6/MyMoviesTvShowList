@@ -7,23 +7,22 @@ import AdminNavigationComponent from '@/app/shared/components/AdminNavigationCom
 import { tvShowParams } from '@/app/views/3.admin/tvshow/tvshowparams'
 import { SaveTVShowDTO } from '@/app/shared/models/save-tvshow.model'
 import { useMoviesAdminApi } from '@/stores/moviesadmin'
+import { useGlobalHelper } from '@/stores/globalhelper'
 
 const TvShowAdminApi = useTvShowAdminStore()
 const MoviesAdminApi = useMoviesAdminApi()
+const globalhelper = useGlobalHelper()
 
 const TVShow = ref<SaveTVShowDTO>(new SaveTVShowDTO())
 
 const Genres = ref()
-//const Directors = ref()
-//const Screenwriter = ref()
 const Creators = ref()
 const Actors = ref()
 
 const ImagePreview = ref()
 
 const GenresDefault = ref()
-//const DirectorDefault = ref()
-//const ScreenwriterDefault = ref()
+
 const CreatorsDefault = ref()
 const ActorsDefault = ref()
 
@@ -31,6 +30,36 @@ const GetGenres = computed(() => MoviesAdminApi.Genres)
 
 onBeforeMount(async () => {
   await MoviesAdminApi.GetGenres()
+
+  const d = computed(() => TvShowAdminApi.EditTVShow)
+
+  if (d.value != undefined) {
+    TVShow.value.Id = d.value.Id
+    TVShow.value.Title = d.value.Title
+    TVShow.value.Description = d.value.Description
+    TVShow.value.Runtime = d.value.Runtime
+    TVShow.value.TotalSeason = d.value.TotalSeason
+    TVShow.value.TotalEpisode = d.value.TotalEpisode
+    d.value.Genres.map((item: any) => GenresDefault.value.select(item.value))
+    d.value.Creators.map((item: any) =>
+      CreatorsDefault.value.select({ value: item.Id, label: item.FirstName + ' ' + item.LastName })
+    )
+    d.value.Actors.map((item: any) =>
+      ActorsDefault.value.select({
+        value: item.Id,
+        label: item.FirstName + ' ' + item.LastName,
+        CharacterName: item.CharacterName,
+        Description: item.CharacterDescription
+      })
+    )
+
+    ImagePreview.value = 'data:image/png;base64,' + d.value.TVShowImageData
+
+    //const date = globalhelper.formatInputDate(new Date(d.value.ReleaseDate))
+    //Movie.value.ReleaseDate = date
+
+    TvShowAdminApi.setEditTVShow(undefined)
+  }
 })
 
 const SearchCrew = async (search: any) => {
@@ -133,7 +162,7 @@ const addTVShowFormSubmit = async () => {
         type="number"
         v-model="TVShow.TotalEpisode"
         class="w-50"
-        id="totalEpisodes"
+        id="totalEpisode"
         placeholder="TvShow total episodes"
       />
     </div>

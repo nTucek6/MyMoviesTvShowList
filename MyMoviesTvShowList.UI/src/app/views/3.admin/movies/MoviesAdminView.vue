@@ -3,8 +3,8 @@ import { useRouter } from 'vue-router'
 import { onMounted, computed } from 'vue'
 import { useMoviesAdminApi } from '@/stores/moviesadmin'
 import type { MoviesDTO } from '@/app/shared/models/movies.model'
-import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue';
-import {moviesParams} from '@/app/views/3.admin/movies/moviesparams'
+import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
+import { moviesParams } from '@/app/views/3.admin/movies/moviesparams'
 
 const MoviesAdminApi = useMoviesAdminApi()
 const router = useRouter()
@@ -82,9 +82,7 @@ const EditMovie = (data: any) => {
 </template>
 
 <style scoped>
-
-table{
+table {
   margin-top: 30px;
 }
-
 </style>

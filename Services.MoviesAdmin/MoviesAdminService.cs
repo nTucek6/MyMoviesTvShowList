@@ -130,11 +130,16 @@ namespace Services.MoviesAdmin
                        Id = s.Id,
                        FirstName = s.FirstName,
                        LastName = s.LastName,
-                       //CharacterName = a.CharacterName,
                        PersonImageData = s.PersonImageData
 
                    })
                    .FirstOrDefaultAsync();
+
+                    var Character = await database.MoviesCharacters.Where(p => p.ActorId == a.PersonId).FirstOrDefaultAsync();
+
+                    q.CharacterName = Character.Name;
+                    q.CharacterDescription = Character.Description;
+
                     actors.Add(q);
                 }
 

@@ -19,8 +19,8 @@ namespace Services.TVShowsAdmin
 
         public List<ActorDTO> Actors { get; set; }
         public string Runtime { get; set; }
-        public decimal TotalSeasons { get; set; }
-        public decimal TotalEpisodes { get; set; }
+        public decimal TotalSeason { get; set; }
+        public decimal TotalEpisode { get; set; }
         public int? RatingsCount { get; set; }
         public byte[] TVShowImageData { get; set; }
 

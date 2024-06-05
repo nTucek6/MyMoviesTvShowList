@@ -45,7 +45,6 @@ const router = createRouter({
       component: () => import('@/app/views/3.admin/movies/MoviesAdminView.vue'),
       beforeEnter: (to, from, next) => {
         const isAdmin = computed(() => useAuthentication().IsAdmin())
-        console.log(isAdmin.value)
         if (!isAdmin.value) {
           next('/')
         } else {

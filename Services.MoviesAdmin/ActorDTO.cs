@@ -9,5 +9,6 @@
         public string BirthPlace { get; set; }
         public byte[] PersonImageData { get; set; }
         public string CharacterName { get; set; }
+        public string CharacterDescription { get; set; }
     }
 }

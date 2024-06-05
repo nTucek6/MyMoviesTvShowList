@@ -11,8 +11,8 @@ export class TVShowDTO{
     Creators: PersonDTO[]
     Actors: ActorDTO[]
     Runtime: string
-    TotalSeasons:number
-    TotalEpisodes:number
+    TotalSeason:number
+    TotalEpisode:number
     RatingsCount: number
     TVShowImageData: Blob
   
@@ -26,9 +26,8 @@ export class TVShowDTO{
       this.Actors = []
       this.Runtime = ''
       this.RatingsCount = 0
-      this.TotalSeasons = 0
-      this.TotalEpisodes  = 0
+      this.TotalSeason = 0
+      this.TotalEpisode  = 0
       this.TVShowImageData = new Blob([]);
     }
-
 }

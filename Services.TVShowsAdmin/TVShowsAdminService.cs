@@ -42,8 +42,8 @@ namespace Services.TVShowsAdmin
 
             foreach (var tvShow in data)
             {
-                var act = await database.MoviesCrew.Where(a => a.MovieId == tvShow.Id && a.Role == CrewRoleEnum.Actor).ToListAsync();
-                var cre = await database.MoviesCrew.Where(a => a.MovieId == tvShow.Id && a.Role == CrewRoleEnum.Creator).ToListAsync();
+                var act = await database.TvShowCrew.Where(a => a.TvShowId == tvShow.Id && a.Role == CrewRoleEnum.Actor).ToListAsync();
+                var cre = await database.TvShowCrew.Where(a => a.TvShowId == tvShow.Id && a.Role == CrewRoleEnum.Creator).ToListAsync();
 
                 List<string> g = tvShow.Genres.Split(",").ToList();
 
@@ -65,6 +65,12 @@ namespace Services.TVShowsAdmin
 
                    })
                    .FirstOrDefaultAsync();
+
+                    var Character = await database.TvShowCharacters.Where(p => p.ActorId == a.PersonId).FirstOrDefaultAsync();
+
+                    q.CharacterName = Character.Name;
+                    q.CharacterDescription = Character.Description;
+
                     actors.Add(q);
                 }
 
@@ -92,8 +98,8 @@ namespace Services.TVShowsAdmin
                     Runtime = tvShow.Runtime,
                     TVShowImageData = tvShow.TVShowImageData,
                     Description = tvShow.Description,
-                    TotalSeasons = tvShow.TotalSeason,
-                    TotalEpisodes = tvShow.TotalEpisode,
+                    TotalSeason = tvShow.TotalSeason,
+                    TotalEpisode = tvShow.TotalEpisode,
                     Genres = genres
                 });
             }
@@ -130,9 +136,9 @@ namespace Services.TVShowsAdmin
 
                     foreach (var a in JsonSerializer.Deserialize<List<ActorSelectDTO>>(TVShow.Actors))
                     {
-                        await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                        await database.TvShowCrew.AddAsync(new TvShowCrewEntity
                         {
-                            MovieId = TVShow.Id,
+                            TvShowId = TVShow.Id,
                             PersonId = Convert.ToInt32(a.value),
                             Role = CrewRoleEnum.Actor
                         });
@@ -148,9 +154,9 @@ namespace Services.TVShowsAdmin
 
                     foreach (var a in TVShow.Creators.Split(',').Reverse().ToList<string>())
                     {
-                        await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                        await database.TvShowCrew.AddAsync(new TvShowCrewEntity
                         {
-                            MovieId = TVShow.Id,
+                            TvShowId = TVShow.Id,
                             PersonId = Convert.ToInt32(a),
                             Role = CrewRoleEnum.Creator
                         });
@@ -205,9 +211,9 @@ namespace Services.TVShowsAdmin
 
                     foreach (var a in TVShow.Creators.Split(',').Reverse().ToList<string>())
                     {
-                        await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                        await database.TvShowCrew.AddAsync(new TvShowCrewEntity
                         {
-                            MovieId = TVShow.Id,
+                            TvShowId = TVShow.Id,
                             PersonId = Convert.ToInt32(a),
                             Role = CrewRoleEnum.Creator
                         });
