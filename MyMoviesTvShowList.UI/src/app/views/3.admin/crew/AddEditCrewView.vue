@@ -4,66 +4,58 @@ import { useCrewsAdmin } from '@/stores/crewsadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue';
 import {crewParams} from '@/app/views/3.admin/crew/crewparams'
+import { SavePersonDTO } from '@/app/shared/models/save-person.model';
 
-const Id = ref(0)
-const Name = ref()
-const Surname = ref()
-const BirthDate = ref()
-const BirthPlace = ref()
-const Image = ref()
+const Person = ref<SavePersonDTO>(new SavePersonDTO())
+
 const ImagePreview = ref()
 
 const api = useCrewsAdmin()
 const globalhelper = useGlobalHelper()
 
 const handleImageChange = (event: any) => {
-  Image.value = event.target.files[0]
+  Person.value.PersonImage = event.target.files[0]
 
-  if (Image.value && Image.value.type.startsWith('image/')) {
+  if (Person.value.PersonImage && Person.value.PersonImage.type.startsWith('image/')) {
     const reader = new FileReader()
     reader.onload = (e: any) => {
       ImagePreview.value = e.target.result
     }
-    reader.readAsDataURL(Image.value)
+    reader.readAsDataURL(Person.value.PersonImage)
   }
 }
 
 onMounted(() => {
   const d = computed(() => api.EditPerson)
   if (d.value != undefined) {
-    Id.value = d.value.id
-    Name.value = d.value.firstName
-    Surname.value = d.value.lastName
-    BirthPlace.value = d.value.birthPlace
-    ImagePreview.value = 'data:image/png;base64,' + d.value.personImageData
+    Person.value.Id = d.value.id
+    Person.value.FirstName = d.value.FirstName
+    Person.value.LastName = d.value.LastName
+    Person.value.BirthPlace = d.value.BirthPlace
+    ImagePreview.value = 'data:image/png;base64,' + d.value.PersonImageData
 
-    const date = globalhelper.formatInputDate(new Date(d.value.birthDate))
-    BirthDate.value = date
+    const date = globalhelper.formatInputDate(new Date(d.value.BirthDate))
+    Person.value.BirthDate = date
 
     api.setEditPerson(undefined)
   }
 })
 
 const ClearFormData = () => {
-  Id.value = 0
-  Name.value = null
-  Surname.value = null
-  BirthDate.value = null
-  BirthPlace.value = null
-  Image.value = null
+  Person.value = new SavePersonDTO()
   ImagePreview.value = null
 }
 
 const addPersonFormSubmit = async () => {
-  const Person = new FormData()
-  Person.append('Id', Id.value.toString())
-  Person.append('FirstName', Name.value)
-  Person.append('LastName', Surname.value)
-  Person.append('BirthDate', BirthDate.value)
-  Person.append('BirthPlace', BirthPlace.value)
-  Person.append('PersonImage', Image.value)
+  const p = new FormData()
+  p.append('Id', Person.value.Id.toString())
+  p.append('FirstName', Person.value.FirstName)
+  p.append('LastName', Person.value.LastName)
+  p.append('BirthDate', Person.value.BirthDate)
+  p.append('BirthPlace', Person.value.BirthPlace)
+  p.append('PersonImage', Person.value.PersonImage)
 
-  api.SavePerson(Person).then(() => {
+  api.SavePerson(p).then(() => {
     ClearFormData()
   })
 }
@@ -75,18 +67,18 @@ const addPersonFormSubmit = async () => {
 
     <form @submit.prevent="addPersonFormSubmit" class="text-center">
       <div class="form-group mb-3">
-        <input type="text" v-model="Name" class="w-50" id="name" placeholder="Name" />
+        <input type="text" v-model="Person.FirstName" class="w-50" id="name" placeholder="Name" />
       </div>
       <div class="form-group mb-3">
-        <input type="text" v-model="Surname" class="w-50" id="surname" placeholder="Surname" />
+        <input type="text" v-model="Person.LastName" class="w-50" id="lastname" placeholder="Surname" />
       </div>
       <div class="form-group mb-3">
-        <input type="date" v-model="BirthDate" class="w-50" id="surname" placeholder="Birth Date" />
+        <input type="date" v-model="Person.BirthDate" class="w-50" id="surname" placeholder="Birth Date" />
       </div>
       <div class="form-group mb-3">
         <input
           type="text"
-          v-model="BirthPlace"
+          v-model="Person.BirthPlace"
           class="w-50"
           id="surname"
           placeholder="Birth Place"
@@ -114,6 +106,7 @@ const addPersonFormSubmit = async () => {
 <style scoped>
 form{
   margin-top: 30px;
+  margin-bottom: 30px
 }
 
 </style>

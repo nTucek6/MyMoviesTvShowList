@@ -124,26 +124,65 @@ namespace Services.TVShowsAdmin
                     tvShowDb.Runtime = TVShow.Runtime;
                    
 
-                    if (TVShow.TVShowImageData != null)
+                    if (TVShow.TVShowImageData.Length > 0)
                     {
                         tvShowDb.TVShowImageData = DataActions.ImageToByte(TVShow.TVShowImageData);
                     }
 
                     await database.SaveChangesAsync();
 
-                    await database.TvShowCrew.Where(c => c.TvShowId == tvShowDb.Id).ExecuteDeleteAsync();
-                    await database.TvShowCharacters.Where(c => c.TvShowId == tvShowDb.Id).ExecuteDeleteAsync();
+                    var existingActorCrew = await database.TvShowCrew.Where(c => c.TvShowId == tvShowDb.Id && c.Role == CrewRoleEnum.Actor).ToListAsync();
+                    var existingCharacterCrew = await database.TvShowCharacters.Where(c => c.TvShowId == tvShowDb.Id).ToListAsync();
 
-                    foreach (var a in JsonSerializer.Deserialize<List<ActorSelectDTO>>(TVShow.Actors))
+                    var updatedActorCrew = JsonSerializer.Deserialize<List<ActorSelectDTO>>(TVShow.Actors);
+
+                    var actorsToRemove = existingActorCrew.Where(ec => !updatedActorCrew.Any(uc => uc.value == ec.PersonId)).ToList();
+                    var charactersToRemove = existingCharacterCrew.Where(ec => !updatedActorCrew.Any(uc => uc.value == ec.ActorId)).ToList();
+
+                    foreach (var r in actorsToRemove)
                     {
-                        await database.TvShowCrew.AddAsync(new TvShowCrewEntity
-                        {
-                            TvShowId = TVShow.Id,
-                            PersonId = Convert.ToInt32(a.value),
-                            Role = CrewRoleEnum.Actor
-                        });
+                        existingActorCrew.Remove(r);
+                        database.TvShowCrew.Remove(r);
 
-                        await database.TvShowCharacters.AddAsync(new TvShowCharactersEntity
+                    }
+
+                    foreach(var r in charactersToRemove)
+                    {
+                        existingCharacterCrew.Remove(r);
+                        database.TvShowCharacters.Remove(r);
+                    }
+
+                    var charactersToUpdate = updatedActorCrew.Where(uc => !existingCharacterCrew.Any(ec => ec.ActorId == uc.value && uc.CharacterName == ec.Name && uc.Description == ec.Description)).ToList();
+
+                    foreach (var u in charactersToUpdate)
+                    {
+                        int Id = existingCharacterCrew.Where(q => q.ActorId == u.value).Select(s => s.Id).FirstOrDefault();
+
+                        var update = await database.TvShowCharacters.Where(q => q.Id == Id).FirstOrDefaultAsync();
+
+                        update.Description = u.Description;
+                        update.Name = u.CharacterName;
+
+                        database.TvShowCharacters.Update(update);
+                    }
+
+                    var crewToAdd = updatedActorCrew.Where(uc => !existingActorCrew.Any(ec => ec.PersonId == uc.value)).ToList();
+
+                    var charactersToAdd = updatedActorCrew.Where(uc => !existingCharacterCrew.Any(ec => ec.ActorId == uc.value)).ToList();
+
+                    foreach (var a in crewToAdd)
+                    {
+                      await database.TvShowCrew.AddAsync(new TvShowCrewEntity
+                       {
+                           TvShowId = TVShow.Id,
+                           PersonId = Convert.ToInt32(a.value),
+                           Role = CrewRoleEnum.Actor
+                       });
+                    }
+
+                    foreach (var a in charactersToAdd)
+                    {
+                       await database.TvShowCharacters.AddAsync(new TvShowCharactersEntity
                         {
                             TvShowId = TVShow.Id,
                             ActorId = Convert.ToInt32(a.value),
@@ -152,18 +191,9 @@ namespace Services.TVShowsAdmin
                         });
                     }
 
-                    foreach (var a in TVShow.Creators.Split(',').Reverse().ToList<string>())
-                    {
-                        await database.TvShowCrew.AddAsync(new TvShowCrewEntity
-                        {
-                            TvShowId = TVShow.Id,
-                            PersonId = Convert.ToInt32(a),
-                            Role = CrewRoleEnum.Creator
-                        });
-                    }
-
+                    await SaveTVShowCrew(TVShow.Creators, CrewRoleEnum.Creator, tvShowDb.Id);
+                
                     await database.SaveChangesAsync();
-
                 }
                 else
                 {
@@ -180,14 +210,11 @@ namespace Services.TVShowsAdmin
                         TotalSeason = TVShow.TotalSeason,
                         TotalEpisode = TVShow.TotalEpisode,
                         TVShowImageData = s,
-
                     };
 
                     await database.TvShow.AddAsync(newShow);
 
                     await database.SaveChangesAsync();
-
-                    //var m = await database.TvShow.Where(w => w.Title == TVShow.Title).Select(s => s.Id).FirstOrDefaultAsync();
 
                     int m = newShow.Id;
 
@@ -219,7 +246,7 @@ namespace Services.TVShowsAdmin
                         });
                     }
                 }
-                    await database.SaveChangesAsync();
+                await database.SaveChangesAsync();
 
                 transaction.Commit();
             }
@@ -230,7 +257,35 @@ namespace Services.TVShowsAdmin
             }
 
         }
-          
+
+
+        private async Task SaveTVShowCrew(string Crew, CrewRoleEnum crewRoleEnum, int tvShowId)
+        {
+
+            var existingCrew = await database.TvShowCrew.Where(c => c.TvShowId == tvShowId && c.Role == crewRoleEnum).ToListAsync();
+            var updatedCrew = Crew.Split(",").ToList();
+
+            var crewToRemove = existingCrew.Where(ec => !updatedCrew.Any(uc => Convert.ToInt32(uc) == ec.PersonId)).ToList();
+
+            foreach (var r in crewToRemove)
+            {
+                existingCrew.Remove(r);
+                database.TvShowCrew.Remove(r);
+            }
+
+            var creatorsToAdd = updatedCrew.Where(uc => !existingCrew.Any(ec => ec.PersonId == Convert.ToInt32(uc))).ToList();
+
+            foreach (var a in creatorsToAdd)
+            {
+                await database.TvShowCrew.AddAsync(new TvShowCrewEntity
+                {
+                    TvShowId = tvShowId,
+                    PersonId = Convert.ToInt32(a),
+                    Role = crewRoleEnum
+                });
+            }
+        }
+
 
 
     }

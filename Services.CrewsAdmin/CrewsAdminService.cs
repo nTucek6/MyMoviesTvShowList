@@ -3,6 +3,7 @@ using Entites;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using MyMoviesTvShowList.Extensions;
 
 namespace Services.CrewsAdmin
 {
@@ -62,13 +63,13 @@ namespace Services.CrewsAdmin
 
                 if (person.PersonImage != null)
                 {
-                    personDb.PersonImageData = ImageToByte(person.PersonImage);
+                    personDb.PersonImageData = DataActions.ImageToByte(person.PersonImage);
                 }
                 database.Update(personDb);
             }
             else
             {
-                byte[] s = ImageToByte(person.PersonImage);
+                byte[] s = DataActions.ImageToByte(person.PersonImage);
 
                 await database.People.AddAsync(new PeopleEntity
                 {
@@ -83,19 +84,6 @@ namespace Services.CrewsAdmin
             await database.SaveChangesAsync();
         }
 
-
-
-        private byte[] ImageToByte(IFormFile image)
-        {
-            byte[] s = null;
-            using (var ms = new MemoryStream())
-            {
-                image.CopyTo(ms);
-                s = ms.ToArray();
-
-            }
-            return s;
-        }
 
     }
 }

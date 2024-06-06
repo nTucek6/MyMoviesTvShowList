@@ -92,6 +92,9 @@ const handleImageChange = (event: any) => {
 const ClearFormData = () => {
   TVShow.value = new SaveTVShowDTO()
   ImagePreview.value = null
+  Genres.value = null
+  Creators.value = null
+  Actors.value = null
 }
 
 const addTVShowFormSubmit = async () => {
@@ -105,8 +108,6 @@ const addTVShowFormSubmit = async () => {
     Genres.value.map((x: any) => x)
   )
   t.append('Runtime', TVShow.value.Runtime)
-  //t.append('Director',Directors.value.map((x: any) => x))
-  //t.append('Writers',Screenwriter.value.map((x: any) => x))
   t.append(
     'Creators',
     Creators.value.map((x: any) => x)

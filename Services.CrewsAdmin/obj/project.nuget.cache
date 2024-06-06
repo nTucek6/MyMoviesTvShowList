@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xCa/8fDZWn9PJfAIWmXs6v9zr1F7kywFiXqRAoX7GYNa/QF+2AlgP0M0//iUieq7XKVbwy59oYqUO1AeXqxtag==",
+  "dgSpecHash": "VV2sJ9FAwjYhtrlYQEjvXglVSs7/r56f6m8pQG+OfNaESafhYkEmh/XbytgoB99WnRXbZU2AETUcZqnaC4lk+g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.CrewsAdmin\\Services.CrewsAdmin.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
@@ -20,7 +21,8 @@
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
-    "C:\\Users\\Nikola\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\Nikola\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Nikola\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

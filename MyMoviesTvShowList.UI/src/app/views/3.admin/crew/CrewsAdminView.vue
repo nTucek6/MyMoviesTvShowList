@@ -38,10 +38,10 @@ const EditPerson = (data: any) => {
       </thead>
       <tbody>
         <tr v-for="p in PeopleList" :key="p.Id">
-          <td>{{ p.firstName }}</td>
-          <td>{{ p.lastName }}</td>
-          <td>{{ globalhelper.formatDate(new Date(p.birthDate)) }}</td>
-          <td>{{ p.birthPlace }}</td>
+          <td>{{ p.FirstName }}</td>
+          <td>{{ p.LastName }}</td>
+          <td>{{ globalhelper.formatDate(new Date(p.BirthDate)) }}</td>
+          <td>{{ p.BirthPlace }}</td>
           <td>
             <span
               style="cursor: pointer"

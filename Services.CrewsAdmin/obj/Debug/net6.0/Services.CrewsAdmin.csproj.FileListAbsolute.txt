@@ -16,3 +16,5 @@ C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.CrewsAdmin\obj\
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.CrewsAdmin\obj\Debug\net6.0\Services.CrewsAdmin.pdb
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.CrewsAdmin\obj\Debug\net6.0\ref\Services.CrewsAdmin.dll
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.CrewsAdmin\obj\Debug\net6.0\Services.CrewsAdmin.sourcelink.json
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.CrewsAdmin\bin\Debug\net6.0\MyMoviesTvShowList.Extensions.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.CrewsAdmin\bin\Debug\net6.0\MyMoviesTvShowList.Extensions.pdb

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DatabaseContext\DatabaseContext.csproj" />
     <ProjectReference Include="..\Entites\Entites.csproj" />
+    <ProjectReference Include="..\MyMoviesTvShowList.Extensions\MyMoviesTvShowList.Extensions.csproj" />
   </ItemGroup>
 
 </Project>
