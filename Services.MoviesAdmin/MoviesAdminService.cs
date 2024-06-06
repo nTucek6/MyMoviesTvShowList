@@ -2,9 +2,7 @@
 using Entites;
 using Entites.Enum;
 using Entites.Movie;
-using Entites.Show;
 using Entities.Enum;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using MyMoviesTvShowList.Extensions;
 using System.Linq.Expressions;
@@ -182,7 +180,6 @@ namespace Services.MoviesAdmin
         }
         public async Task SaveMovie(SaveMovieDTO movie)
         {
-
             var transaction = database.Database.BeginTransaction();
 
             try
@@ -232,12 +229,15 @@ namespace Services.MoviesAdmin
                     {
                         int Id = existingCharacterCrew.Where(q=> q.ActorId == u.value).Select(s=> s.Id).FirstOrDefault();
 
-                        var update = await database.MoviesCharacters.Where(q=> q.Id == Id).FirstOrDefaultAsync();
+                        if(Id > 0)
+                        {
+                            var update = await database.MoviesCharacters.Where(q => q.Id == Id).FirstOrDefaultAsync();
 
-                        update.Description = u.Description;
-                        update.Name = u.CharacterName;
+                            update.Description = u.Description;
+                            update.Name = u.CharacterName;
 
-                        database.MoviesCharacters.Update(update); 
+                            database.MoviesCharacters.Update(update);
+                        }
                     }
 
                     var actorsToAdd = updatedActorCrew.Where(uc => !existingActorCrew.Any(ec => ec.PersonId == uc.value)).ToList();
@@ -309,7 +309,6 @@ namespace Services.MoviesAdmin
                             Description = a.Description
                         });
                     }
-
 
                     foreach (var a in movie.Director.Split(",").ToList())
                     {

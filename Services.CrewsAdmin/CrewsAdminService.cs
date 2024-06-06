@@ -61,7 +61,7 @@ namespace Services.CrewsAdmin
                 personDb.BirthDate = person.BirthDate.ToUniversalTime();
                 personDb.BirthPlace = person.BirthPlace;
 
-                if (person.PersonImage != null)
+                if (person.PersonImage.Length > 0)
                 {
                     personDb.PersonImageData = DataActions.ImageToByte(person.PersonImage);
                 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Services.CrewsAdmin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7640605db6a50908ad1cb6011870d8c33f4c9e16")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8651caea7696a27086705c15cdebbfdf851a6e09")]
 [assembly: System.Reflection.AssemblyProductAttribute("Services.CrewsAdmin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Services.CrewsAdmin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

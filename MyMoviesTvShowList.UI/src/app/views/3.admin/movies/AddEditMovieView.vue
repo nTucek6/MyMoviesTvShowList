@@ -94,6 +94,10 @@ const handleImageChange = (event: any) => {
 const ClearFormData = () => {
   Movie.value = new SaveMovieDTO()
   ImagePreview.value = null
+  Genres.value = null
+  Directors.value = null
+  Screenwriter.value = null
+  Actors.value = null
 }
 
 const addMovieFormSubmit = async () => {

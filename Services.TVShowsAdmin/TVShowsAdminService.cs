@@ -157,17 +157,16 @@ namespace Services.TVShowsAdmin
                     foreach (var u in charactersToUpdate)
                     {
                         int Id = existingCharacterCrew.Where(q => q.ActorId == u.value).Select(s => s.Id).FirstOrDefault();
-
-                        var update = await database.TvShowCharacters.Where(q => q.Id == Id).FirstOrDefaultAsync();
-
-                        update.Description = u.Description;
-                        update.Name = u.CharacterName;
-
-                        database.TvShowCharacters.Update(update);
+                        if (Id > 0)
+                        {
+                            var update = await database.TvShowCharacters.Where(q => q.Id == Id).FirstOrDefaultAsync();
+                            update.Description = u.Description;
+                            update.Name = u.CharacterName;
+                            database.TvShowCharacters.Update(update);
+                        }
                     }
 
                     var crewToAdd = updatedActorCrew.Where(uc => !existingActorCrew.Any(ec => ec.PersonId == uc.value)).ToList();
-
                     var charactersToAdd = updatedActorCrew.Where(uc => !existingCharacterCrew.Any(ec => ec.ActorId == uc.value)).ToList();
 
                     foreach (var a in crewToAdd)

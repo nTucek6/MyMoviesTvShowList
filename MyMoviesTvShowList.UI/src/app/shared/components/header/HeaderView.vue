@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, onBeforeUnmount } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useAuthentication } from '@/stores/authentication'
 import { dropdownMenu } from './menu-items'
@@ -17,13 +17,42 @@ const route = useRoute()
 const page = ref()
 
 const showMobileMenu = ref(false)
-const showProfileMenu = ref(false)
 
-onMounted(() => {})
+const showProfileMenu = ref(false)
+const showListMenu = ref(false)
+
+const dropdownList = ref()
+const dropdownProfile = ref()
+
+function handleClickOutside(event: any){
+  if (
+    dropdownList.value &&
+    !dropdownList.value.contains(event.target) &&
+    showListMenu.value == true
+  ) {
+    showListMenu.value = false
+  }
+  if (
+    dropdownProfile.value &&
+    !dropdownProfile.value.contains(event.target) &&
+    showProfileMenu.value == true
+  ) {
+    showProfileMenu.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
 
 const ToggleMobileMenu = () => {
   showMobileMenu.value = !showMobileMenu.value
 }
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 
 watch(route, () => {
   if (showMobileMenu.value) {
@@ -34,6 +63,8 @@ watch(route, () => {
   } else {
     page.value = route.name
   }
+  showListMenu.value = false
+  showProfileMenu.value = false
 })
 </script>
 
@@ -73,6 +104,24 @@ watch(route, () => {
           </div>
 
           <div
+            ref="dropdownList"
+            class="dropdown-list"
+            v-if="userLogIn"
+            :class="{ 'dropdown-list-open': showListMenu }"
+          >
+            <div class="dropdown" @click="showListMenu = !showListMenu">
+              <font-awesome-icon id="f-icon" icon="list" />
+            </div>
+
+            <div class="dropdown-content">
+              <RouterLink :to="`/movielist/${UserData?.Username}`" class="btn dropdown-item"
+                ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Movies List</RouterLink
+              >
+            </div>
+          </div>
+
+          <div
+            ref="dropdownProfile"
             class="dropdown-profile"
             v-if="userLogIn"
             :class="{ 'dropdown-profile-open': showProfileMenu }"
@@ -321,7 +370,7 @@ a {
   background-color: grey;
 }
 
-#mobile-site-pages li{
+#mobile-site-pages li {
   display: flex;
   justify-content: space-between;
 }
@@ -336,23 +385,21 @@ a {
   padding: 5px;
 }
 
-
 #login-mobile {
   background-color: inherit;
-  
 }
 
 #signup-mobile {
   background-color: inherit;
 }
 
-#login-mobile>svg, #signup-mobile>svg{
+#login-mobile > svg,
+#signup-mobile > svg {
   margin-right: 8px;
   font-size: 16px;
   height: 16px;
   width: 16px;
 }
-
 
 @media screen and (max-width: 768px) {
   header {
@@ -376,13 +423,11 @@ a {
     display: block;
   }
 
-  .dropdown-user img
-  {
+  .dropdown-user img {
     height: 35px !important;
     width: 35px !important;
     margin-right: 8px;
   }
-
 }
 
 .dropdown-profile {
@@ -390,7 +435,7 @@ a {
   display: inline-block;
   cursor: pointer;
   color: $app_name_color;
-  margin-left:10px
+  margin-left: 10px;
 }
 
 .dropdown {
@@ -464,6 +509,15 @@ a {
   color: $app_text_color;
 }
 
+.dropdown-list {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: $app_name_color;
+  margin-left: 10px;
+}
 
+.dropdown-list-open .dropdown-content {
+  display: block;
+}
 </style>
-
