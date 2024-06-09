@@ -18,6 +18,7 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.1.0",
           "Services.Authentication": "1.0.0",
           "Services.CrewsAdmin": "1.0.0",
+          "Services.ExternalApiCalls": "1.0.0",
           "Services.Frontpage": "1.0.0",
           "Services.MoviesAdmin": "1.0.0",
           "Services.TVShowsAdmin": "1.0.0",
@@ -1140,6 +1141,17 @@
           "Services.CrewsAdmin.dll": {}
         }
       },
+      "Services.ExternalApiCalls/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
+          "MyMoviesTvShowList.Extensions": "1.0.0",
+          "Services.CrewsAdmin": "1.0.0",
+          "Services.MoviesAdmin": "1.0.0"
+        },
+        "runtime": {
+          "Services.ExternalApiCalls.dll": {}
+        }
+      },
       "Services.Frontpage/1.0.0": {
         "runtime": {
           "Services.Frontpage.dll": {}
@@ -1983,6 +1995,11 @@
       "sha512": ""
     },
     "Services.CrewsAdmin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services.ExternalApiCalls/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

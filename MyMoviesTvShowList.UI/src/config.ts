@@ -11,10 +11,12 @@ export const API_URLS_ADMIN = {
   GETMOVIES : `${API_BASE_URL}MoviesAdmin/GetMovies`,
   GETCREWSELECTSEARCH : `${API_BASE_URL}MoviesAdmin/GetCrewSelectSearch`,
   SAVEMOVIE : `${API_BASE_URL}MoviesAdmin/SaveMovie`,
+  GETMOVIEFROMAPI: `${API_BASE_URL}ExternalApiCalls/GetMovieFromApi`,
 
   GETPEOPLE : `${API_BASE_URL}CrewsAdmin/GetPeople`,
   GETPEOPLECOUNT : `${API_BASE_URL}CrewsAdmin/GetPeopleCount`,
   SAVEPERSON : `${API_BASE_URL}CrewsAdmin/SavePerson`,
+  GETPERSONFROMAPI : `${API_BASE_URL}ExternalApiCalls/GetCelebritie`,
 
   SAVETVSHOW : `${API_BASE_URL}TVShowsAdmin/SaveTVShow`,
   GETTVSHOW : `${API_BASE_URL}TVShowsAdmin/GetTVShow`

@@ -41,7 +41,7 @@ namespace Services.Authentication
                 Email = user.Email,
                 Username = user.Username,
                 PasswordHash = passwordHash,
-                RoleId = (RolesEnum)3,
+                RoleId = UserRoleEnum.User,
                 Joined = DateTime.Now.ToUniversalTime(),
             }); 
 

@@ -17,6 +17,7 @@ const MovieList = computed<MoviesDTO[]>(() => MoviesAdminApi.MovieData)
 
 const EditMovie = (data: any) => {
   MoviesAdminApi.setEditMovie(data)
+  MoviesAdminApi.setIsEdit(true)
   router.push({ name: 'Add & Edit movie' })
 }
 </script>
@@ -60,7 +61,7 @@ const EditMovie = (data: any) => {
           </td>
           <td>
             <span v-for="(d, index) in m.Writers" :key="index"
-              >{{ d.FirstName }} {{ d.FirstName
+              >{{ d.FirstName }} {{ d.LastName
               }}<span v-if="index !== m.Writers.length - 1">, </span>
             </span>
           </td>

@@ -26,11 +26,19 @@ const ActorsDefault = ref()
 
 const GetGenres = computed(() => MoviesAdminApi.Genres)
 
+const query = ref()
+
+const isEdit = ref()
+
+const d = computed(() => MoviesAdminApi.EditMovie)
+
 onBeforeMount(async () => {
   await MoviesAdminApi.GetGenres()
+  isEdit.value = MoviesAdminApi.isEdit
+  setEditValues()
+})
 
-  const d = computed(() => MoviesAdminApi.EditMovie)
-
+const setEditValues = () => {
   if (d.value != undefined) {
     Movie.value.Id = d.value.Id
     Movie.value.MovieName = d.value.MovieName
@@ -55,14 +63,17 @@ onBeforeMount(async () => {
       })
     )
 
-    ImagePreview.value = 'data:image/png;base64,' + d.value.MovieImageData
+    if (d.value.MovieImageData != null) {
+      ImagePreview.value = 'data:image/png;base64,' + d.value.MovieImageData
+    }
 
     const date = globalhelper.formatInputDate(new Date(d.value.ReleaseDate))
     Movie.value.ReleaseDate = date
 
     MoviesAdminApi.setEditMovie(undefined)
+    MoviesAdminApi.setIsEdit(false)
   }
-})
+}
 
 const SearchCrew = async (search: any) => {
   if (search != null) {
@@ -98,6 +109,13 @@ const ClearFormData = () => {
   Directors.value = null
   Screenwriter.value = null
   Actors.value = null
+
+  GenresDefault.value.clear()
+  DirectorDefault.value.clear()
+  ScreenwriterDefault.value.clear()
+  ActorsDefault.value.clear()
+
+  isEdit.value = false
 }
 
 const addMovieFormSubmit = async () => {
@@ -126,13 +144,31 @@ const addMovieFormSubmit = async () => {
     ClearFormData()
   })
 }
+
+const handleMovieSearch = async () => {
+  await MoviesAdminApi.GetMovieFromAPI(query.value)
+  setEditValues()
+}
 </script>
 
 <template>
   <div>
     <AdminNavigationComponent :routes="moviesParams" />
 
-    <form @submit.prevent="addMovieFormSubmit" class="text-center">
+    <div class="text-center mt-5" v-if="!isEdit">
+      <div class="form-group mb-3">
+        <input
+          type="text"
+          v-model="query"
+          class="w-50"
+          id="query"
+          placeholder="Search for movie..."
+        />
+      </div>
+      <button class="btn" @click="handleMovieSearch">Search</button>
+    </div>
+
+    <form @submit.prevent="addMovieFormSubmit" class="text-center mb-3 mt-5">
       <div class="form-group mb-3">
         <input
           type="text"
@@ -275,15 +311,10 @@ const addMovieFormSubmit = async () => {
         <img v-if="ImagePreview" :src="ImagePreview" alt="Image Preview" />
       </div>
 
+      <button type="button" class="btn w-25 mr-1" @click="ClearFormData">Clear</button>
       <button type="submit" class="btn w-25">Save movie</button>
     </form>
   </div>
 </template>
-
-<style scoped>
-form {
-  margin: 30px 0;
-}
-</style>
 
 <style src="@vueform/multiselect/themes/default.css"></style>

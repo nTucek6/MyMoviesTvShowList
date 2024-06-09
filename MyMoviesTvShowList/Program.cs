@@ -8,6 +8,8 @@ using Services.CrewsAdmin;
 using Services.Frontpage;
 using Services.MoviesAdmin;
 using Services.TVShowsAdmin;
+using Services.ExternalApiCalls;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +39,9 @@ builder.Services.AddDbContext<MyMoviesTvShowListContext>(options => options.UseN
 //Configuration -------------------------------------------------------------------------
 builder.Services.Configure<JwtConfiguration>(builder.Configuration.GetSection("JwtConfiguration"));
 
+
+
+
 builder.Services.AddLogging();
 builder.Services.AddTransient<Middleware>();
 
@@ -47,6 +52,7 @@ builder.Services.AddTransient<IFrontpageService, FrontpageService>();
 builder.Services.AddTransient<IMoviesAdminService, MoviesAdminService>();
 builder.Services.AddTransient<ICrewsAdminService, CrewsAdminService>();
 builder.Services.AddTransient<ITVShowsAdminService, TVShowsAdminService>();
+builder.Services.AddTransient<IExternalApiCallsService, ExternalApiCallsService>();
 
 
 

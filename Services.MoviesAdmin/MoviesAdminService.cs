@@ -129,8 +129,6 @@ namespace Services.MoviesAdmin
                        Id = s.Id,
                        FirstName = s.FirstName,
                        LastName = s.LastName,
-                       PersonImageData = s.PersonImageData
-
                    })
                    .FirstOrDefaultAsync();
 
@@ -144,12 +142,23 @@ namespace Services.MoviesAdmin
 
                 foreach (var d in dir)
                 {
-                    var q = await database.People.Where(p => p.Id == d.PersonId).FirstOrDefaultAsync();
+                    var q = await database.People.Where(p => p.Id == d.PersonId)
+                        .Select(s=> new PeopleEntity 
+                        {   
+                            Id = s.Id, 
+                            FirstName = s.FirstName, 
+                            LastName = s.LastName,
+                        }).FirstOrDefaultAsync();
                     director.Add(q);
                 }
                 foreach (var w in wri)
                 {
-                    var q = await database.People.Where(p => p.Id == w.PersonId).FirstOrDefaultAsync();
+                    var q = await database.People.Where(p => p.Id == w.PersonId).Select(s => new PeopleEntity
+                    {
+                        Id = s.Id,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
+                    }).FirstOrDefaultAsync();
                     writers.Add(q);
                 }
                 foreach (string d in g)
@@ -191,7 +200,7 @@ namespace Services.MoviesAdmin
                     var genres = DataActions.FormatGenres(movie.Genres);
 
                     movieDb.MovieName = movie.MovieName.Trim();
-                    movieDb.Synopsis = movie.Synopsis;
+                    movieDb.Synopsis = movie.Synopsis.Trim();
                     movieDb.Genres = genres;
                     movieDb.Duration = movie.Duration;
                     movieDb.ReleaseDate = movie.ReleaseDate.ToUniversalTime();
@@ -260,8 +269,8 @@ namespace Services.MoviesAdmin
                         {
                             MovieId = movie.Id,
                             ActorId = Convert.ToInt32(a.value),
-                            Name = a.CharacterName,
-                            Description = a.Description,
+                            Name = a.CharacterName.Trim(),
+                            Description = a.Description.Trim(),
                         });
                     }
 
@@ -280,7 +289,7 @@ namespace Services.MoviesAdmin
                     await database.Movies.AddAsync(new MoviesEntity
                     {
                         MovieName = movie.MovieName.Trim(),
-                        Synopsis = movie.Synopsis,
+                        Synopsis = movie.Synopsis.Trim(),
                         Genres = genres,
                         Duration = movie.Duration,
                         ReleaseDate = movie.ReleaseDate.ToUniversalTime(),
@@ -305,8 +314,8 @@ namespace Services.MoviesAdmin
                         {
                             MovieId = m,
                             ActorId = Convert.ToInt32(a.value),
-                            Name = a.CharacterName,
-                            Description = a.Description
+                            Name = a.CharacterName.Trim(),
+                            Description = a.Description.Trim()
                         });
                     }
 

@@ -119,7 +119,7 @@ namespace Services.TVShowsAdmin
                     var genres = DataActions.FormatGenres(TVShow.Genres);
 
                     tvShowDb.Title = TVShow.Title.Trim();
-                    tvShowDb.Description = TVShow.Description;
+                    tvShowDb.Description = TVShow.Description.Trim();
                     tvShowDb.Genres = genres;
                     tvShowDb.Runtime = TVShow.Runtime;
                    
@@ -185,8 +185,8 @@ namespace Services.TVShowsAdmin
                         {
                             TvShowId = TVShow.Id,
                             ActorId = Convert.ToInt32(a.value),
-                            Name = a.CharacterName,
-                            Description = a.Description,
+                            Name = a.CharacterName.Trim(),
+                            Description = a.Description.Trim(),
                         });
                     }
 
@@ -202,8 +202,8 @@ namespace Services.TVShowsAdmin
 
                     var newShow = new TvShowEntity
                     {
-                        Title = TVShow.Title,
-                        Description = TVShow.Description,
+                        Title = TVShow.Title.Trim(),
+                        Description = TVShow.Description.Trim(),
                         Runtime = TVShow.Runtime,
                         Genres = genres,
                         TotalSeason = TVShow.TotalSeason,
@@ -230,8 +230,8 @@ namespace Services.TVShowsAdmin
                         {
                             TvShowId = m,
                             ActorId = Convert.ToInt32(a.value),
-                            Name = a.CharacterName,
-                            Description = a.Description,
+                            Name = a.CharacterName.Trim(),
+                            Description = a.Description.Trim(),
                         });
                     }
 
@@ -256,7 +256,6 @@ namespace Services.TVShowsAdmin
             }
 
         }
-
 
         private async Task SaveTVShowCrew(string Crew, CrewRoleEnum crewRoleEnum, int tvShowId)
         {

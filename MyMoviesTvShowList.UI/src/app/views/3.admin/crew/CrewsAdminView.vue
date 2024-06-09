@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import { onMounted, computed } from 'vue'
 import { useCrewsAdmin } from '@/stores/crewsadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
-import {crewParams} from '@/app/views/3.admin/crew/crewparams'
+import { crewParams } from '@/app/views/3.admin/crew/crewparams'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
 
 const PeopleList = computed(() => api.PeopleData)
@@ -13,18 +13,19 @@ const globalhelper = useGlobalHelper()
 const router = useRouter()
 
 onMounted(() => {
-  api.GetPeople(10, 1, '')
+  api.GetPeople(15, 1, '')
 })
 
 const EditPerson = (data: any) => {
   api.setEditPerson(data)
-  router.push({ name: 'Add & Edit person' })
+  api.setIsEdit(true)
+  router.push({ name: 'Add & Edit person'})
 }
 </script>
 
 <template>
   <div>
-   <AdminNavigationComponent :routes="crewParams" />
+    <AdminNavigationComponent :routes="crewParams" />
 
     <table class="table table-striped">
       <thead>

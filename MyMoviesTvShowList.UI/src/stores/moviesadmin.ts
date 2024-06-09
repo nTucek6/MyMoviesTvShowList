@@ -4,8 +4,6 @@ import { ref } from 'vue'
 import { MoviesDTO } from '@/app/shared/models/movies.model';
 import { API_URLS, API_URLS_ADMIN } from '@/config';
 
-//import type { SaveMovieDTO } from '@/app/shared/models/save-movie.model';
-
 export const useMoviesAdminApi = defineStore('moviesadmin', () => {
 
 
@@ -15,6 +13,8 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
 
   const EditMovie = ref()
 
+  const isEdit = ref(false)
+
   function setEditMovie(data:any)
   {
     EditMovie.value = data
@@ -23,6 +23,11 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
   function setMovieCrew(data:any)
   {
     MovieCrew.value = data
+  }
+
+  function setIsEdit(data:boolean)
+  {
+    isEdit.value = data
   }
 
     async function GetGenres() {
@@ -109,8 +114,28 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
       }
     }
 
+    async function GetMovieFromAPI(Query:string) {
+      try {
+        await axios({
+          method: 'get',
+          url: API_URLS_ADMIN.GETMOVIEFROMAPI,
+          params:
+          {
+            Title:Query,
+            Type:"movie"
+          }
+          
+        })
+        .then((response)=>{
+          EditMovie.value = response.data
+        }) 
+          
+        }
+        catch (error) {
+          //alert(error)
+          console.log(error)
+      }
+    }
 
-
-
-    return { GetGenres, GetCrew, Genres, MovieCrew,EditMovie,setEditMovie, setMovieCrew,SaveMovie,GetMovies,MovieData }
+    return { GetGenres, GetCrew, Genres, MovieCrew,EditMovie,setEditMovie, setMovieCrew,SaveMovie,GetMovies,MovieData, GetMovieFromAPI, isEdit, setIsEdit }
  })

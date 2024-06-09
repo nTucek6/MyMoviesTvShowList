@@ -141,12 +141,18 @@ const router = createRouter({
       path: '/movielist/:username',
       name: 'Movie List',
       component: () => import('@/app/views/2.user/MoviesListView.vue')
+    },
+    {
+      path: '/accountsettings',
+      name: 'Account settings',
+      component: () => import('@/app/views/2.user/AccountSettings.vue')
     }
   ]
 })
 
-/*
+export default router
 
+/*
 
 const isAuthenticated = computed(() => authentication.userLogIn);
 
@@ -168,13 +174,4 @@ router.beforeEach((to, from, next) => {
 
 */
 
-export default router
 
-/* {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    } */

@@ -20,11 +20,13 @@ const showMobileMenu = ref(false)
 
 const showProfileMenu = ref(false)
 const showListMenu = ref(false)
+const showAdminMenu = ref(false)
 
 const dropdownList = ref()
 const dropdownProfile = ref()
+const dropdownAdmin = ref()
 
-function handleClickOutside(event: any){
+function handleClickOutside(event: any) {
   if (
     dropdownList.value &&
     !dropdownList.value.contains(event.target) &&
@@ -39,12 +41,18 @@ function handleClickOutside(event: any){
   ) {
     showProfileMenu.value = false
   }
+  if (
+    dropdownAdmin.value &&
+    !dropdownAdmin.value.contains(event.target) &&
+    showAdminMenu.value == true
+  ) {
+    showAdminMenu.value = false
+  }
 }
 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside)
 })
-
 
 const ToggleMobileMenu = () => {
   showMobileMenu.value = !showMobileMenu.value
@@ -65,6 +73,7 @@ watch(route, () => {
   }
   showListMenu.value = false
   showProfileMenu.value = false
+  showAdminMenu.value = false
 })
 </script>
 
@@ -85,13 +94,22 @@ watch(route, () => {
             <li id="signup"><RouterLink to="/register">Signup</RouterLink></li>
           </ul>
 
-          <div class="dropdown" v-if="userLogIn && UserData.Role == 'Admin'">
-            <span class="">Admin</span>
+          <div
+            id="dropdown-admin"
+            class="dropdown-top"
+            ref="dropdownAdmin"
+            v-if="userLogIn && UserData.Role == 'Admin'"
+            :class="{ 'dropdown-admin-open': showAdminMenu }"
+          >
+            <div @click="showAdminMenu = !showAdminMenu">
+              <span class="" >Admin</span>
+            </div>
+
             <div class="dropdown-content">
               <RouterLink to="/moviesadmin" class="btn dropdown-item"
                 ><font-awesome-icon :icon="['fas', 'film']" /> Movies
               </RouterLink>
-              <RouterLink to="/tvshowadmin" class="btn" dropdown-item
+              <RouterLink to="/tvshowadmin" class="btn dropdown-item"
                 ><font-awesome-icon :icon="['fas', 'tv']" /> Tv Shows</RouterLink
               >
               <RouterLink to="/viewcrew" class="btn dropdown-item"
@@ -105,15 +123,16 @@ watch(route, () => {
 
           <div
             ref="dropdownList"
-            class="dropdown-list"
+            id="dropdown-list"
+            class="dropdown-top"
             v-if="userLogIn"
             :class="{ 'dropdown-list-open': showListMenu }"
           >
-            <div class="dropdown" @click="showListMenu = !showListMenu">
+            <div @click="showListMenu = !showListMenu">
               <font-awesome-icon id="f-icon" icon="list" />
             </div>
 
-            <div class="dropdown-content">
+            <div class="dropdown-content dropdown-content-list">
               <RouterLink :to="`/movielist/${UserData?.Username}`" class="btn dropdown-item"
                 ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Movies List</RouterLink
               >
@@ -122,7 +141,8 @@ watch(route, () => {
 
           <div
             ref="dropdownProfile"
-            class="dropdown-profile"
+            id="dropdown-profile"
+            class="dropdown-top"
             v-if="userLogIn"
             :class="{ 'dropdown-profile-open': showProfileMenu }"
           >
@@ -136,10 +156,13 @@ watch(route, () => {
               <RouterLink :to="`/profile/${UserData?.Username}`" class="btn dropdown-item"
                 ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Profile</RouterLink
               >
-              <RouterLink to="/topmovies" class="btn dropdown-item"
-                ><font-awesome-icon :icon="['fas', 'list']" /> My List
+              <RouterLink to="/accountsettings" class="btn dropdown-item"
+                ><font-awesome-icon :icon="['fas', 'cog']" /> Account settings
               </RouterLink>
-              <RouterLink to="/" class="btn btn-red dropdown-item" @click="authentication.LogOut()"
+              <RouterLink
+                to="/"
+                class="btn dropdown-item dropdown-item-logout"
+                @click="authentication.LogOut()"
                 ><font-awesome-icon :icon="['fas', 'sign-out']" class="icon" />Log Out</RouterLink
               >
             </div>
@@ -255,6 +278,8 @@ a {
 #top-navigation {
   display: flex;
   justify-content: space-between;
+  height: 34px;
+  align-items: flex-end;
 }
 
 #login,
@@ -289,6 +314,10 @@ a {
 #computer-view ul {
   list-style: none;
   display: flex;
+}
+
+#login-nav{
+  height: 30px;
 }
 
 #login-nav ul > li {
@@ -430,14 +459,6 @@ a {
   }
 }
 
-.dropdown-profile {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  color: $app_name_color;
-  margin-left: 10px;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -453,7 +474,7 @@ a {
 
 .dropdown-user {
   display: flex;
-  align-items: center;
+  /*align-items: center; */
 }
 
 .dropdown-user #f-icon {
@@ -461,8 +482,8 @@ a {
 }
 
 .dropdown-user img {
-  height: 30px;
-  width: 30px;
+  height: 100%;
+  width: 100%;
   object-fit: contain;
   border: 1px solid $app_name_color;
 }
@@ -480,14 +501,26 @@ a {
   text-align: left;
 }
 
+.dropdown-item:hover {
+  background-color: lightgrey;
+}
+
+.dropdown-item-logout:hover {
+  background-color: rgb(255, 0, 0);
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: grey;
+  background-color: white;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 5px;
   z-index: 1;
+}
+
+.dropdown-content-list {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .dropdown-profile-open .dropdown-content {
@@ -509,15 +542,25 @@ a {
   color: $app_text_color;
 }
 
-.dropdown-list {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  color: $app_name_color;
-  margin-left: 10px;
-}
-
 .dropdown-list-open .dropdown-content {
   display: block;
 }
+
+.dropdown-admin-open .dropdown-content {
+  display: block;
+}
+
+.dropdown-top {
+  position: relative;
+  display: inline-block; 
+  cursor: pointer;
+  color: $app_name_color;
+  margin-left: 10px;
+  height: 100%;
+}
+
+.dropdown-top > div:nth-of-type(1){
+  height: 100%;
+}
+
 </style>

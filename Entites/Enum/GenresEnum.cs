@@ -15,7 +15,7 @@ namespace Entities.Enum
         Thriller = 9,
         Animation = 10,
         Historical = 11,
-        [Description("Science fiction")]
+        [Description("Sci-Fi")]
         ScienceFiction = 12,
         Musical = 13,
         Mystery = 14,

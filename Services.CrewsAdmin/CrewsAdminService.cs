@@ -59,7 +59,7 @@ namespace Services.CrewsAdmin
                 personDb.FirstName = person.FirstName.Trim();
                 personDb.LastName = person.LastName.Trim();
                 personDb.BirthDate = person.BirthDate.ToUniversalTime();
-                personDb.BirthPlace = person.BirthPlace;
+                personDb.BirthPlace = person.BirthPlace.Trim();
 
                 if (person.PersonImage.Length > 0)
                 {
@@ -76,7 +76,7 @@ namespace Services.CrewsAdmin
                     FirstName = person.FirstName.Trim(),
                     LastName = person.LastName.Trim(),
                     BirthDate = person.BirthDate.ToUniversalTime(),
-                    BirthPlace = person.BirthPlace,
+                    BirthPlace = person.BirthPlace.Trim(),
                     PersonImageData = s
                 });
             }

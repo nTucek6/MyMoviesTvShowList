@@ -10,9 +10,16 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
 
   const EditPerson = ref()
 
+  const isEdit = ref(false)
+
   function setEditPerson(data:any)
   {
     EditPerson.value = data;
+  }
+
+  function setIsEdit(data:boolean)
+  {
+    isEdit.value = data
   }
 
   async function GetPeople(PostPerPage:number,Page:number,Search:string) {
@@ -76,5 +83,27 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
     }
   }
 
-  return {SavePerson,GetPeople, GetPeopleCount,PeopleData, EditPerson,setEditPerson }
+  async function GetPersonFromAPI(Query:string) {
+    try {
+      await axios({
+        method: 'get',
+        url: API_URLS_ADMIN.GETPERSONFROMAPI,
+        params:
+        {
+          Fullname:Query
+        }
+        
+      })
+      .then((response)=>{
+        EditPerson.value = response.data
+      }) 
+        
+      }
+      catch (error) {
+        //alert(error)
+        console.log(error)
+    }
+  }
+
+  return {SavePerson,GetPeople, GetPeopleCount,PeopleData, EditPerson,setEditPerson, GetPersonFromAPI, isEdit, setIsEdit }
 })

@@ -17,7 +17,7 @@ import {
   faAngleRight,
   faRightToBracket,
   faUserPlus,
-  faListDots
+  faCog
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -34,7 +34,7 @@ library.add(
   faAngleRight,
   faRightToBracket,
   faUserPlus,
-  faListDots
+  faCog
 )
 </script>
 
