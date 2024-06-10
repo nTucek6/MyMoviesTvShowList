@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { onMounted, computed } from 'vue'
-import { useCrewsAdmin } from '@/stores/crewsadmin'
+import { useCrewsAdmin } from '@/stores/admin/crewsadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
 import { crewParams } from '@/app/views/3.admin/crew/crewparams'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'

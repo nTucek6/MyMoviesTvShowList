@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useAuthentication } from '@/stores/authentication'
+import { useAuthentication } from '@/stores/admin/authentication'
 import { UserRegisterDTO } from '@/app/shared/models/user-register.model'
 
 const PasswordConfirm = ref('')

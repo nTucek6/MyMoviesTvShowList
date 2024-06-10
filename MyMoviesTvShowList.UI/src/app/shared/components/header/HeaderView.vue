@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, onBeforeUnmount } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { useAuthentication } from '@/stores/authentication'
+import { useAuthentication } from '@/stores/admin/authentication'
 import { dropdownMenu } from './menu-items'
 
 import ProfileImage from '@/assets/images/profileImg.webp'

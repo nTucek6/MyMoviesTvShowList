@@ -16,11 +16,19 @@ namespace MyMoviesTvShowList.Controllers.ExternalApiCalls
 
 
         [HttpGet]
-        public async Task<IActionResult> GetMovieFromApi(string Title, string Type)
+        public async Task<IActionResult> GetMovieFromApi(string Title)
         {
-            var response = await externalApiCallsService.GetMovieFromApi(Title, Type);
+            var response = await externalApiCallsService.GetMovieFromApi(Title);
             return Ok(response);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTVShowFromApi(string Title)
+        {
+            var response = await externalApiCallsService.GetTVShowFromApi(Title);
+            return Ok(response);
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> GetCelebritie(string Fullname)

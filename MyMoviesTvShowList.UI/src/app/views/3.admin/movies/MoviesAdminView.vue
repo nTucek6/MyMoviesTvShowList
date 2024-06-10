@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { onMounted, computed } from 'vue'
-import { useMoviesAdminApi } from '@/stores/moviesadmin'
+import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
 import type { MoviesDTO } from '@/app/shared/models/movies.model'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
 import { moviesParams } from '@/app/views/3.admin/movies/moviesparams'

@@ -1,11 +1,13 @@
 ﻿using Services.CrewsAdmin;
 using Services.MoviesAdmin;
+using Services.TVShowsAdmin;
 
 namespace Services.ExternalApiCalls
 {
     public interface IExternalApiCallsService
     {
-        public Task<MoviesDTO> GetMovieFromApi(string Title, string Type);
+        public Task<MoviesDTO> GetMovieFromApi(string Title);
+        public Task<TVShowDTO> GetTVShowFromApi(string Title);
         public Task<PersonDTO> GetCelebrity(string Fullname);
 
     }

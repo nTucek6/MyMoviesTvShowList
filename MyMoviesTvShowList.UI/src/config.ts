@@ -4,7 +4,9 @@ export const API_URLS = {
   BASE: API_BASE_URL,
   LOGIN: `${API_BASE_URL}Authentication/Login`,
   REGISTER: `${API_BASE_URL}Authentication/Register`,
-  GETGENRES: `${API_BASE_URL}MoviesAdmin/GetGenres`  
+  GETGENRES: `${API_BASE_URL}MoviesAdmin/GetGenres`,
+
+  GETMOVIESLIST: `${API_BASE_URL}Frontpage/GetMoviesList`,
 }
 
 export const API_URLS_ADMIN = {
@@ -19,6 +21,6 @@ export const API_URLS_ADMIN = {
   GETPERSONFROMAPI : `${API_BASE_URL}ExternalApiCalls/GetCelebritie`,
 
   SAVETVSHOW : `${API_BASE_URL}TVShowsAdmin/SaveTVShow`,
-  GETTVSHOW : `${API_BASE_URL}TVShowsAdmin/GetTVShow`
-
+  GETTVSHOW : `${API_BASE_URL}TVShowsAdmin/GetTVShow`,
+  GETTVSHOWFROMAPI : `${API_BASE_URL}ExternalApiCalls/GetTVShowFromApi`,
 }

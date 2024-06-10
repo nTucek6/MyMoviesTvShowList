@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
-import { useCrewsAdmin } from '@/stores/crewsadmin'
+import { useCrewsAdmin } from '@/stores/admin/crewsadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue';
 import {crewParams} from '@/app/views/3.admin/crew/crewparams'

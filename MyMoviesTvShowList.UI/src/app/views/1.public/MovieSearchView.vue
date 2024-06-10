@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, onBeforeMount, ref } from 'vue'
-import { useMoviesAdminApi } from '@/stores/moviesadmin'
+import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
 
 const MoviesAdminApi = useMoviesAdminApi();
 

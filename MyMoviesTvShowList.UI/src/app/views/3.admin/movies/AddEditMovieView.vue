@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onBeforeMount, computed } from 'vue'
-import { useMoviesAdminApi } from '@/stores/moviesadmin'
+import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
 import Multiselect from '@vueform/multiselect'
 import { useGlobalHelper } from '@/stores/globalhelper'
 import { SaveMovieDTO } from '@/app/shared/models/save-movie.model'
@@ -115,6 +115,7 @@ const ClearFormData = () => {
   ScreenwriterDefault.value.clear()
   ActorsDefault.value.clear()
 
+  query.value = ""
   isEdit.value = false
 }
 

@@ -22,3 +22,5 @@ C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.ExternalApiCall
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.ExternalApiCalls\obj\Debug\net6.0\Services.ExternalApiCalls.csproj.CopyComplete
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.ExternalApiCalls\bin\Debug\net6.0\Services.MoviesAdmin.dll
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.ExternalApiCalls\bin\Debug\net6.0\Services.MoviesAdmin.pdb
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.ExternalApiCalls\bin\Debug\net6.0\Services.TVShowsAdmin.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.ExternalApiCalls\bin\Debug\net6.0\Services.TVShowsAdmin.pdb

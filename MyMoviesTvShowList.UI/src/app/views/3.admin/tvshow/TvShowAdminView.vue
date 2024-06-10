@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTvShowAdminStore } from '@/stores/tvshowadmin'
+import { useTvShowAdminStore } from '@/stores/admin/tvshowadmin'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
 import { tvShowParams } from '@/app/views/3.admin/tvshow/tvshowparams'
 import { onMounted, computed } from 'vue'
@@ -16,6 +16,7 @@ const TVShowList = computed<TVShowDTO[]>(() => tvshowApi.TVShowData)
 
 const EditTVShow = (data: any) => {
   tvshowApi.setEditTVShow(data)
+  tvshowApi.setIsEdit(true)
   router.push({ name: 'Add & Edit TVShow' })
 }
 </script>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import { useAuthentication } from '@/stores/authentication'
+import { useAuthentication } from '@/stores/admin/authentication'
 import  UserLoginDTO from '@/app/shared/models/user-login.model'
 import ErrorComponent from '@/app/shared/components/ErrorComponent.vue'
 

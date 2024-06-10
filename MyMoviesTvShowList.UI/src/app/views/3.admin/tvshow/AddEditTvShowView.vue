@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, onBeforeMount, computed } from 'vue'
-import { useTvShowAdminStore } from '@/stores/tvshowadmin'
+import { useTvShowAdminStore } from '@/stores/admin/tvshowadmin'
 import Multiselect from '@vueform/multiselect'
 
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
 import { tvShowParams } from '@/app/views/3.admin/tvshow/tvshowparams'
 import { SaveTVShowDTO } from '@/app/shared/models/save-tvshow.model'
-import { useMoviesAdminApi } from '@/stores/moviesadmin'
+import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
 
 const TvShowAdminApi = useTvShowAdminStore()
@@ -26,12 +26,21 @@ const GenresDefault = ref()
 const CreatorsDefault = ref()
 const ActorsDefault = ref()
 
+const query = ref()
+
+const isEdit = ref()
+
 const GetGenres = computed(() => MoviesAdminApi.Genres)
+
+const d = computed(() => TvShowAdminApi.EditTVShow)
 
 onBeforeMount(async () => {
   await MoviesAdminApi.GetGenres()
+  isEdit.value = TvShowAdminApi.isEdit
+  setEditValues()
+})
 
-  const d = computed(() => TvShowAdminApi.EditTVShow)
+const setEditValues = () => {
 
   if (d.value != undefined) {
     TVShow.value.Id = d.value.Id
@@ -59,8 +68,9 @@ onBeforeMount(async () => {
     //Movie.value.ReleaseDate = date
 
     TvShowAdminApi.setEditTVShow(undefined)
+    TvShowAdminApi.setIsEdit(false)
   }
-})
+}
 
 const SearchCrew = async (search: any) => {
   if (search != null) {
@@ -95,6 +105,13 @@ const ClearFormData = () => {
   Genres.value = null
   Creators.value = null
   Actors.value = null
+
+  GenresDefault.value.clear()
+  CreatorsDefault.value.clear()
+  ActorsDefault.value.clear()
+
+  query.value = ""
+  isEdit.value = false
 }
 
 const addTVShowFormSubmit = async () => {
@@ -122,12 +139,31 @@ const addTVShowFormSubmit = async () => {
     ClearFormData()
   })
 }
+
+const handleTVShowSearchSearch = async () => {
+  await TvShowAdminApi.GetTVShowFromAPI(query.value)
+  setEditValues()
+}
+
 </script>
 
 <template>
   <AdminNavigationComponent :routes="tvShowParams" />
 
-  <form @submit.prevent="addTVShowFormSubmit" class="text-center">
+  <div class="text-center mt-5" v-if="!isEdit">
+      <div class="form-group mb-3">
+        <input
+          type="text"
+          v-model="query"
+          class="w-50"
+          id="query"
+          placeholder="Search for movie..."
+        />
+      </div>
+      <button class="btn" @click="handleTVShowSearchSearch">Search</button>
+    </div>
+
+  <form @submit.prevent="addTVShowFormSubmit" class="text-center mb-3 mt-5">
     <div class="form-group mb-3">
       <input
         type="text"
@@ -262,15 +298,10 @@ const addTVShowFormSubmit = async () => {
       <img v-if="ImagePreview" :src="ImagePreview" alt="Image Preview" />
     </div>
 
+    <button type="button" class="btn w-25 mr-1" @click="ClearFormData">Clear</button>
     <button type="submit" class="btn w-25">Save TvShow</button>
   </form>
 </template>
 
-<style scoped>
-form {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-</style>
 
 <style src="@vueform/multiselect/themes/default.css"></style>

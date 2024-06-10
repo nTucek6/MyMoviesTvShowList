@@ -20,7 +20,7 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
            .AllowAnyHeader();
 }));
 
-//builder.WebHost.UseUrls("https://26.52.32.10:7169");
+//builder.WebHost.UseUrls("https://26.52.32.10:7227");
 
 // Add services to the container.
 
@@ -53,7 +53,6 @@ builder.Services.AddTransient<IMoviesAdminService, MoviesAdminService>();
 builder.Services.AddTransient<ICrewsAdminService, CrewsAdminService>();
 builder.Services.AddTransient<ITVShowsAdminService, TVShowsAdminService>();
 builder.Services.AddTransient<IExternalApiCallsService, ExternalApiCallsService>();
-
 
 
 

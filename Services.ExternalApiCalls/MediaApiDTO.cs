@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Services.ExternalApiCalls
 {
     public class MediaApiDTO
@@ -16,6 +11,9 @@ namespace Services.ExternalApiCalls
         public string Director { get; set; }
         public string Writer { get; set; }
         public string Actors { get; set; }
+        public string totalSeasons { get; set; }
+        public string Poster { get; set; }
+        public string Year { get; set; }
 
     }
 }

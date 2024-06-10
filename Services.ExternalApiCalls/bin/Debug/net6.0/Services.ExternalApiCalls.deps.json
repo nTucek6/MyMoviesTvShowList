@@ -11,7 +11,8 @@
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "MyMoviesTvShowList.Extensions": "1.0.0",
           "Services.CrewsAdmin": "1.0.0",
-          "Services.MoviesAdmin": "1.0.0"
+          "Services.MoviesAdmin": "1.0.0",
+          "Services.TVShowsAdmin": "1.0.0"
         },
         "runtime": {
           "Services.ExternalApiCalls.dll": {}
@@ -252,6 +253,17 @@
         "runtime": {
           "Services.MoviesAdmin.dll": {}
         }
+      },
+      "Services.TVShowsAdmin/1.0.0": {
+        "dependencies": {
+          "DatabaseContext": "1.0.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "MyMoviesTvShowList.Extensions": "1.0.0",
+          "Services.MoviesAdmin": "1.0.0"
+        },
+        "runtime": {
+          "Services.TVShowsAdmin.dll": {}
+        }
       }
     }
   },
@@ -415,6 +427,11 @@
       "sha512": ""
     },
     "Services.MoviesAdmin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services.TVShowsAdmin/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

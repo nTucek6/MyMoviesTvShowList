@@ -551,6 +551,9 @@
               },
               "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
                 "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj"
+              },
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.TVShowsAdmin\\Services.TVShowsAdmin.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.TVShowsAdmin\\Services.TVShowsAdmin.csproj"
               }
             }
           }
@@ -613,7 +616,14 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj"
+              },
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

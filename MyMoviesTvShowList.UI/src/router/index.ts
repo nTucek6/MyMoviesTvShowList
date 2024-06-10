@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { computed } from 'vue'
 import FrontpageView from '@/app/views/1.public/FrontpageView.vue'
-import { useAuthentication } from '@/stores/authentication'
+import { useAuthentication } from '@/stores/admin/authentication'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -146,6 +146,11 @@ const router = createRouter({
       path: '/accountsettings',
       name: 'Account settings',
       component: () => import('@/app/views/2.user/AccountSettings.vue')
+    },
+    {
+      path: '/movie/:id/:title',
+      name: 'Movie Info',
+      component: () => import('@/app/views/1.public/MovieInfo.vue')
     }
   ]
 })

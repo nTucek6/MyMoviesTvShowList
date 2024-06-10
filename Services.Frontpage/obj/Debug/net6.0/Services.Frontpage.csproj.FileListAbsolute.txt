@@ -22,3 +22,9 @@ C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\D
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\Services.Frontpage.pdb
 C:\Users\Nikola\Source\Repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\ref\Services.Frontpage.dll
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\Services.Frontpage.sourcelink.json
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\bin\Debug\net6.0\DatabaseContext.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\bin\Debug\net6.0\Entites.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\bin\Debug\net6.0\DatabaseContext.pdb
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\bin\Debug\net6.0\Entites.pdb
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\Services.Frontpage.csproj.AssemblyReference.cache
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\Services.Frontpage\obj\Debug\net6.0\Services.Frontpage.csproj.CopyComplete

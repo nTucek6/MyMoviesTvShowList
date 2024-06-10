@@ -2030,7 +2030,8 @@
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "MyMoviesTvShowList.Extensions": "1.0.0",
           "Services.CrewsAdmin": "1.0.0",
-          "Services.MoviesAdmin": "1.0.0"
+          "Services.MoviesAdmin": "1.0.0",
+          "Services.TVShowsAdmin": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Services.ExternalApiCalls.dll": {}
@@ -2042,6 +2043,10 @@
       "Services.Frontpage/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DatabaseContext": "1.0.0",
+          "Entites": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Services.Frontpage.dll": {}
         },

@@ -10,6 +10,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Entites;
 using Entities.Enum;
+using Services.TVShowsAdmin;
+using System;
 
 
 namespace Services.ExternalApiCalls
@@ -25,7 +27,7 @@ namespace Services.ExternalApiCalls
 
         private readonly MyMoviesTvShowListContext database;
 
-        public ExternalApiCallsService(MyMoviesTvShowListContext myMoviesTvShowListContext,IConfiguration configuration)
+        public ExternalApiCallsService(MyMoviesTvShowListContext myMoviesTvShowListContext, IConfiguration configuration)
         {
             database = myMoviesTvShowListContext;
             OMDbAPIUrl = configuration.GetSection("OMDbAPI:BaseUrl").Value;
@@ -51,7 +53,7 @@ namespace Services.ExternalApiCalls
 
             List<CelebrityDTO> data = JsonSerializer.Deserialize<List<CelebrityDTO>>(responseBody);
 
-            if(data.Count == 1)
+            if (data.Count == 1)
             {
                 string[] nameParts = data[0].name.Split(' ');
 
@@ -76,12 +78,12 @@ namespace Services.ExternalApiCalls
         }
 
 
-        public async Task<MoviesDTO> GetMovieFromApi(string Title, string Type)
+        public async Task<MoviesDTO> GetMovieFromApi(string Title)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(OMDbAPIUrl);
 
-            string query = $"?apikey={OMDbAPISecret}&t={Title}&type={Type}&r=json";
+            string query = $"?apikey={OMDbAPISecret}&t={Title}&type=movie&r=json";
 
             var response = await client.GetAsync(query);
 
@@ -100,12 +102,13 @@ namespace Services.ExternalApiCalls
             List<ActorDTO> actors = new List<ActorDTO>();
             List<PeopleEntity> directors = new List<PeopleEntity>();
             List<PeopleEntity> writers = new List<PeopleEntity>();
+           
             List<GenresSelectDTO> genres = new List<GenresSelectDTO>();
 
             foreach (string actor in act)
             {
-                var a = await database.People.Where(q => (q.FirstName+" "+q.LastName).ToLower().Contains(actor.ToLower().Trim())).FirstOrDefaultAsync();
-                if(a != null)
+                var a = await database.People.Where(q => (q.FirstName + " " + q.LastName).ToLower().Contains(actor.ToLower().Trim())).FirstOrDefaultAsync();
+                if (a != null)
                 {
                     actors.Add(new ActorDTO
                     {
@@ -114,8 +117,8 @@ namespace Services.ExternalApiCalls
                         LastName = a.LastName,
                     });
                 }
-             
             }
+
             foreach (string director in dir)
             {
                 var a = await database.People.Where(q => (q.FirstName + " " + q.LastName).ToLower().Contains(director.ToLower().Trim())).FirstOrDefaultAsync();
@@ -128,7 +131,7 @@ namespace Services.ExternalApiCalls
                         LastName = a.LastName,
                     });
                 }
-           
+
             }
             foreach (string writer in wri)
             {
@@ -143,11 +146,11 @@ namespace Services.ExternalApiCalls
                     });
                 }
             }
-
+            
             foreach (string g in gen)
             {
                 var genre = SearchGenre(g.Trim());
-                if(genre!= null)
+                if (genre != null)
                 {
                     genres.Add(genre);
                 }
@@ -173,6 +176,95 @@ namespace Services.ExternalApiCalls
             return movie;
         }
 
+        public async Task<TVShowDTO> GetTVShowFromApi(string Title)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(OMDbAPIUrl);
+
+            string query = $"?apikey={OMDbAPISecret}&t={Title}&type=series&r=json";
+
+            var response = await client.GetAsync(query);
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            MediaApiDTO data = JsonSerializer.Deserialize<MediaApiDTO>(responseBody);
+
+
+            var act = data.Actors.Split(",").ToList();
+            var wri = data.Writer.Split(",").ToList();
+
+            var gen = data.Genre.Split(",").ToList();
+
+            List<ActorDTO> actors = new List<ActorDTO>();
+            List<PeopleEntity> writers = new List<PeopleEntity>();
+
+            List<GenresSelectDTO> genres = new List<GenresSelectDTO>();
+
+
+            foreach (string actor in act)
+            {
+                var a = await database.People.Where(q => (q.FirstName + " " + q.LastName).ToLower().Contains(actor.ToLower().Trim())).FirstOrDefaultAsync();
+                if (a != null)
+                {
+                    actors.Add(new ActorDTO
+                    {
+                        Id = a.Id,
+                        FirstName = a.FirstName,
+                        LastName = a.LastName,
+                    });
+                }
+            }
+
+            foreach (string writer in wri)
+            {
+                var a = await database.People.Where(q => (q.FirstName + " " + q.LastName).ToLower().Contains(writer.ToLower().Trim())).FirstOrDefaultAsync();
+                if (a != null)
+                {
+                    writers.Add(new PeopleEntity
+                    {
+                        Id = a.Id,
+                        FirstName = a.FirstName,
+                        LastName = a.LastName,
+                    });
+                }
+            }
+
+            foreach (string g in gen)
+            {
+                var genre = SearchGenre(g.Trim());
+                if (genre != null)
+                {
+                    genres.Add(genre);
+                }
+            }
+
+            //int runtime = Convert.ToInt32(data.Runtime.Split(" ").ToList()[0]);
+            DateTime date = DateTime.ParseExact(data.Released, "dd MMM yyyy", CultureInfo.InvariantCulture);
+
+
+            //Get img as byte
+            client = new HttpClient();
+            response = await client.GetAsync(data.Poster);
+            byte[] imageBytes = await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                
+            TVShowDTO tVShowDTO = null;
+
+            tVShowDTO = new TVShowDTO
+            {
+                Id = 0,
+                Title = data.Title,
+                Description = data.Plot,
+                TotalSeason = Convert.ToInt32(data.totalSeasons),
+                TotalEpisode = 0,
+                TVShowImageData = imageBytes,
+                Creators = writers,
+                Actors = actors,
+                Genres = genres,
+                Runtime = data.Year
+            };
+
+            return tVShowDTO;
+        }
 
         private GenresSelectDTO SearchGenre(string Genre)
         {
