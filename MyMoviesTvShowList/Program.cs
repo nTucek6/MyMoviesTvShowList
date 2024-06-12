@@ -10,6 +10,7 @@ using Services.MoviesAdmin;
 using Services.TVShowsAdmin;
 using Services.ExternalApiCalls;
 using Microsoft.Extensions.Configuration;
+using Services.MovieInfo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,7 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
            .AllowAnyHeader();
 }));
 
-//builder.WebHost.UseUrls("https://26.52.32.10:7227");
+//builder.WebHost.UseUrls("https://192.168.1.2:7169");
 
 // Add services to the container.
 
@@ -53,7 +54,7 @@ builder.Services.AddTransient<IMoviesAdminService, MoviesAdminService>();
 builder.Services.AddTransient<ICrewsAdminService, CrewsAdminService>();
 builder.Services.AddTransient<ITVShowsAdminService, TVShowsAdminService>();
 builder.Services.AddTransient<IExternalApiCallsService, ExternalApiCallsService>();
-
+builder.Services.AddTransient<IMovieInfoService, MovieInfoService>();
 
 
 builder.Services.AddHostedService<CalculateScoreTimer>();

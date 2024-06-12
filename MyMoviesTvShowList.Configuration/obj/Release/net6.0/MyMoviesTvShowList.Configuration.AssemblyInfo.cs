@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyMoviesTvShowList.Configuration")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5363a3524ec87d57671c3e880653279cd250313")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyMoviesTvShowList.Configuration")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyMoviesTvShowList.Configuration")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

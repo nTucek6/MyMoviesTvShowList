@@ -222,7 +222,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -308,6 +312,9 @@
               },
               "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj": {
                 "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj"
+              },
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MovieInfo\\Services.MovieInfo.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MovieInfo\\Services.MovieInfo.csproj"
               },
               "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
                 "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj"
@@ -622,6 +629,77 @@
               },
               "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
                 "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MovieInfo\\Services.MovieInfo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MovieInfo\\Services.MovieInfo.csproj",
+        "projectName": "Services.MovieInfo",
+        "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MovieInfo\\Services.MovieInfo.csproj",
+        "packagesPath": "C:\\Users\\Nikola\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MovieInfo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Nikola\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\DatabaseContext\\DatabaseContext.csproj"
+              },
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Entites\\Entites.csproj"
+              },
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList.Extensions\\MyMoviesTvShowList.Extensions.csproj"
+              },
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.ExternalApiCalls\\Services.ExternalApiCalls.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.ExternalApiCalls\\Services.ExternalApiCalls.csproj"
+              },
+              "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
+                "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj"
               }
             }
           }

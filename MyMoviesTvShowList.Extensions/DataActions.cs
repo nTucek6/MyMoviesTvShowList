@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Entities.Enum;
+using Microsoft.AspNetCore.Http;
+
 
 namespace MyMoviesTvShowList.Extensions
 {
@@ -38,7 +40,6 @@ namespace MyMoviesTvShowList.Extensions
             }
             return genres;
         }
-
 
     }
 }

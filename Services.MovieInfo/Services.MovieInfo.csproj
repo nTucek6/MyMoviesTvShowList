@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseContext\DatabaseContext.csproj" />
+    <ProjectReference Include="..\Entites\Entites.csproj" />
+    <ProjectReference Include="..\MyMoviesTvShowList.Extensions\MyMoviesTvShowList.Extensions.csproj" />
+    <ProjectReference Include="..\Services.ExternalApiCalls\Services.ExternalApiCalls.csproj" />
+    <ProjectReference Include="..\Services.MoviesAdmin\Services.MoviesAdmin.csproj" />
+  </ItemGroup>
+
+</Project>

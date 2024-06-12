@@ -266,7 +266,7 @@ namespace Services.ExternalApiCalls
             return tVShowDTO;
         }
 
-        private GenresSelectDTO SearchGenre(string Genre)
+        public GenresSelectDTO SearchGenre(string Genre)
         {
             var genres = Enum.GetValues(typeof(GenresEnum)).Cast<GenresEnum>().ToList().Where(q => q.GetDescription().Contains(Genre)).Select(x => new GenresSelectDTO { value = x, label = x.GetDescription() }).FirstOrDefault();
             return genres;

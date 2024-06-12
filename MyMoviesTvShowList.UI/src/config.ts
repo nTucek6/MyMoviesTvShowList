@@ -7,6 +7,7 @@ export const API_URLS = {
   GETGENRES: `${API_BASE_URL}MoviesAdmin/GetGenres`,
 
   GETMOVIESLIST: `${API_BASE_URL}Frontpage/GetMoviesList`,
+  GETMOVIEINFO : `${API_BASE_URL}MovieInfo/GetMovieInfo`,
 }
 
 export const API_URLS_ADMIN = {

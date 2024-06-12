@@ -146,3 +146,5 @@ C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\D
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.TVShowsAdmin.pdb
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.ExternalApiCalls.dll
 C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.ExternalApiCalls.pdb
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.MovieInfo.dll
+C:\Users\Nikola\source\repos\nTucek6\MyMoviesTvShowList\MyMoviesTvShowList\bin\Debug\net6.0\Services.MovieInfo.pdb

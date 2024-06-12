@@ -25,7 +25,11 @@ namespace Services.Frontpage
 
             List<MoviesListDTO> movies = await database.Movies
                     .Where(predicate)
-                    .Select(s => new MoviesListDTO { Id = s.Id, MovieName = s.MovieName})
+                    .Select(s => new MoviesListDTO 
+                    { 
+                        Id = s.Id, 
+                        MovieName = s.MovieName
+                    })
                     .OrderBy(m => m.MovieName)
                     .Skip((Page - 1) * PostPerPage)
                     .Take(PostPerPage).ToListAsync();

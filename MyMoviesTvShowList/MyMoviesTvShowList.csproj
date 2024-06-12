@@ -29,6 +29,7 @@
     <ProjectReference Include="..\Services.CrewsAdmin\Services.CrewsAdmin.csproj" />
     <ProjectReference Include="..\Services.ExternalApiCalls\Services.ExternalApiCalls.csproj" />
     <ProjectReference Include="..\Services.Frontpage\Services.Frontpage.csproj" />
+    <ProjectReference Include="..\Services.MovieInfo\Services.MovieInfo.csproj" />
     <ProjectReference Include="..\Services.MoviesAdmin\Services.MoviesAdmin.csproj" />
     <ProjectReference Include="..\Services.TVShowsAdmin\Services.TVShowsAdmin.csproj" />
   </ItemGroup>

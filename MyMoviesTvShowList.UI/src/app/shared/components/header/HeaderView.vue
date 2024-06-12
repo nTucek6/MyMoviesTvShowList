@@ -68,7 +68,12 @@ watch(route, () => {
   }
   if (route.path == '/profile/' + route.params.username) {
     page.value = route.params.username + "'s profile"
-  } else {
+  }
+  else if(route.path == `/movie/${route.params.id}/${route.params.title}`)
+  {
+    page.value = route.params.title
+  }
+  else {
     page.value = route.name
   }
   showListMenu.value = false
@@ -186,7 +191,7 @@ watch(route, () => {
         </ul>
       </nav>
       <div class="page-name">
-        <h4>{{ page }}</h4>
+        <h3>{{ page }}</h3>
       </div>
     </div>
 
@@ -536,7 +541,7 @@ a {
   border-top: 0px;
 }
 
-.page-name > h4 {
+.page-name > h3 {
   margin: 0;
   padding: 5px;
   color: $app_text_color;

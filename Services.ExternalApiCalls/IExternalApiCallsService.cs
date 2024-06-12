@@ -9,6 +9,7 @@ namespace Services.ExternalApiCalls
         public Task<MoviesDTO> GetMovieFromApi(string Title);
         public Task<TVShowDTO> GetTVShowFromApi(string Title);
         public Task<PersonDTO> GetCelebrity(string Fullname);
+        public GenresSelectDTO SearchGenre(string Genre);
 
     }
 }
