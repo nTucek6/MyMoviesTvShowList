@@ -1,11 +1,8 @@
-﻿using System.IO;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Text.Json;
 using DatabaseContext;
 using Entites;
 using Entites.Enum;
-using Entites.Movie;
 using Entites.Show;
 using Entities.Enum;
 using Microsoft.EntityFrameworkCore;

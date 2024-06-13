@@ -1,8 +1,7 @@
-﻿using Entities.Enum;
-using Microsoft.AspNetCore.Http;
-
+﻿using Microsoft.AspNetCore.Http;
 
 namespace MyMoviesTvShowList.Extensions
+
 {
     public static class DataActions
     {

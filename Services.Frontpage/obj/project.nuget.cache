@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ApHKcUwG3cgTHj0l215AhT0Xj7NkBeT0/HyCii4r3bW26NNyY4XZwgfImbGKOnEt0aQqn8L85IbwIoVrkQ0TxQ==",
+  "dgSpecHash": "L7qtPTWrcfReWJZkjeHqCrj6u5yz5ZSHZ+A27bpDgAFDsyLz+SKsvYfKD3Vi6/3P7/lgN1Z8zo9GFA8uKMgu0A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.Frontpage\\Services.Frontpage.csproj",
   "expectedPackageFiles": [
@@ -18,8 +18,7 @@
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Nikola\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
-    "C:\\Users\\Nikola\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
-    "C:\\Users\\Nikola\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\Nikola\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512"
   ],
   "logs": []
 }

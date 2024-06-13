@@ -57,7 +57,7 @@ builder.Services.AddTransient<IExternalApiCallsService, ExternalApiCallsService>
 builder.Services.AddTransient<IMovieInfoService, MovieInfoService>();
 
 
-builder.Services.AddHostedService<CalculateScoreTimer>();
+//builder.Services.AddHostedService<CalculateScoreTimer>();
 
 // ---------------------------------------------------------------------------------
 
