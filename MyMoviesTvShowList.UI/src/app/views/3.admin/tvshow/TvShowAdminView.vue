@@ -16,7 +16,6 @@ const TVShowList = computed<TVShowDTO[]>(() => tvshowApi.TVShowData)
 
 const EditTVShow = (data: any) => {
   tvshowApi.setEditTVShow(data)
-  tvshowApi.setIsEdit(true)
   router.push({ name: 'Add & Edit TVShow' })
 }
 </script>

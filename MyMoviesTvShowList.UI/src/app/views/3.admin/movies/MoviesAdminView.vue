@@ -17,7 +17,6 @@ const MovieList = computed<MoviesDTO[]>(() => MoviesAdminApi.MovieData)
 
 const EditMovie = (data: any) => {
   MoviesAdminApi.setEditMovie(data)
-  MoviesAdminApi.setIsEdit(true)
   router.push({ name: 'Add & Edit movie' })
 }
 </script>

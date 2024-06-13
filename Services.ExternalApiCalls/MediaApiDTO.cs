@@ -14,6 +14,8 @@ namespace Services.ExternalApiCalls
         public string totalSeasons { get; set; }
         public string Poster { get; set; }
         public string Year { get; set; }
+        public string Response {  get; set; }
+        public string? Error { get; set; }
 
     }
 }

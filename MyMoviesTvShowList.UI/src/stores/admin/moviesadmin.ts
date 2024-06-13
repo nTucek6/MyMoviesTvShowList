@@ -11,18 +11,12 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
 
   const EditMovie = ref()
 
-  const isEdit = ref(false)
-
   function setEditMovie(data: any) {
     EditMovie.value = data
   }
 
   function setMovieCrew(data: any) {
     MovieCrew.value = data
-  }
-
-  function setIsEdit(data: boolean) {
-    isEdit.value = data
   }
 
   async function GetGenres() {
@@ -124,7 +118,5 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
     GetMovies,
     MovieData,
     GetMovieFromAPI,
-    isEdit,
-    setIsEdit
   }
 })

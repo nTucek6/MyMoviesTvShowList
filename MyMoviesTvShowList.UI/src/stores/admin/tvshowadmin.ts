@@ -9,14 +9,8 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
 
   const EditTVShow = ref()
 
-  const isEdit = ref(false)
-
   function setEditTVShow(data: any) {
     EditTVShow.value = data
-  }
-
-  function setIsEdit(data: boolean) {
-    isEdit.value = data
   }
 
   async function SaveTVShow(TvShow: Object) {
@@ -77,7 +71,5 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
     EditTVShow,
     setEditTVShow,
     GetTVShowFromAPI,
-    isEdit,
-    setIsEdit
   }
 })

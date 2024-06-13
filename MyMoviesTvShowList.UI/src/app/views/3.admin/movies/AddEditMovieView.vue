@@ -28,18 +28,21 @@ const GetGenres = computed(() => MoviesAdminApi.Genres)
 
 const query = ref()
 
-const isEdit = ref()
+const isEdit = ref(false)
+
+const loading = ref(false)
 
 const d = computed(() => MoviesAdminApi.EditMovie)
 
 onBeforeMount(async () => {
   await MoviesAdminApi.GetGenres()
-  isEdit.value = MoviesAdminApi.isEdit
   setEditValues()
 })
 
 const setEditValues = () => {
   if (d.value != undefined) {
+    isEdit.value = true
+
     Movie.value.Id = d.value.Id
     Movie.value.MovieName = d.value.MovieName
     Movie.value.Duration = d.value.Duration
@@ -71,7 +74,6 @@ const setEditValues = () => {
     Movie.value.ReleaseDate = date
 
     MoviesAdminApi.setEditMovie(undefined)
-    MoviesAdminApi.setIsEdit(false)
   }
 }
 
@@ -115,7 +117,7 @@ const ClearFormData = () => {
   ScreenwriterDefault.value.clear()
   ActorsDefault.value.clear()
 
-  query.value = ""
+  query.value = ''
   isEdit.value = false
 }
 
@@ -147,8 +149,10 @@ const addMovieFormSubmit = async () => {
 }
 
 const handleMovieSearch = async () => {
+  loading.value = true
   await MoviesAdminApi.GetMovieFromAPI(query.value)
   setEditValues()
+  loading.value = false
 }
 </script>
 
@@ -166,7 +170,8 @@ const handleMovieSearch = async () => {
           placeholder="Search for movie..."
         />
       </div>
-      <button class="btn" @click="handleMovieSearch">Search</button>
+        <div v-if="loading" class="lds-dual-ring"></div>
+        <button class="btn" @click="handleMovieSearch" v-else>Search</button>
     </div>
 
     <form @submit.prevent="addMovieFormSubmit" class="text-center mb-3 mt-5">
@@ -317,5 +322,9 @@ const handleMovieSearch = async () => {
     </form>
   </div>
 </template>
+
+<style scoped>
+@import '@/assets/custom/spinner.css';
+</style>
 
 <style src="@vueform/multiselect/themes/default.css"></style>

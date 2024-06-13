@@ -68,12 +68,9 @@ watch(route, () => {
   }
   if (route.path == '/profile/' + route.params.username) {
     page.value = route.params.username + "'s profile"
-  }
-  else if(route.path == `/movie/${route.params.id}/${route.params.title}`)
-  {
+  } else if (route.path == `/movie/${route.params.id}/${route.params.title}`) {
     page.value = route.params.title
-  }
-  else {
+  } else {
     page.value = route.name
   }
   showListMenu.value = false
@@ -107,7 +104,7 @@ watch(route, () => {
             :class="{ 'dropdown-admin-open': showAdminMenu }"
           >
             <div @click="showAdminMenu = !showAdminMenu">
-              <span class="" >Admin</span>
+              <span class="">Admin</span>
             </div>
 
             <div class="dropdown-content">
@@ -321,7 +318,7 @@ a {
   display: flex;
 }
 
-#login-nav{
+#login-nav {
   height: 30px;
 }
 
@@ -557,15 +554,14 @@ a {
 
 .dropdown-top {
   position: relative;
-  display: inline-block; 
+  display: inline-block;
   cursor: pointer;
   color: $app_name_color;
   margin-left: 10px;
   height: 100%;
 }
 
-.dropdown-top > div:nth-of-type(1){
+.dropdown-top > div:nth-of-type(1) {
   height: 100%;
 }
-
 </style>

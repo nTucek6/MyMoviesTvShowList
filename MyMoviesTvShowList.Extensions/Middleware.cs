@@ -46,10 +46,6 @@ namespace MyMoviesTvShowList.Extensions
                 };
 
                 await context.Response.WriteAsync(error.ToString());
-
-                
-
-
             }
 
         }

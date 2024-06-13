@@ -28,7 +28,9 @@ const ActorsDefault = ref()
 
 const query = ref()
 
-const isEdit = ref()
+const isEdit = ref(false)
+
+const loading = ref(false)
 
 const GetGenres = computed(() => MoviesAdminApi.Genres)
 
@@ -36,13 +38,14 @@ const d = computed(() => TvShowAdminApi.EditTVShow)
 
 onBeforeMount(async () => {
   await MoviesAdminApi.GetGenres()
-  isEdit.value = TvShowAdminApi.isEdit
   setEditValues()
 })
 
 const setEditValues = () => {
 
   if (d.value != undefined) {
+    isEdit.value = true;
+
     TVShow.value.Id = d.value.Id
     TVShow.value.Title = d.value.Title
     TVShow.value.Description = d.value.Description
@@ -68,7 +71,6 @@ const setEditValues = () => {
     //Movie.value.ReleaseDate = date
 
     TvShowAdminApi.setEditTVShow(undefined)
-    TvShowAdminApi.setIsEdit(false)
   }
 }
 
@@ -141,8 +143,10 @@ const addTVShowFormSubmit = async () => {
 }
 
 const handleTVShowSearchSearch = async () => {
+  loading.value = true
   await TvShowAdminApi.GetTVShowFromAPI(query.value)
   setEditValues()
+  loading.value = false
 }
 
 </script>
@@ -160,7 +164,8 @@ const handleTVShowSearchSearch = async () => {
           placeholder="Search for movie..."
         />
       </div>
-      <button class="btn" @click="handleTVShowSearchSearch">Search</button>
+      <div v-if="loading" class="lds-dual-ring"></div>
+      <button class="btn" @click="handleTVShowSearchSearch" v-else>Search</button>
     </div>
 
   <form @submit.prevent="addTVShowFormSubmit" class="text-center mb-3 mt-5">
@@ -303,5 +308,8 @@ const handleTVShowSearchSearch = async () => {
   </form>
 </template>
 
+<style scoped>
+@import '@/assets/custom/spinner.css';
+</style>
 
 <style src="@vueform/multiselect/themes/default.css"></style>
