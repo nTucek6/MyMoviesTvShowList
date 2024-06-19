@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "gqNUz4B5MrAVLlSxdiMeDchDSsar7PEDBCY4cJRXA+Q=",
+  "Hash": "lq3JPocPHA3XunmMCI3yHgM9IHwpP6h7IeFjrbNsYX4=",
   "Source": "MyMoviesTvShowList",
   "BasePath": "_content/MyMoviesTvShowList",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "MyMoviesTvShowList\\wwwroot",
+      "Source": "MyMoviesTvShowList",
+      "ContentRoot": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\",
+      "BasePath": "_content/MyMoviesTvShowList",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\index.html",
+      "SourceId": "MyMoviesTvShowList",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\",
+      "BasePath": "_content/MyMoviesTvShowList",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
 }

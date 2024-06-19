@@ -14,13 +14,24 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7227;http://localhost:5141",
-      // "applicationUrl": "https://26.52.32.10:7169;https://26.52.32.10:5169",
-      //"applicationUrl": "http://192.168.1.2:7227",
+      //"applicationUrl": "https://localhost:7227;http://localhost:5141",
+      //"applicationUrl": "https://localhost:7227;https://192.168.1.2:7227",
+       "applicationUrl": "http://192.168.1.2:7227",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
+    "MyMoviesTvShowListPro": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://192.168.1.2:7227",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,

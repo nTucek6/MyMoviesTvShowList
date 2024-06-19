@@ -11,6 +11,7 @@ using Services.TVShowsAdmin;
 using Services.ExternalApiCalls;
 using Microsoft.Extensions.Configuration;
 using Services.MovieInfo;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,7 +58,7 @@ builder.Services.AddTransient<IExternalApiCallsService, ExternalApiCallsService>
 builder.Services.AddTransient<IMovieInfoService, MovieInfoService>();
 
 
-//builder.Services.AddHostedService<CalculateScoreTimer>();
+builder.Services.AddHostedService<CalculateScoreTimer>();
 
 // ---------------------------------------------------------------------------------
 
@@ -70,6 +71,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 

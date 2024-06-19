@@ -236,13 +236,17 @@ $theme_color: rgb(0, 155, 214);
 
 $app_name_color: rgb(0, 0, 0);
 
-$app_background_color: #121212;
+$app_background_color: #ffffff;
 
 $app_text_color: #000000;
 
 $login_btn_color: rgb(40, 111, 134);
 
 $signup_btn_color: #a50000;
+
+$mobile-link-color: rgb(1, 115, 160);
+
+$mobile-site-color: rgb(255, 236, 126);
 
 header {
   display: block;
@@ -281,7 +285,6 @@ a {
   display: flex;
   justify-content: space-between;
   height: 34px;
-  align-items: flex-end;
 }
 
 #login,
@@ -319,7 +322,9 @@ a {
 }
 
 #login-nav {
-  height: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 #login-nav ul > li {
@@ -384,9 +389,10 @@ a {
   position: absolute;
   top: 50px;
   left: 0;
-  height: calc(100vh - 50px);
+  height: calc(100svh - 50px);
   width: 100%;
   background-color: $app_background_color;
+  z-index: 999;
 }
 
 #mobile-menu ul {
@@ -395,15 +401,15 @@ a {
 }
 
 #mobile-menu ul li {
-  width: 100%;
-  color: $app_text_color;
   padding: 10px;
-  background-color: grey;
+  margin-bottom: 2px;
 }
 
 #mobile-site-pages li {
   display: flex;
   justify-content: space-between;
+  background-color: $mobile-link-color;
+  color: $mobile-site-color;
 }
 
 #mobile-page-name {
@@ -438,6 +444,8 @@ a {
     justify-content: space-between;
     background-color: $theme_color;
     height: 50px;
+    padding-left: 7px;
+    padding-right: 7px;
   }
 
   #login-nav,
@@ -454,10 +462,15 @@ a {
     display: block;
   }
 
+  .dropdown-user {
+    display: flex;
+    align-items: center;
+  }
   .dropdown-user img {
     height: 35px !important;
     width: 35px !important;
     margin-right: 8px;
+    border: none !important;
   }
 }
 
@@ -484,7 +497,7 @@ a {
 }
 
 .dropdown-user img {
-  height: 100%;
+  height: 90%;
   width: 100%;
   object-fit: contain;
   border: 1px solid $app_name_color;
@@ -517,7 +530,7 @@ a {
   background-color: white;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 100;
 }
 
 .dropdown-content-list {
@@ -563,5 +576,7 @@ a {
 
 .dropdown-top > div:nth-of-type(1) {
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 </style>

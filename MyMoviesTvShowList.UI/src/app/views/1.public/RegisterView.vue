@@ -72,9 +72,9 @@ section {
   padding: 10px;
   margin-left: 25%;
   margin-right: 25%;
-  background-color: rgb(17, 17, 17);
+  background-color: rgb(255, 255, 255);
   box-shadow: 5px 5px 5px 5px rgb(245, 235, 235);
-  color: #fff;
+  color: #000000;
 }
 button {
   background-color: rgb(0, 84, 209);
