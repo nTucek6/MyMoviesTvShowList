@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMoviesStore } from '@/stores/movies'
 import { MoviesDTO } from '@/app/shared/models/movies.model'
@@ -19,6 +19,10 @@ const statusDropdown = ref()
 
 const selectedStatus = ref()
 
+const displaySelectedStatus = computed(() => {
+  return selectedStatus.value || {label:'Add to list'}
+})
+
 const ListOptions = [
   {
     value: 1,
@@ -34,7 +38,7 @@ const ListOptions = [
   }
 ]
 
-const handleClickOutside = (event: any) =>{
+const handleClickOutside = (event: any) => {
   if (
     statusDropdown.value &&
     !statusDropdown.value.contains(event.target) &&
@@ -54,10 +58,10 @@ onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
 
-watch(selectedStatus,(newValue)=>{
+watch(selectedStatus, (newValue) => {
   console.log(newValue)
+  toggleList()
 })
-
 
 const toggleList = () => {
   showList.value = !showList.value
@@ -82,16 +86,16 @@ const toggleList = () => {
     </div>
 
     <div id="right-side">
-      
       <ul id="list-menu">
         <li id="watched-select" ref="statusDropdown">
           <div class="custom-select" :class="showList ? 'active' : null">
             <button class="select-button" @click="toggleList">
-              <span class="selected-value">Add to list</span><span class="arrow"></span>
+              <span class="selected-value">{{ displaySelectedStatus.label }}</span
+              ><span class="arrow"></span>
             </button>
-            <ul class="select-dropdown" role="listbox" id="select-dropdown" >
-              <li role="option" v-for="i in ListOptions" :key="i.value"  @click="toggleList">
-                <input type="radio" :value="i.value" name="social-account" v-model="selectedStatus" />
+            <ul class="select-dropdown" role="listbox" id="select-dropdown">
+              <li role="option" v-for="i in ListOptions" :key="i.value" @click="toggleList">
+                <input type="radio" :value="i" :id="i.label" v-model="selectedStatus" />
                 <label :for="i.label">{{ i.label }}</label>
               </li>
             </ul>
@@ -160,5 +164,4 @@ section {
   display: flex;
   justify-content: center;
 }
-
 </style>

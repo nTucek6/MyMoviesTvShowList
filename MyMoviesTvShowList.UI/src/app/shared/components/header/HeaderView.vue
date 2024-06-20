@@ -525,12 +525,17 @@ a {
 }
 
 .dropdown-content {
-  display: none;
   position: absolute;
   background-color: white;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 100;
+
+  transform-origin: top;
+  transition: 0.2s ease-out;
+  transform: scaleY(0);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .dropdown-content-list {
@@ -538,12 +543,10 @@ a {
   transform: translateX(-50%);
 }
 
-.dropdown-profile-open .dropdown-content {
-  display: block;
-}
-
 .dropdown:hover .dropdown-content {
   display: block;
+  transform: scaleY(1);
+  opacity: 1;
 }
 
 .page-name {
@@ -557,12 +560,12 @@ a {
   color: $app_text_color;
 }
 
-.dropdown-list-open .dropdown-content {
-  display: block;
-}
-
+.dropdown-profile-open .dropdown-content,
+.dropdown-list-open .dropdown-content,
 .dropdown-admin-open .dropdown-content {
-  display: block;
+  visibility: visible;
+  transform: scaleY(1);
+  opacity: 1;
 }
 
 .dropdown-top {
