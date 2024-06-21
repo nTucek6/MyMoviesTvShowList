@@ -11,8 +11,8 @@ namespace Entites.List
         public int UserId { get; set; }
         public WatchStatusEnum WatchStatus { get; set; }
         public int? Score { get; set; }
-        public string? StopedAt { get; set; }
+       // public string? StopedAt { get; set; }
         public DateTime TimeAdded { get; set; }
-
+        public string? Review {  get; set; }
     }
 }

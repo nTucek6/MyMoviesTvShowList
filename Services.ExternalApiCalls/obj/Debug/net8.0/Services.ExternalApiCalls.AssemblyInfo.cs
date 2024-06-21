@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Services.ExternalApiCalls")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3335a9f0a16037dc324b126ae91b21137a30237f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0005fe9a527d58e1f8898825e618ca01a7d261f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Services.ExternalApiCalls")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Services.ExternalApiCalls")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

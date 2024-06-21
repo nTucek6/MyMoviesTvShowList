@@ -92,7 +92,7 @@ namespace Services.MoviesAdmin
 
             if (!String.IsNullOrEmpty(Search))
             {
-                predicate = x => x.MovieName.Contains(Search);
+                predicate = x => x.MovieName.ToLower().Contains(Search.ToLower());
             }
 
             var data = await database.Movies
@@ -187,167 +187,172 @@ namespace Services.MoviesAdmin
             }
             return movies;
         }
-        public async Task SaveMovie(SaveMovieDTO movie)
-        {
-            var transaction = database.Database.BeginTransaction();
-
-            try
-            {
-                if (movie.Id > 0)
-                {
-                    var movieDb = await database.Movies.Where(w => w.Id == movie.Id).FirstOrDefaultAsync();
-
-                    var genres = DataActions.FormatGenres(movie.Genres);
-
-                    movieDb.MovieName = movie.MovieName.Trim();
-                    movieDb.Synopsis = movie.Synopsis.Trim();
-                    movieDb.Genres = genres;
-                    movieDb.Duration = movie.Duration;
-                    movieDb.ReleaseDate = movie.ReleaseDate.ToUniversalTime();
-
-                    if (movie.MovieImageData.Length > 0)
-                    {
-                        movieDb.MovieImageData = DataActions.ImageToByte(movie.MovieImageData);
-                    }
-
-                    await database.SaveChangesAsync();
-
-                    var existingActorCrew = await database.MoviesCrew.Where(c => c.MovieId == movieDb.Id && c.Role == CrewRoleEnum.Actor).ToListAsync();
-                    var existingCharacterCrew = await database.MoviesCharacters.Where(c => c.MovieId == movieDb.Id).ToListAsync();
-
-                    var updatedActorCrew = JsonSerializer.Deserialize<List<ActorSelectDTO>>(movie.Actors);
-
-                    var actorsToRemove = existingActorCrew.Where(ec => !updatedActorCrew.Any(uc => uc.value == ec.PersonId)).ToList();
-                    var charactersToRemove = existingCharacterCrew.Where(ec => !updatedActorCrew.Any(uc => uc.value == ec.ActorId)).ToList();
-
-                    foreach (var r in actorsToRemove)
-                    {
-                        existingActorCrew.Remove(r);
-                        database.MoviesCrew.Remove(r);
-                    }
-
-                    foreach (var r in charactersToRemove)
-                    {
-                        existingCharacterCrew.Remove(r);
-                        database.MoviesCharacters.Remove(r);
-                    }
-
-                    var charactersToUpdate = updatedActorCrew.Where(uc => !existingCharacterCrew.Any(ec => ec.ActorId == uc.value && uc.CharacterName == ec.Name && uc.Description == ec.Description)).ToList();
-
-                    foreach (var u in charactersToUpdate)
-                    {
-                        int Id = existingCharacterCrew.Where(q=> q.ActorId == u.value).Select(s=> s.Id).FirstOrDefault();
-
-                        if(Id > 0)
-                        {
-                            var update = await database.MoviesCharacters.Where(q => q.Id == Id).FirstOrDefaultAsync();
-
-                            update.Description = u.Description;
-                            update.Name = u.CharacterName;
-
-                            database.MoviesCharacters.Update(update);
-                        }
-                    }
-
-                    var actorsToAdd = updatedActorCrew.Where(uc => !existingActorCrew.Any(ec => ec.PersonId == uc.value)).ToList();
-
-                    var charactersToAdd = updatedActorCrew.Where(uc => !existingCharacterCrew.Any(ec => ec.ActorId == uc.value)).ToList();
-
-                    foreach (var a in actorsToAdd)
-                    {
-                        await database.MoviesCrew.AddAsync(new MoviesCrewEntity
-                        {
-                            MovieId = movie.Id,
-                            PersonId = Convert.ToInt32(a.value),
-                            Role = CrewRoleEnum.Actor
-                        });
-                    }
-
-                    foreach (var a in charactersToAdd)
-                    {
-                        await database.MoviesCharacters.AddAsync(new MoviesCharactersEntity
-                        {
-                            MovieId = movie.Id,
-                            ActorId = Convert.ToInt32(a.value),
-                            Name = a.CharacterName.Trim(),
-                            Description = a.Description.Trim(),
-                        });
-                    }
-
-                    await SaveMoviesCrew(movie.Director, CrewRoleEnum.Director, movieDb.Id);
-                    await SaveMoviesCrew(movie.Writers, CrewRoleEnum.Screenwriter, movieDb.Id);
         
-                    await database.SaveChangesAsync();
-
-                }
-                else
-                {
-                    byte[] s = DataActions.ImageToByte(movie.MovieImageData);
-
-                    var genres = DataActions.FormatGenres(movie.Genres);
-
-                    await database.Movies.AddAsync(new MoviesEntity
-                    {
-                        MovieName = movie.MovieName.Trim(),
-                        Synopsis = movie.Synopsis.Trim(),
-                        Genres = genres,
-                        Duration = movie.Duration,
-                        ReleaseDate = movie.ReleaseDate.ToUniversalTime(),
-                        MovieImageData = s,
-                        DateTimeAdded = DateTime.Now.ToUniversalTime()
-                    });
-
-                    await database.SaveChangesAsync();
-
-                    var m = await database.Movies.Where(w => w.MovieName == movie.MovieName).Select(s => s.Id).FirstOrDefaultAsync();
-
-                    foreach (var a in JsonSerializer.Deserialize<List<ActorSelectDTO>>(movie.Actors))
-                    {
-                        await database.MoviesCrew.AddAsync(new MoviesCrewEntity
-                        {
-                            MovieId = m,
-                            PersonId = Convert.ToInt32(a.value),
-                            Role = CrewRoleEnum.Actor
-                        });
-
-                        await database.MoviesCharacters.AddAsync(new MoviesCharactersEntity
-                        {
-                            MovieId = m,
-                            ActorId = Convert.ToInt32(a.value),
-                            Name = a.CharacterName.Trim(),
-                            Description = a.Description.Trim()
-                        });
-                    }
-
-                    foreach (var a in movie.Director.Split(",").ToList())
-                    {
-                        await database.MoviesCrew.AddAsync(new MoviesCrewEntity
-                        {
-                            MovieId = m,
-                            PersonId = Convert.ToInt32(a),
-                            Role = CrewRoleEnum.Director
-                        });
-                    }
-
-                    foreach (var a in movie.Writers.Split(",").ToList())
-                    {
-                        await database.MoviesCrew.AddAsync(new MoviesCrewEntity
-                        {
-                            MovieId = m,
-                            PersonId = Convert.ToInt32(a),
-                            Role = CrewRoleEnum.Screenwriter
-                        });
-                    }
-                    await database.SaveChangesAsync();
-                }
-                transaction.Commit();
-            }
-            catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        public async Task<int> GetMoviesCount()
+        {
+            return await database.Movies.CountAsync();
         }
+        
+        public async Task SaveMovie(SaveMovieDTO movie)
+          {
+              var transaction = database.Database.BeginTransaction();
 
+              try
+              {
+                  if (movie.Id > 0)
+                  {
+                      var movieDb = await database.Movies.Where(w => w.Id == movie.Id).FirstOrDefaultAsync();
+
+                      var genres = DataActions.FormatGenres(movie.Genres);
+
+                      movieDb.MovieName = movie.MovieName.Trim();
+                      movieDb.Synopsis = movie.Synopsis.Trim();
+                      movieDb.Genres = genres;
+                      movieDb.Duration = movie.Duration;
+                      movieDb.ReleaseDate = movie.ReleaseDate.ToUniversalTime();
+
+                      if (movie.MovieImageData.Length > 0)
+                      {
+                          movieDb.MovieImageData = DataActions.ImageToByte(movie.MovieImageData);
+                      }
+
+                      await database.SaveChangesAsync();
+
+                      var existingActorCrew = await database.MoviesCrew.Where(c => c.MovieId == movieDb.Id && c.Role == CrewRoleEnum.Actor).ToListAsync();
+                      var existingCharacterCrew = await database.MoviesCharacters.Where(c => c.MovieId == movieDb.Id).ToListAsync();
+
+                      var updatedActorCrew = JsonSerializer.Deserialize<List<ActorSelectDTO>>(movie.Actors);
+
+                      var actorsToRemove = existingActorCrew.Where(ec => !updatedActorCrew.Any(uc => uc.value == ec.PersonId)).ToList();
+                      var charactersToRemove = existingCharacterCrew.Where(ec => !updatedActorCrew.Any(uc => uc.value == ec.ActorId)).ToList();
+
+                      foreach (var r in actorsToRemove)
+                      {
+                          existingActorCrew.Remove(r);
+                          database.MoviesCrew.Remove(r);
+                      }
+
+                      foreach (var r in charactersToRemove)
+                      {
+                          existingCharacterCrew.Remove(r);
+                          database.MoviesCharacters.Remove(r);
+                      }
+
+                      var charactersToUpdate = updatedActorCrew.Where(uc => !existingCharacterCrew.Any(ec => ec.ActorId == uc.value && uc.CharacterName == ec.Name && uc.Description == ec.Description)).ToList();
+
+                      foreach (var u in charactersToUpdate)
+                      {
+                          int Id = existingCharacterCrew.Where(q=> q.ActorId == u.value).Select(s=> s.Id).FirstOrDefault();
+
+                          if(Id > 0)
+                          {
+                              var update = await database.MoviesCharacters.Where(q => q.Id == Id).FirstOrDefaultAsync();
+
+                              update.Description = u.Description;
+                              update.Name = u.CharacterName;
+
+                              database.MoviesCharacters.Update(update);
+                          }
+                      }
+
+                      var actorsToAdd = updatedActorCrew.Where(uc => !existingActorCrew.Any(ec => ec.PersonId == uc.value)).ToList();
+
+                      var charactersToAdd = updatedActorCrew.Where(uc => !existingCharacterCrew.Any(ec => ec.ActorId == uc.value)).ToList();
+
+                      foreach (var a in actorsToAdd)
+                      {
+                          await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                          {
+                              MovieId = movie.Id,
+                              PersonId = Convert.ToInt32(a.value),
+                              Role = CrewRoleEnum.Actor
+                          });
+                      }
+
+                      foreach (var a in charactersToAdd)
+                      {
+                          await database.MoviesCharacters.AddAsync(new MoviesCharactersEntity
+                          {
+                              MovieId = movie.Id,
+                              ActorId = Convert.ToInt32(a.value),
+                              Name = a.CharacterName.Trim(),
+                              Description = a.Description.Trim(),
+                          });
+                      }
+
+                      await SaveMoviesCrew(movie.Director, CrewRoleEnum.Director, movieDb.Id);
+                      await SaveMoviesCrew(movie.Writers, CrewRoleEnum.Screenwriter, movieDb.Id);
+
+                      await database.SaveChangesAsync();
+
+                  }
+                  else
+                  {
+                      byte[] s = DataActions.ImageToByte(movie.MovieImageData);
+
+                      var genres = DataActions.FormatGenres(movie.Genres);
+
+                      await database.Movies.AddAsync(new MoviesEntity
+                      {
+                          MovieName = movie.MovieName.Trim(),
+                          Synopsis = movie.Synopsis.Trim(),
+                          Genres = genres,
+                          Duration = movie.Duration,
+                          ReleaseDate = movie.ReleaseDate.ToUniversalTime(),
+                          MovieImageData = s,
+                          DateTimeAdded = DateTime.Now.ToUniversalTime()
+                      });
+
+                      await database.SaveChangesAsync();
+
+                      var m = await database.Movies.Where(w => w.MovieName == movie.MovieName).Select(s => s.Id).FirstOrDefaultAsync();
+
+                      foreach (var a in JsonSerializer.Deserialize<List<ActorSelectDTO>>(movie.Actors))
+                      {
+                          await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                          {
+                              MovieId = m,
+                              PersonId = Convert.ToInt32(a.value),
+                              Role = CrewRoleEnum.Actor
+                          });
+
+                          await database.MoviesCharacters.AddAsync(new MoviesCharactersEntity
+                          {
+                              MovieId = m,
+                              ActorId = Convert.ToInt32(a.value),
+                              Name = a.CharacterName.Trim(),
+                              Description = a.Description.Trim()
+                          });
+                      }
+
+                      foreach (var a in movie.Director.Split(",").ToList())
+                      {
+                          await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                          {
+                              MovieId = m,
+                              PersonId = Convert.ToInt32(a),
+                              Role = CrewRoleEnum.Director
+                          });
+                      }
+
+                      foreach (var a in movie.Writers.Split(",").ToList())
+                      {
+                          await database.MoviesCrew.AddAsync(new MoviesCrewEntity
+                          {
+                              MovieId = m,
+                              PersonId = Convert.ToInt32(a),
+                              Role = CrewRoleEnum.Screenwriter
+                          });
+                      }
+                      await database.SaveChangesAsync();
+                  }
+                  transaction.Commit();
+              }
+              catch(Exception ex)
+              {
+                  throw new Exception(ex.Message);
+              }
+          }
         private async Task SaveMoviesCrew(string Crew, CrewRoleEnum crewRoleEnum, int movieId)
         {
 

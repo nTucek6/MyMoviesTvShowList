@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref, watch } from 'vue'
 import { useCrewsAdmin } from '@/stores/admin/crewsadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
 import { crewParams } from '@/app/views/3.admin/crew/crewparams'
@@ -12,15 +12,42 @@ const api = useCrewsAdmin()
 const globalhelper = useGlobalHelper()
 const router = useRouter()
 
-onMounted(() => {
-  api.GetPeople(15, 1, '')
+const page = ref<number>(1)
+
+const search = ref<string>('')
+
+const postPerPage = 10
+
+const disableShowMore = ref(false)
+
+const maxPeopleCount = computed(() => api.PeopleCount)
+
+onMounted(async () => {
+ await api.GetPeopleCount()
+ await api.GetPeople(postPerPage, page.value, search.value)
+ checkPeopleCount()
 })
 
-const EditPerson = (data: any) => {
+const editPerson = (data: any) => {
   api.setEditPerson(data)
   api.setIsEdit(true)
-  router.push({ name: 'Add & Edit person'})
+  router.push({ name: 'Add & Edit person' })
 }
+
+const showMore = () => {
+  page.value++
+  api.GetPeople(postPerPage, page.value, search.value)
+}
+
+const checkPeopleCount = () =>{
+  if (PeopleList.value.length == maxPeopleCount.value) {
+    disableShowMore.value = true
+  }
+}
+
+watch(PeopleList, () => {
+  checkPeopleCount()
+})
 </script>
 
 <template>
@@ -30,6 +57,7 @@ const EditPerson = (data: any) => {
     <table class="table table-striped">
       <thead>
         <tr>
+          <th>#</th>
           <th>Name</th>
           <th>Surname</th>
           <th>Birth date</th>
@@ -38,7 +66,8 @@ const EditPerson = (data: any) => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="p in PeopleList" :key="p.Id">
+        <tr v-for="(p, index) in PeopleList" :key="p.Id">
+          <td>{{ index + 1 }}</td>
           <td>{{ p.FirstName }}</td>
           <td>{{ p.LastName }}</td>
           <td>{{ globalhelper.formatDate(new Date(p.BirthDate)) }}</td>
@@ -48,7 +77,7 @@ const EditPerson = (data: any) => {
               style="cursor: pointer"
               @click="
                 () => {
-                  EditPerson(p)
+                  editPerson(p)
                 }
               "
               ><font-awesome-icon :icon="['fas', 'edit']"
@@ -57,6 +86,8 @@ const EditPerson = (data: any) => {
         </tr>
       </tbody>
     </table>
+
+    <button @click="showMore" class="btn" :disabled="disableShowMore">Show more</button>
   </div>
 </template>
 

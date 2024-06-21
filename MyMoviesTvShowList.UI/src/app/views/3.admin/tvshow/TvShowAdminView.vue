@@ -2,14 +2,26 @@
 import { useTvShowAdminStore } from '@/stores/admin/tvshowadmin'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
 import { tvShowParams } from '@/app/views/3.admin/tvshow/tvshowparams'
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref, watch } from 'vue'
 import type { TVShowDTO } from '@/app/shared/models/tvshow.mode'
 import router from '@/router'
 
 const tvshowApi = useTvShowAdminStore()
 
-onMounted(() => {
-  tvshowApi.GetTVShow(10, 1, '')
+const page = ref<number>(1)
+
+const search = ref<string>('')
+
+const postPerPage = 10
+
+const disableShowMore = ref<boolean>(false)
+
+const maxTVShowCount = computed(() => tvshowApi.TVShowCount)
+
+onMounted(async() => {
+  await tvshowApi.GetTVShowCount()
+  await tvshowApi.GetTVShow(postPerPage, page.value, search.value)
+  checkTVShowCount()
 })
 
 const TVShowList = computed<TVShowDTO[]>(() => tvshowApi.TVShowData)
@@ -18,6 +30,21 @@ const EditTVShow = (data: any) => {
   tvshowApi.setEditTVShow(data)
   router.push({ name: 'Add & Edit TVShow' })
 }
+
+const showMore = () => {
+  page.value++
+  tvshowApi.GetTVShow(postPerPage, page.value, search.value)
+}
+
+const checkTVShowCount = () => {
+  if (TVShowList.value.length == maxTVShowCount.value) {
+    disableShowMore.value = true
+  }
+}
+
+watch(TVShowList, () => {
+  checkTVShowCount()
+})
 </script>
 
 <template>
@@ -72,6 +99,7 @@ const EditTVShow = (data: any) => {
       </tr>
     </tbody>
   </table>
+  <button @click="showMore" class="btn" :disabled="disableShowMore">Show more</button>
 </template>
 
 <style scoped>

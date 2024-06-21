@@ -253,6 +253,10 @@ namespace Services.TVShowsAdmin
             }
 
         }
+        public async Task<int> GetTVShowCount()
+        {
+            return await database.TvShow.CountAsync();
+        }
 
         private async Task SaveTVShowCrew(string Crew, CrewRoleEnum crewRoleEnum, int tvShowId)
         {

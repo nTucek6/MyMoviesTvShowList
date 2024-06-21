@@ -9,6 +9,8 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
   const MovieCrew = ref()
   const MovieData = ref<MoviesDTO[]>([])
 
+  const MovieCount = ref<number>(0)
+
   const EditMovie = ref()
 
   function setEditMovie(data: any) {
@@ -17,6 +19,11 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
 
   function setMovieCrew(data: any) {
     MovieCrew.value = data
+  }
+
+  function getEditMovie()
+  {
+    return EditMovie.value
   }
 
   async function GetGenres() {
@@ -71,6 +78,19 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
     }
   }
 
+  async function GetMoviesCount() {
+    try {
+      await axios({
+        method: 'get',
+        url: API_URLS_ADMIN.GETMOVIES,
+      }).then((response) => {
+        MovieCount.value = response.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   async function SaveMovie(Movie: Object) {
     try {
       await axios({
@@ -118,5 +138,8 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
     GetMovies,
     MovieData,
     GetMovieFromAPI,
+    getEditMovie,
+    GetMoviesCount,
+    MovieCount
   }
 })

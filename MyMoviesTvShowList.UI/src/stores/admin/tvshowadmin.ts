@@ -6,6 +6,7 @@ import { TVShowDTO } from '@/app/shared/models/tvshow.mode'
 
 export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
   const TVShowData = ref<TVShowDTO[]>([])
+  const TVShowCount = ref<number>(0)
 
   const EditTVShow = ref()
 
@@ -64,6 +65,22 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
     }
   }
 
+async function GetTVShowCount()
+{
+  try {
+    await axios({
+      method: 'get',
+      url: API_URLS_ADMIN.GETTVSHOWCOUNT,
+    
+    }).then((response) => {
+      TVShowCount.value = response.data
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
   return {
     SaveTVShow,
     GetTVShow,
@@ -71,5 +88,7 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
     EditTVShow,
     setEditTVShow,
     GetTVShowFromAPI,
+    TVShowCount,
+    GetTVShowCount,
   }
 })

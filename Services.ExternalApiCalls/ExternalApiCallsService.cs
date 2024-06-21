@@ -59,7 +59,12 @@ namespace Services.ExternalApiCalls
 
                 string format = "yyyy-MM-dd";
 
-                DateTime parsedDate = DateTime.ParseExact(data[0].birthday, format, CultureInfo.InvariantCulture);
+                DateTime parsedDate = new DateTime();
+
+                if (DataActions.CheckDate(data[0].birthday))
+                {
+                   parsedDate = DateTime.ParseExact(data[0].birthday, format, CultureInfo.InvariantCulture);
+                }
 
                 celebrity = new PersonDTO
                 {

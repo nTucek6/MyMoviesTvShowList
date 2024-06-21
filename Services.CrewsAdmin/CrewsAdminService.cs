@@ -46,8 +46,7 @@ namespace Services.CrewsAdmin
 
         public async Task<int> GetPeopleCount()
         {
-            var count = await database.People.CountAsync();
-            return count;
+            return await database.People.CountAsync();
         }
 
         public async Task SavePerson(PersonDTO person)

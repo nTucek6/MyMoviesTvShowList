@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref, watch } from 'vue'
 import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
 import type { MoviesDTO } from '@/app/shared/models/movies.model'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
@@ -9,8 +9,20 @@ import { moviesParams } from '@/app/views/3.admin/movies/moviesparams'
 const MoviesAdminApi = useMoviesAdminApi()
 const router = useRouter()
 
-onMounted(() => {
-  MoviesAdminApi.GetMovies(10, 1, '')
+const page = ref<number>(1)
+
+const search = ref<string>('')
+
+const postPerPage = 10
+
+const disableShowMore = ref<boolean>(false)
+
+const maxMoviesCount = computed(() => MoviesAdminApi.MovieCount)
+
+onMounted(async() => {
+  await MoviesAdminApi.GetMoviesCount()
+  await MoviesAdminApi.GetMovies(postPerPage, page.value, search.value)
+  checkMovieCount()
 })
 
 const MovieList = computed<MoviesDTO[]>(() => MoviesAdminApi.MovieData)
@@ -19,6 +31,21 @@ const EditMovie = (data: any) => {
   MoviesAdminApi.setEditMovie(data)
   router.push({ name: 'Add & Edit movie' })
 }
+
+const showMore = () => {
+  page.value++
+  MoviesAdminApi.GetMovies(postPerPage, page.value, search.value)
+}
+
+const checkMovieCount = () => {
+  if (MovieList.value.length == maxMoviesCount.value) {
+    disableShowMore.value = true
+  }
+}
+
+watch(MovieList, () => {
+  checkMovieCount()
+})
 </script>
 
 <template>
@@ -78,6 +105,7 @@ const EditMovie = (data: any) => {
         </tr>
       </tbody>
     </table>
+    <button @click="showMore" class="btn" :disabled="disableShowMore">Show more</button>
   </div>
 </template>
 

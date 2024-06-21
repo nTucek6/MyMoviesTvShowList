@@ -52,6 +52,7 @@ onMounted(async () => {
   document.addEventListener('click', handleClickOutside)
   await MoviesApi.GetMovieInfo(Id)
   Movie.value = MoviesApi.GetMovie()
+  MoviesApi.resetMovieInfo()
 })
 
 onUnmounted(() => {

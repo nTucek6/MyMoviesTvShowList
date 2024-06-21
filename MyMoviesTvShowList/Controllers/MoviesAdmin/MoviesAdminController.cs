@@ -52,5 +52,12 @@ namespace MyMoviesTvShowList.Controllers.MoviesAdmin
             return Ok(movies);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetMoviesCount()
+        {
+            int count = await moviesAdminService.GetMoviesCount();
+            return Ok(count);
+        }
+
     }
 }

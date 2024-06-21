@@ -15,6 +15,7 @@ export const API_URLS_ADMIN = {
   GETCREWSELECTSEARCH : `${API_BASE_URL}MoviesAdmin/GetCrewSelectSearch`,
   SAVEMOVIE : `${API_BASE_URL}MoviesAdmin/SaveMovie`,
   GETMOVIEFROMAPI: `${API_BASE_URL}ExternalApiCalls/GetMovieFromApi`,
+  GETMOVIECOUNT: `${API_BASE_URL}MoviesAdmin/GetMoviesCount`,
 
   GETPEOPLE : `${API_BASE_URL}CrewsAdmin/GetPeople`,
   GETPEOPLECOUNT : `${API_BASE_URL}CrewsAdmin/GetPeopleCount`,
@@ -24,4 +25,5 @@ export const API_URLS_ADMIN = {
   SAVETVSHOW : `${API_BASE_URL}TVShowsAdmin/SaveTVShow`,
   GETTVSHOW : `${API_BASE_URL}TVShowsAdmin/GetTVShow`,
   GETTVSHOWFROMAPI : `${API_BASE_URL}ExternalApiCalls/GetTVShowFromApi`,
+  GETTVSHOWCOUNT: `${API_BASE_URL}TVShowsAdmin/GetTVShowCount`,
 }

@@ -21,6 +21,11 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
       return MovieInfo.value;
     }
 
+    function resetMovieInfo()
+    {
+      MovieInfo.value = new MoviesDTO()
+    }
+
     async function GetMoviesList(PostPerPage: number, Page: number, Search: string) {
         try {
             await axios({
@@ -56,6 +61,6 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
     }
 
 
-    return {GetMoviesList, GetMoviesData, GetMovieInfo,GetMovie}
+    return {GetMoviesList, GetMoviesData, GetMovieInfo,GetMovie, resetMovieInfo}
 
 })

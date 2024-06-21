@@ -7,6 +7,6 @@
         Task<List<CrewsSelectDTO>> GetCrewSelectSearch(string search);
         Task SaveMovie(SaveMovieDTO movie);
         Task<List<MoviesDTO>> GetMovies(int PostPerPage, int Page, string? Search);
-
+        Task<int> GetMoviesCount();
     }
 }

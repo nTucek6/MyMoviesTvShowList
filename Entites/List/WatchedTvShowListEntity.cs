@@ -16,6 +16,7 @@ namespace Entites.List
         public int EpisodesWatched { get; set; }
         public int? Score { get; set; }
         public DateTime TimeAdded { get; set; }
+        public string? Review {  get; set; }
 
     }
 }
