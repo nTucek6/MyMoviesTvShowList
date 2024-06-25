@@ -80,6 +80,98 @@ watch(route, () => {
 </script>
 
 <template>
+  <!-- <header>
+    <div id="top-nav">
+      <div id="aplication-name">
+        <RouterLink to="/" id="app-logo"
+          ><font-awesome-icon icon="film" />W<font-awesome-icon icon="shapes" />tchBuddy</RouterLink
+        >
+      </div>
+      <div id="auth-menu">
+        <ul v-if="!userLogIn">
+          <li id="login"><RouterLink to="/login">Login</RouterLink></li>
+          <li id="signup"><RouterLink to="/register">Signup</RouterLink></li>
+        </ul>
+
+        <div
+          id="dropdown-admin"
+          class="dropdown-top"
+          ref="dropdownAdmin"
+          v-if="userLogIn && UserData.Role == 'Admin'"
+          :class="{ 'dropdown-admin-open': showAdminMenu }"
+        >
+          <div @click="showAdminMenu = !showAdminMenu">
+            <span class="">Admin</span>
+          </div>
+
+          <div class="dropdown-content">
+            <RouterLink to="/moviesadmin" class="btn dropdown-item"
+              ><font-awesome-icon :icon="['fas', 'film']" /> Movies</RouterLink
+            >
+            <RouterLink to="/tvshowadmin" class="btn dropdown-item"
+              ><font-awesome-icon :icon="['fas', 'tv']" /> Tv Shows</RouterLink
+            >
+            <RouterLink to="/viewcrew" class="btn dropdown-item"
+              ><font-awesome-icon :icon="['fas', 'video']" /> Film & Show crew</RouterLink
+            >
+            <RouterLink to="/" class="btn dropdown-item"
+              ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Users</RouterLink
+            >
+          </div>
+        </div>
+
+        <div
+          ref="dropdownList"
+          id="dropdown-list"
+          class="dropdown-top"
+          v-if="userLogIn"
+          :class="{ 'dropdown-list-open': showListMenu }"
+        >
+          <div @click="showListMenu = !showListMenu">
+            <font-awesome-icon id="f-icon" icon="list" />
+          </div>
+
+          <div class="dropdown-content dropdown-content-list">
+            <RouterLink :to="`/movielist/${UserData?.Username}`" class="btn dropdown-item"
+              ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Movies List</RouterLink
+            >
+          </div>
+        </div>
+
+        <div
+          ref="dropdownProfile"
+          id="dropdown-profile"
+          class="dropdown-top"
+          v-if="userLogIn"
+          :class="{ 'dropdown-profile-open': showProfileMenu }"
+        >
+          <div class="dropdown-user" @click="showProfileMenu = !showProfileMenu">
+            <span>{{ UserData.Username }} </span>
+            <font-awesome-icon id="f-icon" icon="caret-down" />
+            <img :src="ProfileImage" />
+          </div>
+
+          <div class="dropdown-content">
+            <RouterLink :to="`/profile/${UserData?.Username}`" class="btn dropdown-item"
+              ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Profile</RouterLink
+            >
+            <RouterLink to="/accountsettings" class="btn dropdown-item"
+              ><font-awesome-icon :icon="['fas', 'cog']" /> Account settings
+            </RouterLink>
+            <RouterLink
+              to="/"
+              class="btn dropdown-item dropdown-item-logout"
+              @click="authentication.LogOut()"
+              ><font-awesome-icon :icon="['fas', 'sign-out']" class="icon" />Log Out</RouterLink
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav id="bottom-nav"></nav>
+  </header> -->
+
   <header>
     <div id="computer-view">
       <div id="top-navigation">
@@ -247,6 +339,8 @@ $signup_btn_color: #a50000;
 $mobile-link-color: rgb(1, 115, 160);
 
 $mobile-site-color: rgb(255, 236, 126);
+
+
 
 header {
   display: block;
@@ -490,7 +584,7 @@ a {
 .dropdown-user {
   display: flex;
   /*align-items: center; */
-}
+} 
 
 .dropdown-user #f-icon {
   margin-right: 5px;
@@ -582,4 +676,157 @@ a {
   display: flex;
   align-items: center;
 }
+
+
+
+/*
+$app_name_color: rgb(0, 0, 0);
+$link_color: #000000;
+$login_btn_color: rgb(40, 111, 134);
+$signup_btn_color: #a50000;
+
+header {
+  display: block;
+  padding: 10px 0px 2px;
+}
+
+#top-nav {
+  display: flex;
+  justify-content: space-between;
+  height: 34px;
+}
+
+a {
+  text-decoration: none;
+  color: $link_color;
+}
+
+#aplication-name {
+  display: flex;
+}
+
+#aplication-name > a {
+  color: $app_name_color;
+  font-size: 30px;
+}
+
+#app-logo > svg {
+  color: $app_name_color;
+}
+
+#app-logo > svg:first-child {
+  margin-right: 5px;
+  color: $app_name_color;
+}
+
+#app-logo > svg:last-child {
+  margin: 0 2px;
+  font-size: 20px;
+}
+
+#login,
+#signup {
+  border-radius: 5px;
+  padding: 5px 8px;
+}
+
+#login > a,
+#signup > a {
+  text-decoration: none;
+}
+
+#login {
+  border: 1px solid $login_btn_color;
+}
+#signup {
+  border: 1px solid $signup_btn_color;
+}
+
+#login > a {
+  color: $login_btn_color;
+}
+#signup > a {
+  color: $signup_btn_color;
+}
+
+// ----------------------------------------------------------------------------------------
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  color: $app_name_color;
+  align-items: center;
+}
+
+.dropdown-user span {
+  margin-right: 4px;
+}
+
+.dropdown-user {
+  display: flex;
+} 
+
+.dropdown-user #f-icon {
+  margin-right: 5px;
+}
+
+.dropdown-user img {
+  height: 90%;
+  width: 100%;
+  object-fit: contain;
+  border: 1px solid $app_name_color;
+}
+
+.dropdown-hover:hover {
+  background-color: rgb(0, 31, 43);
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+
+  transform-origin: top;
+  transition: 0.2s ease-out;
+  transform: scaleY(0);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dropdown-content-list {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.dropdown-top {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: $app_name_color;
+  margin-left: 10px;
+  height: 100%;
+}
+
+.dropdown-profile-open .dropdown-content,
+.dropdown-list-open .dropdown-content,
+.dropdown-admin-open .dropdown-content {
+  visibility: visible;
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+// ----------------------------------------------------------------------------------------
+
+*/
+
 </style>

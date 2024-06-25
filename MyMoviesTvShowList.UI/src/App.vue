@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import HeaderView from './app/shared/components/header/HeaderView.vue'
+import HeaderNewView from './app/shared/components/header/HeaderNewView.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {
@@ -40,7 +41,8 @@ library.add(
 
 <template>
   <main class="container">
-    <HeaderView />
+    <!-- <HeaderView /> -->
+    <HeaderNewView />
     <RouterView />
   </main>
 </template>
