@@ -2,7 +2,7 @@
 import { ref, onMounted, computed, watch, onBeforeUnmount } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useAuthentication } from '@/stores/admin/authentication'
-import { DropdownMenu } from '@/app/shared/models/dropdown-menu'
+import type { DropdownMenu } from '@/app/shared/models/dropdown-menu'
 
 import ProfileImage from '@/assets/images/profileImg.webp'
 
@@ -12,7 +12,6 @@ const route = useRoute()
 const userLogIn = computed(() => authentication.userLogIn)
 const UserData = computed(() => authentication.UserData)
 
-const showMobileMenu = ref(false)
 
 const showProfileMenu = ref(false)
 const showListMenu = ref(false)
@@ -48,13 +47,9 @@ function handleClickOutside(event: any) {
   }
 }
 
-const ToggleMobileMenu = () => {
-  showMobileMenu.value = !showMobileMenu.value
-}
-
 onMounted(() => {
-  authentication.CheckUserLogin()
   document.addEventListener('click', handleClickOutside)
+  setRoutePageName()
 })
 
 onBeforeUnmount(() => {
@@ -62,6 +57,10 @@ onBeforeUnmount(() => {
 })
 
 watch(route, () => {
+  setRoutePageName()
+})
+
+function setRoutePageName(){
   if (route.path == '/profile/' + route.params.username) {
     page.value = route.params.username + "'s profile"
   } else if (route.path == `/movie/${route.params.id}/${route.params.title}`) {
@@ -72,7 +71,7 @@ watch(route, () => {
   showListMenu.value = false
   showProfileMenu.value = false
   showAdminMenu.value = false
-})
+}
 
 const dropdownMenu: DropdownMenu[] = [
   {
@@ -102,12 +101,10 @@ const dropdownMenu: DropdownMenu[] = [
         <RouterLink to="/"
           ><font-awesome-icon icon="film" />W<font-awesome-icon icon="shapes" />tchBuddy</RouterLink
         >
-        <div id="mobile-view-icon" @click="ToggleMobileMenu()">
-          <font-awesome-icon icon="bars" />
-        </div>
+      
       </div>
 
-      <div id="auth" :class="{ open: showMobileMenu }">
+      <div id="auth">
         <div class="auth-menu" v-if="!userLogIn">
           <RouterLink to="/login" id="login">Login</RouterLink>
           <RouterLink to="/register" id="register">Signup</RouterLink>
@@ -185,7 +182,7 @@ const dropdownMenu: DropdownMenu[] = [
       </div>
     </div>
 
-    <div id="bottom-nav" :class="{ open: showMobileMenu }">
+    <div id="bottom-nav">
       <nav id="site-pages">
         <ul>
           <li class="dropdown dropdown-hover" v-for="menu in dropdownMenu" :key="menu.name">
@@ -250,9 +247,6 @@ a {
 }
 
 
-#mobile-view-icon{
-  display: none;
-}
 
 .auth-menu {
   display: flex;
@@ -416,28 +410,12 @@ a {
 
 /* -----------------------------------Responsive------------------------------------------- */
 
+/*
+
 @media screen and (max-width: 768px) {
   header > div {
     flex-direction: column;
-  }
-
-  .auth-menu {
-    flex-direction: column-reverse;
-    align-items: start;
-  }
-
-  #site-pages ul > li {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #top-nav {
-    display: flex;
-    height: auto;
-  }
-
-  #bottom-nav {
-    display: flex;
+    flex-wrap: wrap;
   }
 
   #site-name {
@@ -445,37 +423,65 @@ a {
     justify-content: space-between;
   }
 
-  #mobile-view-icon{
+  #mobile-view-icon {
     display: block;
   }
 
-  #auth, #bottom-nav{
-  visibility: hidden;
-  position: absolute;
-  background-color: white;
-  color: black;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  .auth-menu {
+    flex-direction: column-reverse;
+    align-items: start;
+  }
 
-  transform-origin: top;
-  transition: 0.2s ease-out;
-  transform: scaleY(0);
-  opacity: 0;
-}
+  #auth,
+  #bottom-nav {
+    visibility: hidden;
+    position: absolute;
+    background-color: white;
+    color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 100%;
+    margin-top: 34px;
+    left: 0;
 
-.open #mobile-view-icon {
-  transform: rotate(-90deg);
-}
+    transform-origin: top;
+    transition: 0.2s ease-out;
+    transform: scaleY(0);
+    opacity: 0;
+  }
 
-.open #auth, .open #bottom-nav {
-  visibility: visible;
-  transform: scaleY(1);
-  opacity: 1;
-  
-}
+  #auth{
+    top:7px;
+  }
+  #bottom-nav{
+    top:76px
+  }
 
+  #site-pages{
+    background-color: #fff;
+    height: auto;
+  }
+
+  #site-pages > ul{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .open #mobile-view-icon {
+    transform: rotate(90deg);
+  }
+
+
+  .open #auth,
+  .open #bottom-nav {
+    visibility: visible;
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
+  */
 
 /* ----------------------------------------------------------------------------------------- */
 </style>
