@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyMoviesTvShowList.Extensions")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03fb54d4ed8c93a76dc57c12ddededc850a5143b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyMoviesTvShowList.Extensions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyMoviesTvShowList.Extensions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
