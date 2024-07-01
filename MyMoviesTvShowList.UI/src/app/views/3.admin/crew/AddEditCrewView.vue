@@ -2,9 +2,9 @@
 import { ref, onMounted, computed } from 'vue'
 import { useCrewsAdmin } from '@/stores/admin/crewsadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
-import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue';
-import {crewParams} from '@/app/views/3.admin/crew/crewparams'
-import { SavePersonDTO } from '@/app/shared/models/save-person.model';
+import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
+import { crewParams } from '@/app/views/3.admin/crew/crewparams'
+import { SavePersonDTO } from '@/app/shared/models/save-person.model'
 
 const Person = ref<SavePersonDTO>(new SavePersonDTO())
 
@@ -36,15 +36,14 @@ onMounted(() => {
   setEditValues()
 })
 
-const setEditValues =() =>{
+const setEditValues = () => {
   if (d.value != undefined) {
     Person.value.Id = d.value.Id
     Person.value.FirstName = d.value.FirstName
     Person.value.LastName = d.value.LastName
     Person.value.BirthPlace = d.value.BirthPlace
 
-    if(d.value.PersonImageData != null)
-    {
+    if (d.value.PersonImageData != null) {
       ImagePreview.value = 'data:image/png;base64,' + d.value.PersonImageData
     }
     const date = globalhelper.formatInputDate(new Date(d.value.BirthDate))
@@ -59,7 +58,7 @@ const ClearFormData = () => {
   Person.value = new SavePersonDTO()
   ImagePreview.value = null
   isEdit.value = false
-  query.value = ""
+  query.value = ''
 }
 
 const addPersonFormSubmit = async () => {
@@ -77,10 +76,9 @@ const addPersonFormSubmit = async () => {
 }
 
 const handleQuerySearch = async () => {
- await api.GetPersonFromAPI(query.value)
- setEditValues()
+  await api.GetPersonFromAPI(query.value)
+  setEditValues()
 }
-
 </script>
 
 <template>
@@ -89,20 +87,38 @@ const handleQuerySearch = async () => {
 
     <div class="text-center mt-5" v-if="!isEdit">
       <div class="form-group mb-3">
-        <input type="text" v-model="query" class="w-50" id="query" placeholder="Search for celebritie..." />
+        <input
+          type="text"
+          v-model="query"
+          class="w-50"
+          id="query"
+          placeholder="Search for celebritie..."
+        />
       </div>
       <button class="btn" @click="handleQuerySearch">Search</button>
     </div>
-  
+
     <form @submit.prevent="addPersonFormSubmit" class="text-center mb-3 mt-5">
       <div class="form-group mb-3">
         <input type="text" v-model="Person.FirstName" class="w-50" id="name" placeholder="Name" />
       </div>
       <div class="form-group mb-3">
-        <input type="text" v-model="Person.LastName" class="w-50" id="lastname" placeholder="Surname" />
+        <input
+          type="text"
+          v-model="Person.LastName"
+          class="w-50"
+          id="lastname"
+          placeholder="Surname"
+        />
       </div>
       <div class="form-group mb-3">
-        <input type="date" v-model="Person.BirthDate" class="w-50" id="surname" placeholder="Birth Date" />
+        <input
+          type="date"
+          v-model="Person.BirthDate"
+          class="w-50"
+          id="surname"
+          placeholder="Birth Date"
+        />
       </div>
       <div class="form-group mb-3">
         <input
@@ -133,6 +149,4 @@ const handleQuerySearch = async () => {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -28,6 +28,6 @@ export class MoviesDTO {
     this.ReleaseDate = ''
     this.Duration = 0
     this.RatingsCount = 0
-    this.MovieImageData = new Blob([]);
+    this.MovieImageData = new Blob([])
   }
 }

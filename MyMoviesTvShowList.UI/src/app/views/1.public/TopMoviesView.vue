@@ -1,17 +1,7 @@
-<script setup>
-
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div>
-        Top Movies
-
-
-    </div>
+  <div>Top Movies</div>
 </template>
 
-
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

@@ -8,10 +8,10 @@ export class Select {
   }
 }
 
-export class SelectActor{
+export class SelectActor {
   value: number
   label: string
-  CharacterName:string
+  CharacterName: string
 
   constructor() {
     this.value = 0

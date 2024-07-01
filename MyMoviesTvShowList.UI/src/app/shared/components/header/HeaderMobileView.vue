@@ -13,6 +13,10 @@ const showMobileMenu = ref(false)
 
 const dropdownMenu = ref()
 
+const showProfileMenu = ref(false)
+const showListMenu = ref(false)
+const showAdminMenu = ref(false)
+
 const page = ref()
 
 const ToggleMobileMenu = () => {
@@ -36,15 +40,14 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside)
-  console.log("called")
+  console.log('called')
 })
 
 watch(route, () => {
   setRoutePageName()
 })
 
-function setRoutePageName()
-{
+function setRoutePageName() {
   if (route.path == '/profile/' + route.params.username) {
     page.value = route.params.username + "'s profile"
   } else if (route.path == `/movie/${route.params.id}/${route.params.title}`) {
@@ -54,7 +57,6 @@ function setRoutePageName()
   }
   showMobileMenu.value = false
 }
-
 </script>
 
 <template>
@@ -68,11 +70,73 @@ function setRoutePageName()
 
       <div
         id="mobile-view-icon"
-        :class="showMobileMenu ? 'dropdown-menu-open':'dropdown-menu-close'"
+        :class="showMobileMenu ? 'sidebar-menu-open' : 'sidebar-menu-close'"
         ref="dropdownMenu"
       >
         <font-awesome-icon icon="bars" @click="ToggleMobileMenu" />
-        <div class="dropdown-content" :class="{ 'dropdown-content-open': showMobileMenu }"></div>
+        <div class="sidebar-content" :class="{ 'sidebar-content-open': showMobileMenu }">
+          <div class="auth-menu" v-if="!userLogIn">
+            <RouterLink to="/login" id="login">Login</RouterLink>
+            <RouterLink to="/register" id="register">Signup</RouterLink>
+          </div>
+          <div class="auth-menu" v-else>
+            <div
+              id="admin-dropdown"
+              ref="dropdownAdmin"
+              :class="{ 'dropdown-open': showAdminMenu }"
+              v-if="UserData.Role == 'Admin'"
+            >
+              <div class="dropdown-link" @click="showAdminMenu = !showAdminMenu">
+                <span>Admin</span>
+                <font-awesome-icon :icon="['fas', 'angle-right']" />
+              </div>
+
+              <div class="dropdown-content">
+                <RouterLink to="/moviesadmin" class="btn dropdown-item"
+                  ><font-awesome-icon :icon="['fas', 'film']" /> Movies
+                </RouterLink>
+                <RouterLink to="/tvshowadmin" class="btn dropdown-item"
+                  ><font-awesome-icon :icon="['fas', 'tv']" /> Tv Shows</RouterLink
+                >
+                <RouterLink to="/viewcrew" class="btn dropdown-item"
+                  ><font-awesome-icon :icon="['fas', 'video']" /> Film & Show crew</RouterLink
+                >
+                <RouterLink to="/" class="btn dropdown-item"
+                  ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Users
+                </RouterLink>
+              </div>
+            </div>
+
+            <div
+              id="profile-dropdown"
+              ref="dropdownProfile"
+              :class="{ 'dropdown-open': showProfileMenu }"
+            >
+              <div class="dropdown-link" @click="showProfileMenu = !showProfileMenu">
+                <span id="profile-btn"
+                  >{{ UserData.Username }}
+                  <font-awesome-icon :icon="['fas', 'angle-right']" />
+                  <!-- <img :src="ProfileImage" /> -->
+                </span>
+              </div>
+
+              <div class="dropdown-content">
+                <RouterLink :to="`/profile/${UserData?.Username}`" class="btn dropdown-item"
+                  ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Profile</RouterLink
+                >
+                <RouterLink to="/accountsettings" class="btn dropdown-item"
+                  ><font-awesome-icon :icon="['fas', 'cog']" /> Account settings
+                </RouterLink>
+                <RouterLink
+                  to="/"
+                  class="btn dropdown-item dropdown-item-logout"
+                  @click="authentication.LogOut()"
+                  ><font-awesome-icon :icon="['fas', 'sign-out']" class="icon" />Log Out</RouterLink
+                >
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -116,9 +180,9 @@ nav {
   font-size: 20px;
 }
 
-// -------------------------------------------------------------------------------
+// ------------------------sidebar------------------------------------
 
-.dropdown-content {
+.sidebar-content {
   visibility: hidden;
   position: absolute;
   background-color: white;
@@ -132,20 +196,61 @@ nav {
   right: 0;
   transition: width 0.3s ease-out;
   list-style: none;
+  overflow: hidden;
 }
 
-.dropdown-content-open {
+.sidebar-content-open {
   width: 80%;
 }
 
-.dropdown-menu-open .dropdown-content {
+.sidebar-menu-open .sidebar-content {
   visibility: visible;
   width: 80%;
 }
 
-.dropdown-menu-close .dropdown-content {
+.sidebar-menu-close .sidebar-content {
   visibility: visible;
   width: 0;
+}
+
+// -------------------------------------------------------------------------------
+
+// --------------------------------Dropdown content ------------------------------
+
+.dropdown-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: grey;
+  margin-bottom: 1px;
+  height: 100%;
+}
+
+.dropdown-link:last-of-type {
+  margin-bottom: 0;
+}
+
+.dropdown-content {
+  visibility: hidden;
+  position: absolute;
+  background-color: white;
+  color: black;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.3s ease-out;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: start;
+}
+
+.dropdown-open .dropdown-content {
+  visibility: visible;
+  transform: scaleY(1);
 }
 
 // -------------------------------------------------------------------------------

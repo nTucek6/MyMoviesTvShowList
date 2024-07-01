@@ -1,6 +1,5 @@
-.btn
-{
-  font-size: 14px;
+.btn {
+  font-size: 15px;
   padding: 6px 12px;
   margin-bottom: 0;
 
@@ -18,11 +17,14 @@
   user-select: none;
   background-image: none;
   border: 1px solid transparent;
-  color:black;
+  color: black;
 }
 
-.btn-red
-{
+.btn-red {
   background-color: red;
   color: whitesmoke;
+}
+
+.btn-disabled {
+  cursor: none;
 }

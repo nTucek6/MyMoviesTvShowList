@@ -20,7 +20,7 @@ const statusDropdown = ref()
 const selectedStatus = ref()
 
 const displaySelectedStatus = computed(() => {
-  return selectedStatus.value || {label:'Add to list'}
+  return selectedStatus.value || { label: 'Add to list' }
 })
 
 const ListOptions = [
@@ -61,6 +61,7 @@ onUnmounted(() => {
 
 watch(selectedStatus, (newValue) => {
   console.log(newValue)
+
   toggleList()
 })
 

@@ -18,4 +18,4 @@ export const dropdownMenu: DropdownMenu[] = [
     name: 'Communitiy',
     children: []
   }
-];
+]

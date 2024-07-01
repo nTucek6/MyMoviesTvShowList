@@ -102,15 +102,14 @@ input {
 }
 
 @media screen and (max-width: 768px) {
-  #login-form{
+  #login-form {
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 10px;
   }
-  input{
+  input {
     width: 60%;
     margin-left: 20%;
   }
 }
-
 </style>

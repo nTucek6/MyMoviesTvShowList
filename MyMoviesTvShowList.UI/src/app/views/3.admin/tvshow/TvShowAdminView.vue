@@ -18,7 +18,7 @@ const disableShowMore = ref<boolean>(false)
 
 const maxTVShowCount = computed(() => tvshowApi.TVShowCount)
 
-onMounted(async() => {
+onMounted(async () => {
   await tvshowApi.GetTVShowCount()
   await tvshowApi.GetTVShow(postPerPage, page.value, search.value)
   checkTVShowCount()
@@ -65,27 +65,27 @@ watch(TVShowList, () => {
     </thead>
     <tbody>
       <tr v-for="m in TVShowList" :key="m.Id">
-        <td>{{ m.Title }}</td>
-        <td>
+        <td data-cell="title">{{ m.Title }}</td>
+        <td data-cell="genres">
           <span v-for="(g, index) in m.Genres" :key="index"
             >{{ g.label }}<span v-if="index !== m.Genres.length - 1">, </span>
           </span>
         </td>
-        <td>{{ m.Runtime }}</td>
-        <td>
+        <td data-cell="runtime">{{ m.Runtime }}</td>
+        <td data-cell="actors">
           <span v-for="(a, index) in m.Actors" :key="index"
             >{{ a.FirstName }} {{ a.LastName }}<span v-if="index !== m.Actors.length - 1">, </span>
           </span>
         </td>
-        <td>
+        <td data-cell="creators">
           <span v-for="(d, index) in m.Creators" :key="index"
             >{{ d.FirstName }} {{ d.LastName
             }}<span v-if="index !== m.Creators.length - 1">, </span>
           </span>
         </td>
-        <td>{{ m.TotalSeason }}</td>
-        <td>{{ m.TotalEpisode }}</td>
-        <td>
+        <td data-cell="total seasons">{{ m.TotalSeason }}</td>
+        <td data-cell="total episodes">{{ m.TotalEpisode }}</td>
+        <td data-cell="edit">
           <span
             style="cursor: pointer"
             @click="

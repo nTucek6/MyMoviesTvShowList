@@ -1,12 +1,12 @@
 import type { LinkParams } from '@/app/shared/models/link-params'
 
 export const tvShowParams: LinkParams[] = [
-    {
-      route: '/tvshowadmin',
-      title: 'View all TvShows'
-    },
-    {
-      route: '/addedittvshow',
-      title: 'Add TvShow'
-    }
-  ]
+  {
+    route: '/admin/tvshowadmin',
+    title: 'View all TvShows'
+  },
+  {
+    route: '/admin/addedittvshow',
+    title: 'Add TvShow'
+  }
+]

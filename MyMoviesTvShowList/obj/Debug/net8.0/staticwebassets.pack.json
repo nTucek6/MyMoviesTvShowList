@@ -1,28 +1,16 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AccountSettings-2ff24eed.js",
-      "PackagePath": "staticwebassets\\assets\\AccountSettings-2ff24eed.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AccountSettings-11ac8bc1.js",
+      "PackagePath": "staticwebassets\\assets\\AccountSettings-11ac8bc1.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AccountSettings-f21bab38.js",
-      "PackagePath": "staticwebassets\\assets\\AccountSettings-f21bab38.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditCrewView-63f055a0.js",
+      "PackagePath": "staticwebassets\\assets\\AddEditCrewView-63f055a0.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditCrewView-07014154.js",
-      "PackagePath": "staticwebassets\\assets\\AddEditCrewView-07014154.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditCrewView-adf26b3b.js",
-      "PackagePath": "staticwebassets\\assets\\AddEditCrewView-adf26b3b.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditMovieView-60aec7af.js",
-      "PackagePath": "staticwebassets\\assets\\AddEditMovieView-60aec7af.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditMovieView-838876a2.js",
-      "PackagePath": "staticwebassets\\assets\\AddEditMovieView-838876a2.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditMovieView-787c74f3.js",
+      "PackagePath": "staticwebassets\\assets\\AddEditMovieView-787c74f3.js"
     },
     {
       "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditMovieView-c89a1276.css",
@@ -33,176 +21,108 @@
       "PackagePath": "staticwebassets\\assets\\AddEditTvShowView-243b2270.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditTvShowView-7b21ceca.js",
-      "PackagePath": "staticwebassets\\assets\\AddEditTvShowView-7b21ceca.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditTvShowView-6220b6f8.js",
+      "PackagePath": "staticwebassets\\assets\\AddEditTvShowView-6220b6f8.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AddEditTvShowView-f748a9e7.js",
-      "PackagePath": "staticwebassets\\assets\\AddEditTvShowView-f748a9e7.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AdminNavigationComponent.vue_vue_type_script_setup_true_lang-7d9d92b2.js",
+      "PackagePath": "staticwebassets\\assets\\AdminNavigationComponent.vue_vue_type_script_setup_true_lang-7d9d92b2.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AdminNavigationComponent.vue_vue_type_script_setup_true_lang-041ab717.js",
-      "PackagePath": "staticwebassets\\assets\\AdminNavigationComponent.vue_vue_type_script_setup_true_lang-041ab717.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\CrewsAdminView-35d2563d.js",
+      "PackagePath": "staticwebassets\\assets\\CrewsAdminView-35d2563d.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\AdminNavigationComponent.vue_vue_type_script_setup_true_lang-423c24d1.js",
-      "PackagePath": "staticwebassets\\assets\\AdminNavigationComponent.vue_vue_type_script_setup_true_lang-423c24d1.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\CrewsAdminView-4be13953.css",
+      "PackagePath": "staticwebassets\\assets\\CrewsAdminView-4be13953.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\CrewsAdminView-616f8482.js",
-      "PackagePath": "staticwebassets\\assets\\CrewsAdminView-616f8482.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\CrewsAdminView-7f18a622.css",
-      "PackagePath": "staticwebassets\\assets\\CrewsAdminView-7f18a622.css"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\CrewsAdminView-b5e4e5f1.js",
-      "PackagePath": "staticwebassets\\assets\\CrewsAdminView-b5e4e5f1.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\LoginView-28cb6f6b.js",
+      "PackagePath": "staticwebassets\\assets\\LoginView-28cb6f6b.js"
     },
     {
       "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\LoginView-4811a7ca.css",
       "PackagePath": "staticwebassets\\assets\\LoginView-4811a7ca.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\LoginView-6cd25b12.js",
-      "PackagePath": "staticwebassets\\assets\\LoginView-6cd25b12.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieInfo-b1ef7fa1.js",
+      "PackagePath": "staticwebassets\\assets\\MovieInfo-b1ef7fa1.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\LoginView-94e2adeb.js",
-      "PackagePath": "staticwebassets\\assets\\LoginView-94e2adeb.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieInfo-d3061368.css",
+      "PackagePath": "staticwebassets\\assets\\MovieInfo-d3061368.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieInfo-4ace6386.js",
-      "PackagePath": "staticwebassets\\assets\\MovieInfo-4ace6386.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieInfo-ca7990f2.js",
-      "PackagePath": "staticwebassets\\assets\\MovieInfo-ca7990f2.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieInfo-f5fbcf1c.css",
-      "PackagePath": "staticwebassets\\assets\\MovieInfo-f5fbcf1c.css"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieSearchView-6132a50f.js",
-      "PackagePath": "staticwebassets\\assets\\MovieSearchView-6132a50f.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieSearchView-c61cae5c.js",
-      "PackagePath": "staticwebassets\\assets\\MovieSearchView-c61cae5c.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieSearchView-9edeb10e.js",
+      "PackagePath": "staticwebassets\\assets\\MovieSearchView-9edeb10e.js"
     },
     {
       "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MovieSearchView-ef815d49.css",
       "PackagePath": "staticwebassets\\assets\\MovieSearchView-ef815d49.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MoviesAdminView-1507d548.css",
-      "PackagePath": "staticwebassets\\assets\\MoviesAdminView-1507d548.css"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MoviesAdminView-5186b0aa.css",
+      "PackagePath": "staticwebassets\\assets\\MoviesAdminView-5186b0aa.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MoviesAdminView-3329565c.js",
-      "PackagePath": "staticwebassets\\assets\\MoviesAdminView-3329565c.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MoviesAdminView-ce131bb7.js",
+      "PackagePath": "staticwebassets\\assets\\MoviesAdminView-ce131bb7.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MoviesAdminView-80ae6b7d.js",
-      "PackagePath": "staticwebassets\\assets\\MoviesAdminView-80ae6b7d.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MoviesListView-bcfc88d2.js",
+      "PackagePath": "staticwebassets\\assets\\MoviesListView-bcfc88d2.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MoviesListView-243df7ea.js",
-      "PackagePath": "staticwebassets\\assets\\MoviesListView-243df7ea.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\MoviesListView-d1c27204.js",
-      "PackagePath": "staticwebassets\\assets\\MoviesListView-d1c27204.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\ProfileView-68696bc5.js",
-      "PackagePath": "staticwebassets\\assets\\ProfileView-68696bc5.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\ProfileView-9c85bba1.js",
-      "PackagePath": "staticwebassets\\assets\\ProfileView-9c85bba1.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\RegisterView-0a4b4f6f.js",
-      "PackagePath": "staticwebassets\\assets\\RegisterView-0a4b4f6f.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\RegisterView-36281bd8.js",
-      "PackagePath": "staticwebassets\\assets\\RegisterView-36281bd8.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\ProfileView-0f46d869.js",
+      "PackagePath": "staticwebassets\\assets\\ProfileView-0f46d869.js"
     },
     {
       "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\RegisterView-3d993232.css",
       "PackagePath": "staticwebassets\\assets\\RegisterView-3d993232.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\TopMoviesView-4495aa99.js",
-      "PackagePath": "staticwebassets\\assets\\TopMoviesView-4495aa99.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\RegisterView-ce2345b5.js",
+      "PackagePath": "staticwebassets\\assets\\RegisterView-ce2345b5.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\TopMoviesView-5ff7fbb0.js",
-      "PackagePath": "staticwebassets\\assets\\TopMoviesView-5ff7fbb0.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\TopMoviesView-3f629b2f.js",
+      "PackagePath": "staticwebassets\\assets\\TopMoviesView-3f629b2f.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\TvShowAdminView-00929a7b.css",
-      "PackagePath": "staticwebassets\\assets\\TvShowAdminView-00929a7b.css"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\TvShowAdminView-1c45a70b.css",
+      "PackagePath": "staticwebassets\\assets\\TvShowAdminView-1c45a70b.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\TvShowAdminView-b99a9430.js",
-      "PackagePath": "staticwebassets\\assets\\TvShowAdminView-b99a9430.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\TvShowAdminView-8086faac.js",
+      "PackagePath": "staticwebassets\\assets\\TvShowAdminView-8086faac.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\TvShowAdminView-d3a04d67.js",
-      "PackagePath": "staticwebassets\\assets\\TvShowAdminView-d3a04d67.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\crewparams-97cd5103.js",
-      "PackagePath": "staticwebassets\\assets\\crewparams-97cd5103.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\crewparams-abc46f3c.js",
-      "PackagePath": "staticwebassets\\assets\\crewparams-abc46f3c.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\crewparams-ab275dc1.js",
+      "PackagePath": "staticwebassets\\assets\\crewparams-ab275dc1.js"
     },
     {
       "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\default-29be68ac.css",
       "PackagePath": "staticwebassets\\assets\\default-29be68ac.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\default.css_vue_type_style_index_1_src_true_lang-6d405168.js",
-      "PackagePath": "staticwebassets\\assets\\default.css_vue_type_style_index_1_src_true_lang-6d405168.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\default.css_vue_type_style_index_1_src_true_lang-526c62e5.js",
+      "PackagePath": "staticwebassets\\assets\\default.css_vue_type_style_index_1_src_true_lang-526c62e5.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\default.css_vue_type_style_index_1_src_true_lang-94eb8ea2.js",
-      "PackagePath": "staticwebassets\\assets\\default.css_vue_type_style_index_1_src_true_lang-94eb8ea2.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\globalhelper-88265407.js",
+      "PackagePath": "staticwebassets\\assets\\globalhelper-88265407.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\globalhelper-7d76c8d7.js",
-      "PackagePath": "staticwebassets\\assets\\globalhelper-7d76c8d7.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\index-3be30c5c.js",
+      "PackagePath": "staticwebassets\\assets\\index-3be30c5c.js"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\globalhelper-c8984ba7.js",
-      "PackagePath": "staticwebassets\\assets\\globalhelper-c8984ba7.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\index-9b97e950.css",
+      "PackagePath": "staticwebassets\\assets\\index-9b97e950.css"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\index-13498110.css",
-      "PackagePath": "staticwebassets\\assets\\index-13498110.css"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\index-a18159e2.js",
-      "PackagePath": "staticwebassets\\assets\\index-a18159e2.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\index-bcbd5d4d.js",
-      "PackagePath": "staticwebassets\\assets\\index-bcbd5d4d.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\moviesadmin-6e261063.js",
-      "PackagePath": "staticwebassets\\assets\\moviesadmin-6e261063.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\moviesadmin-c859bb2c.js",
-      "PackagePath": "staticwebassets\\assets\\moviesadmin-c859bb2c.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\moviesadmin-69d67227.js",
+      "PackagePath": "staticwebassets\\assets\\moviesadmin-69d67227.js"
     },
     {
       "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\moviesparams-cc211dca.js",
@@ -213,12 +133,8 @@
       "PackagePath": "staticwebassets\\assets\\profileImg-524f2314.webp"
     },
     {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\tvshowparams-324a93aa.js",
-      "PackagePath": "staticwebassets\\assets\\tvshowparams-324a93aa.js"
-    },
-    {
-      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\tvshowparams-63f51816.js",
-      "PackagePath": "staticwebassets\\assets\\tvshowparams-63f51816.js"
+      "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\assets\\tvshowparams-d8548206.js",
+      "PackagePath": "staticwebassets\\assets\\tvshowparams-d8548206.js"
     },
     {
       "Id": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\MyMoviesTvShowList\\wwwroot\\favicon.ico",

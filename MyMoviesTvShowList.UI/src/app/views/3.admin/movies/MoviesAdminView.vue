@@ -19,7 +19,7 @@ const disableShowMore = ref<boolean>(false)
 
 const maxMoviesCount = computed(() => MoviesAdminApi.MovieCount)
 
-onMounted(async() => {
+onMounted(async () => {
   await MoviesAdminApi.GetMoviesCount()
   await MoviesAdminApi.GetMovies(postPerPage, page.value, search.value)
   checkMovieCount()
@@ -52,59 +52,62 @@ watch(MovieList, () => {
   <div>
     <AdminNavigationComponent :routes="moviesParams" />
 
-    <table class="table table-striped" v-if="MovieList">
-      <thead>
-        <tr>
-          <th>Movie title</th>
-          <th>Genres</th>
-          <th>Duration</th>
-          <th>Actors</th>
-          <th>Director</th>
-          <th>Writers</th>
-          <th>Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="m in MovieList" :key="m.Id">
-          <td>{{ m.MovieName }}</td>
-          <td>
-            <span v-for="(g, index) in m.Genres" :key="index"
-              >{{ g.label }}<span v-if="index !== m.Genres.length - 1">, </span>
-            </span>
-          </td>
-          <td>{{ m.Duration }}</td>
-          <td>
-            <span v-for="(a, index) in m.Actors" :key="index"
-              >{{ a.FirstName }} {{ a.LastName
-              }}<span v-if="index !== m.Actors.length - 1">, </span>
-            </span>
-          </td>
-          <td>
-            <span v-for="(d, index) in m.Director" :key="index"
-              >{{ d.FirstName }} {{ d.LastName
-              }}<span v-if="index !== m.Director.length - 1">, </span>
-            </span>
-          </td>
-          <td>
-            <span v-for="(d, index) in m.Writers" :key="index"
-              >{{ d.FirstName }} {{ d.LastName
-              }}<span v-if="index !== m.Writers.length - 1">, </span>
-            </span>
-          </td>
-          <td>
-            <span
-              style="cursor: pointer"
-              @click="
-                () => {
-                  EditMovie(m)
-                }
-              "
-              ><font-awesome-icon :icon="['fas', 'edit']"
-            /></span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="wrapper">
+      <table class="table table-striped" v-if="MovieList">
+        <thead>
+          <tr>
+            <th>Movie title</th>
+            <th>Genres</th>
+            <th>Duration</th>
+            <th>Actors</th>
+            <th>Director</th>
+            <th>Writers</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="m in MovieList" :key="m.Id">
+            <td data-cell="title">{{ m.MovieName }}</td>
+            <td data-cell="genres">
+              <span v-for="(g, index) in m.Genres" :key="index"
+                >{{ g.label }}<span v-if="index !== m.Genres.length - 1">, </span>
+              </span>
+            </td>
+            <td data-cell="duration">{{ m.Duration }}</td>
+            <td data-cell="actors">
+              <span v-for="(a, index) in m.Actors" :key="index"
+                >{{ a.FirstName }} {{ a.LastName
+                }}<span v-if="index !== m.Actors.length - 1">, </span>
+              </span>
+            </td>
+            <td data-cell="director">
+              <span v-for="(d, index) in m.Director" :key="index"
+                >{{ d.FirstName }} {{ d.LastName
+                }}<span v-if="index !== m.Director.length - 1">, </span>
+              </span>
+            </td>
+            <td data-cell="writers">
+              <span v-for="(d, index) in m.Writers" :key="index"
+                >{{ d.FirstName }} {{ d.LastName
+                }}<span v-if="index !== m.Writers.length - 1">, </span>
+              </span>
+            </td>
+            <td data-cell="edit">
+              <span
+                style="cursor: pointer"
+                @click="
+                  () => {
+                    EditMovie(m)
+                  }
+                "
+                ><font-awesome-icon :icon="['fas', 'edit']"
+              /></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <button @click="showMore" class="btn" :disabled="disableShowMore">Show more</button>
   </div>
 </template>

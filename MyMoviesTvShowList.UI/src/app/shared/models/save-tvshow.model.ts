@@ -6,7 +6,7 @@ export class SaveTVShowDTO {
 
   //Director: string
   //Writers: string
-  Creators:string
+  Creators: string
   Actors: string
 
   Runtime: string

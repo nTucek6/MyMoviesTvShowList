@@ -21,5 +21,15 @@ namespace MyMoviesTvShowList.Controllers.MovieInfo
             return Ok(movie);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ChangeMovieListStatus(ChangeWatchStatusDTO statusDTO)
+        {
+            await movieInfoService.ChangeMovieListStatus(statusDTO);
+            return Ok();
+        }
+
+
+
+
     }
 }

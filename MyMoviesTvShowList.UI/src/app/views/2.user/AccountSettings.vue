@@ -1,8 +1,7 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
-    <section>
-        <h4>Account settings</h4>
-    </section>
+  <section>
+    <h4>Account settings</h4>
+  </section>
 </template>

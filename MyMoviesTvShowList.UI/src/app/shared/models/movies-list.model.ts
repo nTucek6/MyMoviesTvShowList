@@ -1,4 +1,4 @@
-export interface MoviesListDTO{
-    Id:number,
-    MovieName:string
+export interface MoviesListDTO {
+  Id: number
+  MovieName: string
 }

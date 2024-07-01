@@ -12,6 +12,7 @@ using Services.ExternalApiCalls;
 using Microsoft.Extensions.Configuration;
 using Services.MovieInfo;
 using Microsoft.Extensions.FileProviders;
+using Services.MovieTVShowList;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,6 +57,7 @@ builder.Services.AddTransient<ICrewsAdminService, CrewsAdminService>();
 builder.Services.AddTransient<ITVShowsAdminService, TVShowsAdminService>();
 builder.Services.AddTransient<IExternalApiCallsService, ExternalApiCallsService>();
 builder.Services.AddTransient<IMovieInfoService, MovieInfoService>();
+builder.Services.AddTransient<IMovieTVShowListService, MovieTVShowListService>();
 
 
 builder.Services.AddHostedService<CalculateScoreTimer>();

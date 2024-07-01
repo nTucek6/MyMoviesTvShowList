@@ -102,6 +102,5 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
     isEdit,
     setIsEdit,
     PeopleCount
-
   }
 })

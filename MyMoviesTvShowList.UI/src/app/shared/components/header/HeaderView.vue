@@ -340,8 +340,6 @@ $mobile-link-color: rgb(1, 115, 160);
 
 $mobile-site-color: rgb(255, 236, 126);
 
-
-
 header {
   display: block;
   padding: 10px 0px 2px;
@@ -584,7 +582,7 @@ a {
 .dropdown-user {
   display: flex;
   /*align-items: center; */
-} 
+}
 
 .dropdown-user #f-icon {
   margin-right: 5px;
@@ -676,8 +674,6 @@ a {
   display: flex;
   align-items: center;
 }
-
-
 
 /*
 $app_name_color: rgb(0, 0, 0);
@@ -828,5 +824,4 @@ a {
 // ----------------------------------------------------------------------------------------
 
 */
-
 </style>

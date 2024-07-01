@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import { useRoute  } from 'vue-router'
+import { useRoute } from 'vue-router'
 
-const route = useRoute();
+const route = useRoute()
 
-const username = route.params.username;
-
+const username = route.params.username
 </script>
 
 <template>
-<div>
-    
-
-
-</div>
+  <div></div>
 </template>

@@ -4,6 +4,7 @@ using Entites;
 using Microsoft.EntityFrameworkCore;
 using Services.MoviesAdmin;
 using Services.ExternalApiCalls;
+using Entites.List;
 
 namespace Services.MovieInfo
 {
@@ -16,6 +17,44 @@ namespace Services.MovieInfo
         {
             this.database = database;
             this.externalApiCalls = externalApiCalls;
+        }
+
+        public async Task ChangeMovieListStatus(ChangeWatchStatusDTO statusDTO)
+        {
+            var transaction = database.Database.BeginTransaction();
+            try
+            {
+                var data = await database.WatchedMoviesLists.Where(q => q.MovieId == statusDTO.Id && q.UserId == statusDTO.UserId).FirstOrDefaultAsync();
+
+                if (data != null)
+                {
+                    data.WatchStatus = (WatchStatusEnum)statusDTO.Status;
+                    data.Score = statusDTO.Score;
+                    data.Review = statusDTO.Review;
+                    database.Update(data);
+                }
+                else
+                {
+                    await database.AddAsync(new WatchedMoviesListEntity
+                    {
+                        MovieId = statusDTO.Id,
+                        UserId = statusDTO.UserId,
+                        Score = statusDTO.Score,
+                        WatchStatus = (WatchStatusEnum)statusDTO.Status,
+                        TimeAdded = DateTime.Now.ToUniversalTime(),
+                        Review = statusDTO.Review,
+                    });
+
+                }
+                await database.SaveChangesAsync();
+
+                transaction.Commit();
+            }
+            catch (Exception ex) 
+            {
+                transaction.Rollback();
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<MoviesDTO> GetMovieInfo(int Id)

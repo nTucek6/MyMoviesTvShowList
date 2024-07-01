@@ -7,23 +7,23 @@ export const API_URLS = {
   GETGENRES: `${API_BASE_URL}MoviesAdmin/GetGenres`,
 
   GETMOVIESLIST: `${API_BASE_URL}Frontpage/GetMoviesList`,
-  GETMOVIEINFO : `${API_BASE_URL}MovieInfo/GetMovieInfo`,
+  GETMOVIEINFO: `${API_BASE_URL}MovieInfo/GetMovieInfo`
 }
 
 export const API_URLS_ADMIN = {
-  GETMOVIES : `${API_BASE_URL}MoviesAdmin/GetMovies`,
-  GETCREWSELECTSEARCH : `${API_BASE_URL}MoviesAdmin/GetCrewSelectSearch`,
-  SAVEMOVIE : `${API_BASE_URL}MoviesAdmin/SaveMovie`,
+  GETMOVIES: `${API_BASE_URL}MoviesAdmin/GetMovies`,
+  GETCREWSELECTSEARCH: `${API_BASE_URL}MoviesAdmin/GetCrewSelectSearch`,
+  SAVEMOVIE: `${API_BASE_URL}MoviesAdmin/SaveMovie`,
   GETMOVIEFROMAPI: `${API_BASE_URL}ExternalApiCalls/GetMovieFromApi`,
   GETMOVIECOUNT: `${API_BASE_URL}MoviesAdmin/GetMoviesCount`,
 
-  GETPEOPLE : `${API_BASE_URL}CrewsAdmin/GetPeople`,
-  GETPEOPLECOUNT : `${API_BASE_URL}CrewsAdmin/GetPeopleCount`,
-  SAVEPERSON : `${API_BASE_URL}CrewsAdmin/SavePerson`,
-  GETPERSONFROMAPI : `${API_BASE_URL}ExternalApiCalls/GetCelebritie`,
+  GETPEOPLE: `${API_BASE_URL}CrewsAdmin/GetPeople`,
+  GETPEOPLECOUNT: `${API_BASE_URL}CrewsAdmin/GetPeopleCount`,
+  SAVEPERSON: `${API_BASE_URL}CrewsAdmin/SavePerson`,
+  GETPERSONFROMAPI: `${API_BASE_URL}ExternalApiCalls/GetCelebritie`,
 
-  SAVETVSHOW : `${API_BASE_URL}TVShowsAdmin/SaveTVShow`,
-  GETTVSHOW : `${API_BASE_URL}TVShowsAdmin/GetTVShow`,
-  GETTVSHOWFROMAPI : `${API_BASE_URL}ExternalApiCalls/GetTVShowFromApi`,
-  GETTVSHOWCOUNT: `${API_BASE_URL}TVShowsAdmin/GetTVShowCount`,
+  SAVETVSHOW: `${API_BASE_URL}TVShowsAdmin/SaveTVShow`,
+  GETTVSHOW: `${API_BASE_URL}TVShowsAdmin/GetTVShow`,
+  GETTVSHOWFROMAPI: `${API_BASE_URL}ExternalApiCalls/GetTVShowFromApi`,
+  GETTVSHOWCOUNT: `${API_BASE_URL}TVShowsAdmin/GetTVShowCount`
 }

@@ -170,8 +170,8 @@ const handleMovieSearch = async () => {
           placeholder="Search for movie..."
         />
       </div>
-        <div v-if="loading" class="lds-dual-ring"></div>
-        <button class="btn" @click="handleMovieSearch" v-else>Search</button>
+      <div v-if="loading" class="lds-dual-ring"></div>
+      <button class="btn" @click="handleMovieSearch" v-else>Search</button>
     </div>
 
     <form @submit.prevent="addMovieFormSubmit" class="text-center mb-3 mt-5">

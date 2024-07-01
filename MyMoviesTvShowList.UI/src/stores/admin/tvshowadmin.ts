@@ -65,21 +65,18 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
     }
   }
 
-async function GetTVShowCount()
-{
-  try {
-    await axios({
-      method: 'get',
-      url: API_URLS_ADMIN.GETTVSHOWCOUNT,
-    
-    }).then((response) => {
-      TVShowCount.value = response.data
-    })
-  } catch (error) {
-    console.log(error)
+  async function GetTVShowCount() {
+    try {
+      await axios({
+        method: 'get',
+        url: API_URLS_ADMIN.GETTVSHOWCOUNT
+      }).then((response) => {
+        TVShowCount.value = response.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
-}
-
 
   return {
     SaveTVShow,
@@ -89,6 +86,6 @@ async function GetTVShowCount()
     setEditTVShow,
     GetTVShowFromAPI,
     TVShowCount,
-    GetTVShowCount,
+    GetTVShowCount
   }
 })

@@ -12,7 +12,6 @@ const route = useRoute()
 const userLogIn = computed(() => authentication.userLogIn)
 const UserData = computed(() => authentication.UserData)
 
-
 const showProfileMenu = ref(false)
 const showListMenu = ref(false)
 const showAdminMenu = ref(false)
@@ -60,7 +59,7 @@ watch(route, () => {
   setRoutePageName()
 })
 
-function setRoutePageName(){
+function setRoutePageName() {
   if (route.path == '/profile/' + route.params.username) {
     page.value = route.params.username + "'s profile"
   } else if (route.path == `/movie/${route.params.id}/${route.params.title}`) {
@@ -101,7 +100,6 @@ const dropdownMenu: DropdownMenu[] = [
         <RouterLink to="/"
           ><font-awesome-icon icon="film" />W<font-awesome-icon icon="shapes" />tchBuddy</RouterLink
         >
-      
       </div>
 
       <div id="auth">
@@ -111,7 +109,7 @@ const dropdownMenu: DropdownMenu[] = [
         </div>
 
         <div class="auth-menu" v-else>
-          <div
+          <!-- <div
             id="admin-dropdown"
             ref="dropdownAdmin"
             class="dropdown-top"
@@ -133,7 +131,7 @@ const dropdownMenu: DropdownMenu[] = [
                 ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Users
               </RouterLink>
             </div>
-          </div>
+          </div> -->
 
           <div
             id="user-list-dropdown"
@@ -233,9 +231,11 @@ a {
   font-size: 30px;
 }
 
+/*
 #site-name > a > svg {
   color: red;
 }
+  */
 
 #site-name > a > svg:first-child {
   margin-right: 5px;
@@ -245,8 +245,6 @@ a {
   margin: 0 2px;
   font-size: 20px;
 }
-
-
 
 .auth-menu {
   display: flex;
@@ -359,7 +357,7 @@ a {
   color: black;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 999;
 
   transform-origin: top;
   transition: 0.2s ease-out;

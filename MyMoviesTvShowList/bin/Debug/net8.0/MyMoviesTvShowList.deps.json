@@ -21,6 +21,7 @@
           "Services.ExternalApiCalls": "1.0.0",
           "Services.Frontpage": "1.0.0",
           "Services.MovieInfo": "1.0.0",
+          "Services.MovieTVShowList": "1.0.0",
           "Services.MoviesAdmin": "1.0.0",
           "Services.TVShowsAdmin": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
@@ -1129,6 +1130,15 @@
           "Services.MoviesAdmin.dll": {}
         }
       },
+      "Services.MovieTVShowList/1.0.0": {
+        "dependencies": {
+          "DatabaseContext": "1.0.0",
+          "Entites": "1.0.0"
+        },
+        "runtime": {
+          "Services.MovieTVShowList.dll": {}
+        }
+      },
       "Services.TVShowsAdmin/1.0.0": {
         "dependencies": {
           "DatabaseContext": "1.0.0",
@@ -1985,6 +1995,11 @@
       "sha512": ""
     },
     "Services.MoviesAdmin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services.MovieTVShowList/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

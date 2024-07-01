@@ -23,9 +23,9 @@ const disableShowMore = ref(false)
 const maxPeopleCount = computed(() => api.PeopleCount)
 
 onMounted(async () => {
- await api.GetPeopleCount()
- await api.GetPeople(postPerPage, page.value, search.value)
- checkPeopleCount()
+  await api.GetPeopleCount()
+  await api.GetPeople(postPerPage, page.value, search.value)
+  checkPeopleCount()
 })
 
 const editPerson = (data: any) => {
@@ -39,7 +39,7 @@ const showMore = () => {
   api.GetPeople(postPerPage, page.value, search.value)
 }
 
-const checkPeopleCount = () =>{
+const checkPeopleCount = () => {
   if (PeopleList.value.length == maxPeopleCount.value) {
     disableShowMore.value = true
   }
@@ -67,12 +67,12 @@ watch(PeopleList, () => {
       </thead>
       <tbody>
         <tr v-for="(p, index) in PeopleList" :key="p.Id">
-          <td>{{ index + 1 }}</td>
-          <td>{{ p.FirstName }}</td>
-          <td>{{ p.LastName }}</td>
-          <td>{{ globalhelper.formatDate(new Date(p.BirthDate)) }}</td>
-          <td>{{ p.BirthPlace }}</td>
-          <td>
+          <td data-cell="#">{{ index + 1 }}</td>
+          <td data-cell="name">{{ p.FirstName }}</td>
+          <td data-cell="surname">{{ p.LastName }}</td>
+          <td data-cell="birth place">{{ globalhelper.formatDate(new Date(p.BirthDate)) }}</td>
+          <td data-cell="birth place">{{ p.BirthPlace }}</td>
+          <td data-cell="edit">
             <span
               style="cursor: pointer"
               @click="

@@ -1,64 +1,48 @@
 <script setup lang="ts">
-import {computed, onBeforeMount, ref } from 'vue'
-import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
+import { computed, onBeforeMount, ref } from 'vue'
+import { useMoviesStore } from '@/stores/movies';
 
-const MoviesAdminApi = useMoviesAdminApi();
+const MoviesApi = useMoviesStore()
 
-const GetGenres = computed(() => MoviesAdminApi.Genres);
-
-const GridNumber = ref()
+const Genres = ref()
 
 onBeforeMount(async () => {
-  await MoviesAdminApi.GetGenres(); 
-
-  let gl = GetGenres.value.length
-  let number = 0
-  if(gl != undefined)
-    {
-    if((gl % 2) != 0)
-    {
-        while((gl % 4) != 0)
-        {
-            gl++
-            number++ 
-        }
-    }
-    }
-    GridNumber.value = number
+  await MoviesApi.GetGenres()
+  Genres.value = MoviesApi.getGenres()
 })
-
-
 </script>
 
-
 <template>
-    <div>
-      
+  <section>
+    <ul id="genres">
+      <li v-for="(genre, index) in Genres" :key="index"><span>{{ genre.label }}</span></li>
+    </ul>
 
-    <hr />
 
-    <div class="grid-container">
-        <div class="grid-item" v-for="g in GetGenres">{{ g.label }}</div>
-        <div class="grid-item" v-for="index in GridNumber"></div>
-       
-    </div>
-
-    </div>
+  </section>
 </template>
 
-<style scoped>
-.grid-container {
-    display: flex;
-    flex-wrap: wrap;
+<style scoped lang="scss">
+
+#genres{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
 }
 
-.grid-item {
-    flex: 1 1 25%;
- 
-  padding: 5px; 
-  box-sizing: border-box;
+#genres > li{
+  list-style: none;
+  flex: 0 1 20%;
+  padding: 15px;
   text-align: center;
+  cursor: pointer;
 }
 
+#genres > li:hover{
+  background-color: lightblue;
+}
 
 </style>
+

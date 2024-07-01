@@ -6,7 +6,7 @@ import { API_URLS } from '@/config'
 import useJwt from 'jwt-decode'
 import UserDTO from '@/app/shared/models/user.model'
 import { UserRegisterDTO } from '@/app/shared/models/user-register.model'
-import  UserLoginDTO from '@/app/shared/models/user-login.model'
+import UserLoginDTO from '@/app/shared/models/user-login.model'
 import { ErrorResponse } from '@/app/shared/models/error_response.model'
 
 export const useAuthentication = defineStore('Authentication', () => {

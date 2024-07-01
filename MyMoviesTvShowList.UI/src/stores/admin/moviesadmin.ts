@@ -21,8 +21,7 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
     MovieCrew.value = data
   }
 
-  function getEditMovie()
-  {
+  function getEditMovie() {
     return EditMovie.value
   }
 
@@ -82,7 +81,7 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
     try {
       await axios({
         method: 'get',
-        url: API_URLS_ADMIN.GETMOVIES,
+        url: API_URLS_ADMIN.GETMOVIECOUNT
       }).then((response) => {
         MovieCount.value = response.data
       })

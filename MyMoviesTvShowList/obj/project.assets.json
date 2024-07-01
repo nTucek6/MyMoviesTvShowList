@@ -2100,6 +2100,20 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Services.MovieTVShowList/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DatabaseContext": "1.0.0",
+          "Entites": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.MovieTVShowList.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.MovieTVShowList.dll": {}
+        }
+      },
       "Services.TVShowsAdmin/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -6617,6 +6631,11 @@
       "path": "../Services.MoviesAdmin/Services.MoviesAdmin.csproj",
       "msbuildProject": "../Services.MoviesAdmin/Services.MoviesAdmin.csproj"
     },
+    "Services.MovieTVShowList/1.0.0": {
+      "type": "project",
+      "path": "../Services.MovieTVShowList/Services.MovieTVShowList.csproj",
+      "msbuildProject": "../Services.MovieTVShowList/Services.MovieTVShowList.csproj"
+    },
     "Services.TVShowsAdmin/1.0.0": {
       "type": "project",
       "path": "../Services.TVShowsAdmin/Services.TVShowsAdmin.csproj",
@@ -6638,6 +6657,7 @@
       "Services.ExternalApiCalls >= 1.0.0",
       "Services.Frontpage >= 1.0.0",
       "Services.MovieInfo >= 1.0.0",
+      "Services.MovieTVShowList >= 1.0.0",
       "Services.MoviesAdmin >= 1.0.0",
       "Services.TVShowsAdmin >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
@@ -6696,6 +6716,9 @@
             },
             "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj": {
               "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MoviesAdmin\\Services.MoviesAdmin.csproj"
+            },
+            "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MovieTVShowList\\Services.MovieTVShowList.csproj": {
+              "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.MovieTVShowList\\Services.MovieTVShowList.csproj"
             },
             "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.TVShowsAdmin\\Services.TVShowsAdmin.csproj": {
               "projectPath": "C:\\Users\\Nikola\\source\\repos\\nTucek6\\MyMoviesTvShowList\\Services.TVShowsAdmin\\Services.TVShowsAdmin.csproj"

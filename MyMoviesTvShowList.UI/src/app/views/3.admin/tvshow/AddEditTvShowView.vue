@@ -42,9 +42,8 @@ onBeforeMount(async () => {
 })
 
 const setEditValues = () => {
-
   if (d.value != undefined) {
-    isEdit.value = true;
+    isEdit.value = true
 
     TVShow.value.Id = d.value.Id
     TVShow.value.Title = d.value.Title
@@ -112,7 +111,7 @@ const ClearFormData = () => {
   CreatorsDefault.value.clear()
   ActorsDefault.value.clear()
 
-  query.value = ""
+  query.value = ''
   isEdit.value = false
 }
 
@@ -148,25 +147,24 @@ const handleTVShowSearchSearch = async () => {
   setEditValues()
   loading.value = false
 }
-
 </script>
 
 <template>
   <AdminNavigationComponent :routes="tvShowParams" />
 
   <div class="text-center mt-5" v-if="!isEdit">
-      <div class="form-group mb-3">
-        <input
-          type="text"
-          v-model="query"
-          class="w-50"
-          id="query"
-          placeholder="Search for movie..."
-        />
-      </div>
-      <div v-if="loading" class="lds-dual-ring"></div>
-      <button class="btn" @click="handleTVShowSearchSearch" v-else>Search</button>
+    <div class="form-group mb-3">
+      <input
+        type="text"
+        v-model="query"
+        class="w-50"
+        id="query"
+        placeholder="Search for movie..."
+      />
     </div>
+    <div v-if="loading" class="lds-dual-ring"></div>
+    <button class="btn" @click="handleTVShowSearchSearch" v-else>Search</button>
+  </div>
 
   <form @submit.prevent="addTVShowFormSubmit" class="text-center mb-3 mt-5">
     <div class="form-group mb-3">
