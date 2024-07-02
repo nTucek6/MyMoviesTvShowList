@@ -76,5 +76,5 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
   }
 
 
-  return { GetMoviesList, GetMoviesData, GetMovieInfo, GetMovie, resetMovieInfo, GetGenres, getGenres }
+  return { GetMoviesList, GetMoviesData, GetMovieInfo, GetMovie, resetMovieInfo, GetGenres, getGenres, Genres }
 })

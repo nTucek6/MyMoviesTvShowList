@@ -6,7 +6,7 @@ export const crewParams: LinkParams[] = [
     title: 'View all crew'
   },
   {
-    route: '/admin/addeditperson',
+    route: '/admin/viewcrew/addeditperson',
     title: 'Add person'
   }
 ]

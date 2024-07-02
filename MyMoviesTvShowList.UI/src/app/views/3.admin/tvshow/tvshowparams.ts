@@ -6,7 +6,7 @@ export const tvShowParams: LinkParams[] = [
     title: 'View all TvShows'
   },
   {
-    route: '/admin/addedittvshow',
+    route: '/admin/tvshowadmin/addedittvshow',
     title: 'Add TvShow'
   }
 ]

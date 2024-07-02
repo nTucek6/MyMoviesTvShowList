@@ -6,7 +6,7 @@ export const moviesParams: LinkParams[] = [
     title: 'View all movies'
   },
   {
-    route: '/admin/addeditmovie',
+    route: '/admin/moviesadmin/addeditmovie',
     title: 'Add movie'
   }
 ]

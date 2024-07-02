@@ -4,11 +4,11 @@ import { useMoviesStore } from '@/stores/movies';
 
 const MoviesApi = useMoviesStore()
 
-const Genres = ref()
+const Genres = computed(()=> MoviesApi.Genres)
 
 onBeforeMount(async () => {
   await MoviesApi.GetGenres()
-  Genres.value = MoviesApi.getGenres()
+  //Genres.value = MoviesApi.getGenres()
 })
 </script>
 
