@@ -29,8 +29,11 @@ namespace MyMoviesTvShowList.Controllers.Authentication
           
         }
 
-
-
-
+        [HttpPost]
+        public async Task<IActionResult> AdminLogin(AdminUserDTO user)
+        {
+            var token = await authenticationService.AdminLogin(user);
+            return Ok(token);
+        }
     }
 }

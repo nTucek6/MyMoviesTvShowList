@@ -81,33 +81,6 @@ function setRoutePageName() {
           </div>
           <div class="auth-menu" v-else>
             <div
-              id="admin-dropdown"
-              ref="dropdownAdmin"
-              :class="{ 'dropdown-open': showAdminMenu }"
-              v-if="UserData.Role == 'Admin'"
-            >
-              <div class="dropdown-link" @click="showAdminMenu = !showAdminMenu">
-                <span>Admin</span>
-                <font-awesome-icon :icon="['fas', 'angle-right']" />
-              </div>
-
-              <div class="dropdown-content">
-                <RouterLink to="/moviesadmin" class="btn dropdown-item"
-                  ><font-awesome-icon :icon="['fas', 'film']" /> Movies
-                </RouterLink>
-                <RouterLink to="/tvshowadmin" class="btn dropdown-item"
-                  ><font-awesome-icon :icon="['fas', 'tv']" /> Tv Shows</RouterLink
-                >
-                <RouterLink to="/viewcrew" class="btn dropdown-item"
-                  ><font-awesome-icon :icon="['fas', 'video']" /> Film & Show crew</RouterLink
-                >
-                <RouterLink to="/" class="btn dropdown-item"
-                  ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Users
-                </RouterLink>
-              </div>
-            </div>
-
-            <div
               id="profile-dropdown"
               ref="dropdownProfile"
               :class="{ 'dropdown-open': showProfileMenu }"
@@ -183,7 +156,7 @@ nav {
 // ------------------------sidebar------------------------------------
 
 .sidebar-content {
-  visibility: hidden;
+  display: none;
   position: absolute;
   background-color: white;
   color: black;
@@ -197,6 +170,7 @@ nav {
   transition: width 0.3s ease-out;
   list-style: none;
   overflow: hidden;
+
 }
 
 .sidebar-content-open {
@@ -204,12 +178,12 @@ nav {
 }
 
 .sidebar-menu-open .sidebar-content {
-  visibility: visible;
+  display: block;
   width: 80%;
 }
 
 .sidebar-menu-close .sidebar-content {
-  visibility: visible;
+  display: block;
   width: 0;
 }
 

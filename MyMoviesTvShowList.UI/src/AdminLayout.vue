@@ -2,12 +2,16 @@
 import { RouterView, useRoute } from 'vue-router'
 import { ref, watch, onMounted } from 'vue'
 import AdminHeader from './app/shared/components/admin/header/AdminHeader.vue'
+import { useAuthentication } from './stores/admin/authentication';
+
+const authentication = useAuthentication()
 
 const route = useRoute()
 
 const page = ref()
 
 onMounted(() => {
+  authentication.CheckAdminLogin()
   page.value = route.name
 })
 

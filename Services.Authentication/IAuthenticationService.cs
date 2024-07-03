@@ -4,5 +4,6 @@
     {
         Task<string> Register(RegisterDTO user);
         Task<string> Login(UserDTO user);
+        Task<string> AdminLogin(AdminUserDTO user);
     }
 }

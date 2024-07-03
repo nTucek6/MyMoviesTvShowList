@@ -11,6 +11,8 @@ export const API_URLS = {
 }
 
 export const API_URLS_ADMIN = {
+  ADMINLOGIN: `${API_BASE_URL}Authentication/AdminLogin`,
+
   GETMOVIES: `${API_BASE_URL}MoviesAdmin/GetMovies`,
   GETCREWSELECTSEARCH: `${API_BASE_URL}MoviesAdmin/GetCrewSelectSearch`,
   SAVEMOVIE: `${API_BASE_URL}MoviesAdmin/SaveMovie`,

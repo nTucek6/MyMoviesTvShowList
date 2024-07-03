@@ -69,12 +69,38 @@ namespace Services.Authentication
             if (userDb.PasswordHash != passwordHash)
                 throw new Exception("Invalid password");
 
-            var token = GenerateToken(userDb);
-
+            var token = GenerateToken(new GenerateToken 
+            { 
+                Id = userDb.Id, 
+                Username = userDb.Username, 
+                Email = userDb.Email });
             return token;
         }
 
-        public string GenerateToken(UsersEntity user)
+        public async Task<string> AdminLogin(AdminUserDTO user)
+        {
+            var userDb = await database.AdminUsers.Where(u => u.Username == user.Username).SingleOrDefaultAsync();
+
+            if (userDb is null)
+                throw new Exception("Invalid Login");
+
+            string passwordHash = GenerateHash(user.Password);
+
+            if (userDb.PasswordHash != passwordHash)
+                throw new Exception("Invalid Login");
+
+            var token = GenerateToken(new GenerateToken
+            {
+                Id = userDb.Id,
+                Username = userDb.Username,
+                Email = userDb.Email
+            });
+            return token;
+        }
+
+
+
+        public string GenerateToken(GenerateToken user)
         {
             // generate token that is valid for 15 days
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -87,7 +113,7 @@ namespace Services.Authentication
                     new Claim("Id", user.Id.ToString()),
                     new Claim("Email", user.Email),
                     new Claim("Username", user.Username),
-                    new Claim("Role", user.RoleId.ToString())
+                    //new Claim("Role", user.RoleId.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(jwtConfig.AccessTokenExpiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
