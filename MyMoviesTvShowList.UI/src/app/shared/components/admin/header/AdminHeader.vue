@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+
+
+
 </script>
 
 <template>
@@ -7,15 +10,15 @@ import { RouterLink } from 'vue-router'
     <RouterLink to="/admin/moviesadmin" class="btn"
       ><font-awesome-icon :icon="['fas', 'film']" /> Movies
     </RouterLink>
-    <RouterLink to="/admin/tvshowadmin" class="btn "
+    <RouterLink to="/admin/tvshowadmin" class="btn" 
       ><font-awesome-icon :icon="['fas', 'tv']" /> Tv Shows</RouterLink
     >
-    <RouterLink to="/admin/viewcrew" class="btn "
+    <RouterLink to="/admin/viewcrew" class="btn" 
       ><font-awesome-icon :icon="['fas', 'video']" /> Film & Show crew</RouterLink
     >
-    <RouterLink to="/admin/users" class="btn "
+    <!-- <RouterLink to="/admin/users" class="btn "
       ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Users
-    </RouterLink>
+    </RouterLink> -->
   </nav>
 </template>
 
@@ -45,6 +48,7 @@ nav > a{
 nav > a:hover{
   background-color: azure;
 }
+
 
 .active{
   background-color: burlywood;

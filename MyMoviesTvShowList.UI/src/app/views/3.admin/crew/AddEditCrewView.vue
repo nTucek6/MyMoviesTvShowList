@@ -2,8 +2,6 @@
 import { ref, onMounted, computed } from 'vue'
 import { useCrewsAdmin } from '@/stores/admin/crewsadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
-import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
-import { crewParams } from '@/app/views/3.admin/crew/crewparams'
 import { SavePersonDTO } from '@/app/shared/models/save-person.model'
 
 const Person = ref<SavePersonDTO>(new SavePersonDTO())
@@ -83,8 +81,6 @@ const handleQuerySearch = async () => {
 
 <template>
   <div>
-    <AdminNavigationComponent :routes="crewParams" />
-
     <div class="text-center mt-5" v-if="!isEdit">
       <div class="form-group mb-3">
         <input

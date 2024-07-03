@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { useRouter, RouterView, useRoute } from 'vue-router'
 import { onMounted, computed, ref, watch } from 'vue'
 import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
 import type { MoviesDTO } from '@/app/shared/models/movies.model'
@@ -8,6 +8,8 @@ import { moviesParams } from '@/app/views/3.admin/movies/moviesparams'
 
 const MoviesAdminApi = useMoviesAdminApi()
 const router = useRouter()
+
+const route = useRoute()
 
 const page = ref<number>(1)
 
@@ -18,6 +20,8 @@ const postPerPage = 10
 const disableShowMore = ref<boolean>(false)
 
 const maxMoviesCount = computed(() => MoviesAdminApi.MovieCount)
+
+const isAddEditMovieRoute = computed(() => route.path.includes('addeditmovie'))
 
 onMounted(async () => {
   await MoviesAdminApi.GetMoviesCount()
@@ -49,9 +53,8 @@ watch(MovieList, () => {
 </script>
 
 <template>
-  <div>
-    <AdminNavigationComponent :routes="moviesParams" />
-
+  <AdminNavigationComponent :routes="moviesParams" />
+  <template v-if="!isAddEditMovieRoute">
     <div class="wrapper">
       <table class="table table-striped" v-if="MovieList">
         <thead>
@@ -109,7 +112,8 @@ watch(MovieList, () => {
     </div>
 
     <button @click="showMore" class="btn" :disabled="disableShowMore">Show more</button>
-  </div>
+  </template>
+  <RouterView />
 </template>
 
 <style scoped>

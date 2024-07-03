@@ -2,9 +2,6 @@
 import { ref, onBeforeMount, computed } from 'vue'
 import { useTvShowAdminStore } from '@/stores/admin/tvshowadmin'
 import Multiselect from '@vueform/multiselect'
-
-import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
-import { tvShowParams } from '@/app/views/3.admin/tvshow/tvshowparams'
 import { SaveTVShowDTO } from '@/app/shared/models/save-tvshow.model'
 import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
@@ -150,8 +147,6 @@ const handleTVShowSearchSearch = async () => {
 </script>
 
 <template>
-  <AdminNavigationComponent :routes="tvShowParams" />
-
   <div class="text-center mt-5" v-if="!isEdit">
     <div class="form-group mb-3">
       <input

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { useRouter, RouterView, useRoute } from 'vue-router'
 import { onMounted, computed, ref, watch } from 'vue'
 import { useCrewsAdmin } from '@/stores/admin/crewsadmin'
 import { useGlobalHelper } from '@/stores/globalhelper'
@@ -12,6 +12,8 @@ const api = useCrewsAdmin()
 const globalhelper = useGlobalHelper()
 const router = useRouter()
 
+const route = useRoute()
+
 const page = ref<number>(1)
 
 const search = ref<string>('')
@@ -21,6 +23,8 @@ const postPerPage = 10
 const disableShowMore = ref(false)
 
 const maxPeopleCount = computed(() => api.PeopleCount)
+
+const isAddEditCrewRoute = computed(() => route.path.includes('addeditperson'))
 
 onMounted(async () => {
   await api.GetPeopleCount()
@@ -51,44 +55,45 @@ watch(PeopleList, () => {
 </script>
 
 <template>
-  <div>
-    <AdminNavigationComponent :routes="crewParams" />
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Surname</th>
-          <th>Birth date</th>
-          <th>Birth place</th>
-          <th>Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(p, index) in PeopleList" :key="p.Id">
-          <td data-cell="#">{{ index + 1 }}</td>
-          <td data-cell="name">{{ p.FirstName }}</td>
-          <td data-cell="surname">{{ p.LastName }}</td>
-          <td data-cell="birth place">{{ globalhelper.formatDate(new Date(p.BirthDate)) }}</td>
-          <td data-cell="birth place">{{ p.BirthPlace }}</td>
-          <td data-cell="edit">
-            <span
-              style="cursor: pointer"
-              @click="
-                () => {
-                  editPerson(p)
-                }
-              "
-              ><font-awesome-icon :icon="['fas', 'edit']"
-            /></span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
+  <AdminNavigationComponent :routes="crewParams" />
+  <template v-if="!isAddEditCrewRoute">
+    <div class="wrapper">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birth date</th>
+            <th>Birth place</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(p, index) in PeopleList" :key="p.Id">
+            <td data-cell="#">{{ index + 1 }}</td>
+            <td data-cell="name">{{ p.FirstName }}</td>
+            <td data-cell="surname">{{ p.LastName }}</td>
+            <td data-cell="birth place">{{ globalhelper.formatDate(new Date(p.BirthDate)) }}</td>
+            <td data-cell="birth place">{{ p.BirthPlace }}</td>
+            <td data-cell="edit">
+              <span
+                style="cursor: pointer"
+                @click="
+                  () => {
+                    editPerson(p)
+                  }
+                "
+                ><font-awesome-icon :icon="['fas', 'edit']"
+              /></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <button @click="showMore" class="btn" :disabled="disableShowMore">Show more</button>
-  </div>
+  </template>
+  <RouterView />
 </template>
 
 <style scoped>

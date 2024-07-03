@@ -6,10 +6,9 @@ const email = ref('')
 const password = ref('')
 
 
-const formSubmit = () =>{
+const formSubmit = async () =>{
 
 }
-
 </script>
 
 <template>

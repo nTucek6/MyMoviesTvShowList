@@ -4,8 +4,6 @@ import { useMoviesAdminApi } from '@/stores/admin/moviesadmin'
 import Multiselect from '@vueform/multiselect'
 import { useGlobalHelper } from '@/stores/globalhelper'
 import { SaveMovieDTO } from '@/app/shared/models/save-movie.model'
-import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
-import { moviesParams } from '@/app/views/3.admin/movies/moviesparams'
 
 const MoviesAdminApi = useMoviesAdminApi()
 const globalhelper = useGlobalHelper()
@@ -158,8 +156,6 @@ const handleMovieSearch = async () => {
 
 <template>
   <div>
-    <AdminNavigationComponent :routes="moviesParams" />
-
     <div class="text-center mt-5" v-if="!isEdit">
       <div class="form-group mb-3">
         <input
@@ -189,7 +185,7 @@ const handleMovieSearch = async () => {
           type="text"
           v-model="Movie.Duration"
           class="w-50"
-          id="title"
+          id="duration"
           placeholder="Duration"
         />
       </div>
@@ -198,7 +194,7 @@ const handleMovieSearch = async () => {
           type="text"
           v-model="Movie.Synopsis"
           class="w-50"
-          id="title"
+          id="synopsis"
           placeholder="Synopsis"
         ></textarea>
       </div>
@@ -207,7 +203,7 @@ const handleMovieSearch = async () => {
           type="date"
           v-model="Movie.ReleaseDate"
           class="w-50"
-          id="title"
+          id="release date"
           placeholder="Release date"
         />
       </div>

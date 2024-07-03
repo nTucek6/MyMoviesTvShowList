@@ -18,7 +18,7 @@ export const admin = [
         path: 'moviesadmin',
         name: 'Movies Admin',
         component: () => import('@/app/views/3.admin/movies/MoviesAdminView.vue'),
-       /* beforeEnter: (to: any, from: any, next: any) => {
+        /* beforeEnter: (to: any, from: any, next: any) => {
           const isAdmin = computed(() => useAuthentication().IsAdmin())
           if (!isAdmin.value) {
             next(baseRoute)
@@ -26,12 +26,12 @@ export const admin = [
             next()
           }
         }*/
-       children: [
-        {
-          path: 'addeditmovie',
-          name: 'Add & Edit movie',
-          component: () => import('@/app/views/3.admin/movies/AddEditMovieView.vue'),
-         /* beforeEnter: (to: any, from: any, next: any) => {
+        children: [
+          {
+            path: 'addeditmovie',
+            name: 'Add & Edit movie',
+            component: () => import('@/app/views/3.admin/movies/AddEditMovieView.vue')
+            /* beforeEnter: (to: any, from: any, next: any) => {
             const isAdmin = computed(() => useAuthentication().IsAdmin())
             //console.log(isAdmin.value);
             if (!isAdmin.value) {
@@ -40,10 +40,10 @@ export const admin = [
               next()
             }
           } */
-        },
-       ],
+          }
+        ]
       },
-   
+
       {
         path: 'viewcrew',
         name: 'View Crew',
@@ -56,13 +56,13 @@ export const admin = [
             next()
           }
         }*/
-       children:[
-        {
-          path: 'addeditperson',
-          name: 'Add & Edit person',
-          component: () => import('@/app/views/3.admin/crew/AddEditCrewView.vue'),
-          props: true,
-         /* beforeEnter: (to: any, from: any, next: any) => {
+        children: [
+          {
+            path: 'addeditperson',
+            name: 'Add & Edit person',
+            component: () => import('@/app/views/3.admin/crew/AddEditCrewView.vue'),
+            props: true
+            /* beforeEnter: (to: any, from: any, next: any) => {
             const isAdmin = computed(() => useAuthentication().IsAdmin())
             if (!isAdmin.value) {
               next(baseRoute)
@@ -70,10 +70,10 @@ export const admin = [
               next()
             }
           }*/
-        },
-       ]
+          }
+        ]
       },
-    
+
       {
         path: 'tvshowadmin',
         name: 'TvShow Admin',
@@ -87,13 +87,13 @@ export const admin = [
             next()
           }
         }*/
-       children:[
-        {
-          path: 'addedittvshow',
-          name: 'Add & Edit TVShow',
-          component: () => import('@/app/views/3.admin/tvshow/AddEditTvShowView.vue'),
-          props: true,
-         /* beforeEnter: (to: any, from: any, next: any) => {
+        children: [
+          {
+            path: 'addedittvshow',
+            name: 'Add & Edit TVShow',
+            component: () => import('@/app/views/3.admin/tvshow/AddEditTvShowView.vue'),
+            props: true
+            /* beforeEnter: (to: any, from: any, next: any) => {
             const isAdmin = computed(() => useAuthentication().IsAdmin())
             if (!isAdmin.value) {
               next(baseRoute)
@@ -101,9 +101,9 @@ export const admin = [
               next()
             }
           }*/
-        }
-       ]
-      },
+          }
+        ]
+      }
     ]
   }
 ]
