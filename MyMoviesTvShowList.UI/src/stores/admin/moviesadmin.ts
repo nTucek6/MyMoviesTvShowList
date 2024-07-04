@@ -13,6 +13,8 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
 
   const EditMovie = ref()
 
+  const token = sessionStorage.getItem('admintoken')
+
   function setEditMovie(data: any) {
     EditMovie.value = data
   }
@@ -29,7 +31,10 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
     try {
       await axios({
         method: 'get',
-        url: API_URLS.GETGENRES
+        url: API_URLS.GETGENRES,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }).then((response) => {
         Genres.value = response.data
       })
@@ -46,6 +51,9 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
         url: API_URLS_ADMIN.GETCREWSELECTSEARCH,
         params: {
           Search: Search
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
         }
       }).then((response) => {
         MovieCrew.value = response.data
@@ -67,6 +75,9 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
           PostPerPage: PostPerPage,
           Page: Page,
           Search: Search
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
         }
       }).then((response) => {
         MovieData.value = response.data
@@ -81,7 +92,10 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
     try {
       await axios({
         method: 'get',
-        url: API_URLS_ADMIN.GETMOVIECOUNT
+        url: API_URLS_ADMIN.GETMOVIECOUNT,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }).then((response) => {
         MovieCount.value = response.data
       })
@@ -96,7 +110,8 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
         method: 'post',
         url: API_URLS_ADMIN.SAVEMOVIE,
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
         },
         data: Movie
       }).then((response) => {
@@ -115,6 +130,9 @@ export const useMoviesAdminApi = defineStore('moviesadmin', () => {
         url: API_URLS_ADMIN.GETMOVIEFROMAPI,
         params: {
           Title: Query
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
         }
       }).then((response) => {
         EditMovie.value = response.data

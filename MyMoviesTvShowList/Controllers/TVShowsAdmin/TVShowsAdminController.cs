@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.TVShowsAdmin;
 
 namespace MyMoviesTvShowList.Controllers.TVShowsAdmin
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class TVShowsAdminController : Controller
     {
         private readonly ITVShowsAdminService tVShowsAdminService;

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.ExternalApiCalls;
 
 namespace MyMoviesTvShowList.Controllers.ExternalApiCalls
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class ExternalApiCallsController : Controller
     {
         private readonly IExternalApiCallsService externalApiCallsService;

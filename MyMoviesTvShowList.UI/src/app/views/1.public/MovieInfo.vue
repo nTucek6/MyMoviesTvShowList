@@ -3,7 +3,11 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMoviesStore } from '@/stores/movies'
 import { MoviesDTO } from '@/app/shared/models/movies.model'
+import { ChangeWatchStatusDTO } from '@/app/shared/models/change-watch-status.model'
+import { useAuthentication } from '@/stores/admin/authentication'
 import '@/assets/custom/select.css'
+
+const authApi = useAuthentication()
 
 const route = useRoute()
 
@@ -19,6 +23,8 @@ const statusDropdown = ref()
 
 const selectedStatus = ref()
 
+const UserListData = ref<ChangeWatchStatusDTO>(new ChangeWatchStatusDTO())
+
 const displaySelectedStatus = computed(() => {
   return selectedStatus.value || { label: 'Add to list' }
 })
@@ -29,11 +35,11 @@ const ListOptions = [
     label: 'Watching'
   },
   {
-    value: 2,
+    value: 4,
     label: 'Plan To Watch'
   },
   {
-    value: 3,
+    value: 2,
     label: 'Completed'
   }
 ]
@@ -52,6 +58,10 @@ onMounted(async () => {
   document.addEventListener('click', handleClickOutside)
   await MoviesApi.GetMovieInfo(Id)
   Movie.value = MoviesApi.GetMovie()
+
+  UserListData.value.Id = Movie.value.Id
+  UserListData.value.UserId = authApi.UserData.Id
+
   MoviesApi.resetMovieInfo()
 })
 
@@ -59,10 +69,10 @@ onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
 
-watch(selectedStatus, (newValue) => {
-  console.log(newValue)
-
+watch(selectedStatus, () => {
   toggleList()
+  UserListData.value.Status = selectedStatus.value.value
+  MoviesApi.ChangeMovieListStatus(UserListData.value)
 })
 
 const toggleList = () => {

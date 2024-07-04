@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.MovieInfo;
 
 namespace MyMoviesTvShowList.Controllers.MovieInfo
@@ -22,6 +23,7 @@ namespace MyMoviesTvShowList.Controllers.MovieInfo
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> ChangeMovieListStatus(ChangeWatchStatusDTO statusDTO)
         {
             await movieInfoService.ChangeMovieListStatus(statusDTO);

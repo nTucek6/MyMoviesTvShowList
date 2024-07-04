@@ -13,6 +13,11 @@ using Microsoft.Extensions.Configuration;
 using Services.MovieInfo;
 using Microsoft.Extensions.FileProviders;
 using Services.MovieTVShowList;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,9 +45,36 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyMoviesTvShowListContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("ConnectionString")));
 
 //Configuration -------------------------------------------------------------------------
+
+var jwtConfig = builder.Configuration.GetSection("JwtConfiguration").Get<JwtConfiguration>();
+
 builder.Services.Configure<JwtConfiguration>(builder.Configuration.GetSection("JwtConfiguration"));
 
 
+if (jwtConfig != null)
+{
+    builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtConfig.Secret)),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true
+    };
+});
+}
+
+
+builder.Services.AddAuthorization();
 
 
 builder.Services.AddLogging();
@@ -81,6 +113,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("MyPolicy");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseMiddleware<Middleware>();

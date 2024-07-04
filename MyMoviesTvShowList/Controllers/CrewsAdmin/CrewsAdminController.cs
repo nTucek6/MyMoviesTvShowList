@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.CrewsAdmin;
 
 namespace MyMoviesTvShowList.Controllers.CrewsAdmin
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class CrewsAdminController : Controller
     {
         private readonly ICrewsAdminService crewsAdminService;

@@ -1,23 +1,21 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { onMounted, ref, computed } from 'vue'
+import { useUserListStore } from '@/stores/userlist';
+import { useRoute } from 'vue-router'
 
-const MoviesList = ref([
-  {
-    Id: 1,
-    Title: 'Inception',
-    Score: 5
-  },
-  {
-    Id: 2,
-    Title: 'Parasite',
-    Score: 5
-  },
-  {
-    Id: 3,
-    Title: 'Predestination',
-    Score: 5
-  }
-])
+//const route = useRoute()
+
+//const username = ref(route.params.username as string)
+
+//const api = useUserListStore()
+
+//const MoviesList = computed(()=> api.MoviesList)
+
+onMounted(async()=>{
+  //await api.GetUserMoviesList(username.value)
+  //console.log(MoviesList.value)
+})
+
 </script>
 
 <template>
@@ -30,11 +28,11 @@ const MoviesList = ref([
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(movie, index) in MoviesList" :key="movie.Id">
+      <!-- <tr v-for="(movie, index) in MoviesList" :key="movie.Id">
         <td data-cell="#">{{ index }}</td>
         <td data-cell="movie">{{ movie.Title }}</td>
         <td data-cell="score">{{ movie.Score }}</td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 </template>

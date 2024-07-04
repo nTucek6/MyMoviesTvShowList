@@ -8,6 +8,8 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
   const PeopleData = ref<PersonDTO[]>([])
   const PeopleCount = ref<number>(0)
 
+  const token = sessionStorage.getItem('admintoken')
+
   const EditPerson = ref()
 
   const isEdit = ref(false)
@@ -29,6 +31,9 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
           PostPerPage: PostPerPage,
           Page: Page,
           Search: Search
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
         }
       }).then((response) => {
         const newItems = response.data
@@ -48,7 +53,10 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
     try {
       await axios({
         method: 'get',
-        url: API_URLS_ADMIN.GETPEOPLECOUNT
+        url: API_URLS_ADMIN.GETPEOPLECOUNT,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }).then((response) => {
         PeopleCount.value = response.data
       })
@@ -63,7 +71,8 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
         method: 'post',
         url: API_URLS_ADMIN.SAVEPERSON,
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+           Authorization: `Bearer ${token}`
         },
         data: Person
       }).then((response) => {
@@ -81,6 +90,9 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
         url: API_URLS_ADMIN.GETPERSONFROMAPI,
         params: {
           Fullname: Query
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
         }
       }).then((response) => {
         EditPerson.value = response.data

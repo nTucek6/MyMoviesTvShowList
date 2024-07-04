@@ -10,6 +10,8 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
 
   const EditTVShow = ref()
 
+  const token = sessionStorage.getItem('admintoken')
+
   function setEditTVShow(data: any) {
     EditTVShow.value = data
   }
@@ -20,7 +22,8 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
         method: 'post',
         url: API_URLS_ADMIN.SAVETVSHOW,
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`
         },
         data: TvShow
       }).then((response) => {
@@ -40,7 +43,10 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
           PostPerPage: PostPerPage,
           Page: Page,
           Search: Search
-        }
+        },
+        headers: {
+          'Authorization': `Bearer ${token}`
+      }
       }).then((response) => {
         TVShowData.value = response.data
       })
@@ -56,6 +62,9 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
         url: API_URLS_ADMIN.GETTVSHOWFROMAPI,
         params: {
           Title: Query
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
         }
       }).then((response) => {
         EditTVShow.value = response.data
@@ -69,7 +78,10 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
     try {
       await axios({
         method: 'get',
-        url: API_URLS_ADMIN.GETTVSHOWCOUNT
+        url: API_URLS_ADMIN.GETTVSHOWCOUNT,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }).then((response) => {
         TVShowCount.value = response.data
       })

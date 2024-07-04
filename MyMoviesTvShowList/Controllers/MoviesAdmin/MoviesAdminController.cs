@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.MoviesAdmin;
 
 namespace MyMoviesTvShowList.Controllers.MoviesAdmin
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class MoviesAdminController : Controller
     {
         private readonly IMoviesAdminService moviesAdminService;
@@ -45,6 +47,7 @@ namespace MyMoviesTvShowList.Controllers.MoviesAdmin
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetMovies(int PostPerPage, int Page, string? Search)
         {
             var movies = await moviesAdminService.GetMovies(PostPerPage, Page, Search);

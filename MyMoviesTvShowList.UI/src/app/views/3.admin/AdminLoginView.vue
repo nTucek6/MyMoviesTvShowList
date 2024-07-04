@@ -1,25 +1,35 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed, watch } from 'vue';
+import { useAuthentication } from '@/stores/admin/authentication';
+import AdminLoginDTO from '@/app/shared/models/admin-login.model';
+import ErrorComponent from '@/app/shared/components/ErrorComponent.vue';
 
+const auth = useAuthentication();
+const User = ref<AdminLoginDTO>(new AdminLoginDTO())
 
-const email = ref('')
-const password = ref('')
-
+const errorData = computed(() => auth.errorData)
+const hasError = ref<boolean>(false)
 
 const formSubmit = async () =>{
-
+  await auth.AdminLogin(User.value)
 }
+
+watch(errorData, () => {
+  hasError.value = errorData.value.StatusCode > 0
+})
+
 </script>
 
 <template>
+  <ErrorComponent v-if="hasError" :message="errorData.Message" />
   <form @submit.prevent="formSubmit">
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" name="email" v-model="email" />
+      <label for="username">Username</label>
+      <input type="text" name="username" v-model="User.Username" />
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" name="password" v-model="password" />
+      <input type="password" name="password" v-model="User.Password" />
     </div>
     <button type="submit" class="btn">Login</button>
   </form>
