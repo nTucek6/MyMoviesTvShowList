@@ -2,7 +2,7 @@
 import { RouterView, useRoute } from 'vue-router'
 import { ref, watch, onMounted } from 'vue'
 import AdminHeader from './app/shared/components/admin/header/AdminHeader.vue'
-import { useAuthentication } from './stores/admin/authentication';
+import { useAuthentication } from './stores/admin/authentication'
 
 const authentication = useAuthentication()
 
@@ -25,13 +25,12 @@ watch(route, () => {
     <AdminHeader />
     <div id="container">
       <div id="page">
-      <span>{{ page }}</span>
+        <span>{{ page }}</span>
+      </div>
+      <div id="content">
+        <RouterView />
+      </div>
     </div>
-    <div id="content">
-      <RouterView />
-    </div>
-    </div>
-
   </main>
 </template>
 
@@ -53,8 +52,7 @@ watch(route, () => {
   padding-left: 10px;
 }
 
-#content{
+#content {
   padding: 5px 10px 0;
 }
-
 </style>

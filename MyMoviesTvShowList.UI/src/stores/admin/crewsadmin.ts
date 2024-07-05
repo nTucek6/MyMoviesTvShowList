@@ -72,7 +72,7 @@ export const useCrewsAdmin = defineStore('CrewsAdmin', () => {
         url: API_URLS_ADMIN.SAVEPERSON,
         headers: {
           'Content-Type': 'multipart/form-data',
-           Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`
         },
         data: Person
       }).then((response) => {

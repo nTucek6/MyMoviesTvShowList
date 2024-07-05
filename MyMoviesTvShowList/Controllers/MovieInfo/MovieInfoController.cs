@@ -30,6 +30,18 @@ namespace MyMoviesTvShowList.Controllers.MovieInfo
             return Ok();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetMovieWatchStatus()
+        {
+            var list = await movieInfoService.GetMovieWatchStatus();
+            return Ok(list);
+        }
+        [HttpGet]
+        public async Task<IActionResult> CheckUserMovieStatus(int UserId, int MovieId)
+        {
+            var status = await movieInfoService.CheckUserMovieStatus(UserId, MovieId);
+            return Ok(status);
+        }
 
 
 

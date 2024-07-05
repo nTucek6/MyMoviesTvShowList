@@ -104,7 +104,7 @@ export const useAuthentication = defineStore('Authentication', () => {
       AdminData.value = user
     }
   }
-  
+
   function CheckAdminLogin() {
     const token = sessionStorage.getItem('admintoken')
     if (token != null) {
@@ -115,5 +115,17 @@ export const useAuthentication = defineStore('Authentication', () => {
     }
   }
 
-  return { userLogIn, adminLogIn, Register, Login, CheckUserLogin, LogOut, IsAdmin, UserData, errorData, AdminLogin,CheckAdminLogin }
+  return {
+    userLogIn,
+    adminLogIn,
+    Register,
+    Login,
+    CheckUserLogin,
+    LogOut,
+    IsAdmin,
+    UserData,
+    errorData,
+    AdminLogin,
+    CheckAdminLogin
+  }
 })

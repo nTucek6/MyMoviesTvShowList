@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
-import { useAuthentication } from '@/stores/admin/authentication';
-import AdminLoginDTO from '@/app/shared/models/admin-login.model';
-import ErrorComponent from '@/app/shared/components/ErrorComponent.vue';
+import { ref, computed, watch } from 'vue'
+import { useAuthentication } from '@/stores/admin/authentication'
+import AdminLoginDTO from '@/app/shared/models/admin-login.model'
+import ErrorComponent from '@/app/shared/components/ErrorComponent.vue'
 
-const auth = useAuthentication();
+const auth = useAuthentication()
 const User = ref<AdminLoginDTO>(new AdminLoginDTO())
 
 const errorData = computed(() => auth.errorData)
 const hasError = ref<boolean>(false)
 
-const formSubmit = async () =>{
+const formSubmit = async () => {
   await auth.AdminLogin(User.value)
 }
 
 watch(errorData, () => {
   hasError.value = errorData.value.StatusCode > 0
 })
-
 </script>
 
 <template>
@@ -44,12 +43,11 @@ form {
   height: 100svh;
 }
 
-.form-group{
+.form-group {
   padding: 10px 0;
 }
 
-.form-group:first-of-type{
+.form-group:first-of-type {
   padding-top: 0;
 }
-
 </style>

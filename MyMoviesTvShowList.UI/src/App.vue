@@ -36,9 +36,8 @@ library.add(
   faUserPlus,
   faCog
 )
-
 </script>
 
 <template>
-   <RouterView />
+  <RouterView />
 </template>

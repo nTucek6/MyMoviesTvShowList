@@ -18,7 +18,6 @@ export const useUserListStore = defineStore('UserListStore', () => {
         }
       }).then((response) => {
         MoviesList.value = response.data
-        console.log(response.data)
       })
     } catch (error) {
       console.log(error)

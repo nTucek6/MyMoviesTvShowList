@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch, nextTick  } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMoviesStore } from '@/stores/movies'
 import { MoviesDTO } from '@/app/shared/models/movies.model'
@@ -13,11 +13,15 @@ const route = useRoute()
 
 const MoviesApi = useMoviesStore()
 
+const InitialSetupDone = ref<boolean>(false)
+
 const Id = Number(route.params.id)
 
 const Movie = ref<MoviesDTO>(new MoviesDTO())
 
 const showList = ref(false)
+
+const StatusOptions = computed(() => MoviesApi.MovieWatchStatus)
 
 const statusDropdown = ref()
 
@@ -28,21 +32,6 @@ const UserListData = ref<ChangeWatchStatusDTO>(new ChangeWatchStatusDTO())
 const displaySelectedStatus = computed(() => {
   return selectedStatus.value || { label: 'Add to list' }
 })
-
-const ListOptions = [
-  {
-    value: 1,
-    label: 'Watching'
-  },
-  {
-    value: 4,
-    label: 'Plan To Watch'
-  },
-  {
-    value: 2,
-    label: 'Completed'
-  }
-]
 
 const handleClickOutside = (event: any) => {
   if (
@@ -59,10 +48,18 @@ onMounted(async () => {
   await MoviesApi.GetMovieInfo(Id)
   Movie.value = MoviesApi.GetMovie()
 
+  await MoviesApi.GetMovieWatchStatus()
+  await MoviesApi.CheckUserMovieStatus(authApi.UserData.Id, Movie.value.Id)
+
+  selectedStatus.value = MoviesApi.getUserWatchStatus()
+
   UserListData.value.Id = Movie.value.Id
   UserListData.value.UserId = authApi.UserData.Id
 
   MoviesApi.resetMovieInfo()
+
+  await nextTick()
+  InitialSetupDone.value = true
 })
 
 onUnmounted(() => {
@@ -70,9 +67,11 @@ onUnmounted(() => {
 })
 
 watch(selectedStatus, () => {
-  toggleList()
-  UserListData.value.Status = selectedStatus.value.value
-  MoviesApi.ChangeMovieListStatus(UserListData.value)
+  if (InitialSetupDone.value) {
+    toggleList()
+    UserListData.value.Status = selectedStatus.value.value
+    MoviesApi.ChangeMovieListStatus(UserListData.value)
+  }
 })
 
 const toggleList = () => {
@@ -106,7 +105,7 @@ const toggleList = () => {
               ><span class="arrow"></span>
             </button>
             <ul class="select-dropdown" role="listbox" id="select-dropdown">
-              <li role="option" v-for="i in ListOptions" :key="i.value" @click="toggleList">
+              <li role="option" v-for="i in StatusOptions" :key="i.value" @click="toggleList">
                 <input type="radio" :value="i" :id="i.label" v-model="selectedStatus" />
                 <label :for="i.label">{{ i.label }}</label>
               </li>

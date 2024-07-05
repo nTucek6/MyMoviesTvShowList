@@ -45,8 +45,8 @@ export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
           Search: Search
         },
         headers: {
-          'Authorization': `Bearer ${token}`
-      }
+          Authorization: `Bearer ${token}`
+        }
       }).then((response) => {
         TVShowData.value = response.data
       })

@@ -170,7 +170,6 @@ nav {
   transition: width 0.3s ease-out;
   list-style: none;
   overflow: hidden;
-
 }
 
 .sidebar-content-open {

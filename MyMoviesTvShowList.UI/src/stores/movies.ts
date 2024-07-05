@@ -13,6 +13,12 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
 
   const Genres = ref<Select[]>()
 
+  const MovieWatchStatus = ref<Select[]>()
+
+  const UserWatchStatus = ref<Select>()
+
+  //const IsOnList = ref<boolean>(false)
+
   const token = localStorage.getItem('token')
 
   function GetMoviesData() {
@@ -23,8 +29,13 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
     return MovieInfo.value
   }
 
-  function getGenres(){
-    return Genres.value;
+  function getGenres() {
+    return Genres.value
+  }
+
+  function getUserWatchStatus()
+  {
+    return UserWatchStatus.value
   }
 
   function resetMovieInfo() {
@@ -98,8 +109,56 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
     }
   }
 
+  async function GetMovieWatchStatus() {
+    try {
+      await axios({
+        method: 'get',
+        url: API_URLS.GETMOVIEWATCHSTATUS,
+      }).then((response) => {
+        if(response.data != null)
+        {
+          MovieWatchStatus.value = response.data
+         // IsOnList.value = true
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function CheckUserMovieStatus(UserId:number, MovieId:number)
+  {
+    try {
+      await axios({
+        method: 'get',
+        url: API_URLS.CHECKUSERMOVIESTATUS,
+        params:{
+          UserId:UserId,
+          MovieId:MovieId
+        }
+      }).then((response) => {
+        UserWatchStatus.value = response.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
 
-  return { GetMoviesList, GetMoviesData, GetMovieInfo, GetMovie, resetMovieInfo, GetGenres, getGenres, Genres, ChangeMovieListStatus }
+  return {
+    GetMoviesList,
+    GetMoviesData,
+    GetMovieInfo,
+    GetMovie,
+    resetMovieInfo,
+    GetGenres,
+    getGenres,
+    Genres,
+    ChangeMovieListStatus,
+    GetMovieWatchStatus,
+    MovieWatchStatus,
+    CheckUserMovieStatus,
+    getUserWatchStatus,
+  }
 })

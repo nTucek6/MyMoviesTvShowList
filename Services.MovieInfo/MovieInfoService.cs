@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Services.MoviesAdmin;
 using Services.ExternalApiCalls;
 using Entites.List;
+using Entities.Enum;
+using MyMoviesTvShowList.Extensions;
 
 namespace Services.MovieInfo
 {
@@ -17,6 +19,12 @@ namespace Services.MovieInfo
         {
             this.database = database;
             this.externalApiCalls = externalApiCalls;
+        }
+
+        public async Task<List<WatchStatusSelectDTO>> GetMovieWatchStatus()
+        {
+            var status = Enum.GetValues(typeof(WatchStatusEnum)).Cast<WatchStatusEnum>().ToList().Select(x => new WatchStatusSelectDTO { value = x, label = x.GetDescription() }).OrderBy(o => o.value).ToList();
+            return status;
         }
 
         public async Task ChangeMovieListStatus(ChangeWatchStatusDTO statusDTO)
@@ -133,6 +141,17 @@ namespace Services.MovieInfo
                 };
             }
              return null;
+        }
+        public async Task<WatchStatusSelectDTO> CheckUserMovieStatus(int UserId, int MovieId)
+        {
+            var userStatus = await database.WatchedMoviesLists.Where(q=> q.UserId == UserId && q.MovieId == MovieId).FirstOrDefaultAsync();
+
+            if(userStatus != null)
+            {
+                var status = Enum.GetValues(typeof(WatchStatusEnum)).Cast<WatchStatusEnum>().ToList().Where(q=> q == userStatus.WatchStatus).Select(x => new WatchStatusSelectDTO { value = x, label = x.GetDescription() }).FirstOrDefault();
+                return status;
+            }
+            return null;
         }
 
     }

@@ -25,8 +25,7 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
-li{
+li {
   list-style: none;
 }
-
 </style>

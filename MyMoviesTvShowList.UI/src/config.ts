@@ -9,9 +9,11 @@ export const API_URLS = {
   GETMOVIESLIST: `${API_BASE_URL}Frontpage/GetMoviesList`,
   GETMOVIEINFO: `${API_BASE_URL}MovieInfo/GetMovieInfo`,
 
-  GETUSERMOVIESLIST: `${API_BASE_URL}MovieInfo/GetMovieInfo`,
-  GETUSERTVSHOWLIST: `${API_BASE_URL}MovieInfo/GetMovieInfo`,
-  CHANGEMOVIELISTSTATUS:`${API_BASE_URL}MovieInfo/ChangeMovieListStatus`,
+  GETUSERMOVIESLIST: `${API_BASE_URL}MovieTVShowList/GetUserMovieList`,
+  GETUSERTVSHOWLIST: `${API_BASE_URL}MovieTVShowList/GetUserTVShowList`,
+  CHANGEMOVIELISTSTATUS: `${API_BASE_URL}MovieInfo/ChangeMovieListStatus`,
+  GETMOVIEWATCHSTATUS: `${API_BASE_URL}MovieInfo/GetMovieWatchStatus`,
+  CHECKUSERMOVIESTATUS: `${API_BASE_URL}MovieInfo/CheckUserMovieStatus`,
 }
 
 export const API_URLS_ADMIN = {
