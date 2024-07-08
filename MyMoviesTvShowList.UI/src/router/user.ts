@@ -15,7 +15,7 @@ export const user = [
         component: FrontpageView
       },
       {
-        path: '/login',
+        path: 'login',
         name: 'Login',
         component: () => import('@/app/views/1.public/LoginView.vue'),
         beforeEnter: (to: any, from: any, next: any) => {
@@ -28,7 +28,7 @@ export const user = [
         }
       },
       {
-        path: '/register',
+        path: 'register',
         name: 'Register',
         component: () => import('@/app/views/1.public/RegisterView.vue'),
         beforeEnter: (to: any, from: any, next: any) => {
@@ -42,34 +42,39 @@ export const user = [
         }
       },
       {
-        path: '/moviessearch',
+        path: 'moviessearch',
         name: 'Movies Search',
         component: () => import('@/app/views/1.public/MovieSearchView.vue')
       },
       {
-        path: '/topmovies',
+        path: 'topmovies',
         name: 'Top Movies',
         component: () => import('@/app/views/1.public/TopMoviesView.vue')
       },
       {
-        path: '/profile/:username',
+        path: 'profile/:username',
         name: 'Profile',
         component: () => import('@/app/views/2.user/ProfileView.vue')
       },
       {
-        path: '/movielist/:username',
+        path: 'movieslist/:username',
         name: 'Movie List',
         component: () => import('@/app/views/2.user/MoviesListView.vue')
       },
       {
-        path: '/accountsettings',
+        path: 'accountsettings',
         name: 'Account settings',
-        component: () => import('@/app/views/2.user/AccountSettings.vue')
+        component: () => import('@/app/views/2.user/AccountSettingsView.vue')
       },
       {
-        path: '/movie/:id/:title',
+        path: 'movie/:id/:title',
         name: 'Movie Info',
-        component: () => import('@/app/views/1.public/MovieInfo.vue')
+        component: () => import('@/app/views/1.public/MovieInfoView.vue')
+      },
+      {
+        path: 'tvshow/:id/:title',
+        name: 'TV Show Info',
+        component: () => import('@/app/views/1.public/TVShowInfoView.vue')
       }
     ]
   }

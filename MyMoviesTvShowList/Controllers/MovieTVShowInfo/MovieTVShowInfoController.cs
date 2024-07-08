@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.MovieInfo;
+using Services.MovieTVShowInfo;
 
 namespace MyMoviesTvShowList.Controllers.MovieInfo
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class MovieInfoController : Controller
+    public class MovieTVShowInfoController : Controller
     {
-        private readonly IMovieInfoService movieInfoService;
+        private readonly IMovieTVShowInfoService movieInfoService;
 
-        public MovieInfoController(IMovieInfoService movieInfoService)
+        public MovieTVShowInfoController(IMovieTVShowInfoService movieInfoService)
         {
             this.movieInfoService = movieInfoService;
         }
@@ -21,6 +21,12 @@ namespace MyMoviesTvShowList.Controllers.MovieInfo
             var movie = await movieInfoService.GetMovieInfo(Id);
             return Ok(movie);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetTVShowInfo(int Id)
+        {
+            var tvshow = await movieInfoService.GetTVShowInfo(Id);
+            return Ok(tvshow);
+        }
 
         [HttpPost]
         [Authorize]
@@ -30,16 +36,32 @@ namespace MyMoviesTvShowList.Controllers.MovieInfo
             return Ok();
         }
 
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> ChangeTVShowListStatus(ChangeWatchStatusDTO statusDTO)
+        {
+            await movieInfoService.ChangeTVShowListStatus(statusDTO);
+            return Ok();
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetMovieWatchStatus()
         {
             var list = await movieInfoService.GetMovieWatchStatus();
             return Ok(list);
         }
+
         [HttpGet]
         public async Task<IActionResult> CheckUserMovieStatus(int UserId, int MovieId)
         {
             var status = await movieInfoService.CheckUserMovieStatus(UserId, MovieId);
+            return Ok(status);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CheckUserTVShowStatus(int UserId, int MovieId)
+        {
+            var status = await movieInfoService.CheckUserTVShowStatus(UserId, MovieId);
             return Ok(status);
         }
 

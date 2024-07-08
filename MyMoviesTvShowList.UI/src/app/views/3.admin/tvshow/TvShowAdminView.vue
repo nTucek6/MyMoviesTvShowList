@@ -3,7 +3,7 @@ import { useTvShowAdminStore } from '@/stores/admin/tvshowadmin'
 import AdminNavigationComponent from '@/app/shared/components/AdminNavigationComponent.vue'
 import { tvShowParams } from '@/app/views/3.admin/tvshow/tvshowparams'
 import { onMounted, computed, ref, watch } from 'vue'
-import type { TVShowDTO } from '@/app/shared/models/tvshow.mode'
+import type { TVShowDTO } from '@/app/shared/models/tvshow.model'
 import { useRouter, RouterView, useRoute } from 'vue-router'
 
 const tvshowApi = useTvShowAdminStore()

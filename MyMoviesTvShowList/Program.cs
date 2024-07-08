@@ -10,7 +10,7 @@ using Services.MoviesAdmin;
 using Services.TVShowsAdmin;
 using Services.ExternalApiCalls;
 using Microsoft.Extensions.Configuration;
-using Services.MovieInfo;
+
 using Microsoft.Extensions.FileProviders;
 using Services.MovieTVShowList;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
+using Services.MovieTVShowInfo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -88,7 +89,7 @@ builder.Services.AddTransient<IMoviesAdminService, MoviesAdminService>();
 builder.Services.AddTransient<ICrewsAdminService, CrewsAdminService>();
 builder.Services.AddTransient<ITVShowsAdminService, TVShowsAdminService>();
 builder.Services.AddTransient<IExternalApiCallsService, ExternalApiCallsService>();
-builder.Services.AddTransient<IMovieInfoService, MovieInfoService>();
+builder.Services.AddTransient<IMovieTVShowInfoService, MovieTVShowInfoService>();
 builder.Services.AddTransient<IMovieTVShowListService, MovieTVShowListService>();
 
 

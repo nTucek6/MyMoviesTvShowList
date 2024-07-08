@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useRoute } from 'vue-router'
+import { ref } from 'vue'
+//import { useRoute } from 'vue-router'
 
-const route = useRoute()
+//const route = useRoute()
 
-const username = ref(route.params.username as string)
+//const username = ref(route.params.username as string)
 
-const calculateGraphSize = (list:number, totalEntries:number, containerWidth:number) =>{
- return (list / totalEntries) * containerWidth
+const calculateGraphSize = (list: number, totalEntries: number, containerWidth: number) => {
+  return (list / totalEntries) * containerWidth
 }
 
-const watched = calculateGraphSize(53,756,380).toFixed(1)
-
-
+const watched = calculateGraphSize(53, 756, 380).toFixed(1)
 </script>
 
 <template>

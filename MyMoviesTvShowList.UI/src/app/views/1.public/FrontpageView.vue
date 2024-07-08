@@ -18,7 +18,7 @@ onMounted(async () => {
   <section>
     <ul>
       <li v-for="m in MoviesList" :key="m.Id">
-        <RouterLink :to="`movie/${m.Id}/${m.MovieName}`">{{ m.MovieName }}</RouterLink>
+        <RouterLink :to="`/movie/${m.Id}/${m.MovieName}`">{{ m.MovieName }}</RouterLink>
       </li>
     </ul>
   </section>

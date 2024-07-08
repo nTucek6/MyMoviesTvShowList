@@ -58,9 +58,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.TVShowsAdmin", "Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.ExternalApiCalls", "Services.ExternalApiCalls\Services.ExternalApiCalls.csproj", "{7D9A3C94-1849-4729-8D44-1C842FD096F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.MovieInfo", "Services.MovieInfo\Services.MovieInfo.csproj", "{0E408FE5-C5EB-4392-B2AA-1E0F3C202723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.MovieTVShowInfo", "Services.MovieInfo\Services.MovieTVShowInfo.csproj", "{0E408FE5-C5EB-4392-B2AA-1E0F3C202723}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.MovieTVShowList", "Services.MovieTVShowList\Services.MovieTVShowList.csproj", "{FFD7D76C-B40B-437B-8717-EEB001F35E5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.MovieTVShowList", "Services.MovieTVShowList\Services.MovieTVShowList.csproj", "{FFD7D76C-B40B-437B-8717-EEB001F35E5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,7 +9,7 @@ const username = ref(route.params.username as string)
 
 const api = useUserListStore()
 
-const MoviesList = computed(()=> api.MoviesList)
+const MoviesList = computed(() => api.MoviesList)
 
 onMounted(async () => {
   await api.GetUserMoviesList(username.value)
@@ -27,7 +27,7 @@ onMounted(async () => {
     </thead>
     <tbody>
       <tr v-for="(movie, index) in MoviesList" :key="movie.Id">
-        <td data-cell="#">{{ index+1 }}</td>
+        <td data-cell="#">{{ index + 1 }}</td>
         <td data-cell="movie">{{ movie.Title }}</td>
         <td data-cell="score">{{ movie.Score }}</td>
       </tr>

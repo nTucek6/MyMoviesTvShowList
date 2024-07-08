@@ -7,13 +7,13 @@ export const API_URLS = {
   GETGENRES: `${API_BASE_URL}MoviesAdmin/GetGenres`,
 
   GETMOVIESLIST: `${API_BASE_URL}Frontpage/GetMoviesList`,
-  GETMOVIEINFO: `${API_BASE_URL}MovieInfo/GetMovieInfo`,
+  GETMOVIEINFO: `${API_BASE_URL}MovieTVShowInfo/GetMovieInfo`,
 
   GETUSERMOVIESLIST: `${API_BASE_URL}MovieTVShowList/GetUserMovieList`,
   GETUSERTVSHOWLIST: `${API_BASE_URL}MovieTVShowList/GetUserTVShowList`,
-  CHANGEMOVIELISTSTATUS: `${API_BASE_URL}MovieInfo/ChangeMovieListStatus`,
-  GETMOVIEWATCHSTATUS: `${API_BASE_URL}MovieInfo/GetMovieWatchStatus`,
-  CHECKUSERMOVIESTATUS: `${API_BASE_URL}MovieInfo/CheckUserMovieStatus`,
+  CHANGEMOVIELISTSTATUS: `${API_BASE_URL}MovieTVShowInfo/ChangeMovieListStatus`,
+  GETMOVIEWATCHSTATUS: `${API_BASE_URL}MovieTVShowInfo/GetMovieWatchStatus`,
+  CHECKUSERMOVIESTATUS: `${API_BASE_URL}MovieTVShowInfo/CheckUserMovieStatus`
 }
 
 export const API_URLS_ADMIN = {

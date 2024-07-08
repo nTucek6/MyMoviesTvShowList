@@ -14,7 +14,8 @@ export class MoviesDTO {
   ReleaseDate: string
   Duration: number
   RatingsCount: number
-  MovieImageData: Blob
+  MovieImageData: string
+  //MovieImageData: Blob
 
   constructor() {
     this.Id = 0
@@ -28,6 +29,7 @@ export class MoviesDTO {
     this.ReleaseDate = ''
     this.Duration = 0
     this.RatingsCount = 0
-    this.MovieImageData = new Blob([])
+    this.MovieImageData = ''
+    //this.MovieImageData = new Blob([])
   }
 }

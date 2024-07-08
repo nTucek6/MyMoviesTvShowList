@@ -1,5 +1,5 @@
 {
-    "volar.takeOverMode.enabled": true,
-    "typescript.validate.enable": false,
-    "javascript.validate.enable": false
-  }
+  "volar.takeOverMode.enabled": true,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false
+}

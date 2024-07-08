@@ -1,33 +1,28 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, watch, nextTick  } from 'vue'
-import { useRoute } from 'vue-router'
-import { useMoviesStore } from '@/stores/movies'
-import { MoviesDTO } from '@/app/shared/models/movies.model'
-import { ChangeWatchStatusDTO } from '@/app/shared/models/change-watch-status.model'
-import { useAuthentication } from '@/stores/admin/authentication'
-import '@/assets/custom/select.css'
+import { ref, computed, onUnmounted, onMounted, watch, nextTick } from 'vue'
+import type { Select } from '../models/select.model'
 
-const authApi = useAuthentication()
+const props = defineProps({
+  StatusOptions: Array<Select>,
 
-const route = useRoute()
+  Title: String,
+  Synopsis: String,
+  ImageData: String,
 
-const MoviesApi = useMoviesStore()
+  InitialStatus: {
+    type: Object
+  }
+})
 
-const InitialSetupDone = ref<boolean>(false)
-
-const Id = Number(route.params.id)
-
-const Movie = ref<MoviesDTO>(new MoviesDTO())
+const emit = defineEmits(['selectedStatus'])
 
 const showList = ref(false)
 
-const StatusOptions = computed(() => MoviesApi.MovieWatchStatus)
+const selectedStatus = ref()
 
 const statusDropdown = ref()
 
-const selectedStatus = ref()
-
-const UserListData = ref<ChangeWatchStatusDTO>(new ChangeWatchStatusDTO())
+const InitialSetupDone = ref<boolean>(false)
 
 const displaySelectedStatus = computed(() => {
   return selectedStatus.value || { label: 'Add to list' }
@@ -43,20 +38,9 @@ const handleClickOutside = (event: any) => {
   }
 }
 
-onMounted(async () => {
+onMounted(async() => {
   document.addEventListener('click', handleClickOutside)
-  await MoviesApi.GetMovieInfo(Id)
-  Movie.value = MoviesApi.GetMovie()
-
-  await MoviesApi.GetMovieWatchStatus()
-  await MoviesApi.CheckUserMovieStatus(authApi.UserData.Id, Movie.value.Id)
-
-  selectedStatus.value = MoviesApi.getUserWatchStatus()
-
-  UserListData.value.Id = Movie.value.Id
-  UserListData.value.UserId = authApi.UserData.Id
-
-  MoviesApi.resetMovieInfo()
+  selectedStatus.value = props.InitialStatus
 
   await nextTick()
   InitialSetupDone.value = true
@@ -66,24 +50,23 @@ onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
 
-watch(selectedStatus, () => {
-  if (InitialSetupDone.value) {
-    toggleList()
-    UserListData.value.Status = selectedStatus.value.value
-    MoviesApi.ChangeMovieListStatus(UserListData.value)
-  }
-})
-
 const toggleList = () => {
   showList.value = !showList.value
 }
+
+watch(selectedStatus, () => {
+  if (InitialSetupDone.value) {
+    toggleList()
+    emit('selectedStatus', selectedStatus.value)
+  }
+})
 </script>
 
 <template>
   <section>
     <div id="left-side">
       <div id="movie-img">
-        <img :src="`data:image/jpeg;base64,${Movie.MovieImageData}`" />
+        <img :src="`data:image/jpeg;base64,${ImageData}`" />
       </div>
     </div>
 
@@ -91,7 +74,7 @@ const toggleList = () => {
       <div id="synopsis">
         <h4>Synopsis</h4>
         <p>
-          {{ Movie.Synopsis }}
+          {{ Synopsis }}
         </p>
       </div>
     </div>
@@ -120,7 +103,7 @@ const toggleList = () => {
   </section>
 </template>
 
-<style scoped>
+<style lang="scss">
 section {
   display: flex;
 }

@@ -15,7 +15,7 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
 
   const MovieWatchStatus = ref<Select[]>()
 
-  const UserWatchStatus = ref<Select>()
+  const UserWatchStatus = ref<Select>(new Select())
 
   //const IsOnList = ref<boolean>(false)
 
@@ -33,8 +33,7 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
     return Genres.value
   }
 
-  function getUserWatchStatus()
-  {
+  function getUserWatchStatus() {
     return UserWatchStatus.value
   }
 
@@ -113,12 +112,11 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
     try {
       await axios({
         method: 'get',
-        url: API_URLS.GETMOVIEWATCHSTATUS,
+        url: API_URLS.GETMOVIEWATCHSTATUS
       }).then((response) => {
-        if(response.data != null)
-        {
+        if (response.data != null) {
           MovieWatchStatus.value = response.data
-         // IsOnList.value = true
+          // IsOnList.value = true
         }
       })
     } catch (error) {
@@ -126,15 +124,14 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
     }
   }
 
-  async function CheckUserMovieStatus(UserId:number, MovieId:number)
-  {
+  async function CheckUserMovieStatus(UserId: number, MovieId: number) {
     try {
       await axios({
         method: 'get',
         url: API_URLS.CHECKUSERMOVIESTATUS,
-        params:{
-          UserId:UserId,
-          MovieId:MovieId
+        params: {
+          UserId: UserId,
+          MovieId: MovieId
         }
       }).then((response) => {
         UserWatchStatus.value = response.data
@@ -143,8 +140,6 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
       console.log(error)
     }
   }
-
-
 
   return {
     GetMoviesList,
@@ -159,6 +154,6 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
     GetMovieWatchStatus,
     MovieWatchStatus,
     CheckUserMovieStatus,
-    getUserWatchStatus,
+    getUserWatchStatus
   }
 })
