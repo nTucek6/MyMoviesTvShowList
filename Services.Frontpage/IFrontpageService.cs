@@ -8,7 +8,8 @@ namespace Services.Frontpage
 {
     public interface IFrontpageService
     {
-        public Task<List<MoviesListDTO>> GetMoviesList(int PostPerPage, int Page, string? Search);
+        public Task<List<MediaListDTO>> GetMoviesList(int PostPerPage, int Page, string? Search);
+        public Task<List<MediaListDTO>> GetTVShowList(int PostPerPage, int Page, string? Search);
 
     }
 }

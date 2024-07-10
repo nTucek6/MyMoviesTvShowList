@@ -12,8 +12,8 @@ namespace Entites.List
         public int TVShowId { get; set; }
         public int UserId { get; set; }
         public WatchStatusEnum WatchStatus { get; set; }
-        public int SeasonsWatched { get; set; }
-        public int EpisodesWatched { get; set; }
+        public int? SeasonsWatched { get; set; }
+        public int? EpisodesWatched { get; set; }
         public int? Score { get; set; }
         public DateTime TimeAdded { get; set; }
         public string? Review {  get; set; }

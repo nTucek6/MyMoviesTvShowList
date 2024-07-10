@@ -1,5 +1,6 @@
 ﻿using DatabaseContext;
 using Entites.Movie;
+using Entites.Show;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -14,7 +15,7 @@ namespace Services.Frontpage
             this.database = database;
         }
 
-        public async Task<List<MoviesListDTO>> GetMoviesList(int PostPerPage, int Page, string? Search)
+        public async Task<List<MediaListDTO>> GetMoviesList(int PostPerPage, int Page, string? Search)
         {
             Expression<Func<MoviesEntity, bool>> predicate = x => true;
 
@@ -23,18 +24,44 @@ namespace Services.Frontpage
                 predicate = x => x.MovieName.Contains(Search);
             }
 
-            List<MoviesListDTO> movies = await database.Movies
+            List<MediaListDTO> movies = await database.Movies
                     .Where(predicate)
-                    .Select(s => new MoviesListDTO 
+                    .Select(s => new MediaListDTO
                     { 
                         Id = s.Id, 
-                        MovieName = s.MovieName
+                        Title = s.MovieName,
+                        Type = "movie",
                     })
-                    .OrderBy(m => m.MovieName)
+                    .OrderBy(m => m.Title)
                     .Skip((Page - 1) * PostPerPage)
                     .Take(PostPerPage).ToListAsync();
 
             return movies;            
         }
+
+        public async Task<List<MediaListDTO>> GetTVShowList(int PostPerPage, int Page, string? Search)
+        {
+            Expression<Func<TvShowEntity, bool>> predicate = x => true;
+
+            if (!String.IsNullOrEmpty(Search))
+            {
+                predicate = x => x.Title.Contains(Search);
+            }
+
+            List<MediaListDTO> tvshow = await database.TvShow
+                    .Where(predicate)
+                    .Select(s => new MediaListDTO
+                    {
+                        Id = s.Id,
+                        Title = s.Title,
+                        Type = "tvshow",
+                    })
+                    .OrderBy(m => m.Title)
+                    .Skip((Page - 1) * PostPerPage)
+                    .Take(PostPerPage).ToListAsync();
+
+            return tvshow;
+        }
+
     }
 }

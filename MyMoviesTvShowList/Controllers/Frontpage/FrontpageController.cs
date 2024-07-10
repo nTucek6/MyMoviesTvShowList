@@ -21,6 +21,13 @@ namespace MyMoviesTvShowList.Controllers.Frontpage
             return Ok(movies);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetTVShowList(int PostPerPage, int Page, string? Search)
+        {
+            var tvshow = await frontpageService.GetTVShowList(PostPerPage, Page, Search);
+            return Ok(tvshow);
+        }
+
 
     }
 }

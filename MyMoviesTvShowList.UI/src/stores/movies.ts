@@ -2,13 +2,13 @@ import { API_URLS } from '@/config'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import { ref } from 'vue'
-import type { MoviesListDTO } from '@/app/shared/models/movies-list.model'
+import type { MediaListDTO } from '@/app/shared/models/media-list.model'
 import { MoviesDTO } from '@/app/shared/models/movies.model'
 import { Select } from '@/app/shared/models/select.model'
 import { ChangeWatchStatusDTO } from '@/app/shared/models/change-watch-status.model'
 
 export const useMoviesStore = defineStore('MoviesStore', () => {
-  const MoviesList = ref<MoviesListDTO[]>()
+  const MoviesList = ref<MediaListDTO[]>(new Array<MediaListDTO>)
   const MovieInfo = ref<MoviesDTO>(new MoviesDTO())
 
   const Genres = ref<Select[]>()
@@ -21,7 +21,7 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
 
   const token = localStorage.getItem('token')
 
-  function GetMoviesData() {
+  function getMoviesList() {
     return MoviesList.value
   }
 
@@ -143,7 +143,7 @@ export const useMoviesStore = defineStore('MoviesStore', () => {
 
   return {
     GetMoviesList,
-    GetMoviesData,
+    getMoviesList,
     GetMovieInfo,
     GetMovie,
     resetMovieInfo,

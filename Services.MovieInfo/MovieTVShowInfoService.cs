@@ -75,13 +75,21 @@ namespace Services.MovieTVShowInfo
                     data.WatchStatus = (WatchStatusEnum)statusDTO.Status;
                     data.Score = statusDTO.Score;
                     data.Review = statusDTO.Review;
-                    data.SeasonsWatched = (int)statusDTO.SeasonsWatched;
-                    data.EpisodesWatched = (int)statusDTO.EpisodesWatched;
+                    data.SeasonsWatched = statusDTO.SeasonsWatched;
+                    data.EpisodesWatched = statusDTO.EpisodesWatched;
+
+                    if ((WatchStatusEnum)statusDTO.Status == WatchStatusEnum.Completed)
+                    {
+                        var totalSeasonsEpisodes = await database.TvShow.Where(q => q.Id == statusDTO.Id).Select(s => new { TotalSeasons = s.TotalSeason, TotalEpisodes = s.TotalEpisode }).FirstOrDefaultAsync();
+                        data.SeasonsWatched = totalSeasonsEpisodes.TotalSeasons;
+                        data.EpisodesWatched = totalSeasonsEpisodes.TotalEpisodes;
+                    }
+
                     database.Update(data);
                 }
                 else
                 {
-                    await database.AddAsync(new WatchedTvShowListEntity
+                    var watchedShow = new WatchedTvShowListEntity
                     {
                         TVShowId = statusDTO.Id,
                         UserId = statusDTO.UserId,
@@ -89,10 +97,18 @@ namespace Services.MovieTVShowInfo
                         WatchStatus = (WatchStatusEnum)statusDTO.Status,
                         TimeAdded = DateTime.Now.ToUniversalTime(),
                         Review = statusDTO.Review,
-                        SeasonsWatched = (int)statusDTO.SeasonsWatched,
-                        EpisodesWatched = (int)statusDTO.EpisodesWatched,
-                    });
+                        SeasonsWatched = statusDTO.SeasonsWatched,
+                        EpisodesWatched = statusDTO.EpisodesWatched,
+                    };
 
+                    if((WatchStatusEnum)statusDTO.Status == WatchStatusEnum.Completed)
+                    {
+                        var totalSeasonsEpisodes = await database.TvShow.Where(q => q.Id == statusDTO.Id).Select(s => new { TotalSeasons = s.TotalSeason, TotalEpisodes = s.TotalEpisode }).FirstOrDefaultAsync();
+                        watchedShow.SeasonsWatched = totalSeasonsEpisodes.TotalSeasons;
+                        watchedShow.EpisodesWatched = totalSeasonsEpisodes.TotalEpisodes;
+                    }
+
+                    await database.AddAsync(watchedShow);
                 }
                 await database.SaveChangesAsync();
 
@@ -104,8 +120,6 @@ namespace Services.MovieTVShowInfo
                 throw new Exception(ex.Message);
             }
         }
-
-
 
         public async Task<MoviesDTO> GetMovieInfo(int Id)
         {

@@ -59,9 +59,9 @@ namespace MyMoviesTvShowList.Controllers.MovieInfo
         }
 
         [HttpGet]
-        public async Task<IActionResult> CheckUserTVShowStatus(int UserId, int MovieId)
+        public async Task<IActionResult> CheckUserTVShowStatus(int UserId, int TVShowId)
         {
-            var status = await movieInfoService.CheckUserTVShowStatus(UserId, MovieId);
+            var status = await movieInfoService.CheckUserTVShowStatus(UserId, TVShowId);
             return Ok(status);
         }
 

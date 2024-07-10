@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onUnmounted, onMounted, watch, nextTick } from 'vue'
 import type { Select } from '../models/select.model'
+import '@/assets/custom/select.css'
 
 const props = defineProps({
   StatusOptions: Array<Select>,
@@ -38,7 +39,7 @@ const handleClickOutside = (event: any) => {
   }
 }
 
-onMounted(async() => {
+onMounted(async () => {
   document.addEventListener('click', handleClickOutside)
   selectedStatus.value = props.InitialStatus
 
@@ -65,7 +66,7 @@ watch(selectedStatus, () => {
 <template>
   <section>
     <div id="left-side">
-      <div id="movie-img">
+      <div id="media-img">
         <img :src="`data:image/jpeg;base64,${ImageData}`" />
       </div>
     </div>
@@ -88,7 +89,12 @@ watch(selectedStatus, () => {
               ><span class="arrow"></span>
             </button>
             <ul class="select-dropdown" role="listbox" id="select-dropdown">
-              <li role="option" v-for="i in StatusOptions" :key="i.value" @click="toggleList">
+              <li
+                role="option"
+                v-for="(i, index) in StatusOptions"
+                :key="index"
+                @click="toggleList"
+              >
                 <input type="radio" :value="i" :id="i.label" v-model="selectedStatus" />
                 <label :for="i.label">{{ i.label }}</label>
               </li>
@@ -114,7 +120,7 @@ section {
   padding: 3px;
 }
 
-#left-side > #movie-img > img {
+#left-side > #media-img > img {
   width: 100%;
 }
 

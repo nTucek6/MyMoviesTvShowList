@@ -14,7 +14,7 @@ export class TVShowDTO {
   TotalSeason: number
   TotalEpisode: number
   RatingsCount: number
-  TVShowImageData: Blob
+  TVShowImageData: string
 
   constructor() {
     this.Id = 0
@@ -28,6 +28,6 @@ export class TVShowDTO {
     this.RatingsCount = 0
     this.TotalSeason = 0
     this.TotalEpisode = 0
-    this.TVShowImageData = new Blob([])
+    this.TVShowImageData = ''
   }
 }
