@@ -123,6 +123,9 @@ const dropdownMenu: DropdownMenu[] = [
               <RouterLink :to="`/movieslist/${UserData.Username}`" class="btn dropdown-item"
                 ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> Movies List</RouterLink
               >
+              <RouterLink :to="`/tvshowlist/${UserData.Username}`" class="btn dropdown-item"
+                ><font-awesome-icon icon="fa-solid fa-user" class="icon" /> TVShow List</RouterLink
+              >
             </div>
           </div>
           <div

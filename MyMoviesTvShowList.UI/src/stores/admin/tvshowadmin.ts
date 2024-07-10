@@ -2,7 +2,7 @@ import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { API_URLS_ADMIN } from '@/config'
-import { TVShowDTO } from '@/app/shared/models/tvshow.mode'
+import { TVShowDTO } from '@/app/shared/models/tvshow.model'
 
 export const useTvShowAdminStore = defineStore('tvshowsAdminStore', () => {
   const TVShowData = ref<TVShowDTO[]>([])

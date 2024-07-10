@@ -52,18 +52,15 @@ const changeSelectedStatus = (selectedStatus: Select) => {
 </script>
 
 <template>
-  <div v-if="isLoading">
-    Loading...
-  </div>
+  <div v-if="isLoading">Loading...</div>
   <template v-else>
     <MediaInfoComponent
-    :Title="Movie.MovieName"
-    :Synopsis="Movie.Synopsis"
-    :ImageData="Movie.MovieImageData"
-    :StatusOptions="StatusOptions"
-    :InitialStatus="InitialSelectedStatus"
-    @selectedStatus="changeSelectedStatus"
-  />
+      :Title="Movie.MovieName"
+      :Synopsis="Movie.Synopsis"
+      :ImageData="Movie.MovieImageData"
+      :StatusOptions="StatusOptions"
+      :InitialStatus="InitialSelectedStatus"
+      @selectedStatus="changeSelectedStatus"
+    />
   </template>
-
 </template>

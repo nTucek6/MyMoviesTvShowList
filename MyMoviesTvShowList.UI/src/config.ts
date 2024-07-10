@@ -20,9 +20,7 @@ export const API_URLS = {
   CHECKUSERMOVIESTATUS: `${API_BASE_URL}MovieTVShowInfo/CheckUserMovieStatus`,
 
   CHANGETVSHOWLISTSTATUS: `${API_BASE_URL}MovieTVShowInfo/ChangeTVShowListStatus`,
-  CHECKUSERTVSHOWSTATUS: `${API_BASE_URL}MovieTVShowInfo/CheckUserTVShowStatus`,
-
-
+  CHECKUSERTVSHOWSTATUS: `${API_BASE_URL}MovieTVShowInfo/CheckUserTVShowStatus`
 }
 
 export const API_URLS_ADMIN = {

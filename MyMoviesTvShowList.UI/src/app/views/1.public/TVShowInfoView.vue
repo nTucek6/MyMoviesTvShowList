@@ -45,7 +45,7 @@ onMounted(async () => {
 
   TVShowApi.resetTVShowInfo()
 
-  isLoading.value = false;
+  isLoading.value = false
 })
 
 const changeSelectedStatus = (selectedStatus: Select) => {
@@ -55,18 +55,15 @@ const changeSelectedStatus = (selectedStatus: Select) => {
 </script>
 
 <template>
-  <div v-if="isLoading">
-    Loading...
-  </div>
+  <div v-if="isLoading">Loading...</div>
   <template v-else>
     <MediaInfoComponent
-    :Title="TVShow.Title"
-    :Synopsis="TVShow.Description"
-    :ImageData="TVShow.TVShowImageData"
-    :StatusOptions="StatusOptions"
-    :InitialStatus="InitialSelectedStatus"
-    @selectedStatus="changeSelectedStatus"
-  />
+      :Title="TVShow.Title"
+      :Synopsis="TVShow.Description"
+      :ImageData="TVShow.TVShowImageData"
+      :StatusOptions="StatusOptions"
+      :InitialStatus="InitialSelectedStatus"
+      @selectedStatus="changeSelectedStatus"
+    />
   </template>
- 
 </template>

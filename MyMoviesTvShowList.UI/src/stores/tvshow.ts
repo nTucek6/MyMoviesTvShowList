@@ -8,13 +8,13 @@ import type { ChangeWatchStatusDTO } from '@/app/shared/models/change-watch-stat
 import type { MediaListDTO } from '@/app/shared/models/media-list.model'
 
 export const useTVShowStore = defineStore('TVShowStore', () => {
-  const TVShowList = ref<MediaListDTO[]>(new Array<MediaListDTO>)
+  const TVShowList = ref<MediaListDTO[]>(new Array<MediaListDTO>())
   const TVShowInfo = ref<TVShowDTO>(new TVShowDTO())
   const UserWatchStatus = ref<Select>(new Select())
 
   const token = localStorage.getItem('token')
 
-  function getTVShowList(){
+  function getTVShowList() {
     return TVShowList.value
   }
 
@@ -91,8 +91,7 @@ export const useTVShowStore = defineStore('TVShowStore', () => {
           TVShowId: TVShowId
         }
       }).then((response) => {
-        if(response.status != 204)
-        {
+        if (response.status != 204) {
           UserWatchStatus.value = response.data
         }
       })
@@ -109,6 +108,6 @@ export const useTVShowStore = defineStore('TVShowStore', () => {
     resetTVShowInfo,
     getUserWatchStatus,
     ChangeTVShowListStatus,
-    CheckUserTVShowStatus,
+    CheckUserTVShowStatus
   }
 })

@@ -8,7 +8,7 @@ import { Select } from '@/app/shared/models/select.model'
 import { ChangeWatchStatusDTO } from '@/app/shared/models/change-watch-status.model'
 
 export const useMoviesStore = defineStore('MoviesStore', () => {
-  const MoviesList = ref<MediaListDTO[]>(new Array<MediaListDTO>)
+  const MoviesList = ref<MediaListDTO[]>(new Array<MediaListDTO>())
   const MovieInfo = ref<MoviesDTO>(new MoviesDTO())
 
   const Genres = ref<Select[]>()
