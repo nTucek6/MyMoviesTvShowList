@@ -64,7 +64,7 @@ export const user = [
       {
         path: 'tvshowlist/:username',
         name: 'TVShow List',
-        component: () => import('@/app/views/2.user//TVShowListView.vue')
+        component: () => import('@/app/views/2.user/TVShowListView.vue')
       },
       {
         path: 'accountsettings',

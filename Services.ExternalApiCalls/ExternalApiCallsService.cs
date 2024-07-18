@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Entites;
 using Entities.Enum;
 using Services.TVShowsAdmin;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Components.Web;
 
 
 namespace Services.ExternalApiCalls
@@ -118,10 +121,7 @@ namespace Services.ExternalApiCalls
                 client = new HttpClient();
                 response = await client.GetAsync(data.Poster);
                 byte[] imageBytes = await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
-
-                MoviesDTO movie = null;
-
-                movie = new MoviesDTO
+                MoviesDTO movie = new MoviesDTO
                 {
                     Id = 0,
                     MovieName = data.Title,
@@ -255,6 +255,54 @@ namespace Services.ExternalApiCalls
                 }
             }
             return actors;
+        }
+
+        public async Task<string> GetPersonFromWiki(string personName)
+        {
+
+            HttpClient client = new HttpClient();
+            // Step 1: Get the page title
+            var opensearchUrl = $"https://en.wikipedia.org/w/api.php?action=opensearch&search={personName}&limit=1&namespace=0&format=json";
+
+            //client.BaseAddress = new Uri(opensearchUrl);
+
+            var searchResponse = await client.GetAsync(opensearchUrl);
+
+            string responseBody = await searchResponse.Content.ReadAsStringAsync();
+
+            var searchData = JArray.Parse(responseBody);
+
+            //var url = searchData.Last.First.ToString();
+            string pageTitle = searchData[1][0].ToString();
+
+            var detailsUrl = $"https://en.wikipedia.org/w/api.php?action=query&prop=extracts|pageimages|revisions&titles={pageTitle}&rvprop=content&format=json&piprop=original";
+
+            client = new HttpClient();
+            //client.BaseAddress = new Uri(detailsUrl);
+
+            searchResponse = await client.GetAsync(detailsUrl);
+
+            responseBody = await searchResponse.Content.ReadAsStringAsync();
+
+            var detailsData = JObject.Parse(responseBody);
+
+            return responseBody;
+
+
+            // MediaApiDTO data = JsonSerializer.Deserialize<MediaApiDTO>(responseBody);
+
+
+
+            /* var searchData = JArray.Parse(searchResponse);
+             var pageTitle = searchData[1][0].ToString();
+
+             // Step 2: Get the detailed information
+             var detailsUrl = $"https://en.wikipedia.org/w/api.php?action=query&prop=extracts|pageimages|revisions&titles={pageTitle}&rvprop=content&format=json&piprop=original";
+             var detailsResponse = await _httpClient.GetStringAsync(detailsUrl);
+             var detailsData = JObject.Parse(detailsResponse);
+
+             return detailsData;*/
+
         }
 
     }

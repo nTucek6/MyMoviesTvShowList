@@ -25,6 +25,10 @@ const statusDropdown = ref()
 
 const InitialSetupDone = ref<boolean>(false)
 
+const selectedIndex = ref<number>(0)
+
+const items = ['Cast', 'Crew', 'Genres']
+
 const displaySelectedStatus = computed(() => {
   return selectedStatus.value || { label: 'Add to list' }
 })
@@ -61,6 +65,11 @@ watch(selectedStatus, () => {
     emit('selectedStatus', selectedStatus.value)
   }
 })
+
+const selectItem = (index:number) =>{
+  selectedIndex.value = index
+}
+
 </script>
 
 <template>
@@ -77,6 +86,17 @@ watch(selectedStatus, () => {
         <p>
           {{ Synopsis }}
         </p>
+      </div>
+      <div id="tab-content">
+        <ul>
+          <li
+            v-for="(item, index) in items"
+            :key="index"
+            :class="{ selected: selectedIndex === index }"
+            @click="selectItem(index)">
+            {{ item }}
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -137,6 +157,52 @@ section {
   margin-bottom: 4px;
   padding-bottom: 2px;
   font-size: 20px;
+}
+
+#tab-content {
+  margin-top: 20px;
+}
+
+#tab-content > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid #333;
+}
+
+#tab-content > ul > li {
+  padding: 5px 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+#tab-content > ul > li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px; /* Adjusted to align with the ul border */
+  height: 2px; /* Thickness of the bottom border */
+  transition: background-color 0.3s ease;
+}
+
+#tab-content > ul > li:hover {
+  color: green;
+}
+
+#tab-content > ul > li:hover::after {
+  background-color: green;
+}
+
+.selected,
+.selected:hover {
+  color: red !important;
+}
+
+.selected::after,
+.selected:hover::after {
+  background-color: red !important;
 }
 
 /* ---------------------------------------------------------------------- */

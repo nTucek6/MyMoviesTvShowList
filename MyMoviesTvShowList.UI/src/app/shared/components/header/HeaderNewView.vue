@@ -64,7 +64,11 @@ function setRoutePageName() {
     page.value = route.params.username + "'s profile"
   } else if (route.path == `/movie/${route.params.id}/${route.params.title}`) {
     page.value = route.params.title
-  } else {
+  } 
+  else if (route.path == `/tvshow/${route.params.id}/${route.params.title}`) {
+    page.value = route.params.title
+  }
+  else {
     page.value = route.name
   }
   showListMenu.value = false

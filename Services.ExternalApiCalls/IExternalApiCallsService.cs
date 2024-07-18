@@ -1,4 +1,5 @@
-﻿using Services.CrewsAdmin;
+﻿using Newtonsoft.Json.Linq;
+using Services.CrewsAdmin;
 using Services.MoviesAdmin;
 using Services.TVShowsAdmin;
 
@@ -10,6 +11,7 @@ namespace Services.ExternalApiCalls
         public Task<TVShowDTO> GetTVShowFromApi(string Title);
         public Task<PersonDTO> GetCelebrity(string Fullname);
         public GenresSelectDTO SearchGenre(string Genre);
+        Task<string> GetPersonFromWiki(string personName);
 
     }
 }

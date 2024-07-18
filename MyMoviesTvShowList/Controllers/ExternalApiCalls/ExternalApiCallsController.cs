@@ -6,7 +6,7 @@ namespace MyMoviesTvShowList.Controllers.ExternalApiCalls
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class ExternalApiCallsController : Controller
     {
         private readonly IExternalApiCallsService externalApiCallsService;
@@ -39,6 +39,14 @@ namespace MyMoviesTvShowList.Controllers.ExternalApiCalls
             return Ok(reponse);
         }
 
-    
+        [HttpGet]
+        public async Task<IActionResult> GetPersonFromWiki(string personName)
+        {
+            var response = await externalApiCallsService.GetPersonFromWiki(personName);
+            return Ok(response);
+        }
+
+
+
     }
 }
