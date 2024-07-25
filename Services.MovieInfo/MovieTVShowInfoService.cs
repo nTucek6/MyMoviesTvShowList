@@ -174,7 +174,7 @@ namespace Services.MovieTVShowInfo
                 }
                 foreach(string g in gen)
                 {
-                    var d = externalApiCalls.SearchGenre(g);
+                    var d = GetGenre(Convert.ToInt32(g));
                     if (d != null)
                     {
                         genres.Add(d);
@@ -242,7 +242,7 @@ namespace Services.MovieTVShowInfo
                 }
                 foreach (string g in gen)
                 {
-                    var d = externalApiCalls.SearchGenre(g);
+                    var d = GetGenre(Convert.ToInt32(g));
                     if (d != null)
                     {
                         genres.Add(d);
@@ -290,6 +290,14 @@ namespace Services.MovieTVShowInfo
             }
             return null;
         }
+
+
+        private GenresSelectDTO GetGenre(int Genre)
+        {
+            var genre = Enum.GetValues(typeof(GenresEnum)).Cast<GenresEnum>().ToList().Where(q => q == (GenresEnum)Genre).Select(x => new GenresSelectDTO { value = x, label = x.GetDescription() }).FirstOrDefault();
+            return genre;
+        }
+
 
     }
 }

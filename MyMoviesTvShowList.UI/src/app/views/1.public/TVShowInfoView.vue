@@ -33,6 +33,8 @@ onMounted(async () => {
   await TVShowApi.GetTVShowInfo(Id)
   TVShow.value = TVShowApi.getTvShow()
 
+  console.log(TVShow.value)
+
   await MoviesApi.GetMovieWatchStatus()
   await TVShowApi.CheckUserTVShowStatus(authApi.UserData.Id, TVShow.value.Id)
 
@@ -63,6 +65,7 @@ const changeSelectedStatus = (selectedStatus: Select) => {
       :ImageData="TVShow.TVShowImageData"
       :StatusOptions="StatusOptions"
       :InitialStatus="InitialSelectedStatus"
+      :Genres="TVShow.Genres"
       @selectedStatus="changeSelectedStatus"
     />
   </template>

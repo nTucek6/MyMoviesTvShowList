@@ -9,6 +9,7 @@ const props = defineProps({
   Title: String,
   Synopsis: String,
   ImageData: String,
+  Genres: Array<Select>,
 
   InitialStatus: {
     type: Object
@@ -27,7 +28,7 @@ const InitialSetupDone = ref<boolean>(false)
 
 const selectedIndex = ref<number>(0)
 
-const items = ['Cast', 'Crew', 'Genres']
+const items = ['Cast', 'Crew']
 
 const displaySelectedStatus = computed(() => {
   return selectedStatus.value || { label: 'Add to list' }
@@ -77,6 +78,13 @@ const selectItem = (index:number) =>{
     <div id="left-side">
       <div id="media-img">
         <img :src="`data:image/jpeg;base64,${ImageData}`" />
+      </div>
+      <div id="media-info">
+        <div id="genres">
+          <h4>Genres:</h4>
+          <span v-for="g in Genres" :key="g.value">{{ g.label }}</span>
+        </div>
+
       </div>
     </div>
 
@@ -142,6 +150,29 @@ section {
 
 #left-side > #media-img > img {
   width: 100%;
+}
+
+#media-info > #genres{
+  display: flex;
+  align-items: center;
+}
+
+#media-info > #genres > h4::after{
+  content: ' ';
+}
+
+#media-info > #genres > span{
+  font-size: 700;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+#media-info > #genres > span::after{
+  content: ', ';
+}
+
+#media-info > #genres > span:last-child::after{
+  content: none;
 }
 
 /* ---------------------------------------------------------------------- */

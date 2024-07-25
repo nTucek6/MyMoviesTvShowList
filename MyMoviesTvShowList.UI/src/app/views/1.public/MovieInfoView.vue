@@ -60,6 +60,7 @@ const changeSelectedStatus = (selectedStatus: Select) => {
       :ImageData="Movie.MovieImageData"
       :StatusOptions="StatusOptions"
       :InitialStatus="InitialSelectedStatus"
+      :Genres="Movie.Genres"
       @selectedStatus="changeSelectedStatus"
     />
   </template>

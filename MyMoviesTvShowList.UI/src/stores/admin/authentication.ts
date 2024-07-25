@@ -111,7 +111,7 @@ export const useAuthentication = defineStore('Authentication', () => {
       adminLogIn.value = true
       GetAdminData()
     } else {
-      userLogIn.value = false
+      adminLogIn.value = false
     }
   }
 
